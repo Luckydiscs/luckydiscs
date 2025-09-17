@@ -32,8 +32,8 @@ const Contact = () => {
               <div>
                 <h2 className="text-2xl md:text-3xl font-heading mb-6">Contact Information</h2>
                 <p className="text-gray-400 mb-8">
-                  Tiimimme on käytettävissä maanantaista perjantaihin, klo 9-17 (EET). 
-                  Pyrimme vastaamaan kaikkiin kyselyihin 24 tunnin sisällä.
+                  Our team is available Monday through Friday, 9am to 5pm (EET). 
+                  We aim to respond to all inquiries within 24 hours.
                 </p>
               </div>
               
@@ -43,7 +43,7 @@ const Contact = () => {
                     <Mail size={20} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">Sähköposti</p>
+                    <p className="text-sm text-gray-400">Email</p>
                     <p className="font-medium">asiakaspalvelu@luckydiscs.fi</p>
                   </div>
                 </div>
@@ -53,7 +53,7 @@ const Contact = () => {
                     <Phone size={20} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">Puhelin</p>
+                    <p className="text-sm text-gray-400">Phone</p>
                     <p className="font-medium">+358 44 989 4225</p>
                   </div>
                 </div>
@@ -63,7 +63,7 @@ const Contact = () => {
                     <MapPin size={20} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">Yhteydenotto</p>
+                    <p className="text-sm text-gray-400">Location</p>
                     <p className="font-medium">Lucky Discs Finland</p>
                   </div>
                 </div>
@@ -104,16 +104,16 @@ const Contact = () => {
                 <table className="w-full text-left">
                   <tbody>
                     <tr className="border-b border-gray-800">
-                      <td className="py-2 font-medium">Maanantai - Perjantai</td>
+                      <td className="py-2 font-medium">Monday - Friday</td>
                       <td className="py-2 text-gray-400">9:00 - 17:00 (EET)</td>
                     </tr>
                     <tr className="border-b border-gray-800">
-                      <td className="py-2 font-medium">Lauantai</td>
-                      <td className="py-2 text-gray-400">Suljettu</td>
+                      <td className="py-2 font-medium">Saturday</td>
+                      <td className="py-2 text-gray-400">Closed</td>
                     </tr>
                     <tr>
-                      <td className="py-2 font-medium">Sunnuntai</td>
-                      <td className="py-2 text-gray-400">Suljettu</td>
+                      <td className="py-2 font-medium">Sunday</td>
+                      <td className="py-2 text-gray-400">Closed</td>
                     </tr>
                   </tbody>
                 </table>
