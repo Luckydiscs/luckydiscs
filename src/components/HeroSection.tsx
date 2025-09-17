@@ -49,14 +49,22 @@ const HeroSection = () => {
           
           <div className="lg:w-1/2 flex justify-center relative">
             <div className="relative">
-              <div className="animate-float">
+              <div className="animate-float group">
                 <img 
-                  src="/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png" 
+                  src="/src/assets/lucky-discs-hero.png" 
                   alt="Lucky Discs Collection" 
-                  className="max-w-full h-auto relative z-10"
+                  className="max-w-full h-auto relative z-10 transition-all duration-700 group-hover:scale-105 group-hover:rotate-3 drop-shadow-2xl"
+                  style={{
+                    filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.3))'
+                  }}
                 />
               </div>
-              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-4/5 h-10 bg-black/20 rounded-full blur-md disc-shadow transition-all duration-500"></div>
+              {/* Animated glow effects */}
+              <div className="absolute inset-0 z-0 opacity-40">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-lucky-gold/20 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute top-1/3 left-1/3 w-32 h-32 bg-lucky-green/30 rounded-full blur-2xl animate-bounce"></div>
+              </div>
+              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-4/5 h-10 bg-black/30 rounded-full blur-md disc-shadow transition-all duration-500"></div>
             </div>
           </div>
         </div>
