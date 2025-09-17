@@ -50,23 +50,42 @@ const HeroSection = () => {
           </div>
           
           <div className="lg:w-1/2 flex justify-center relative">
-            <div className="relative">
-              <div className="animate-float group">
-                <img 
-                  src="/src/assets/lucky-discs-hero-new.png" 
-                  alt="Lucky Discs colorful disc golf collection with Slot Machine designs" 
-                  className="max-w-full h-auto relative z-10 transition-all duration-700 group-hover:scale-105 group-hover:rotate-2 drop-shadow-2xl pointer-events-none select-none"
-                  style={{
-                    filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 60px rgba(255, 215, 0, 0.4))',
-                  }}
-                />
+            <div className="relative w-full max-w-lg">
+              {/* Interactive Disc Elements */}
+              <div className="grid grid-cols-3 gap-6 p-8">
+                <div className="aspect-square rounded-full bg-gradient-to-br from-primary to-primary-dark shadow-2xl animate-bounce delay-75 hover:scale-110 transition-transform duration-300 cursor-pointer flex items-center justify-center text-4xl">
+                  🎯
+                </div>
+                <div className="aspect-square rounded-full bg-gradient-to-br from-lucky-gold to-yellow-400 shadow-2xl animate-bounce delay-150 hover:scale-110 transition-transform duration-300 cursor-pointer flex items-center justify-center text-4xl">
+                  💰
+                </div>
+                <div className="aspect-square rounded-full bg-gradient-to-br from-purple-500 to-pink-500 shadow-2xl animate-bounce delay-300 hover:scale-110 transition-transform duration-300 cursor-pointer flex items-center justify-center text-4xl">
+                  🚀
+                </div>
+                <div className="aspect-square rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 shadow-2xl animate-bounce delay-500 hover:scale-110 transition-transform duration-300 cursor-pointer flex items-center justify-center text-4xl">
+                  ⭐
+                </div>
+                <div className="aspect-square rounded-full bg-gradient-to-br from-primary to-lucky-green shadow-2xl animate-bounce delay-700 hover:scale-110 transition-transform duration-300 cursor-pointer flex items-center justify-center text-5xl font-bold text-white">
+                  🏆
+                </div>
+                <div className="aspect-square rounded-full bg-gradient-to-br from-orange-500 to-red-500 shadow-2xl animate-bounce delay-1000 hover:scale-110 transition-transform duration-300 cursor-pointer flex items-center justify-center text-4xl">
+                  🔥
+                </div>
               </div>
-              {/* Animated glow effects */}
-              <div className="absolute inset-0 z-0 opacity-40">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-lucky-gold/20 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute top-1/3 left-1/3 w-32 h-32 bg-lucky-green/30 rounded-full blur-2xl animate-bounce"></div>
+              
+              {/* Floating text elements */}
+              <div className="absolute -top-4 -left-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold animate-pulse">
+                NEW!
               </div>
-              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-4/5 h-10 bg-black/30 rounded-full blur-md disc-shadow transition-all duration-500"></div>
+              <div className="absolute -bottom-4 -right-4 bg-lucky-gold text-black px-3 py-1 rounded-full text-sm font-bold animate-pulse">
+                HOT!
+              </div>
+              
+              {/* Background glow effects */}
+              <div className="absolute inset-0 z-0 opacity-30">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-lucky-gold/30 rounded-full blur-2xl animate-bounce"></div>
+              </div>
             </div>
           </div>
         </div>
