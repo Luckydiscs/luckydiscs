@@ -1,22 +1,20 @@
-
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Youtube, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
+import logo from "@/assets/lucky-discs-transparent-logo.png";
 const Footer = () => {
   return (
     <footer className="bg-black text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center">
               <img
-                src="/src/assets/lucky-discs-transparent-logo.png"
-                alt="Lucky Discs Logo"
-                className="h-10 w-10"
+                src={logo}
+                alt="Lucky Discs logo"
+                className="h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24"
               />
-              <span className="text-2xl font-heading tracking-wider">LUCKY DISCS</span>
             </div>
             <p className="text-gray-400">
               Modern disc golf equipment with wild style and premium performance.

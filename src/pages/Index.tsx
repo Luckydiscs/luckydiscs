@@ -58,7 +58,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-lucky-black to-gray-900 text-foreground overflow-hidden">
+    <div className="min-h-screen bg-black text-white overflow-hidden">
       <Navbar />
       
       {/* Hero Section */}

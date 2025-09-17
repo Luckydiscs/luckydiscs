@@ -41,7 +41,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt="Lucky Discs - Premium Disc Golf Equipment"
-            className="h-24 sm:h-28 md:h-32 lg:h-36 xl:h-40 w-auto transition-all duration-300 group-hover:scale-105"
+            className="h-24 sm:h-32 md:h-40 lg:h-48 xl:h-56 w-auto transition-all duration-300 group-hover:scale-105"
           />
         </Link>
 
