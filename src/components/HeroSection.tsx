@@ -6,7 +6,7 @@ const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="hero-gradient min-h-screen flex items-center relative overflow-hidden">
+    <section className="hero-gradient min-h-[70vh] md:min-h-screen flex items-center relative overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0 opacity-50"

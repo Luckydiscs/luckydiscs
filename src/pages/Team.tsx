@@ -16,11 +16,11 @@ const Team = () => {
         {/* Hero Section */}
         <section className="pt-40 pb-16 bg-gradient-to-br from-black via-gray-900/50 to-black relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
-          <div className="container mx-auto text-center relative z-10">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
+          <div className="container mx-auto text-center relative z-10 px-4">
+            <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
               Lucky Discs Team
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6 md:mb-8 px-2">
               Championship-proven performance. Our team represents Lucky Discs at the highest level, 
               bringing victory and visibility to our brand on international tournament fields.
             </p>
@@ -134,15 +134,15 @@ const Team = () => {
                   </div>
 
                   <div className="space-y-4">
-                    <div className="bg-gray-900/50 p-6 rounded-lg border border-gray-800">
-                      <h4 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                        <ShoppingCart className="h-5 w-5" />
-                        Get Your Lucky Discs
+                    <div className="bg-gray-900/50 p-4 md:p-6 rounded-lg border border-gray-800">
+                      <h4 className="text-lg md:text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <ShoppingCart className="h-5 w-5 flex-shrink-0" />
+                        <span className="break-words">Get Your Lucky Discs</span>
                       </h4>
                       <div className="space-y-3">
                         <div>
-                          <p className="text-lucky-green font-medium">Finland Residents:</p>
-                          <p className="text-gray-300 text-sm">
+                          <p className="text-lucky-green font-medium text-sm md:text-base">Finland Residents:</p>
+                          <p className="text-gray-300 text-xs md:text-sm break-words">
                             Purchase Daniel's signature disc and all Lucky Discs at{" "}
                             <a 
                               href="https://kesapelit.fi/" 
@@ -155,11 +155,11 @@ const Team = () => {
                           </p>
                         </div>
                         <div>
-                          <p className="text-lucky-green font-medium flex items-center gap-2">
-                            <Globe className="h-4 w-4" />
-                            International Customers:
+                          <p className="text-lucky-green font-medium flex items-center gap-2 text-sm md:text-base">
+                            <Globe className="h-4 w-4 flex-shrink-0" />
+                            <span>International Customers:</span>
                           </p>
-                          <p className="text-gray-300 text-sm">
+                          <p className="text-gray-300 text-xs md:text-sm break-words">
                             Contact your nearest retailer! Suggest Lucky Discs to your local shop 
                             and we'll get our discs available in your area too.
                           </p>
