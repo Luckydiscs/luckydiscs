@@ -51,7 +51,7 @@ const DiscGuide = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white font-sans antialiased">
       <Navbar />
       
       {/* Hero Section */}
@@ -71,15 +71,15 @@ const DiscGuide = () => {
       {/* Table of Contents */}
       <nav className="py-8 bg-black/30" aria-label="Guide navigation">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-heading mb-6 text-center">What You'll Learn</h2>
+          <h2 className="text-2xl font-heading mb-6 text-center text-white">What You'll Learn</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            <Button variant="outline" className="text-left justify-start" onClick={() => document.getElementById('disc-types')?.scrollIntoView({behavior: 'smooth'})}>
+            <Button variant="secondary" className="text-left justify-start text-white border-white/20 hover:bg-lucky-green hover:text-black" onClick={() => document.getElementById('disc-types')?.scrollIntoView({behavior: 'smooth'})}>
               🥏 Disc Types & Selection
             </Button>
-            <Button variant="outline" className="text-left justify-start" onClick={() => document.getElementById('flight-numbers')?.scrollIntoView({behavior: 'smooth'})}>
+            <Button variant="secondary" className="text-left justify-start text-white border-white/20 hover:bg-lucky-green hover:text-black" onClick={() => document.getElementById('flight-numbers')?.scrollIntoView({behavior: 'smooth'})}>
               📊 Understanding Flight Numbers
             </Button>
-            <Button variant="outline" className="text-left justify-start" onClick={() => document.getElementById('throwing-techniques')?.scrollIntoView({behavior: 'smooth'})}>
+            <Button variant="secondary" className="text-left justify-start text-white border-white/20 hover:bg-lucky-green hover:text-black" onClick={() => document.getElementById('throwing-techniques')?.scrollIntoView({behavior: 'smooth'})}>
               💪 Throwing Techniques
             </Button>
           </div>
@@ -124,7 +124,7 @@ const DiscGuide = () => {
                   <img src={bankRobberDisc} alt="Bank Robber Control Driver" className="w-20 h-20 object-contain" />
                   <div>
                     <CardTitle className="text-lucky-green">Control Drivers</CardTitle>
-                    <Badge variant="secondary">Speed 8-10</Badge>
+                    <Badge variant="secondary">Speed 7-9</Badge>
                   </div>
                 </div>
               </CardHeader>
@@ -135,7 +135,7 @@ const DiscGuide = () => {
                 </p>
                 <div className="bg-lucky-green/10 p-4 rounded-lg border border-lucky-green/20">
                   <h4 className="font-semibold text-lucky-green mb-2">Lucky Discs Recommendation:</h4>
-                  <p><strong>Bank Robber</strong> - Versatile Speed 8 control driver that excels on technical fairways with reliable flight path.</p>
+                  <p><strong>Bank Robber</strong> - Versatile Speed 7 control driver that excels on technical fairways with reliable flight path.</p>
                 </div>
               </CardContent>
             </Card>
@@ -405,12 +405,12 @@ const DiscGuide = () => {
             Ready to Start Your Disc Golf Journey?
           </h2>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Browse our complete collection of premium disc golf equipment, designed for players of all skill levels.
+            Browse our complete collection of premium disc golf equipment, designed for players of all skill levels. Visit our <button className="text-lucky-green underline hover:text-white transition-colors" onClick={() => navigate('/team')}>professional team page</button> to see Lucky Discs in action.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg"
-              className="bg-lucky-green text-black hover:bg-white hover:text-black"
+              className="bg-lucky-green text-black hover:bg-white hover:text-black font-semibold"
               onClick={() => navigate('/discs')}
             >
               Shop Our Discs
@@ -418,6 +418,7 @@ const DiscGuide = () => {
             <Button 
               size="lg"
               variant="outline"
+              className="text-white border-white/40 hover:bg-white hover:text-black"
               onClick={() => navigate('/wholesale')}
             >
               Wholesale Inquiry
