@@ -8,16 +8,16 @@ const Footer = () => {
     <footer className="bg-black text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          <div className="space-y-4">
+          <div className="space-y-6">
             <div className="flex items-center">
               <img
                 src={logo}
                 alt="Lucky Discs logo"
-                className="h-20 w-20 md:h-24 md:w-24 lg:h-32 lg:w-32"
+                className="h-28 w-28 md:h-36 md:w-36 lg:h-40 lg:w-40"
               />
             </div>
-            <p className="text-gray-400">
-              Modern disc golf equipment with wild style and premium performance.
+            <p className="text-gray-300 text-lg">
+              Premium disc golf -välineet villillä tyylillä ja huippusuorituskyvyllä. Lucky Discs - tuomassa onnea peliin.
             </p>
             <div className="flex space-x-4">
               <a
@@ -48,67 +48,70 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-heading mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <h3 className="text-xl font-heading mb-4 text-white">Linkit</h3>
+            <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-gray-400 hover:text-lucky-green transition-colors">
-                  Home
+                <Link to="/" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
+                  Etusivu
                 </Link>
               </li>
               <li>
-                <Link to="/discs" className="text-gray-400 hover:text-lucky-green transition-colors">
-                  Discs
+                <Link to="/discs" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
+                  Kiekot
                 </Link>
               </li>
               <li>
-                <Link to="/wholesale" className="text-gray-400 hover:text-lucky-green transition-colors">
-                  Wholesale
+                <Link to="/disc-guide" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
+                  Frisbeegolf Opas
                 </Link>
               </li>
               <li>
-                <Link to="/brand" className="text-gray-400 hover:text-lucky-green transition-colors">
-                  Brand
+                <Link to="/team" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
+                  Tiimi
                 </Link>
               </li>
               <li>
-                <Link to="/team" className="text-gray-400 hover:text-lucky-green transition-colors">
-                  Team
+                <Link to="/wholesale" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
+                  Tukkukauppa
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-400 hover:text-lucky-green transition-colors">
-                  Contact
+                <Link to="/contact" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
+                  Ota yhteyttä
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-xl font-heading mb-4">Contact Info</h3>
-            <ul className="space-y-2">
-              <li className="text-gray-400">
-                <strong className="text-white">Email:</strong> info@luckydiscs.com
+            <h3 className="text-xl font-heading mb-4 text-white">Yhteystiedot</h3>
+            <ul className="space-y-3">
+              <li className="text-gray-300">
+                <strong className="text-white">Sähköposti:</strong><br />
+                info@luckydiscs.fi
               </li>
-              <li className="text-gray-400">
-                <strong className="text-white">Phone:</strong> +1 (555) 123-4567
+              <li className="text-gray-300">
+                <strong className="text-white">Puhelin:</strong><br />
+                +358 40 123 4567
               </li>
-              <li className="text-gray-400">
-                <strong className="text-white">Address:</strong> 123 Lucky Lane,<br />
-                Disc City, CA 90210
+              <li className="text-gray-300">
+                <strong className="text-white">Osoite:</strong><br />
+                Onnenkuja 1<br />
+                00100 Helsinki
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-xl font-heading mb-4">Newsletter</h3>
-            <p className="text-gray-400 mb-4">
-              Subscribe to get special offers, free giveaways, and product launches.
+            <h3 className="text-xl font-heading mb-4 text-white">Uutiskirje</h3>
+            <p className="text-gray-300 mb-4">
+              Tilaa uutiskirje saadaksesi erikoistarjoukset, ilmaiset arvonnat ja tuoteuutuudet.
             </p>
             <div className="flex space-x-2">
               <Input
                 type="email"
-                placeholder="Your email"
-                className="bg-gray-900 border-gray-700 focus:border-lucky-green"
+                placeholder="Sähköpostiosoitteesi"
+                className="bg-gray-900 border-gray-700 focus:border-lucky-green text-white placeholder:text-gray-500"
               />
               <Button size="icon" className="bg-lucky-green text-black hover:bg-opacity-80">
                 <Send size={18} />
