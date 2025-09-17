@@ -27,48 +27,6 @@ const Team = () => {
           </div>
         </section>
 
-        {/* Team Philosophy */}
-        <section className="py-16 px-4 bg-gradient-to-br from-gray-900/50 to-black">
-          <div className="container mx-auto">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl font-bold mb-8 text-white">Championship Mindset</h2>
-              <p className="text-lg text-gray-300 mb-8">
-                "Lucky isn't just our name - it's our philosophy. We believe that preparation meets opportunity on every throw, 
-                and our discs are designed to help players create their own luck on the course."
-              </p>
-              <div className="grid md:grid-cols-3 gap-8 mt-12">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Trophy className="h-8 w-8 text-black" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">Excellence</h3>
-                  <p className="text-sm text-gray-400">
-                    Championship-level performance in every disc we create.
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="h-8 w-8 text-black" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">Team Spirit</h3>
-                  <p className="text-sm text-gray-400">
-                    Building success through collaboration and shared vision.
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Disc className="h-8 w-8 text-black" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">Innovation</h3>
-                  <p className="text-sm text-gray-400">
-                    Constantly pushing the boundaries of disc golf performance.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Daniel Davidsson Profile */}
         <section className="py-20 px-4 bg-black">
           <div className="container mx-auto">
@@ -113,6 +71,48 @@ const Team = () => {
                       <p className="text-gray-400 text-sm">Professional Rating</p>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Team Philosophy */}
+        <section className="py-16 px-4 bg-gradient-to-br from-gray-900/50 to-black">
+          <div className="container mx-auto">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl font-bold mb-8 text-white">Championship Mindset</h2>
+              <p className="text-lg text-gray-300 mb-8">
+                "Lucky isn't just our name - it's our philosophy. We believe that preparation meets opportunity on every throw, 
+                and our discs are designed to help players create their own luck on the course."
+              </p>
+              <div className="grid md:grid-cols-3 gap-8 mt-12">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Trophy className="h-8 w-8 text-black" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">Excellence</h3>
+                  <p className="text-sm text-gray-400">
+                    Championship-level performance in every disc we create.
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Users className="h-8 w-8 text-black" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">Team Spirit</h3>
+                  <p className="text-sm text-gray-400">
+                    Building success through collaboration and shared vision.
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Disc className="h-8 w-8 text-black" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">Innovation</h3>
+                  <p className="text-sm text-gray-400">
+                    Constantly pushing the boundaries of disc golf performance.
+                  </p>
                 </div>
               </div>
             </div>
