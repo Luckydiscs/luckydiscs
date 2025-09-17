@@ -41,15 +41,14 @@ const Brand = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-black relative">
+      <section className="pt-32 pb-20 bg-black relative overflow-hidden">
         <div 
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-5"
           style={{
             backgroundImage: 'url(/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png)',
-            backgroundSize: 'contain',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            filter: 'blur(3px)'
+            backgroundSize: '200px',
+            backgroundPosition: 'center bottom',
+            backgroundRepeat: 'no-repeat'
           }}
         ></div>
         
