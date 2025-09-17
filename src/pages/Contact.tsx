@@ -10,18 +10,7 @@ const Contact = () => {
       <Navbar />
       
       {/* Page Header */}
-      <section className="pt-32 pb-16 bg-black relative">
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: 'url(/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png)',
-            backgroundSize: 'contain',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            filter: 'blur(3px)'
-          }}
-        ></div>
-        
+      <section className="pt-32 pb-16 bg-black relative">        
         <div className="container mx-auto px-4 relative z-10 max-w-4xl text-center">
           <h1 className="text-5xl md:text-6xl font-heading mb-6">Get In Touch</h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
@@ -112,16 +101,16 @@ const Contact = () => {
                 <table className="w-full text-left">
                   <tbody>
                     <tr className="border-b border-gray-800">
-                      <td className="py-2 font-medium">Monday - Friday</td>
-                      <td className="py-2 text-gray-400">9:00 AM - 5:00 PM</td>
+                      <td className="py-2 font-medium">Maanantai - Perjantai</td>
+                      <td className="py-2 text-gray-400">9:00 - 17:00 (EET)</td>
                     </tr>
                     <tr className="border-b border-gray-800">
-                      <td className="py-2 font-medium">Saturday</td>
-                      <td className="py-2 text-gray-400">10:00 AM - 2:00 PM</td>
+                      <td className="py-2 font-medium">Lauantai</td>
+                      <td className="py-2 text-gray-400">Suljettu</td>
                     </tr>
                     <tr>
-                      <td className="py-2 font-medium">Sunday</td>
-                      <td className="py-2 text-gray-400">Closed</td>
+                      <td className="py-2 font-medium">Sunnuntai</td>
+                      <td className="py-2 text-gray-400">Suljettu</td>
                     </tr>
                   </tbody>
                 </table>
