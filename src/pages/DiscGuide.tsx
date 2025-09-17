@@ -417,8 +417,8 @@ const DiscGuide = () => {
             </Button>
             <Button 
               size="lg"
-              variant="outline"
-              className="text-white border-white/40 hover:bg-white hover:text-black"
+              variant="secondary"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-semibold"
               onClick={() => navigate('/wholesale')}
             >
               Wholesale Inquiry
