@@ -106,15 +106,6 @@ const HeroSection = () => {
               </button>
             </div>
           </div>
-          
-          {/* Simplified Disc Visual */}
-          <div className="lg:w-1/2 flex justify-center relative">
-            <div className="relative w-full max-w-md">
-              <div className="aspect-square rounded-full bg-gradient-to-br from-lucky-green to-lucky-green/70 shadow-2xl hover:scale-105 transition-transform duration-300 cursor-pointer flex items-center justify-center">
-                <div className="text-6xl font-bold text-black">🥏</div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
