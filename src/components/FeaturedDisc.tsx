@@ -44,19 +44,19 @@ const FeaturedDisc = () => {
               {/* Flight Numbers */}
               <div className="flex justify-center lg:justify-start gap-4 mb-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">5</div>
+                  <div className="text-2xl font-bold text-primary">12</div>
                   <div className="text-xs text-muted-foreground uppercase">Speed</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">5</div>
+                  <div className="text-2xl font-bold text-primary">6</div>
                   <div className="text-xs text-muted-foreground uppercase">Glide</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">-0.5</div>
+                  <div className="text-2xl font-bold text-primary">-1</div>
                   <div className="text-xs text-muted-foreground uppercase">Turn</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">1</div>
+                  <div className="text-2xl font-bold text-primary">3</div>
                   <div className="text-xs text-muted-foreground uppercase">Fade</div>
                 </div>
               </div>
