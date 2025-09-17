@@ -10,15 +10,18 @@ import {
   TabsList, 
   TabsTrigger 
 } from "@/components/ui/tabs";
+import treasureHuntDisc from "@/assets/treasure-hunt-disc.png";
+import bankRobberDisc from "@/assets/bank-robber-disc.png";
+import moneyShotDisc from "@/assets/money-shot-disc.png";
 
 const discs = [
   {
     id: 1,
-    name: "Bank Robber",
-    imageSrc: "/lovable-uploads/682fc2dd-badc-4562-8574-aaab40a86d03.png", 
-    description: "A high-speed driver with unmatched stability for power throwers.",
+    name: "Treasure Hunt",
+    imageSrc: treasureHuntDisc,
+    description: "The ultimate treasure hunting disc for maximum distance with reliable fade. Perfect for open fairways and bomber shots.",
     speed: 12,
-    glide: 5,
+    glide: 6,
     turn: -1,
     fade: 3,
     type: "driver",
@@ -26,6 +29,31 @@ const discs = [
   },
   {
     id: 2,
+    name: "Bank Robber",
+    imageSrc: bankRobberDisc,
+    description: "A versatile control driver that steals the show on technical fairways. Reliable flight path with excellent glide.",
+    speed: 8,
+    glide: 5,
+    turn: -1,
+    fade: 2,
+    type: "driver",
+    isNewRelease: true
+  },
+  {
+    id: 3,
+    name: "Money Shot",
+    imageSrc: moneyShotDisc,
+    description: "When you need to nail that crucial approach shot, the Money Shot delivers consistent results every time.",
+    speed: 4,
+    glide: 3,
+    turn: 1,
+    fade: 3,
+    type: "midrange",
+    isNewRelease: true
+  },
+  // ... rest of existing discs stay for variety
+  {
+    id: 4,
     name: "Bank Robber - Pink",
     imageSrc: "/lovable-uploads/4c26d096-cfa9-4173-afe7-93b4f8b28426.png",
     description: "A high-speed driver with unmatched stability for power throwers, in vibrant pink.",
@@ -37,7 +65,7 @@ const discs = [
     isNewRelease: false
   },
   {
-    id: 3,
+    id: 5,
     name: "Treasure Hunt - Blue",
     imageSrc: "/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.png",
     description: "Mid-range disc with excellent glide and reliable fade.",
@@ -49,19 +77,7 @@ const discs = [
     isNewRelease: false
   },
   {
-    id: 4,
-    name: "Treasure Hunt - Gold",
-    imageSrc: "/lovable-uploads/6c56f0b3-a367-4e99-b234-5ce2b5e8c32c.png",
-    description: "Mid-range disc with excellent glide and reliable fade in gold color.",
-    speed: 5,
-    glide: 5,
-    turn: -0.5,
-    fade: 1,
-    type: "midrange",
-    isNewRelease: false
-  },
-  {
-    id: 5,
+    id: 6,
     name: "Slot Machine - Orange",
     imageSrc: "/lovable-uploads/8ae2dde2-ac3a-4144-9b11-35d02bc07d57.png",
     description: "Our signature putter with incredible grip and accuracy.",
@@ -73,7 +89,7 @@ const discs = [
     isNewRelease: false
   },
   {
-    id: 6,
+    id: 7,
     name: "Slot Machine - Blue",
     imageSrc: "/lovable-uploads/770642ce-cd09-4bd5-ad75-cfdf0deeac1c.png",
     description: "Our signature putter with incredible grip and accuracy in blue.",
@@ -85,7 +101,7 @@ const discs = [
     isNewRelease: false
   },
   {
-    id: 7,
+    id: 8,
     name: "Lucky Shot",
     imageSrc: "/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png",
     description: "A versatile fairway driver suitable for players of all skill levels.",
@@ -94,10 +110,10 @@ const discs = [
     turn: -1,
     fade: 2,
     type: "fairway",
-    isNewRelease: true
+    isNewRelease: false
   },
   {
-    id: 8,
+    id: 9,
     name: "Jackpot",
     imageSrc: "/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png",
     description: "Distance driver with exceptional speed and control.",
@@ -106,18 +122,6 @@ const discs = [
     turn: -0.5,
     fade: 3,
     type: "driver",
-    isNewRelease: false
-  },
-  {
-    id: 9,
-    name: "Wild Card",
-    imageSrc: "/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png",
-    description: "A reliable mid-range with straight flight path and minimal fade.",
-    speed: 4,
-    glide: 4,
-    turn: 0,
-    fade: 1,
-    type: "midrange",
     isNewRelease: false
   }
 ];

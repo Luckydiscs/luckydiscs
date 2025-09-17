@@ -10,6 +10,7 @@ import Discs from "./pages/Discs";
 import Wholesale from "./pages/Wholesale";
 import Brand from "./pages/Brand";
 import Contact from "./pages/Contact";
+import Team from "./pages/Team";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/discs" element={<Discs />} />
           <Route path="/wholesale" element={<Wholesale />} />
           <Route path="/brand" element={<Brand />} />
+          <Route path="/team" element={<Team />} />
           <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

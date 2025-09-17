@@ -37,11 +37,11 @@ const Navbar = () => {
     >
       <div className="container px-4 mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center space-x-2">
-          <img
-            src="/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png"
-            alt="Lucky Discs Logo"
-            className="h-10 w-10"
-          />
+            <img
+              src="/src/assets/lucky-discs-transparent-logo.png"
+              alt="Lucky Discs Logo"
+              className="h-10 w-10"
+            />
           <span className="text-2xl font-heading tracking-wider">LUCKY DISCS</span>
         </Link>
 
@@ -58,6 +58,9 @@ const Navbar = () => {
           </Link>
           <Link to="/brand" className="hover:text-lucky-green transition-colors font-medium">
             Brand
+          </Link>
+          <Link to="/team" className="hover:text-lucky-green transition-colors font-medium">
+            Team
           </Link>
           <Link to="/contact" className="hover:text-lucky-green transition-colors font-medium">
             Contact
@@ -107,6 +110,13 @@ const Navbar = () => {
               onClick={toggleMenu}
             >
               Brand
+            </Link>
+            <Link
+              to="/team"
+              className="text-lg py-2 border-b border-gray-800 hover:text-lucky-green"
+              onClick={toggleMenu}
+            >
+              Team
             </Link>
             <Link
               to="/contact"

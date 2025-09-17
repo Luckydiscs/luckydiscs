@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <img
-                src="/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png"
+                src="/src/assets/lucky-discs-transparent-logo.png"
                 alt="Lucky Discs Logo"
                 className="h-10 w-10"
               />
@@ -70,6 +70,11 @@ const Footer = () => {
               <li>
                 <Link to="/brand" className="text-gray-400 hover:text-lucky-green transition-colors">
                   Brand
+                </Link>
+              </li>
+              <li>
+                <Link to="/team" className="text-gray-400 hover:text-lucky-green transition-colors">
+                  Team
                 </Link>
               </li>
               <li>
