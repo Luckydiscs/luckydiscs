@@ -42,8 +42,8 @@ const featuredProducts = [
     imageSrc: moneyShotDisc, 
     description: "Our signature putter with incredible grip and accuracy.",
     speed: 2,
-    glide: 3,
-    turn: 0,
+    glide: 1,
+    turn: 1,
     fade: 1,
     isNewRelease: false
   }
