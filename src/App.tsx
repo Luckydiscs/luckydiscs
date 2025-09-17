@@ -8,6 +8,7 @@ import CookieBanner from "@/components/CookieBanner";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Discs from "./pages/Discs";
+import DiscGuide from "./pages/DiscGuide";
 import Wholesale from "./pages/Wholesale";
 import Brand from "./pages/Brand";
 import Contact from "./pages/Contact";
@@ -26,6 +27,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/discs" element={<Discs />} />
+          <Route path="/disc-guide" element={<DiscGuide />} />
           <Route path="/wholesale" element={<Wholesale />} />
           <Route path="/brand" element={<Brand />} />
           <Route path="/team" element={<Team />} />

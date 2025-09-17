@@ -350,6 +350,7 @@ const Discs = () => {
               </p>
               <Button 
                 className="mt-4 bg-lucky-green text-black hover:bg-white hover:text-black"
+                onClick={() => window.location.href = '/disc-guide'}
               >
                 Disc Selection Guide
               </Button>
