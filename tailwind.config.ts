@@ -68,12 +68,12 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
+				// Lucky Discs brand colors using semantic tokens
 				lucky: {
-					green: '#3FFF00',
-					black: '#000000',
-					gold: '#FFD700',
-					red: '#FF4136',
-					blue: '#0074D9',
+					green: 'hsl(var(--lucky-green))',
+					gold: 'hsl(var(--lucky-gold))',
+					black: 'hsl(var(--lucky-black))',
+					white: 'hsl(var(--lucky-white))'
 				}
 			},
 			borderRadius: {

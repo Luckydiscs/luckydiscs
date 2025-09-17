@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
+import FeaturedDisc from "@/components/FeaturedDisc";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Disc, TruckIcon, Award, Users } from "lucide-react";
@@ -53,11 +54,14 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-lucky-black to-gray-900 text-foreground overflow-hidden">
       <Navbar />
       
       {/* Hero Section */}
       <HeroSection />
+      
+      {/* Featured Disc - Overlapping Hero */}
+      <FeaturedDisc />
       
       {/* Featured Products */}
       <section className="py-20 relative">

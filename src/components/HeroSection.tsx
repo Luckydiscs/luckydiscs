@@ -19,13 +19,13 @@ const HeroSection = () => {
       
       <div className="container mx-auto px-4 z-10 py-20">
         <div className="flex flex-col lg:flex-row items-center">
-          <div className="lg:w-1/2 text-white mb-12 lg:mb-0">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="text-lucky-green">MODERN DISCS.</span><br />
+          <div className="lg:w-1/2 text-foreground mb-12 lg:mb-0">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight text-white">
+              <span className="text-primary">MODERN DISCS.</span><br />
               <span>WILD STYLE.</span><br />
               <span>LUCKY THROWS.</span>
             </h1>
-            <p className="text-xl mb-8 text-gray-300 max-w-lg">
+            <p className="text-xl mb-8 text-white/80 max-w-lg">
               Premium disc golf equipment designed with style and engineered for power. 
               For players who want to stand out and perform at their best.
             </p>
@@ -33,16 +33,15 @@ const HeroSection = () => {
             <div className="flex flex-wrap gap-4">
               <Button 
                 size="lg"
-                variant="default"
-                className="px-8"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 font-semibold"
                 onClick={() => navigate('/wholesale')}
               >
                 Get Wholesale Access
               </Button>
               <Button 
                 size="lg"
-                variant="secondary"
-                className="px-8"
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 bg-transparent"
                 onClick={() => navigate('/discs')}
               >
                 Explore Our Discs
