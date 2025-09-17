@@ -45,12 +45,6 @@ const Brand = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 via-transparent to-lucky-green/5"></div>
         
         <div className="container mx-auto px-4 relative z-10 max-w-5xl text-center">
-          <img 
-            src="/src/assets/lucky-discs-transparent-logo.png" 
-            alt="Lucky Discs Logo" 
-            className="w-40 h-40 mx-auto mb-8 animate-float drop-shadow-2xl"
-          />
-          
           <h1 className="text-6xl md:text-7xl font-heading mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
             The <span className="text-lucky-green">Lucky</span> Story
           </h1>
@@ -66,8 +60,8 @@ const Brand = () => {
               <div className="text-sm text-gray-400">Founded</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-lucky-green">50+</div>
-              <div className="text-sm text-gray-400">Retailers</div>
+              <div className="text-3xl font-bold text-lucky-green">Growing</div>
+              <div className="text-sm text-gray-400">Retailer Network</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-lucky-green">1000+</div>
@@ -103,10 +97,10 @@ const Brand = () => {
                 
                 <div className="bg-gradient-to-r from-lucky-green/10 to-transparent p-6 rounded-lg border-l-4 border-lucky-green">
                   <p className="text-white font-medium">
-                    "Our name and logo represent both the element of luck that exists in every round of disc golf, 
-                    and our belief that the more you play and practice, the luckier you get."
+                    "Liityin Lucky Discs -tiimiin vuonna 2025 ja voitin ensimmäisen Suomen mestaruuteni saman tien. 
+                    Lucky-kiekot antoivat minulle sen luottamuksen ja tarkkuuden, mitä tarvitsin voittaakseni."
                   </p>
-                  <p className="text-lucky-green mt-2 text-sm">- Lucky Discs Founders</p>
+                  <p className="text-lucky-green mt-2 text-sm">- Daniel Davidsson, Suomen mestari 2025</p>
                 </div>
               </div>
             </div>
