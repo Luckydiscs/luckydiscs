@@ -7,6 +7,20 @@ const HeroSection = () => {
 
   return (
     <section className="hero-gradient min-h-screen flex items-center relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 z-0 opacity-30"
+        style={{
+          backgroundImage: 'url(/src/assets/disc-golf-action-1.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      ></div>
+      
+      {/* Dark overlay */}
+      <div className="absolute inset-0 z-0 bg-black/60"></div>
+      
       <div className="absolute inset-0 z-0 opacity-30">
         <div className="bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-lucky-green/20 to-transparent absolute inset-0"></div>
       </div>
@@ -25,27 +39,71 @@ const HeroSection = () => {
               <span>WILD STYLE.</span><br />
               <span>LUCKY THROWS.</span>
             </h1>
-            <p className="text-xl mb-8 text-white/80 max-w-lg">
+            <p className="text-xl mb-8 text-white/90 max-w-lg">
               Premium disc golf equipment designed with style and engineered for power. 
               For players who want to stand out and perform at their best.
             </p>
             
-            <div className="flex flex-wrap gap-4">
+            {/* Navigation Guide */}
+            <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 mb-8 max-w-lg">
+              <h3 className="text-lg font-semibold mb-4 text-lucky-green">Mitä etsit?</h3>
+              <div className="space-y-2 text-sm text-white/80">
+                <div className="flex items-center gap-2">
+                  <span className="text-lucky-green">📦</span>
+                  <span><strong>Tukkukauppa:</strong> Hae jälleenmyyjäksi</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-lucky-green">🥏</span>
+                  <span><strong>Kiekot:</strong> Katso mallistomme</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-lucky-green">🏆</span>
+                  <span><strong>Tiimi:</strong> Tutustue pelaajiin</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-lucky-green">✨</span>
+                  <span><strong>Brand:</strong> Tarinamme</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-4 mb-8">
               <Button 
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 font-semibold"
+                className="bg-lucky-green text-black hover:bg-white hover:text-black px-8 font-semibold text-lg"
                 onClick={() => navigate('/wholesale')}
               >
-                Get Wholesale Access
+                🚀 Hae Tukkukauppariksi
               </Button>
               <Button 
                 size="lg"
                 variant="outline"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 bg-transparent"
+                className="border-2 border-white text-white hover:bg-white hover:text-black px-8 bg-transparent text-lg"
                 onClick={() => navigate('/discs')}
               >
-                Explore Our Discs
+                🥏 Tutki Kiekkomme
               </Button>
+            </div>
+            
+            {/* Quick Links */}
+            <div className="flex flex-wrap gap-4 justify-center text-sm">
+              <button 
+                onClick={() => navigate('/team')} 
+                className="text-white/70 hover:text-lucky-green transition-colors flex items-center gap-1"
+              >
+                🏆 Tiimimme
+              </button>
+              <button 
+                onClick={() => navigate('/brand')} 
+                className="text-white/70 hover:text-lucky-green transition-colors flex items-center gap-1"
+              >
+                ✨ Tarinamme
+              </button>
+              <button 
+                onClick={() => navigate('/contact')} 
+                className="text-white/70 hover:text-lucky-green transition-colors flex items-center gap-1"
+              >
+                📞 Yhteystiedot
+              </button>
             </div>
           </div>
           
