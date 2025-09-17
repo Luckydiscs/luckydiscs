@@ -41,113 +41,140 @@ const Brand = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-black relative overflow-hidden">
-        <div 
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: 'url(/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png)',
-            backgroundSize: '200px',
-            backgroundPosition: 'center bottom',
-            backgroundRepeat: 'no-repeat'
-          }}
-        ></div>
+      <section className="pt-32 pb-20 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 via-transparent to-lucky-green/5"></div>
         
-        <div className="container mx-auto px-4 relative z-10 max-w-4xl text-center">
+        <div className="container mx-auto px-4 relative z-10 max-w-5xl text-center">
           <img 
-            src="/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png" 
+            src="/src/assets/lucky-discs-transparent-logo.png" 
             alt="Lucky Discs Logo" 
-            className="w-32 h-32 mx-auto mb-8 animate-float"
+            className="w-40 h-40 mx-auto mb-8 animate-float drop-shadow-2xl"
           />
           
-          <h1 className="text-5xl md:text-6xl font-heading mb-6">
+          <h1 className="text-6xl md:text-7xl font-heading mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
             The <span className="text-lucky-green">Lucky</span> Story
           </h1>
           
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
             More than just disc golf equipment - Lucky Discs represents bold style, 
-            premium performance, and the thrill of the perfect throw.
+            premium performance, and the thrill of the perfect throw. We're revolutionizing disc golf with cutting-edge designs and unmatched quality.
           </p>
-        </div>
-      </section>
-      
-      {/* Our Story */}
-      <section className="py-16 bg-black/50">
-        <div className="container mx-auto px-4">
-          <div 
-            className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 items-center opacity-0 translate-y-20 transition-all duration-1000"
-            ref={(el) => (sectionRefs.current[0] = el)}
-          >
-            <div>
-              <h2 className="text-3xl md:text-4xl font-heading mb-6">
-                How It All <span className="text-lucky-green">Began</span>
-              </h2>
-              
-              <p className="text-gray-300 mb-4">
-                Founded in 2022 by a group of passionate disc golf enthusiasts with backgrounds in design and manufacturing, 
-                Lucky Discs emerged from a desire to bring more style and character to the sport we love.
-              </p>
-              
-              <p className="text-gray-300 mb-4">
-                We noticed that while disc golf was growing rapidly, the visual design of discs hadn't evolved much. 
-                That's when we decided to combine premium performance with bold, distinctive designs that give players 
-                a way to express themselves on the course.
-              </p>
-              
-              <p className="text-gray-300">
-                Our name and logo represent both the element of luck that exists in every round of disc golf, 
-                and our belief that the more you play and practice, the luckier you get.
-              </p>
+          
+          <div className="flex flex-wrap justify-center gap-6 mt-12">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-lucky-green">2022</div>
+              <div className="text-sm text-gray-400">Founded</div>
             </div>
-            
-            <div className="relative">
-              <img 
-                src="/lovable-uploads/8ae2dde2-ac3a-4144-9b11-35d02bc07d57.png" 
-                alt="Lucky Discs in action" 
-                className="rounded-lg shadow-xl max-w-full mx-auto"
-              />
-              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-4/5 h-8 bg-lucky-green/20 rounded-full blur-xl"></div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-lucky-green">50+</div>
+              <div className="text-sm text-gray-400">Retailers</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-lucky-green">1000+</div>
+              <div className="text-sm text-gray-400">Happy Customers</div>
             </div>
           </div>
         </div>
       </section>
       
-      {/* Brand Values */}
-      <section className="py-16 bg-black">
+      {/* Our Story */}
+      <section className="py-20 bg-gradient-to-b from-black/50 to-black">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-heading mb-12 text-center">
-              Our Brand <span className="text-lucky-green">Values</span>
+          <div 
+            className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center opacity-0 translate-y-20 transition-all duration-1000"
+            ref={(el) => (sectionRefs.current[0] = el)}
+          >
+            <div>
+              <h2 className="text-4xl md:text-5xl font-heading mb-8">
+                How It All <span className="text-lucky-green">Began</span>
+              </h2>
+              
+              <div className="space-y-6 text-lg">
+                <p className="text-gray-300">
+                  <span className="text-lucky-green font-semibold">Founded in 2022</span> by a group of passionate disc golf enthusiasts with backgrounds in design and manufacturing, 
+                  Lucky Discs emerged from a desire to bring more style and character to the sport we love.
+                </p>
+                
+                <p className="text-gray-300">
+                  We noticed that while disc golf was <span className="text-white font-semibold">growing rapidly</span>, the visual design of discs hadn't evolved much. 
+                  That's when we decided to combine <span className="text-lucky-green font-semibold">premium performance</span> with bold, distinctive designs that give players 
+                  a way to express themselves on the course.
+                </p>
+                
+                <div className="bg-gradient-to-r from-lucky-green/10 to-transparent p-6 rounded-lg border-l-4 border-lucky-green">
+                  <p className="text-white font-medium">
+                    "Our name and logo represent both the element of luck that exists in every round of disc golf, 
+                    and our belief that the more you play and practice, the luckier you get."
+                  </p>
+                  <p className="text-lucky-green mt-2 text-sm">- Lucky Discs Founders</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="relative">
+              <img 
+                src="/src/assets/daniel-davidsson.png" 
+                alt="Professional disc golf player" 
+                className="rounded-lg shadow-2xl max-w-full mx-auto"
+              />
+              <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-4/5 h-12 bg-lucky-green/30 rounded-full blur-2xl"></div>
+              <div className="absolute top-4 right-4 bg-lucky-green text-black px-4 py-2 rounded-full font-bold text-sm">
+                Pro Team
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Why Choose Lucky */}
+      <section className="py-20 bg-gradient-to-r from-black via-gray-900 to-black">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-heading mb-4 text-center">
+              Why Choose <span className="text-lucky-green">Lucky Discs</span>?
             </h2>
+            <p className="text-gray-300 text-center mb-16 text-xl max-w-3xl mx-auto">
+              We don't just make discs - we craft experiences that elevate your game and express your style.
+            </p>
             
             <div 
               className="grid grid-cols-1 md:grid-cols-3 gap-8 opacity-0 translate-y-20 transition-all duration-1000"
               ref={(el) => (sectionRefs.current[1] = el)}
             >
-              <div className="bg-white/5 p-6 rounded-lg border border-white/10 text-center">
-                <h3 className="text-xl font-heading mb-4">Bold Innovation</h3>
-                <div className="w-16 h-1 bg-lucky-green mx-auto mb-4"></div>
-                <p className="text-gray-400">
+              <div className="bg-gradient-to-b from-lucky-green/10 to-black/30 p-8 rounded-xl border border-lucky-green/20 text-center hover:transform hover:scale-105 transition-all duration-300">
+                <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-black font-bold text-2xl">⚡</span>
+                </div>
+                <h3 className="text-2xl font-heading mb-4 text-white">Bold Innovation</h3>
+                <p className="text-gray-300 mb-4">
                   We're not afraid to push the boundaries of disc design, both visually and technically, 
                   to create products that stand out and perform.
                 </p>
+                <div className="text-lucky-green font-semibold">Premium Materials + Cutting-Edge Design</div>
               </div>
               
-              <div className="bg-white/5 p-6 rounded-lg border border-white/10 text-center">
-                <h3 className="text-xl font-heading mb-4">Quality First</h3>
-                <div className="w-16 h-1 bg-lucky-green mx-auto mb-4"></div>
-                <p className="text-gray-400">
+              <div className="bg-gradient-to-b from-lucky-green/10 to-black/30 p-8 rounded-xl border border-lucky-green/20 text-center hover:transform hover:scale-105 transition-all duration-300">
+                <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-black font-bold text-2xl">🏆</span>
+                </div>
+                <h3 className="text-2xl font-heading mb-4 text-white">Quality First</h3>
+                <p className="text-gray-300 mb-4">
                   We never compromise on materials or manufacturing. Every disc that bears the Lucky logo 
                   is crafted to exacting standards.
                 </p>
+                <div className="text-lucky-green font-semibold">Tournament-Grade Performance</div>
               </div>
               
-              <div className="bg-white/5 p-6 rounded-lg border border-white/10 text-center">
-                <h3 className="text-xl font-heading mb-4">Community Growth</h3>
-                <div className="w-16 h-1 bg-lucky-green mx-auto mb-4"></div>
-                <p className="text-gray-400">
+              <div className="bg-gradient-to-b from-lucky-green/10 to-black/30 p-8 rounded-xl border border-lucky-green/20 text-center hover:transform hover:scale-105 transition-all duration-300">
+                <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-black font-bold text-2xl">🎯</span>
+                </div>
+                <h3 className="text-2xl font-heading mb-4 text-white">Community Growth</h3>
+                <p className="text-gray-300 mb-4">
                   We're committed to growing the sport by supporting events, players, and initiatives 
                   that bring more people to disc golf.
                 </p>
+                <div className="text-lucky-green font-semibold">Player Sponsorships + Tournament Support</div>
               </div>
             </div>
           </div>
