@@ -9,9 +9,9 @@ const HeroSection = () => {
     <section className="hero-gradient min-h-screen flex items-center relative overflow-hidden">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 z-0 opacity-30"
+        className="absolute inset-0 z-0 opacity-40"
         style={{
-          backgroundImage: 'url(/src/assets/disc-golf-pro-action-1.jpg)',
+          backgroundImage: 'url(/src/assets/daniel-action-shot.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
