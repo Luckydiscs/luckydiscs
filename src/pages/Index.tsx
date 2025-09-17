@@ -13,7 +13,7 @@ const featuredProducts = [
   {
     id: 1,
     name: "Bank Robber",
-    imageSrc: "/lovable-uploads/682fc2dd-badc-4562-8574-aaab40a86d03.png",
+    imageSrc: "/public/lovable-uploads/682fc2dd-badc-4562-8574-aaab40a86d03.png",
     description: "A high-speed driver with unmatched stability for power throwers.",
     speed: 12,
     glide: 5,
@@ -23,8 +23,8 @@ const featuredProducts = [
   },
   {
     id: 2,
-    name: "Treasure Hunt",
-    imageSrc: "/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.png",
+    name: "Treasure Hunt", 
+    imageSrc: "/public/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.png",
     description: "Mid-range disc with excellent glide and reliable fade.",
     speed: 5,
     glide: 5,
@@ -34,8 +34,8 @@ const featuredProducts = [
   },
   {
     id: 3,
-    name: "Slot Machine",
-    imageSrc: "/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png",
+    name: "Money Shot",
+    imageSrc: "/public/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png", 
     description: "Our signature putter with incredible grip and accuracy.",
     speed: 2,
     glide: 3,
@@ -116,15 +116,15 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg">
               <img 
-                src="/lovable-uploads/8ae2dde2-ac3a-4144-9b11-35d02bc07d57.png" 
-                alt="Disc golf action shot" 
+                src="/public/lovable-uploads/8ae2dde2-ac3a-4144-9b11-35d02bc07d57.png" 
+                alt="Lucky Discs Bank Robber in action" 
                 className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg lg:col-span-2">
               <img 
-                src="/lovable-uploads/770642ce-cd09-4bd5-ad75-cfdf0deeac1c.png" 
-                alt="Disc golf action shot" 
+                src="/public/lovable-uploads/770642ce-cd09-4bd5-ad75-cfdf0deeac1c.png" 
+                alt="Lucky Discs tournament play action shot" 
                 className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
               />
             </div>
