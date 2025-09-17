@@ -19,10 +19,10 @@ const featuredProducts = [
     name: "Bank Robber",
     imageSrc: bankRobberDisc,
     description: "A high-speed driver with unmatched stability for power throwers.",
-    speed: 12,
+    speed: 8,
     glide: 5,
     turn: -1,
-    fade: 3,
+    fade: 2,
     isNewRelease: true
   },
   {
@@ -30,10 +30,10 @@ const featuredProducts = [
     name: "Treasure Hunt", 
     imageSrc: treasureHuntDisc,
     description: "Mid-range disc with excellent glide and reliable fade.",
-    speed: 5,
-    glide: 5,
-    turn: -0.5,
-    fade: 1,
+    speed: 12,
+    glide: 6,
+    turn: -1,
+    fade: 3,
     isNewRelease: false
   },
   {
@@ -41,10 +41,10 @@ const featuredProducts = [
     name: "Money Shot",
     imageSrc: moneyShotDisc, 
     description: "Our signature putter with incredible grip and accuracy.",
-    speed: 2,
-    glide: 1,
+    speed: 4,
+    glide: 3,
     turn: 1,
-    fade: 1,
+    fade: 3,
     isNewRelease: false
   }
 ];
