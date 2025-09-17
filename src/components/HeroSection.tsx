@@ -53,14 +53,11 @@ const HeroSection = () => {
             <div className="relative">
               <div className="animate-float group">
                 <img 
-                  src="/src/assets/lucky-discs-hero.png" 
-                  alt="Lucky Discs collection discs floating" 
-                  className="max-w-full h-auto relative z-10 transition-all duration-700 group-hover:scale-105 group-hover:rotate-3 drop-shadow-2xl mix-blend-multiply pointer-events-none select-none"
+                  src="/src/assets/lucky-discs-hero-new.png" 
+                  alt="Lucky Discs colorful disc golf collection with Slot Machine designs" 
+                  className="max-w-full h-auto relative z-10 transition-all duration-700 group-hover:scale-105 group-hover:rotate-2 drop-shadow-2xl pointer-events-none select-none"
                   style={{
-                    filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.3))',
-                    WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 95%)',
-                    maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 95%)',
-                    opacity: 0.96,
+                    filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 60px rgba(255, 215, 0, 0.4))',
                   }}
                 />
               </div>
