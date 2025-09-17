@@ -71,8 +71,8 @@ const Contact = () => {
                     <MapPin size={20} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">Yritys</p>
-                    <p className="font-medium">VESITIIVIS Oy<br />Y-tunnus: 3368925-4</p>
+                    <p className="text-sm text-gray-400">Yhteydenotto</p>
+                    <p className="font-medium">Lucky Discs Finland</p>
                   </div>
                 </div>
               </div>
