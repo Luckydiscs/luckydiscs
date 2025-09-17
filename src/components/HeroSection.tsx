@@ -9,9 +9,9 @@ const HeroSection = () => {
     <section className="hero-gradient min-h-screen flex items-center relative overflow-hidden">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 z-0 opacity-40"
+        className="absolute inset-0 z-0 opacity-50"
         style={{
-          backgroundImage: 'url(/src/assets/daniel-action-shot.png)',
+          backgroundImage: 'url(/src/assets/disc-golf-sunset-hero.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -112,13 +112,6 @@ const HeroSection = () => {
             <div className="relative w-full max-w-md">
               <div className="aspect-square rounded-full bg-gradient-to-br from-lucky-green to-lucky-green/70 shadow-2xl hover:scale-105 transition-transform duration-300 cursor-pointer flex items-center justify-center">
                 <div className="text-6xl font-bold text-black">🥏</div>
-              </div>
-              
-              <div className="absolute -top-4 -left-4 bg-lucky-green text-black px-3 py-1 rounded-full text-sm font-bold">
-                NEW!
-              </div>
-              <div className="absolute -bottom-4 -right-4 bg-lucky-gold text-black px-3 py-1 rounded-full text-sm font-bold">
-                HOT!
               </div>
             </div>
           </div>
