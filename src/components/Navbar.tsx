@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/lucky-discs-transparent-logo.png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,7 +39,7 @@ const Navbar = () => {
       <div className="container px-4 mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center space-x-3 group">
           <img
-            src="/src/assets/lucky-discs-transparent-logo.png"
+            src={logo}
             alt="Lucky Discs - Premium Disc Golf Equipment"
             className="h-24 sm:h-28 md:h-32 lg:h-36 xl:h-40 w-auto transition-all duration-300 group-hover:scale-105"
           />
