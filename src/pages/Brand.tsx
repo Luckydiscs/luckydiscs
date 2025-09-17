@@ -97,10 +97,10 @@ const Brand = () => {
                 
                 <div className="bg-gradient-to-r from-lucky-green/10 to-transparent p-6 rounded-lg border-l-4 border-lucky-green">
                   <p className="text-white font-medium">
-                    "Liityin Lucky Discs -tiimiin vuonna 2025 ja voitin ensimmäisen Suomen mestaruuteni saman tien. 
-                    Lucky-kiekot antoivat minulle sen luottamuksen ja tarkkuuden, mitä tarvitsin voittaakseni."
+                    "I joined the Lucky Discs team in 2025 and won my first Finnish championship right away. 
+                    Lucky discs gave me the confidence and precision I needed to win."
                   </p>
-                  <p className="text-lucky-green mt-2 text-sm">- Daniel Davidsson, Suomen mestari 2025</p>
+                  <p className="text-lucky-green mt-2 text-sm">- Daniel Davidsson, Finnish Champion 2025</p>
                 </div>
               </div>
             </div>
