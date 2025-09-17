@@ -6,7 +6,7 @@ import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react"
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
+    <div className="min-h-screen bg-black text-white">
       <Navbar />
       
       {/* Page Header */}
@@ -40,8 +40,8 @@ const Contact = () => {
               <div>
                 <h2 className="text-2xl md:text-3xl font-heading mb-6">Contact Information</h2>
                 <p className="text-gray-400 mb-8">
-                  Our team is available Monday through Friday, 9am to 5pm (PST). 
-                  We aim to respond to all inquiries within 24 hours.
+                  Tiimimme on käytettävissä maanantaista perjantaihin, klo 9-17 (EET). 
+                  Pyrimme vastaamaan kaikkiin kyselyihin 24 tunnin sisällä.
                 </p>
               </div>
               
@@ -51,8 +51,8 @@ const Contact = () => {
                     <Mail size={20} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">Email Us</p>
-                    <p className="font-medium">info@luckydiscs.com</p>
+                    <p className="text-sm text-gray-400">Sähköposti</p>
+                    <p className="font-medium">asiakaspalvelu@luckydiscs.fi</p>
                   </div>
                 </div>
                 
@@ -61,8 +61,8 @@ const Contact = () => {
                     <Phone size={20} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">Call Us</p>
-                    <p className="font-medium">+1 (555) 123-4567</p>
+                    <p className="text-sm text-gray-400">Puhelin</p>
+                    <p className="font-medium">+358 44 989 4225</p>
                   </div>
                 </div>
                 
@@ -71,8 +71,8 @@ const Contact = () => {
                     <MapPin size={20} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">Our Location</p>
-                    <p className="font-medium">123 Lucky Lane,<br />Disc City, CA 90210</p>
+                    <p className="text-sm text-gray-400">Yritys</p>
+                    <p className="font-medium">VESITIIVIS Oy<br />Y-tunnus: 3368925-4</p>
                   </div>
                 </div>
               </div>

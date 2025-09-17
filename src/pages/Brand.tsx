@@ -41,7 +41,7 @@ const Brand = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
+      <section className="pt-36 pb-20 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 via-transparent to-lucky-green/5"></div>
         
         <div className="container mx-auto px-4 relative z-10 max-w-5xl text-center">

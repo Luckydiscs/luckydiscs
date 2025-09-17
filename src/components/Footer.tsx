@@ -118,7 +118,15 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
-          <p>© {new Date().getFullYear()} Lucky Discs. All rights reserved.</p>
+          <p className="mb-4">© {new Date().getFullYear()} Lucky Discs. All rights reserved.</p>
+          <div className="flex justify-center space-x-6 text-sm">
+            <Link to="/privacy" className="hover:text-lucky-green transition-colors">
+              Tietosuojaseloste
+            </Link>
+            <Link to="/terms" className="hover:text-lucky-green transition-colors">
+              Käyttöehdot
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
