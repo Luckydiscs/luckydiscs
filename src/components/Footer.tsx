@@ -13,11 +13,11 @@ const Footer = () => {
               <img
                 src={logo}
                 alt="Lucky Discs logo"
-                className="h-28 w-28 md:h-36 md:w-36 lg:h-40 lg:w-40"
+                className="h-16 w-auto"
               />
             </div>
-            <p className="text-gray-300 text-lg">
-              Premium disc golf -välineet villillä tyylillä ja huippusuorituskyvyllä. Lucky Discs - tuomassa onnea peliin.
+            <p className="text-gray-300 text-base leading-relaxed">
+              Premium disc golf equipment with wild style and exceptional performance. Lucky Discs - bringing luck to your game.
             </p>
             <div className="flex space-x-4">
               <a
@@ -48,69 +48,69 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-heading mb-4 text-white">Linkit</h3>
+            <h3 className="text-xl font-heading mb-4 text-white">Quick Links</h3>
             <ul className="space-y-3">
               <li>
                 <Link to="/" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
-                  Etusivu
+                  Home
                 </Link>
               </li>
               <li>
                 <Link to="/discs" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
-                  Kiekot
+                  Discs
                 </Link>
               </li>
               <li>
                 <Link to="/disc-guide" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
-                  Frisbeegolf Opas
+                  Disc Guide
                 </Link>
               </li>
               <li>
                 <Link to="/team" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
-                  Tiimi
+                  Team
                 </Link>
               </li>
               <li>
                 <Link to="/wholesale" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
-                  Tukkukauppa
+                  Wholesale
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
-                  Ota yhteyttä
+                  Contact
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-xl font-heading mb-4 text-white">Yhteystiedot</h3>
+            <h3 className="text-xl font-heading mb-4 text-white">Contact Info</h3>
             <ul className="space-y-3">
               <li className="text-gray-300">
-                <strong className="text-white">Sähköposti:</strong><br />
-                info@luckydiscs.fi
+                <strong className="text-white">Email:</strong><br />
+                info@luckydiscs.com
               </li>
               <li className="text-gray-300">
-                <strong className="text-white">Puhelin:</strong><br />
-                +358 40 123 4567
+                <strong className="text-white">Phone:</strong><br />
+                +1 (555) 123-4567
               </li>
               <li className="text-gray-300">
-                <strong className="text-white">Osoite:</strong><br />
-                Onnenkuja 1<br />
-                00100 Helsinki
+                <strong className="text-white">Address:</strong><br />
+                123 Lucky Lane<br />
+                Disc City, CA 90210
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-xl font-heading mb-4 text-white">Uutiskirje</h3>
+            <h3 className="text-xl font-heading mb-4 text-white">Newsletter</h3>
             <p className="text-gray-300 mb-4">
-              Tilaa uutiskirje saadaksesi erikoistarjoukset, ilmaiset arvonnat ja tuoteuutuudet.
+              Subscribe to get special offers, free giveaways, and product launches.
             </p>
             <div className="flex space-x-2">
               <Input
                 type="email"
-                placeholder="Sähköpostiosoitteesi"
+                placeholder="Your email"
                 className="bg-gray-900 border-gray-700 focus:border-lucky-green text-white placeholder:text-gray-500"
               />
               <Button size="icon" className="bg-lucky-green text-black hover:bg-opacity-80">
@@ -124,10 +124,10 @@ const Footer = () => {
           <p className="mb-4">© {new Date().getFullYear()} Lucky Discs. All rights reserved.</p>
           <div className="flex justify-center space-x-6 text-sm">
             <Link to="/privacy" className="hover:text-lucky-green transition-colors">
-              Tietosuojaseloste
+              Privacy Policy
             </Link>
             <Link to="/terms" className="hover:text-lucky-green transition-colors">
-              Käyttöehdot
+              Terms of Service
             </Link>
           </div>
         </div>
