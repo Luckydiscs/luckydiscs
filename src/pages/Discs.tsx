@@ -160,32 +160,20 @@ const Discs = () => {
     <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
       <Navbar />
       
-      {/* Page Header */}
-      <div className="pt-32 pb-12 lg:pb-20 bg-black relative">
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: 'url(/lovable-uploads/770642ce-cd09-4bd5-ad75-cfdf0deeac1c.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            filter: 'blur(8px)'
-          }}
-        ></div>
+      {/* Hero Section */}
+      <section className="pt-36 pb-16 bg-gradient-to-br from-black via-gray-900/50 to-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
         
-        <div className="container mx-auto px-4 relative z-10">
-          <div 
-            ref={headerRef}
-            className="max-w-3xl mx-auto text-center opacity-0 translate-y-10 transition-all duration-1000"
-          >
-            <h1 className="text-5xl md:text-6xl font-heading mb-6">Our Disc Collection</h1>
-            <p className="text-xl text-gray-300 mb-8">
-              Discover our lineup of premium disc golf equipment, engineered for performance
-              and designed with our distinctive Lucky style.
-            </p>
-          </div>
+        <div className="container mx-auto px-4 relative z-10 max-w-3xl text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
+            Our Disc Collection
+          </h1>
+          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            Discover our lineup of premium disc golf equipment, engineered for performance
+            and designed with our distinctive Lucky style.
+          </p>
         </div>
-      </div>
+      </section>
       
       {/* Disc Filtering Tabs */}
       <div className="py-8 bg-black/50">

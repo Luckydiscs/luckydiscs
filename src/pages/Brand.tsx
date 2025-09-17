@@ -41,15 +41,13 @@ const Brand = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-36 pb-20 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 via-transparent to-lucky-green/5"></div>
-        
-        <div className="container mx-auto px-4 relative z-10 max-w-5xl text-center">
-          <h1 className="text-6xl md:text-7xl font-heading mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
-            The <span className="text-lucky-green">Lucky</span> Story
+      <section className="pt-36 pb-16 bg-gradient-to-br from-black via-gray-900/50 to-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
+        <div className="container mx-auto px-4 relative z-10 max-w-3xl text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
+            The Lucky Story
           </h1>
-          
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
             More than just disc golf equipment - Lucky Discs represents bold style, 
             premium performance, and the thrill of the perfect throw. We're revolutionizing disc golf with cutting-edge designs and unmatched quality.
           </p>

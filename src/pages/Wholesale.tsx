@@ -17,28 +17,18 @@ const Wholesale = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <div className="pt-32 pb-20 bg-black relative">
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: 'url(/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            filter: 'blur(8px)'
-          }}
-        ></div>
-        
-        <div className="container mx-auto px-4 relative z-10 max-w-4xl text-center">
-          <h1 className="text-5xl md:text-6xl font-heading mb-6">
-            Lucky Discs <span className="text-lucky-green">Wholesale</span>
+      <section className="pt-36 pb-16 bg-gradient-to-br from-black via-gray-900/50 to-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
+        <div className="container mx-auto px-4 relative z-10 max-w-3xl text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
+            Lucky Discs Wholesale
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
             Partner with Lucky Discs to bring our premium disc golf products to your customers. 
             We offer competitive wholesale pricing, unique designs, and reliable support.
           </p>
         </div>
-      </div>
+      </section>
       
       {/* Why Partner With Us */}
       <section className="py-16 bg-black/50">
