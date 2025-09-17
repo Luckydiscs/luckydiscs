@@ -36,13 +36,12 @@ const Navbar = () => {
       }`}
     >
       <div className="container px-4 mx-auto flex justify-between items-center">
-        <Link to="/" className="flex items-center space-x-2">
-            <img
-              src="/src/assets/lucky-discs-transparent-logo.png"
-              alt="Lucky Discs Logo"
-              className="h-10 w-10"
-            />
-          <span className="text-2xl font-heading tracking-wider">LUCKY DISCS</span>
+        <Link to="/" className="flex items-center space-x-3">
+          <img
+            src="/src/assets/lucky-discs-transparent-logo.png"
+            alt="Lucky Discs logo"
+            className="h-12 w-auto"
+          />
         </Link>
 
         {/* Desktop Navigation */}

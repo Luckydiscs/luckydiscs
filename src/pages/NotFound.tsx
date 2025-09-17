@@ -1,25 +1,48 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import danielImage from "@/assets/daniel-davidsson.png";
 
 const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
+    console.warn(
+      "404: Page not found",
       location.pathname
     );
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
-        </a>
-      </div>
+    <div className="min-h-screen flex flex-col bg-background">
+      <Navbar />
+      <main className="flex-1">
+        <section className="py-20">
+          <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h1 className="text-5xl font-bold mb-4">Sivu ei löytynyt</h1>
+              <p className="text-lg text-muted-foreground mb-8">
+                Etsimääsi sivua ei löytynyt. Tutustu tiimimme kapteeniin tai katso tuotteemme.
+              </p>
+              <div className="flex gap-4 flex-wrap">
+                <Button asChild>
+                  <Link to="/team">Lue Danielista</Link>
+                </Button>
+                <Button variant="secondary" asChild>
+                  <Link to="/discs">Tutustu tuotteisiin</Link>
+                </Button>
+              </div>
+            </div>
+            <div className="relative">
+              <img src={danielImage} alt="Daniel Davidsson" className="rounded-xl shadow-xl w-full h-auto object-cover" />
+              <div className="absolute inset-0 -z-10 blur-3xl opacity-30 bg-gradient-to-br from-primary/40 to-accent/30 rounded-full" />
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
     </div>
   );
 };
