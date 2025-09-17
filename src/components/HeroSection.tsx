@@ -11,7 +11,7 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 z-0 opacity-30"
         style={{
-          backgroundImage: 'url(/src/assets/disc-golf-tournament.jpg)',
+          backgroundImage: 'url(/src/assets/disc-golf-pro-action-1.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
