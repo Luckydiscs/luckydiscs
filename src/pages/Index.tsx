@@ -9,11 +9,15 @@ import { ArrowRight, Disc, TruckIcon, Award, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+import bankRobberDisc from "@/assets/bank-robber-disc.png";
+import treasureHuntDisc from "@/assets/treasure-hunt-disc.png";
+import moneyShotDisc from "@/assets/money-shot-disc.png";
+
 const featuredProducts = [
   {
     id: 1,
     name: "Bank Robber",
-    imageSrc: "/lovable-uploads/682fc2dd-badc-4562-8574-aaab40a86d03.png",
+    imageSrc: bankRobberDisc,
     description: "A high-speed driver with unmatched stability for power throwers.",
     speed: 12,
     glide: 5,
@@ -24,7 +28,7 @@ const featuredProducts = [
   {
     id: 2,
     name: "Treasure Hunt", 
-    imageSrc: "/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.png",
+    imageSrc: treasureHuntDisc,
     description: "Mid-range disc with excellent glide and reliable fade.",
     speed: 5,
     glide: 5,
@@ -35,7 +39,7 @@ const featuredProducts = [
   {
     id: 3,
     name: "Money Shot",
-    imageSrc: "/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png", 
+    imageSrc: moneyShotDisc, 
     description: "Our signature putter with incredible grip and accuracy.",
     speed: 2,
     glide: 3,

@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import danielImage from "@/assets/daniel-action-shot.png";
+import danielImage from "@/assets/daniel-tournament-action.png";
 import crowdBg from "@/assets/tournament-crowd-bg.jpg";
 import { Trophy, Calendar, MapPin, ExternalLink } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,7 +12,7 @@ const Team = () => {
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       
-      <main className="flex-1 pt-32">
+      <main className="flex-1 pt-20">
         {/* Hero Section */}
         <section className="py-20 px-4 bg-gradient-to-br from-primary/10 via-background to-accent/10">
           <div className="container mx-auto text-center">
@@ -40,7 +40,7 @@ const Team = () => {
                       <img 
                         src={danielImage} 
                         alt="Daniel Davidsson throwing disc in tournament"
-                        className="w-full h-full object-cover relative z-10 mix-blend-multiply"
+                        className="w-full h-full object-cover relative z-10"
                       />
                     </div>
                   </div>
