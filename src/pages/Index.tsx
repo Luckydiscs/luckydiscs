@@ -108,29 +108,116 @@ const Index = () => {
       </section>
       
       {/* Action Shots */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-heading mb-4">Lucky in Action</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Our discs performing in all conditions, from tournament play to casual rounds.
+      <section className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-lucky-green rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-white rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-heading mb-6 text-white font-bold">
+              Lucky in Action
+            </h2>
+            <p className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed">
+              Our discs performing in all conditions, from professional tournaments to weekend rounds. 
+              See why players trust Lucky Discs for their most important shots.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
               <img 
-                src="/lovable-uploads/8ae2dde2-ac3a-4144-9b11-35d02bc07d57.png" 
-                alt="Lucky Discs Bank Robber in action" 
-                className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
+                src="/src/assets/disc-golf-action-1.jpg" 
+                alt="Professional disc golf player mid-throw showing perfect form and technique" 
+                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <h3 className="font-heading text-lg font-bold mb-1">Tournament Play</h3>
+                <p className="text-sm text-gray-300">Professional form in action</p>
+              </div>
             </div>
-            <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg lg:col-span-2">
+            
+            <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
               <img 
-                src="/lovable-uploads/770642ce-cd09-4bd5-ad75-cfdf0deeac1c.png" 
-                alt="Lucky Discs tournament play action shot" 
-                className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
+                src="/src/assets/disc-golf-action-2.jpg" 
+                alt="Disc golf player executing precise approach shot on tournament course" 
+                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <h3 className="font-heading text-lg font-bold mb-1">Precision Shots</h3>
+                <p className="text-sm text-gray-300">Every throw counts</p>
+              </div>
+            </div>
+            
+            <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+              <img 
+                src="/src/assets/disc-golf-action-3.jpg" 
+                alt="Dynamic action shot of disc golf player in outdoor tournament setting" 
+                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <h3 className="font-heading text-lg font-bold mb-1">Power Drives</h3>
+                <p className="text-sm text-gray-300">Maximum distance</p>
+              </div>
+            </div>
+            
+            <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+              <img 
+                src="/src/assets/disc-golf-tournament.jpg" 
+                alt="Tournament atmosphere with spectators watching competitive disc golf action" 
+                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <h3 className="font-heading text-lg font-bold mb-1">Championship Level</h3>
+                <p className="text-sm text-gray-300">Trusted by pros</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Featured Action Shot */}
+          <div className="relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-8">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-3xl font-heading font-bold text-white mb-4">
+                  Performance Under Pressure
+                </h3>
+                <p className="text-gray-300 mb-6 leading-relaxed">
+                  When every throw matters, Lucky Discs deliver the consistency and reliability 
+                  that professional players demand. From crucial putts to game-winning drives, 
+                  our discs perform when it counts most.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button 
+                    size="lg"
+                    className="bg-lucky-green hover:bg-white text-black font-semibold transition-all duration-300"
+                    onClick={() => navigate('/discs')}
+                  >
+                    Shop Tournament Discs
+                  </Button>
+                  <Button 
+                    size="lg"
+                    variant="outline"
+                    className="border-white text-white hover:bg-white hover:text-black transition-all duration-300"
+                    onClick={() => navigate('/team')}
+                  >
+                    Meet Our Team
+                  </Button>
+                </div>
+              </div>
+              <div className="relative">
+                <img 
+                  src="/src/assets/daniel-action-shot.png" 
+                  alt="Daniel Davidsson showcasing Lucky Discs performance in tournament play" 
+                  className="w-full h-80 object-cover rounded-xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-lucky-green/30 to-transparent rounded-xl"></div>
+              </div>
             </div>
           </div>
         </div>
