@@ -145,6 +145,18 @@ const Footer = () => {
                 <strong className="text-white">Email:</strong><br />
                 asiakaspalvelu@luckydiscs.fi
               </li>
+              <li className="text-gray-300">
+                <strong className="text-white">Location:</strong><br />
+                Nokia, Finland
+              </li>
+              <li className="text-gray-300">
+                <strong className="text-white">Business Type:</strong><br />
+                Premium Disc Golf Equipment
+              </li>
+              <li className="text-gray-300">
+                <strong className="text-white">Speciality:</strong><br />
+                Modern Discs • Wild Style • Lucky Throws
+              </li>
             </ul>
           </div>
 
