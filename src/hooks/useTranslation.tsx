@@ -347,7 +347,7 @@ const translations = {
     'hero.luckyThrows': 'ONNEKKAITA HEITTOJA.',
     'hero.subtitle': 'Premium frisbee golf -välineet, jotka on muotoiltu tyylikkäästi ja suunniteltu suorituskykyä varten. Pelaajille, jotka haluavat erottua joukosta ja pelata parhaimmillaan.',
     'hero.whatAreYouLookingFor': 'Mitä etsit?',
-    'hero.wholesaleDescription': 'Jälleenmyynti: Ryhdy jälleenmyyjäksi',
+    'hero.wholesaleDescription': 'Ryhdy jälleenmyyjäksi',
     'hero.discsDescription': 'Kiekot: Selaa valikoimaamme',
     'hero.teamDescription': 'Tiimi: Tutustu pelaajiin',
     'hero.brandDescription': 'Brändi: Meidän tarina',
