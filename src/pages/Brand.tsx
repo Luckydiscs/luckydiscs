@@ -357,6 +357,7 @@ const Brand = () => {
               </Button>
             </Link>
           </div>
+          </div>
         </div>
       </section>
       

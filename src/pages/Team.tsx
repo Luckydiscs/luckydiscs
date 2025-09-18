@@ -269,6 +269,7 @@ const Team = () => {
               </Button>
             </div>
           </div>
+          </div>
         </section>
       </main>
 
