@@ -38,7 +38,16 @@ const translations = {
     'hero.ourStory': 'Our Story',
     'hero.contact': 'Contact',
     
-    // Featured Products
+    // Featured Disc
+    'featured.featuredDisc': 'Featured Disc',
+    'featured.treasureHunt': 'Treasure Hunt',
+    'featured.treasureHuntDescription': 'Our signature mid-range disc with exceptional glide and reliable fade. Perfect for controlled shots and consistent performance on every throw.',
+    'featured.shopNow': 'Shop Now',
+    'featured.wholesaleInquiry': 'Wholesale Inquiry',
+    'featured.speed': 'Speed',
+    'featured.glide': 'Glide',
+    'featured.turn': 'Turn',
+    'featured.fade': 'Fade',
     'featured.title': 'Featured Discs',
     'featured.subtitle': 'Discover our most popular disc models, each crafted with premium materials and distinctive designs that set you apart on the course.',
     'featured.viewAllDiscs': 'View All Discs',
@@ -134,7 +143,16 @@ const translations = {
     'hero.ourStory': 'Tarinämme',
     'hero.contact': 'Yhteystiedot',
     
-    // Featured Products
+    // Featured Disc
+    'featured.featuredDisc': 'Suosittu kiekko',
+    'featured.treasureHunt': 'Treasure Hunt',
+    'featured.treasureHuntDescription': 'Meidän erikoiskeskietäisyyden kiekko poikkeuksellisella liidolla ja luotettavalla fadella. Täydellinen hallittuihin heittoihin ja johdonmukaiseen suoritukseen jokaisessa heitossa.',
+    'featured.shopNow': 'Osta nyt',
+    'featured.wholesaleInquiry': 'Tukkukauppa kysely',
+    'featured.speed': 'Nopeus',
+    'featured.glide': 'Liito',
+    'featured.turn': 'Kääntymine',
+    'featured.fade': 'Fade',
     'featured.title': 'Suositut kiekot',
     'featured.subtitle': 'Tutustu suosituimpiin kiekkomalleihimme, joista jokainen on valmistettu premium-materiaaleista ja erottuvilla design-ratkaisuilla.',
     'featured.viewAllDiscs': 'Katso kaikki kiekot',

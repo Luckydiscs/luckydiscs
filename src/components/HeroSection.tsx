@@ -47,21 +47,76 @@ const HeroSection = () => {
             </p>
             
             {/* Navigation Guide */}
-            <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 mb-8 max-w-lg">
+            <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 mb-8 max-w-lg border border-white/10">
               <h3 className="text-lg font-semibold mb-4 text-lucky-green">{t('hero.whatAreYouLookingFor')}</h3>
-              <div className="space-y-2 text-sm text-white/80">
-                <div className="flex items-center gap-2">
-                  <span><strong>{t('hero.wholesaleDescription')}</strong></span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span><strong>{t('hero.discsDescription')}</strong></span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span><strong>{t('hero.teamDescription')}</strong></span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span><strong>{t('hero.brandDescription')}</strong></span>
-                </div>
+              <div className="space-y-3">
+                <button 
+                  onClick={() => navigate('/wholesale')}
+                  className="w-full text-left p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/10 group"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-lucky-green text-xl">🏪</span>
+                    <div>
+                      <div className="font-semibold text-white group-hover:text-lucky-green transition-colors">
+                        {t('nav.wholesale')}
+                      </div>
+                      <div className="text-sm text-white/70">
+                        {t('hero.wholesaleDescription').split(': ')[1]}
+                      </div>
+                    </div>
+                  </div>
+                </button>
+                
+                <button 
+                  onClick={() => navigate('/discs')}
+                  className="w-full text-left p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/10 group"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-lucky-green text-xl">🥏</span>
+                    <div>
+                      <div className="font-semibold text-white group-hover:text-lucky-green transition-colors">
+                        {t('nav.discs')}
+                      </div>
+                      <div className="text-sm text-white/70">
+                        {t('hero.discsDescription').split(': ')[1]}
+                      </div>
+                    </div>
+                  </div>
+                </button>
+                
+                <button 
+                  onClick={() => navigate('/team')}
+                  className="w-full text-left p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/10 group"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-lucky-green text-xl">👥</span>
+                    <div>
+                      <div className="font-semibold text-white group-hover:text-lucky-green transition-colors">
+                        {t('nav.team')}
+                      </div>
+                      <div className="text-sm text-white/70">
+                        {t('hero.teamDescription').split(': ')[1]}
+                      </div>
+                    </div>
+                  </div>
+                </button>
+                
+                <button 
+                  onClick={() => navigate('/brand')}
+                  className="w-full text-left p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/10 group"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-lucky-green text-xl">📖</span>
+                    <div>
+                      <div className="font-semibold text-white group-hover:text-lucky-green transition-colors">
+                        {t('nav.brand')}
+                      </div>
+                      <div className="text-sm text-white/70">
+                        {t('hero.brandDescription').split(': ')[1]}
+                      </div>
+                    </div>
+                  </div>
+                </button>
               </div>
             </div>
             <div className="flex flex-wrap gap-4 mb-8">
