@@ -67,9 +67,27 @@ const WholesaleForm = () => {
           ]);
       }
 
+      // Send notification emails
+      const emailResponse = await supabase.functions.invoke('send-wholesale-notification', {
+        body: {
+          company_name: formData.company_name,
+          contact_person: formData.contact_person,
+          email: formData.email,
+          phone: formData.phone,
+          country: formData.country,
+          business_type: formData.business_type,
+          message: formData.message,
+        }
+      });
+
+      if (emailResponse.error) {
+        console.error('Email sending failed:', emailResponse.error);
+        // Still show success to user as the data was saved
+      }
+
       toast({
         title: "Application Submitted Successfully!",
-        description: "We'll review your wholesale application and contact you within 2 business days.",
+        description: "We'll review your wholesale application and contact you within 2 business days. You'll receive a confirmation email shortly.",
       });
 
       // Reset form
