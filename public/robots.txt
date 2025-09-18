@@ -20,7 +20,8 @@ Disallow: /*lovableproject*
 
 User-agent: *
 Allow: /
-Disallow: /*lovable*
 Disallow: /*lovableproject*
+Disallow: /lovable-dev/
+Allow: /lovable-uploads/
 
 Sitemap: https://www.luckydiscs.fi/sitemap.xml

@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import heroImage from "@/assets/disc-golf-sunset-hero.png";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 z-0 opacity-50"
         style={{
-          backgroundImage: 'url(/src/assets/disc-golf-sunset-hero.png)',
+          backgroundImage: `url(${heroImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
