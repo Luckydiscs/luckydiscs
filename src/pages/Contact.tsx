@@ -73,7 +73,7 @@ const Contact = () => {
                 <h3 className="text-xl font-heading mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
                   <a 
-                    href="https://instagram.com" 
+                    href="https://www.instagram.com/luckydiscsofficial" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black hover:bg-white transition-colors duration-300"
@@ -81,7 +81,7 @@ const Contact = () => {
                     <Instagram size={20} />
                   </a>
                   <a 
-                    href="https://facebook.com" 
+                    href="https://www.facebook.com/LuckyDiscs" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black hover:bg-white transition-colors duration-300"
@@ -89,7 +89,7 @@ const Contact = () => {
                     <Facebook size={20} />
                   </a>
                   <a 
-                    href="https://youtube.com" 
+                    href="https://www.youtube.com/@LuckyDiscs" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black hover:bg-white transition-colors duration-300"

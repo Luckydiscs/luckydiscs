@@ -216,19 +216,19 @@ const Team = () => {
             </p>
             <div className="flex justify-center gap-4 flex-wrap">
               <Button variant="outline" size="lg" className="border-lucky-green text-lucky-green hover:bg-lucky-green hover:text-black" asChild>
-                <a href="https://www.instagram.com/luckydiscs_official" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/luckydiscsofficial" target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="h-5 w-5 mr-2" />
                   Instagram
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="border-lucky-green text-lucky-green hover:bg-lucky-green hover:text-black" asChild>
-                <a href="https://www.facebook.com/luckydiscs" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/LuckyDiscs" target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="h-5 w-5 mr-2" />
                   Facebook
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="border-lucky-green text-lucky-green hover:bg-lucky-green hover:text-black" asChild>
-                <a href="https://www.youtube.com/@luckydiscs" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.youtube.com/@LuckyDiscs" target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="h-5 w-5 mr-2" />
                   YouTube
                 </a>

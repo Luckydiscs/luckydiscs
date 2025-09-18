@@ -111,7 +111,7 @@ const Brand = () => {
                       </Button>
                     </Link>
                     <a 
-                      href="https://instagram.com" 
+                      href="https://www.instagram.com/luckydiscsofficial" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-lucky-green hover:text-white transition-colors font-semibold"
@@ -119,7 +119,7 @@ const Brand = () => {
                       Follow on Instagram
                     </a>
                     <a 
-                      href="https://facebook.com" 
+                      href="https://www.facebook.com/LuckyDiscs" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-lucky-green hover:text-white transition-colors font-semibold"

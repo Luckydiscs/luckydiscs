@@ -21,7 +21,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/luckydiscsofficial"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-lucky-green transition-colors"
@@ -29,7 +29,7 @@ const Footer = () => {
                 <Instagram size={24} />
               </a>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/LuckyDiscs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-lucky-green transition-colors"
@@ -37,7 +37,7 @@ const Footer = () => {
                 <Facebook size={24} />
               </a>
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/@LuckyDiscs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-lucky-green transition-colors"
