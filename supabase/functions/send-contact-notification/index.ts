@@ -24,12 +24,12 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const data: ContactNotificationRequest = await req.json();
 
-    // Send notification to customer service
-    const customerServiceResponse = await resend.emails.send({
-      from: "Lucky Discs <onboarding@resend.dev>",
-      to: ["asiakaspalvelu@luckydiscs.fi"],
-      subject: `Contact Form: ${data.subject} - ${data.name}`,
-      html: `
+      // Send notification to customer service  
+      const customerServiceResponse = await resend.emails.send({
+        from: "Lucky Discs <onboarding@resend.dev>",
+        to: ["laplandvibe@gmail.com"], // Temporary - using your verified email
+        subject: `[LUCKY DISCS CONTACT] ${data.subject} - ${data.name}`,
+        html: `
         <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif; background: #f5f5f5;">
           <!-- Header -->
           <div style="background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%); padding: 30px; text-align: center;">

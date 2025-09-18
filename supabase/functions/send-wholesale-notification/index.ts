@@ -27,12 +27,12 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const data: WholesaleNotificationRequest = await req.json();
 
-    // Send notification to customer service
-    const customerServiceResponse = await resend.emails.send({
-      from: "Lucky Discs <onboarding@resend.dev>",
-      to: ["asiakaspalvelu@luckydiscs.fi"],
-      subject: `New Wholesale Inquiry from ${data.company_name}`,
-      html: `
+      // Send notification to customer service
+      const customerServiceResponse = await resend.emails.send({
+        from: "Lucky Discs <onboarding@resend.dev>",
+        to: ["laplandvibe@gmail.com"], // Temporary - using your verified email  
+        subject: `[LUCKY DISCS WHOLESALE] ${data.company_name} - ${data.contact_person}`,
+        html: `
         <h2>New Wholesale Application</h2>
         <div style="font-family: Arial, sans-serif; line-height: 1.6;">
           <h3>Company Information:</h3>
