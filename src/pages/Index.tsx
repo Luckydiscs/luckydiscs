@@ -130,11 +130,11 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-heading mb-6 text-white font-bold">
-              Lucky in Action
+              Lucky Discs in Action
             </h2>
             <p className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed">
-              Our discs performing in all conditions, from professional tournaments to weekend rounds. 
-              See why players trust Lucky Discs for their most important shots.
+              From professional tournaments to weekend rounds - see our discs perform 
+              when precision and reliability matter most.
             </p>
           </div>
           
@@ -142,26 +142,26 @@ const Index = () => {
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
               <img 
                 src="/lovable-uploads/8ae2dde2-ac3a-4144-9b11-35d02bc07d57.png" 
-                alt="Professional disc golf tournament action at Ledgestone Open with proper throwing form" 
+                alt="Professional disc golf tournament action shot showing perfect throwing form" 
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <h3 className="font-heading text-lg font-bold mb-1">Tournament Play</h3>
-                <p className="text-sm text-gray-300">Professional form in action</p>
+                <p className="text-sm text-gray-300">Professional precision</p>
               </div>
             </div>
             
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
               <img 
-                src="/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png"
-                alt="Professional female disc golf player demonstrating perfect throwing technique at PDGA event" 
+                src="/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png" 
+                alt="Professional female disc golf player demonstrating perfect throwing technique" 
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-bold mb-1">Precision Shots</h3>
-                <p className="text-sm text-gray-300">Every throw counts</p>
+                <h3 className="font-heading text-lg font-bold mb-1">Elite Performance</h3>
+                <p className="text-sm text-gray-300">Championship level play</p>
               </div>
             </div>
             
@@ -174,20 +174,20 @@ const Index = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <h3 className="font-heading text-lg font-bold mb-1">World Championship</h3>
-                <p className="text-sm text-gray-300">Elite competition</p>
+                <p className="text-sm text-gray-300">Global competition</p>
               </div>
             </div>
             
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
               <img 
                 src="/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png" 
-                alt="Top professional disc golf shots compilation from PDGA Pro Worlds tournament" 
+                alt="Top professional disc golf action shots from major tournaments" 
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-bold mb-1">Championship Level</h3>
-                <p className="text-sm text-gray-300">Best shots compilation</p>
+                <h3 className="font-heading text-lg font-bold mb-1">Professional Action</h3>
+                <p className="text-sm text-gray-300">Tournament highlights</p>
               </div>
             </div>
           </div>
