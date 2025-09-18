@@ -365,7 +365,7 @@ const translations = {
     'featured.wholesaleInquiry': 'Jälleenmyyjä kysely',
     'featured.speed': 'Nopeus',
     'featured.glide': 'Liito',
-    'featured.turn': 'Kääntymine',
+    'featured.turn': 'Vakaus',
     'featured.fade': 'Fade',
     'featured.title': 'Suositut kiekot',
     'featured.subtitle': 'Tutustu suosituimpiin kiekkomalleihimme, joista jokainen on valmistettu premium-materiaaleista ja erottuvilla design-ratkaisuilla.',
@@ -412,7 +412,7 @@ const translations = {
     'wholesale.applySubtitle': 'Täytä alla oleva lomake, niin tiimimme ottaa yhteyttä 2 arkipäivän kuluessa',
     'wholesale.whyPartner': 'Miksi tehdä yhteistyötä Lucky Discsin kanssa',
     'wholesale.competitiveMargins': 'Kilpailukykyiset katteet',
-    'wholesale.competitiveMarginsDesc': 'Tukkuhintarakenteemme on suunniteltu varmistamaan terveelliset voittomarginaalit jälleenmyyjäkumppaneillemme.',
+    'wholesale.competitiveMarginsDesc': 'Jälleenmyyjähintarakenteemme on suunniteltu varmistamaan terveelliset voittomarginaalit jälleenmyyjäkumppaneillemme.',
     'wholesale.uniqueProducts': 'Ainutlaatuiset tuotteet',
     'wholesale.uniqueProductsDesc': 'Erotu joukosta erottuvilla malleilla ja premium-laadulla, joita ei löydy muualta.',
     'wholesale.reliableShipping': 'Luotettava toimitus',
@@ -447,16 +447,16 @@ const translations = {
     'discs.speedGlide': 'Nopeus ja liito',
     'discs.speedDesc': 'Nopeus (1-14): Ilmaisee kuinka paljon voimaa tarvitaan kiekon lentämiseen suunnitellusti. Korkeammat luvut tarvitsevat enemmän voimaa ja ovat tyypillisesti matka-drivereita.',
     'discs.glideDesc': 'Liito (1-7): Edustaa kiekon kykyä säilyttää nousuvoimaa lennon aikana. Korkeampi liito auttaa kiekkoja lentämään pidemmälle vähemmällä vaivalla.',
-    'discs.turnFade': 'Turn ja fade',
-    'discs.turnDesc': 'Turn (-5 - 1): Kiekon taipumus kääntyä oikealle (oikeakätisille backhand-heitoille) lennon nopeassa vaiheessa. Matalammat luvut tarkoittavat enemmän turnia.',
+    'discs.turnFade': 'Vakaus ja fade',
+    'discs.turnDesc': 'Vakaus (-5 - 1): Kiekon taipumus kääntyä oikealle (oikeakätisille backhand-heitoille) lennon nopeassa vaiheessa. Matalammat luvut tarkoittavat vähemmän vakautta.',
     'discs.fadeDesc': 'Fade (0-5): Kiekon taipumus kääntyä vasemmalle (oikeakätisille backhand-heitoille) lennon lopussa. Korkeammat luvut osoittavat voimakkaampaa fadea.',
     'discs.needHelp': 'Tarvitsetko apua oikean kiekon valinnassa peliisi?',
     'discs.selectionGuide': 'Kiekkovalikoima opas',
     
     // Individual disc descriptions
     'discs.bankRobberDesc': 'Monipuolinen fairway-driver, joka on suunniteltu tarkkuutta ja kontrollia vaativille fairway-heitoille. Nopeus 8 tekee siitä täydellisen tasapainon hallinnan ja matkan välille. Luotettava lentoreitti (-1/2) varmistaa, että kiekko käyttäytyy ennustettavasti joka heitossa. Erinomainen valinta teknisille radoille ja kun tarkkuus on tärkeämpää kuin maksimimatka.',
-    'discs.treasureHuntDesc': 'Nopea distance driver (nopeus 12) maksimimatkaa tavoitteleville pelaajille. Erinomainen liito (6) auttaa kiekkoa lentämään pitkälle, kun taas luotettava fade (3) varmistaa vasemmanpuoleisen lopetuksen. Turn-arvo -1 tekee siitä stabiilia mutta ei liian ylistabiilia. Täydellinen avoimille fairwayille, joilla voit päästää kiekon lentämään täydellä voimalla. Suunniteltu voimakkaasti heittäville pelaajille, jotka haluavat maksimaalisen matkan luotettavuudesta tinkimättä.',
-    'discs.moneyShotDesc': 'Luotettava putter (nopeus 3) tarkkoihin approach-heittoihin ja puttaukseen. Matala glide-arvo (3) tarkoittaa, että kiekko putoaa pehmeästi ilman liikaa liukumista. Turn 1 ja fade 3 antavat hieman instabiliteettiä alkuun, mutta voimakas fade tuo kiekon varmasti takaisin vasemmalle. Erinomainen otteessa ja käsissä, tarjoaa luotettavuutta kun jokainen heitto ratkaisee. Toimii loistavasti myös lyhyisiin approach-heittoihin, joissa tarkkuus on avain menestykseen.',
+    'discs.treasureHuntDesc': 'Nopea distance driver (nopeus 12) maksimimatkaa tavoitteleville pelaajille. Erinomainen liito (6) auttaa kiekkoa lentämään pitkälle, kun taas luotettava fade (3) varmistaa vasemmanpuoleisen lopetuksen. Vakaus-arvo -1 tekee siitä stabiilia mutta ei liian ylistabiilia. Täydellinen avoimille fairwayille, joilla voit päästää kiekon lentämään täydellä voimalla. Suunniteltu voimakkaasti heittäville pelaajille, jotka haluavat maksimaalisen matkan luotettavuudesta tinkimättä.',
+    'discs.moneyShotDesc': 'Luotettava putter (nopeus 3) tarkkoihin approach-heittoihin ja puttaukseen. Matala glide-arvo (3) tarkoittaa, että kiekko putoaa pehmeästi ilman liikaa liukumista. Vakaus 1 ja fade 3 antavat hieman instabiliteettiä alkuun, mutta voimakas fade tuo kiekon varmasti takaisin vasemmalle. Erinomainen otteessa ja käsissä, tarjoaa luotettavuutta kun jokainen heitto ratkaisee. Toimii loistavasti myös lyhyisiin approach-heittoihin, joissa tarkkuus on avain menestykseen.',
     'discs.jailbreakDesc': 'Mystinen kiekko, jonka lentoluvut ovat salaisia. Tämä vallankumouksellinen malli haastaa perinteiset käsitykset siitä, miten kiekko voi lentää. Ainutlaatuinen muotoilu ja salaiset ominaisuudet tekevät jokaisesta heitosta yllätyksen. Vain kokeilemalla voit selvittää, miten Jailbreak käyttäytyy eri olosuhteissa. Jotkut sanovat sen olevan driver, toiset väittävät sen olevan mid-range - totuus paljastuu vasta kentällä. Suunniteltu seikkailunhaluisille pelaajille, jotka haluavat jotain täysin erilaista pelaamiseen.',
     
     // Team Page  
@@ -542,7 +542,7 @@ const translations = {
     
     // Contact Page
     'contact.title': 'Ota yhteyttä',
-    'contact.subtitle': 'Onko sinulla kysymyksiä tuotteistamme, tukkumahdollisuuksista tai jostain muusta? Olemme täällä auttamassa ja haluaisimme kuulla sinusta.',
+    'contact.subtitle': 'Onko sinulla kysymyksiä tuotteistamme, jälleenmyyntimahdollisuuksista tai jostain muusta? Olemme täällä auttamassa ja haluaisimme kuulla sinusta.',
     'contact.contactInfo': 'Yhteystiedot',
     'contact.contactInfoDesc': 'Tiimimme on käytettävissä maanantaista perjantaihin, klo 9-17 (EET). Pyrimme vastaamaan kaikkiin kyselyihin 24 tunnin kuluessa.',
     'contact.email': 'Sähköposti',
@@ -577,11 +577,11 @@ const translations = {
     'wholesaleForm.businessPlaceholder': 'Vähittäiskauppa, Pro Shop, verkkokauppa, jne.',
     'wholesaleForm.message': 'Kerro yrityksestäsi',
     'wholesaleForm.messagePlaceholder': 'Kerro yrityksestäsi, asiakkaistasi, odotetusta volyymista tai kysymyksistä.',
-    'wholesaleForm.newsletter': 'Tilaa tukkukaupan uutiskirje tuotepäivityksistä ja erikoistarjouksista',
-    'wholesaleForm.submit': 'Lähetä tukkuhakemus',
+    'wholesaleForm.newsletter': 'Tilaa jälleenmyyjän uutiskirje tuotepäivityksistä ja erikoistarjouksista',
+    'wholesaleForm.submit': 'Lähetä jälleenmyyjähakemus',
     'wholesaleForm.submitting': 'Lähetetään hakemusta...',
     'wholesaleForm.successTitle': 'Hakemus lähetetty onnistuneesti!',
-    'wholesaleForm.successDescription': 'Käsittelemme tukkuhakemuksesi ja otamme yhteyttä 2 arkipäivän kuluessa. Saat vahvistusviestin sähköpostilla pian.',
+    'wholesaleForm.successDescription': 'Käsittelemme jälleenmyyjähakemuksesi ja otamme yhteyttä 2 arkipäivän kuluessa. Saat vahvistusviestin sähköpostilla pian.',
     'wholesaleForm.errorTitle': 'Lähetys epäonnistui',
     'wholesaleForm.errorDescription': 'Yritä uudelleen tai ota yhteyttä suoraan, jos ongelma jatkuu.',
     'wholesaleForm.placeholders.companyName': 'Yrityksesi nimi',
@@ -592,12 +592,12 @@ const translations = {
     
     // Product card translations
     'productCard.newRelease': 'Uusi julkaisu',
-    'productCard.getWholesaleInfo': 'Hanki tukkutiedot',
+    'productCard.getWholesaleInfo': 'Hanki jälleenmyyjätiedot',
     'productCard.readMore': 'Lue lisää',
     'productCard.readLess': 'Lue vähemmän',
     'productCard.speed': 'Nopeus',
     'productCard.glide': 'Liito', 
-    'productCard.turn': 'Kääntymine',
+    'productCard.turn': 'Vakaus',
     'productCard.fade': 'Fade',
     
     // Contact Form translations
@@ -622,7 +622,7 @@ const translations = {
     
     'cta.title': 'Valmiina varastoimaan Lucky Discs?',
     'cta.subtitle': 'Liity jälleenmyyjäverkostoomme ja tarjoa asiakkaillesi premium frisbee golf -välineitä ainutlaatuisella tyylillä.',
-    'cta.applyForWholesale': 'Hae tukkukaupan pääsyä',
+    'cta.applyForWholesale': 'Ryhdy jälleenmyyjäksi',
     
     // Footer
     'footer.description': 'Premium frisbee golf -välineet villillä tyylillä ja erinomaisella suorituskyvyllä. Lucky Discs - tuo onnea peliisi.',
