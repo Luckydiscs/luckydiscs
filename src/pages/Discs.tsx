@@ -25,7 +25,7 @@ const discs = [
     glide: 5,
     turn: -1,
     fade: 2,
-    type: "driver",
+    type: "fairway",
     isNewRelease: true
   },
   {
@@ -44,12 +44,12 @@ const discs = [
     id: 3,
     name: "Money Shot",
     imageSrc: moneyShotDisc,
-    description: "When you need to nail that crucial approach shot, the Money Shot delivers consistent results every time.",
+    description: "When you need to nail that crucial approach shot, the Money Shot delivers consistent results every time. Also works great as a throwing putter.",
     speed: 4,
     glide: 3,
     turn: 1,
     fade: 3,
-    type: "midrange",
+    type: "putter",
     isNewRelease: true
   },
   {
@@ -250,6 +250,54 @@ const Discs = () => {
         </div>
       </div>
       
+      {/* Disc Categories Explained */}
+      <section className="py-16 bg-gradient-to-r from-gray-900 to-black">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-heading mb-6">
+              Disc Golf Categories Explained
+            </h2>
+            <p className="text-gray-300 text-lg">
+              Each disc category serves a specific purpose in your disc golf arsenal
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
+              <h3 className="text-xl font-heading mb-3 text-lucky-green">Drivers</h3>
+              <p className="text-gray-300 text-sm">
+                High-speed discs designed for maximum distance. Best for experienced players with strong arms.
+                Speed: 9-14
+              </p>
+            </div>
+            
+            <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
+              <h3 className="text-xl font-heading mb-3 text-lucky-green">Fairway Drivers</h3>
+              <p className="text-gray-300 text-sm">
+                Controllable drivers perfect for accuracy and moderate distance. Great for all skill levels.
+                Speed: 6-8
+              </p>
+            </div>
+            
+            <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
+              <h3 className="text-xl font-heading mb-3 text-lucky-green">Mid-Range</h3>
+              <p className="text-gray-300 text-sm">
+                Reliable approach discs with predictable flight patterns. Essential for accurate mid-distance shots.
+                Speed: 4-5
+              </p>
+            </div>
+            
+            <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
+              <h3 className="text-xl font-heading mb-3 text-lucky-green">Putters</h3>
+              <p className="text-gray-300 text-sm">
+                Low-speed discs for putting and short approaches. Some work great for controlled throws too.
+                Speed: 1-4
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Understanding Flight Numbers */}
       <section className="py-16 bg-black">
         <div className="container mx-auto px-4">

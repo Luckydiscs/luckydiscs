@@ -13,7 +13,7 @@ const Footer = () => {
               <img
                 src={logo}
                 alt="Lucky Discs logo"
-                className="h-24 w-auto"
+                className="h-36 w-auto"
               />
             </div>
             <p className="text-gray-300 text-base leading-relaxed">
