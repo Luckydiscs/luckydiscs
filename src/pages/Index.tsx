@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Disc, TruckIcon, Award, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useTranslation } from "@/hooks/useTranslation";
 
 import bankRobberDisc from "@/assets/bank-robber-disc.png";
 import treasureHuntDisc from "@/assets/treasure-hunt-disc.png";
@@ -20,7 +21,7 @@ const featuredProducts = [
     id: 1,
     name: "Bank Robber",
     imageSrc: bankRobberDisc,
-    description: "A high-speed driver with unmatched stability for power throwers.",
+    descriptionKey: "disc.bankRobber.description",
     speed: 8,
     glide: 5,
     turn: -1,
@@ -31,7 +32,7 @@ const featuredProducts = [
     id: 2,
     name: "Treasure Hunt", 
     imageSrc: treasureHuntDisc,
-    description: "Mid-range disc with excellent glide and reliable fade.",
+    descriptionKey: "disc.treasureHunt.description",
     speed: 12,
     glide: 6,
     turn: -1,
@@ -42,7 +43,7 @@ const featuredProducts = [
     id: 3,
     name: "Money Shot",
     imageSrc: moneyShotDisc, 
-    description: "Our signature putter with incredible grip and accuracy.",
+    descriptionKey: "disc.moneyShot.description",
     speed: 4,
     glide: 3,
     turn: 1,
@@ -53,7 +54,7 @@ const featuredProducts = [
     id: 4,
     name: "Jailbreak",
     imageSrc: jailbreakDisc,
-    description: "Break free from conventional throws with this revolutionary disc. Flight numbers classified.",
+    descriptionKey: "disc.jailbreak.description",
     speed: "?",
     glide: "?",
     turn: "?",
@@ -64,6 +65,7 @@ const featuredProducts = [
 
 const Index = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -104,10 +106,9 @@ const Index = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-heading mb-4">Featured Discs</h2>
+            <h2 className="text-4xl md:text-5xl font-heading mb-4">{t('featured.title')}</h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Discover our most popular disc models, each crafted with premium materials
-              and distinctive designs that set you apart on the course.
+              {t('featured.subtitle')}
             </p>
           </div>
           
@@ -117,7 +118,7 @@ const Index = () => {
                 key={product.id}
                 imageSrc={product.imageSrc}
                 name={product.name}
-                description={product.description}
+                description={t(product.descriptionKey)}
                 speed={product.speed}
                 glide={product.glide}
                 turn={product.turn}
@@ -132,7 +133,7 @@ const Index = () => {
               onClick={() => navigate('/discs')}
               className="bg-lucky-green text-black hover:bg-white hover:text-black transition-all text-lg px-8"
             >
-              View All Discs <ArrowRight className="ml-2 h-5 w-5" />
+              {t('featured.viewAllDiscs')} <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
@@ -149,11 +150,10 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-heading mb-6 text-white font-semibold">
-              Lucky Discs in Action
+              {t('action.title')}
             </h2>
             <p className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed">
-              From professional tournaments to weekend rounds - see our discs perform 
-              when precision and reliability matter most.
+              {t('action.subtitle')}
             </p>
           </div>
           
@@ -166,8 +166,8 @@ const Index = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-semibold mb-1">Tournament Play</h3>
-                <p className="text-sm text-gray-300">Professional precision</p>
+                <h3 className="font-heading text-lg font-semibold mb-1">{t('action.tournamentPlay')}</h3>
+                <p className="text-sm text-gray-300">{t('action.professionalPrecision')}</p>
               </div>
             </div>
             
@@ -179,8 +179,8 @@ const Index = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-semibold mb-1">Elite Performance</h3>
-                <p className="text-sm text-gray-300">Championship level play</p>
+                <h3 className="font-heading text-lg font-semibold mb-1">{t('action.elitePerformance')}</h3>
+                <p className="text-sm text-gray-300">{t('action.championshipLevel')}</p>
               </div>
             </div>
             
@@ -192,8 +192,8 @@ const Index = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-bold mb-1">World Championship</h3>
-                <p className="text-sm text-gray-300">Global competition</p>
+                <h3 className="font-heading text-lg font-bold mb-1">{t('action.worldChampionship')}</h3>
+                <p className="text-sm text-gray-300">{t('action.globalCompetition')}</p>
               </div>
             </div>
             
@@ -205,8 +205,8 @@ const Index = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-bold mb-1">Professional Action</h3>
-                <p className="text-sm text-gray-300">Tournament highlights</p>
+                <h3 className="font-heading text-lg font-bold mb-1">{t('action.professionalAction')}</h3>
+                <p className="text-sm text-gray-300">{t('action.tournamentHighlights')}</p>
               </div>
             </div>
           </div>
@@ -217,12 +217,10 @@ const Index = () => {
             <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
               <div>
                 <h3 className="text-3xl font-heading font-semibold text-white mb-4 drop-shadow-lg">
-                  Performance Under Pressure
+                  {t('action.performanceUnderPressure')}
                 </h3>
                 <p className="text-gray-100 mb-6 leading-relaxed text-base font-normal drop-shadow-md">
-                  When every throw matters, Lucky Discs deliver the consistency and reliability 
-                  that professional players demand. From crucial putts to game-winning drives, 
-                  our discs perform when it counts most.
+                  {t('action.performanceDescription')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
                   <Button 
@@ -230,7 +228,7 @@ const Index = () => {
                     className="bg-lucky-green hover:bg-white text-black font-semibold transition-all duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto"
                     onClick={() => navigate('/discs')}
                   >
-                    Shop Tournament Discs
+                    {t('action.shopTournamentDiscs')}
                   </Button>
                   <Button 
                     size="lg"
@@ -238,7 +236,7 @@ const Index = () => {
                     className="border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 shadow-lg w-full sm:w-auto"
                     onClick={() => navigate('/team')}
                   >
-                    Meet Our Team
+                    {t('action.meetOurTeam')}
                   </Button>
                 </div>
               </div>
@@ -259,9 +257,9 @@ const Index = () => {
       <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-heading mb-4">Why Choose Lucky Discs</h2>
+            <h2 className="text-4xl md:text-5xl font-heading mb-4">{t('features.title')}</h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              We're dedicated to creating premium disc golf equipment that performs as good as it looks.
+              {t('features.subtitle')}
             </p>
           </div>
           
@@ -274,9 +272,9 @@ const Index = () => {
               <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black">
                 <Disc size={32} />
               </div>
-              <h3 className="text-xl font-heading">Premium Materials</h3>
+              <h3 className="text-xl font-heading">{t('features.premiumMaterials')}</h3>
               <p className="text-gray-400">
-                All our discs are made with high-quality polymers for superior durability and consistent flight.
+                {t('features.premiumMaterialsDesc')}
               </p>
             </div>
             
@@ -284,9 +282,9 @@ const Index = () => {
               <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black">
                 <TruckIcon size={32} />
               </div>
-              <h3 className="text-xl font-heading">Fast Shipping</h3>
+              <h3 className="text-xl font-heading">{t('features.fastShipping')}</h3>
               <p className="text-gray-400">
-                We ship worldwide with reliable tracking and secure packaging for your discs.
+                {t('features.fastShippingDesc')}
               </p>
             </div>
             
@@ -294,9 +292,9 @@ const Index = () => {
               <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black">
                 <Award size={32} />
               </div>
-              <h3 className="text-xl font-heading">Tournament Tested</h3>
+              <h3 className="text-xl font-heading">{t('features.tournamentTested')}</h3>
               <p className="text-gray-400">
-                Our discs are tournament-approved and used by professional players worldwide.
+                {t('features.tournamentTestedDesc')}
               </p>
             </div>
             
@@ -304,9 +302,9 @@ const Index = () => {
               <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black">
                 <Users size={32} />
               </div>
-              <h3 className="text-xl font-heading">Community Support</h3>
+              <h3 className="text-xl font-heading">{t('features.communitySupport')}</h3>
               <p className="text-gray-400">
-                We actively sponsor events and players to grow the sport of disc golf globally.
+                {t('features.communitySupportDesc')}
               </p>
             </div>
           </div>
@@ -316,16 +314,16 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-20 bg-lucky-green text-black">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-heading mb-4">Ready to Stock Lucky Discs?</h2>
+          <h2 className="text-4xl md:text-5xl font-heading mb-4">{t('cta.title')}</h2>
           <p className="text-black/80 max-w-2xl mx-auto mb-8 text-lg">
-            Join our network of retailers and offer your customers premium disc golf equipment with unique style.
+            {t('cta.subtitle')}
           </p>
           
           <Button 
             className="bg-black text-white hover:bg-white hover:text-black text-lg px-8 py-6"
             onClick={() => navigate('/wholesale')}
           >
-            Apply for Wholesale Access
+            {t('cta.applyForWholesale')}
           </Button>
         </div>
       </section>

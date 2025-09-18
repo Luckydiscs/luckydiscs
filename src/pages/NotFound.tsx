@@ -3,10 +3,12 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/hooks/useTranslation";
 import danielImage from "@/assets/daniel-davidsson.png";
 
 const NotFound = () => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     console.warn(
@@ -22,16 +24,16 @@ const NotFound = () => {
         <section className="py-20">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <h1 className="text-5xl font-bold mb-4">Sivu ei löytynyt</h1>
+              <h1 className="text-5xl font-bold mb-4">{t('notFound.title')}</h1>
               <p className="text-lg text-muted-foreground mb-8">
-                Etsimääsi sivua ei löytynyt. Tutustu tiimimme kapteeniin tai katso tuotteemme.
+                {t('notFound.description')}
               </p>
               <div className="flex gap-4 flex-wrap">
                 <Button asChild>
-                  <Link to="/team">Lue Danielista</Link>
+                  <Link to="/team">{t('notFound.readAboutDaniel')}</Link>
                 </Button>
                 <Button variant="secondary" asChild>
-                  <Link to="/discs">Tutustu tuotteisiin</Link>
+                  <Link to="/discs">{t('notFound.exploreProducts')}</Link>
                 </Button>
               </div>
             </div>

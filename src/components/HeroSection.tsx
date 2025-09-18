@@ -2,9 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/disc-golf-sunset-hero.png";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const HeroSection = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <section className="hero-gradient min-h-[75vh] md:min-h-screen flex items-center relative overflow-hidden">
@@ -36,30 +38,29 @@ const HeroSection = () => {
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 text-foreground mb-12 lg:mb-0">
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold mb-6 leading-tight text-white">
-              <span className="text-primary">MODERN DISCS.</span><br />
-              <span>WILD STYLE.</span><br />
-              <span>LUCKY THROWS.</span>
+              <span className="text-primary">{t('hero.modernDiscs')}</span><br />
+              <span>{t('hero.wildStyle')}</span><br />
+              <span>{t('hero.luckyThrows')}</span>
             </h1>
             <p className="text-xl mb-8 text-white/90 max-w-lg">
-              Premium disc golf equipment designed with style and engineered for power. 
-              For players who want to stand out and perform at their best.
+              {t('hero.subtitle')}
             </p>
             
             {/* Navigation Guide */}
             <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 mb-8 max-w-lg">
-              <h3 className="text-lg font-semibold mb-4 text-lucky-green">What are you looking for?</h3>
+              <h3 className="text-lg font-semibold mb-4 text-lucky-green">{t('hero.whatAreYouLookingFor')}</h3>
               <div className="space-y-2 text-sm text-white/80">
                 <div className="flex items-center gap-2">
-                  <span><strong>Wholesale:</strong> Become a retailer</span>
+                  <span><strong>{t('hero.wholesaleDescription')}</strong></span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span><strong>Discs:</strong> Browse our collection</span>
+                  <span><strong>{t('hero.discsDescription')}</strong></span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span><strong>Team:</strong> Meet our players</span>
+                  <span><strong>{t('hero.teamDescription')}</strong></span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span><strong>Brand:</strong> Our story</span>
+                  <span><strong>{t('hero.brandDescription')}</strong></span>
                 </div>
               </div>
             </div>
@@ -69,7 +70,7 @@ const HeroSection = () => {
                 className="bg-lucky-green text-black hover:bg-white hover:text-black px-8 font-semibold text-lg"
                 onClick={() => navigate('/wholesale')}
               >
-                Get Wholesale Access
+                {t('hero.getWholesaleAccess')}
               </Button>
               <Button 
                 size="lg"
@@ -77,7 +78,7 @@ const HeroSection = () => {
                 className="border-2 border-white text-white hover:bg-white hover:text-black px-8 bg-transparent text-lg"
                 onClick={() => navigate('/discs')}
               >
-                Explore Our Discs
+                {t('hero.exploreOurDiscs')}
               </Button>
             </div>
             
@@ -88,21 +89,21 @@ const HeroSection = () => {
                 onClick={() => navigate('/team')}
               >
                 <span>👥</span>
-                Our Team
+                {t('hero.ourTeam')}
               </button>
               <button 
                 className="bg-transparent border-2 border-lucky-green text-white px-6 py-3 rounded-lg font-semibold hover:bg-lucky-green hover:text-black transition-colors duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
                 onClick={() => navigate('/brand')}
               >
                 <span>📖</span>
-                Our Story
+                {t('hero.ourStory')}
               </button>
               <button 
                 className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
                 onClick={() => navigate('/contact')}
               >
                 <span>✉️</span>
-                Contact
+                {t('hero.contact')}
               </button>
             </div>
           </div>

@@ -5,8 +5,10 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
+import { useTranslation } from "@/hooks/useTranslation";
 import logo from "@/assets/lucky-discs-transparent-logo.png";
 const Footer = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -72,7 +74,7 @@ const Footer = () => {
               />
             </div>
             <p className="text-gray-300 text-base leading-relaxed">
-              Premium disc golf equipment with wild style and exceptional performance. Lucky Discs - bringing luck to your game.
+              {t('footer.description')}
             </p>
             <div className="flex space-x-4">
               <a
@@ -103,84 +105,84 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-heading mb-4 text-white">Quick Links</h3>
+            <h3 className="text-xl font-heading mb-4 text-white">{t('footer.quickLinks')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link to="/" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
-                  Home
+                  {t('nav.home')}
                 </Link>
               </li>
               <li>
                 <Link to="/discs" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
-                  Discs
+                  {t('nav.discs')}
                 </Link>
               </li>
               <li>
                 <Link to="/disc-guide" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
-                  Disc Guide
+                  {t('footer.discGuide')}
                 </Link>
               </li>
               <li>
                 <Link to="/team" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
-                  Team
+                  {t('nav.team')}
                 </Link>
               </li>
               <li>
                 <Link to="/wholesale" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
-                  Wholesale
+                  {t('nav.wholesale')}
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
-                  Contact
+                  {t('nav.contact')}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-xl font-heading mb-4 text-white">Contact Info</h3>
+            <h3 className="text-xl font-heading mb-4 text-white">{t('footer.contactInfo')}</h3>
             <ul className="space-y-3">
               <li className="text-gray-300">
-                <strong className="text-white">Email:</strong><br />
+                <strong className="text-white">{t('footer.email')}</strong><br />
                 asiakaspalvelu@luckydiscs.fi
               </li>
               <li className="text-gray-300">
-                <strong className="text-white">Location:</strong><br />
+                <strong className="text-white">{t('footer.location')}</strong><br />
                 Nokia, Finland
               </li>
               <li className="text-gray-300">
-                <strong className="text-white">Business Type:</strong><br />
-                Premium Disc Golf Equipment
+                <strong className="text-white">{t('footer.businessType')}</strong><br />
+                {t('footer.businessTypeValue')}
               </li>
               <li className="text-gray-300">
-                <strong className="text-white">Speciality:</strong><br />
-                Modern Discs • Wild Style • Lucky Throws
+                <strong className="text-white">{t('footer.specialty')}</strong><br />
+                {t('footer.specialtyValue')}
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-xl font-heading mb-4 text-white">Newsletter</h3>
+            <h3 className="text-xl font-heading mb-4 text-white">{t('footer.newsletter')}</h3>
             <p className="text-gray-300 mb-4">
-              Subscribe to get special offers, free giveaways, and product launches.
+              {t('footer.newsletterDescription')}
             </p>
             
             {isSubscribed ? (
               <div className="bg-lucky-green/20 border border-lucky-green/40 rounded-lg p-4 text-center">
                 <CheckCircle className="h-8 w-8 text-lucky-green mx-auto mb-2" />
                 <p className="text-lucky-green font-semibold text-sm">
-                  Thanks for subscribing! 🍀
+                  {t('footer.thanksForSubscribing')}
                 </p>
                 <p className="text-gray-300 text-xs mt-1">
-                  Check your email for confirmation
+                  {t('footer.checkEmailConfirmation')}
                 </p>
               </div>
             ) : (
               <form onSubmit={handleNewsletterSubmit} className="flex space-x-2">
                 <Input
                   type="email"
-                  placeholder="Your email"
+                  placeholder={t('footer.yourEmail')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isSubmitting}
@@ -204,13 +206,13 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
-          <p className="mb-4">© {new Date().getFullYear()} Lucky Discs. All rights reserved.</p>
+          <p className="mb-4">© {new Date().getFullYear()} Lucky Discs. {t('footer.allRightsReserved')}</p>
           <div className="flex justify-center space-x-6 text-sm">
             <Link to="/privacy" className="hover:text-lucky-green transition-colors">
-              Privacy Policy
+              {t('footer.privacyPolicy')}
             </Link>
             <Link to="/terms" className="hover:text-lucky-green transition-colors">
-              Terms of Service
+              {t('footer.termsOfService')}
             </Link>
           </div>
         </div>
