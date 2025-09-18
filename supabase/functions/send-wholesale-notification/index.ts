@@ -29,7 +29,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification to customer service
     const customerServiceResponse = await resend.emails.send({
-      from: "Lucky Discs <noreply@luckydiscs.fi>",
+      from: "Lucky Discs <onboarding@resend.dev>",
       to: ["asiakaspalvelu@luckydiscs.fi"],
       subject: `New Wholesale Inquiry from ${data.company_name}`,
       html: `
@@ -58,7 +58,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation to applicant
     const confirmationResponse = await resend.emails.send({
-      from: "Lucky Discs <noreply@luckydiscs.fi>",
+      from: "Lucky Discs <onboarding@resend.dev>",
       to: [data.email],
       subject: "Wholesale Application Received - Lucky Discs",
       html: `

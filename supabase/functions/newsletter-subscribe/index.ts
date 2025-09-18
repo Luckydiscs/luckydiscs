@@ -73,7 +73,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send welcome email
     const emailResponse = await resend.emails.send({
-      from: "Lucky Discs <noreply@luckydiscs.fi>",
+      from: "Lucky Discs <onboarding@resend.dev>",
       to: [email],
       subject: "Welcome to Lucky Discs Newsletter! 🍀",
       html: `
