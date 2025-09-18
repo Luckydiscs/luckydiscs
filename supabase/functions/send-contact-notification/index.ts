@@ -90,7 +90,7 @@ const handler = async (req: Request): Promise<Response> => {
     const data: ContactNotificationRequest = await req.json();
 
     const origin = req.headers.get("origin") ?? "https://luckydiscs.fi";
-    const logoUrl = `${origin}/lucky-discs-logo.png`;
+    const logoUrl = "https://luckydiscs.fi/lucky-discs-logo.png";
     const discsUrl = `${origin}/discs`;
 
     // Admin notification (beautiful but information-dense)

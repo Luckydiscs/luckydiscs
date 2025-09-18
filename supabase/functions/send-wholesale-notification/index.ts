@@ -93,7 +93,7 @@ const handler = async (req: Request): Promise<Response> => {
     const data: WholesaleNotificationRequest = await req.json();
 
     const origin = req.headers.get("origin") ?? "https://luckydiscs.fi";
-    const logoUrl = `${origin}/lucky-discs-logo.png`;
+    const logoUrl = "https://luckydiscs.fi/lucky-discs-logo.png";
     const productsUrl = `${origin}/discs`;
 
     // Admin notification
