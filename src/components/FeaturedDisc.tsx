@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, Star } from "lucide-react";
+import treasureHuntDisc from "@/assets/treasure-hunt-disc.png";
 
 const FeaturedDisc = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const FeaturedDisc = () => {
               <div className="relative group">
                 <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl scale-150 animate-pulse"></div>
                 <img 
-                  src="/src/assets/treasure-hunt-disc.png" 
+                  src={treasureHuntDisc} 
                   alt="Treasure Hunt - Featured Disc" 
                   className="relative z-10 w-64 h-64 lg:w-80 lg:h-80 object-contain transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 drop-shadow-2xl"
                 />
