@@ -90,15 +90,6 @@ const Footer = () => {
                 <strong className="text-white">Email:</strong><br />
                 asiakaspalvelu@luckydiscs.fi
               </li>
-              <li className="text-gray-300">
-                <strong className="text-white">Phone:</strong><br />
-                +1 (555) 123-4567
-              </li>
-              <li className="text-gray-300">
-                <strong className="text-white">Address:</strong><br />
-                123 Lucky Lane<br />
-                Disc City, CA 90210
-              </li>
             </ul>
           </div>
 

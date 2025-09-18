@@ -103,11 +103,30 @@ const Brand = () => {
                 </div>
                 
                 <div className="bg-gradient-to-r from-lucky-green/10 to-transparent p-6 rounded-lg border-l-4 border-lucky-green">
-                  <p className="text-white font-medium">
-                    "I joined the Lucky Discs team in 2025 and won my first Finnish championship right away. 
-                    Lucky discs gave me the confidence and precision I needed to win."
-                  </p>
-                  <p className="text-lucky-green mt-2 text-sm">- Daniel Davidsson, Finnish Champion 2025</p>
+                  <h4 className="text-white font-bold text-lg mb-4">Connect & Shop</h4>
+                  <div className="flex flex-wrap gap-4">
+                    <Link to="/discs">
+                      <Button className="bg-lucky-green text-black hover:bg-white hover:text-black">
+                        Shop Discs
+                      </Button>
+                    </Link>
+                    <a 
+                      href="https://instagram.com" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-lucky-green hover:text-white transition-colors font-semibold"
+                    >
+                      Follow on Instagram
+                    </a>
+                    <a 
+                      href="https://facebook.com" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-lucky-green hover:text-white transition-colors font-semibold"
+                    >
+                      Like on Facebook
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
