@@ -7,9 +7,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { supabase } from "@/integrations/supabase/client";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const WholesaleForm = () => {
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const [formData, setFormData] = useState({
@@ -86,8 +88,8 @@ const WholesaleForm = () => {
       }
 
       toast({
-        title: "Application Submitted Successfully!",
-        description: "We'll review your wholesale application and contact you within 2 business days. You'll receive a confirmation email shortly.",
+        title: t('wholesaleForm.successTitle'),
+        description: t('wholesaleForm.successDescription'),
       });
 
       // Reset form
@@ -105,8 +107,8 @@ const WholesaleForm = () => {
     } catch (error) {
       console.error('Error submitting form:', error);
       toast({
-        title: "Submission Failed",
-        description: "Please try again or contact us directly if the problem persists.",
+        title: t('wholesaleForm.errorTitle'),
+        description: t('wholesaleForm.errorDescription'),
         variant: "destructive",
       });
     } finally {
@@ -119,26 +121,26 @@ const WholesaleForm = () => {
       {/* Company and Contact Info - Two columns */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="company_name">Company Name *</Label>
+          <Label htmlFor="company_name">{t('wholesaleForm.companyName')} *</Label>
           <Input
             id="company_name"
             name="company_name"
             value={formData.company_name}
             onChange={handleChange}
-            placeholder="Your Business Name"
+            placeholder={t('wholesaleForm.placeholders.companyName')}
             required
             className="bg-black/5 border-gray-700 focus:border-lucky-green"
           />
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="contact_person">Contact Person *</Label>
+          <Label htmlFor="contact_person">{t('wholesaleForm.contactPerson')} *</Label>
           <Input
             id="contact_person"
             name="contact_person"
             value={formData.contact_person}
             onChange={handleChange}
-            placeholder="John Doe"
+            placeholder={t('wholesaleForm.placeholders.contactPerson')}
             required
             className="bg-black/5 border-gray-700 focus:border-lucky-green"
           />
@@ -148,27 +150,27 @@ const WholesaleForm = () => {
       {/* Email and Phone - Two columns */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="email">Email Address *</Label>
+          <Label htmlFor="email">{t('wholesaleForm.emailAddress')} *</Label>
           <Input
             id="email"
             name="email"
             type="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="john@example.com"
+            placeholder={t('wholesaleForm.placeholders.email')}
             required
             className="bg-black/5 border-gray-700 focus:border-lucky-green"
           />
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="phone">Phone Number</Label>
+          <Label htmlFor="phone">{t('wholesaleForm.phoneNumber')}</Label>
           <Input
             id="phone"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="+1 (555) 123-4567"
+            placeholder={t('wholesaleForm.placeholders.phone')}
             className="bg-black/5 border-gray-700 focus:border-lucky-green"
           />
         </div>
@@ -177,26 +179,26 @@ const WholesaleForm = () => {
       {/* Country and Business Type - Two columns */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="country">Country *</Label>
+          <Label htmlFor="country">{t('wholesaleForm.country')} *</Label>
           <Input
             id="country"
             name="country"
             value={formData.country}
             onChange={handleChange}
-            placeholder="United States"
+            placeholder={t('wholesaleForm.placeholders.country')}
             required
             className="bg-black/5 border-gray-700 focus:border-lucky-green"
           />
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="business_type">Business Type *</Label>
+          <Label htmlFor="business_type">{t('wholesaleForm.businessType')} *</Label>
           <Input
             id="business_type"
             name="business_type"
             value={formData.business_type}
             onChange={handleChange}
-            placeholder="Retail Store, Pro Shop, Online Store, etc."
+            placeholder={t('wholesaleForm.businessPlaceholder')}
             required
             className="bg-black/5 border-gray-700 focus:border-lucky-green"
           />
@@ -205,13 +207,13 @@ const WholesaleForm = () => {
       
       {/* Message - Full width */}
       <div className="space-y-2">
-        <Label htmlFor="message">Tell us about your business</Label>
+        <Label htmlFor="message">{t('wholesaleForm.message')}</Label>
         <Textarea
           id="message"
           name="message"
           value={formData.message}
           onChange={handleChange}
-          placeholder="Tell us about your business, your customers, expected volume, or any questions you may have."
+          placeholder={t('wholesaleForm.messagePlaceholder')}
           className="min-h-[100px] bg-black/5 border-gray-700 focus:border-lucky-green"
         />
       </div>
@@ -226,7 +228,7 @@ const WholesaleForm = () => {
           }
         />
         <Label htmlFor="newsletter" className="text-sm">
-          Subscribe to our wholesale newsletter for product updates and special offers
+          {t('wholesaleForm.newsletter')}
         </Label>
       </div>
       
@@ -236,7 +238,7 @@ const WholesaleForm = () => {
         className="w-full md:w-auto bg-lucky-green text-black hover:bg-white hover:text-black font-semibold px-8"
         disabled={isSubmitting}
       >
-        {isSubmitting ? "Submitting Application..." : "Submit Wholesale Application"}
+        {isSubmitting ? t('wholesaleForm.submitting') : t('wholesaleForm.submit')}
       </Button>
     </form>
   );

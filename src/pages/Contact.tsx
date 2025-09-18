@@ -4,11 +4,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const Contact = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     // SEO optimization
-    document.title = "Contact Lucky Discs - Customer Service & Business Inquiries | Finland";
+    document.title = t('contact.title') + " - Lucky Discs";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -17,14 +20,14 @@ const Contact = () => {
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute('content', 'Contact Lucky Discs - Customer Service & Business Inquiries');
+      ogTitle.setAttribute('content', t('contact.title') + ' - Lucky Discs');
     }
     
     const ogDescription = document.querySelector('meta[property="og:description"]');
     if (ogDescription) {
       ogDescription.setAttribute('content', 'Get in touch with Lucky Discs team for product questions, wholesale partnerships, sponsorships and more. Professional support from Finland.');
     }
-  }, []);
+  }, [t]);
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -35,11 +38,10 @@ const Contact = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
         <div className="container mx-auto px-4 relative z-10 max-w-3xl text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
-            Get In Touch
+            {t('contact.title')}
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Have questions about our products, wholesale opportunities, or anything else? 
-            We're here to help and would love to hear from you.
+            {t('contact.subtitle')}
           </p>
         </div>
       </section>
@@ -51,10 +53,9 @@ const Contact = () => {
             {/* Contact Information */}
             <div className="lg:col-span-2 space-y-8">
               <div>
-                <h2 className="text-2xl md:text-3xl font-heading mb-6">Contact Information</h2>
+                <h2 className="text-2xl md:text-3xl font-heading mb-6">{t('contact.contactInfo')}</h2>
                 <p className="text-gray-400 mb-8">
-                  Our team is available Monday through Friday, 9am to 5pm (EET). 
-                  We aim to respond to all inquiries within 24 hours.
+                  {t('contact.contactInfoDesc')}
                 </p>
               </div>
               
@@ -64,7 +65,7 @@ const Contact = () => {
                     <Mail size={24} strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">Email</p>
+                    <p className="text-sm text-gray-400">{t('contact.email')}</p>
                     <p className="font-medium">asiakaspalvelu@luckydiscs.fi</p>
                   </div>
                 </div>
@@ -74,7 +75,7 @@ const Contact = () => {
                     <Phone size={24} strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">Phone</p>
+                    <p className="text-sm text-gray-400">{t('contact.phone')}</p>
                     <p className="font-medium">+358 44 989 4225</p>
                   </div>
                 </div>
@@ -84,14 +85,14 @@ const Contact = () => {
                     <MapPin size={24} strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">Location</p>
-                    <p className="font-medium">Lucky Discs Finland</p>
+                    <p className="text-sm text-gray-400">{t('contact.location')}</p>
+                    <p className="font-medium">{t('contact.companyLocation')}</p>
                   </div>
                 </div>
               </div>
               
               <div className="pt-6">
-                <h3 className="text-xl font-heading mb-4">Follow Us</h3>
+                <h3 className="text-xl font-heading mb-4">{t('contact.followUs')}</h3>
                 <div className="flex space-x-4">
                   <a 
                     href="https://www.instagram.com/luckydiscsofficial" 
@@ -121,20 +122,20 @@ const Contact = () => {
               </div>
               
               <div className="pt-6">
-                <h3 className="text-xl font-heading mb-4">Business Hours</h3>
+                <h3 className="text-xl font-heading mb-4">{t('contact.businessHours')}</h3>
                 <table className="w-full text-left">
                   <tbody>
                     <tr className="border-b border-gray-800">
-                      <td className="py-2 font-medium">Monday - Friday</td>
-                      <td className="py-2 text-gray-400">9:00 - 17:00 (EET)</td>
+                      <td className="py-2 font-medium">{t('contact.mondayFriday')}</td>
+                      <td className="py-2 text-gray-400">{t('contact.mondayFridayHours')}</td>
                     </tr>
                     <tr className="border-b border-gray-800">
-                      <td className="py-2 font-medium">Saturday</td>
-                      <td className="py-2 text-gray-400">Closed</td>
+                      <td className="py-2 font-medium">{t('contact.saturday')}</td>
+                      <td className="py-2 text-gray-400">{t('contact.closed')}</td>
                     </tr>
                     <tr>
-                      <td className="py-2 font-medium">Sunday</td>
-                      <td className="py-2 text-gray-400">Closed</td>
+                      <td className="py-2 font-medium">{t('contact.sunday')}</td>
+                      <td className="py-2 text-gray-400">{t('contact.closed')}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -143,7 +144,7 @@ const Contact = () => {
             
             {/* Contact Form */}
             <div className="lg:col-span-3 bg-white/5 p-6 md:p-8 rounded-lg border border-white/10">
-              <h2 className="text-2xl md:text-3xl font-heading mb-6">Send Us a Message</h2>
+              <h2 className="text-2xl md:text-3xl font-heading mb-6">{t('contact.sendMessage')}</h2>
               <ContactForm />
             </div>
           </div>
@@ -155,39 +156,35 @@ const Contact = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-heading mb-8 text-center">
-              Frequently Asked <span className="text-lucky-green">Questions</span>
+              {t('contact.faqTitle')}
             </h2>
             
             <div className="space-y-6">
               <div className="bg-white/5 p-6 rounded-lg border border-white/10">
-                <h3 className="text-xl font-heading mb-2">Do you ship internationally?</h3>
+                <h3 className="text-xl font-heading mb-2">{t('contact.shippingQuestion')}</h3>
                 <p className="text-gray-400">
-                  Yes, we ship worldwide! Shipping rates and delivery times vary by location. 
-                  International customers may be responsible for any import duties or taxes.
+                  {t('contact.shippingAnswer')}
                 </p>
               </div>
               
               <div className="bg-white/5 p-6 rounded-lg border border-white/10">
-                <h3 className="text-xl font-heading mb-2">What is your return policy?</h3>
+                <h3 className="text-xl font-heading mb-2">{t('contact.returnQuestion')}</h3>
                 <p className="text-gray-400">
-                  We offer a 30-day satisfaction guarantee on all purchases. If you're not completely 
-                  satisfied, you can return unworn/unused merchandise for a full refund or exchange.
+                  {t('contact.returnAnswer')}
                 </p>
               </div>
               
               <div className="bg-white/5 p-6 rounded-lg border border-white/10">
-                <h3 className="text-xl font-heading mb-2">How do I become a sponsored player?</h3>
+                <h3 className="text-xl font-heading mb-2">{t('contact.sponsorshipQuestion')}</h3>
                 <p className="text-gray-400">
-                  We review sponsorship applications quarterly. Please email your player resume, 
-                  social media links, and tournament history to sponsorships@luckydiscs.com.
+                  {t('contact.sponsorshipAnswer')}
                 </p>
               </div>
               
               <div className="bg-white/5 p-6 rounded-lg border border-white/10">
-                <h3 className="text-xl font-heading mb-2">Can I request custom disc designs?</h3>
+                <h3 className="text-xl font-heading mb-2">{t('contact.customQuestion')}</h3>
                 <p className="text-gray-400">
-                  Yes! We offer custom designs for tournaments, events, and businesses. 
-                  Minimum order quantities apply. Please contact us for details and pricing.
+                  {t('contact.customAnswer')}
                 </p>
               </div>
             </div>
