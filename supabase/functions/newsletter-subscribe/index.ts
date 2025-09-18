@@ -75,59 +75,56 @@ const handler = async (req: Request): Promise<Response> => {
     const emailResponse = await resend.emails.send({
       from: "Lucky Discs <onboarding@resend.dev>",
       to: [email],
-      subject: "Welcome to Lucky Discs Newsletter! 🍀",
+      subject: "Welcome to Lucky Discs Newsletter! 🥏",
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="background: linear-gradient(135deg, #008800, #00cc00); padding: 30px; text-align: center;">
-            <h1 style="color: white; margin: 0; font-size: 28px;">🍀 Lucky Discs</h1>
-            <p style="color: white; margin: 10px 0 0 0; font-size: 16px;">Premium Disc Golf Equipment</p>
+        <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif; background: linear-gradient(135deg, #000 0%, #1a1a1a 100%); color: white;">
+          <!-- Header with Logo -->
+          <div style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%);">
+            <h1 style="color: black; margin: 0; font-size: 32px; font-weight: bold; text-shadow: none;">Lucky Discs</h1>
+            <p style="color: black; margin: 10px 0 0 0; font-size: 16px; opacity: 0.8;">Premium Disc Golf Equipment</p>
           </div>
           
-          <div style="padding: 40px 30px;">
-            <h2 style="color: #333; margin-bottom: 20px;">Welcome to the Lucky Family! 🎯</h2>
+          <!-- Main Content -->
+          <div style="padding: 40px 30px; text-align: center;">
+            <h2 style="color: #00ff41; margin: 0 0 20px 0; font-size: 28px;">Welcome to the Team! 🥏</h2>
             
-            <p style="font-size: 16px; line-height: 1.6; color: #555;">
-              Thank you for subscribing to the Lucky Discs newsletter! You're now part of our exclusive community and will be the first to know about:
+            <p style="font-size: 16px; line-height: 1.6; margin: 20px 0; color: #e0e0e0;">
+              Thank you for subscribing to the Lucky Discs newsletter! You're now part of our exclusive community of disc golf enthusiasts.
             </p>
             
-            <div style="background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 25px; border-radius: 10px; margin: 25px 0; border-left: 5px solid #008800;">
-              <h3 style="margin-top: 0; color: #008800; font-size: 18px;">🎁 What You'll Get:</h3>
-              <ul style="margin: 15px 0; padding-left: 20px; color: #333;">
-                <li style="margin-bottom: 8px;"><strong>🔥 Exclusive Product Launches</strong> - Be first to grab new disc releases</li>
-                <li style="margin-bottom: 8px;"><strong>💰 Special Offers & Discounts</strong> - Subscriber-only deals</li>
-                <li style="margin-bottom: 8px;"><strong>🎯 Free Giveaways</strong> - Monthly disc giveaways and contests</li>
-                <li style="margin-bottom: 8px;"><strong>🏆 Team Updates</strong> - Tournament results and player news</li>
-                <li style="margin-bottom: 8px;"><strong>📚 Pro Tips</strong> - Improve your game with expert advice</li>
+            <div style="background: #222; padding: 30px; border-radius: 10px; margin: 30px 0; border-left: 4px solid #00ff41;">
+              <h3 style="color: #00ff41; margin: 0 0 15px 0;">What to expect:</h3>
+              <ul style="text-align: left; color: #e0e0e0; line-height: 1.8; padding-left: 20px;">
+                <li>🆕 New product launches and exclusive previews</li>
+                <li>💰 Special discounts and member-only offers</li>
+                <li>🏆 Pro player insights and tournament updates</li>
+                <li>📚 Disc selection guides and throwing tips</li>
+                <li>🎯 Course recommendations and community highlights</li>
               </ul>
             </div>
-
-            <div style="background-color: #008800; color: white; padding: 20px; border-radius: 8px; text-align: center; margin: 30px 0;">
-              <h3 style="margin: 0 0 10px 0; font-size: 20px;">🎯 Current Lineup</h3>
-              <p style="margin: 0; font-size: 14px; opacity: 0.9;">Bank Robber • Treasure Hunt • Money Shot • Jailbreak</p>
-              <p style="margin: 10px 0 0 0; font-size: 16px; font-weight: bold;">Modern Discs. Wild Style. Lucky Throws.</p>
-            </div>
-
-            <div style="text-align: center; margin: 30px 0;">
-              <a href="https://www.luckydiscs.fi/discs" style="background-color: #008800; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">
-                🥏 Shop Our Discs
+            
+            <p style="font-size: 16px; color: #e0e0e0; margin: 30px 0;">
+              Keep an eye on your inbox for our weekly updates every Thursday!
+            </p>
+            
+            <!-- CTA Button -->
+            <div style="margin: 40px 0;">
+              <a href="https://luckydiscs.fi" style="display: inline-block; background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%); color: black; text-decoration: none; padding: 15px 30px; border-radius: 8px; font-weight: bold; font-size: 16px;">
+                Shop Lucky Discs
               </a>
             </div>
-            
-            <p style="font-size: 14px; color: #666; margin-top: 30px;">
-              Follow us on social media for daily updates:<br>
-              <a href="https://www.instagram.com/luckydiscsofficial" style="color: #008800; text-decoration: none;">📸 Instagram</a> • 
-              <a href="https://www.facebook.com/LuckyDiscs" style="color: #008800; text-decoration: none;">📘 Facebook</a> • 
-              <a href="https://www.youtube.com/@LuckyDiscs" style="color: #008800; text-decoration: none;">🎥 YouTube</a>
-            </p>
           </div>
           
-          <div style="background-color: #f8f9fa; padding: 20px; text-align: center; border-top: 1px solid #dee2e6;">
-            <p style="margin: 0; color: #666; font-size: 12px;">
-              Lucky Discs | Nokia, Finland | Made with 🍀 for disc golf lovers<br>
-              <a href="mailto:asiakaspalvelu@luckydiscs.fi" style="color: #008800;">asiakaspalvelu@luckydiscs.fi</a>
+          <!-- Footer -->
+          <div style="background: #111; padding: 30px; text-align: center; border-top: 2px solid #00ff41;">
+            <p style="color: #888; font-size: 14px; margin: 0 0 10px 0;">
+              Lucky Discs - Premium Disc Golf Equipment
             </p>
-            <p style="margin: 10px 0 0 0; color: #999; font-size: 11px;">
-              You can unsubscribe at any time by replying to this email.
+            <p style="color: #666; font-size: 12px; margin: 0;">
+              Email: asiakaspalvelu@luckydiscs.fi | Phone: +358 44 989 4225
+            </p>
+            <p style="color: #666; font-size: 11px; margin: 20px 0 0 0;">
+              You can unsubscribe from these emails at any time by replying with "UNSUBSCRIBE"
             </p>
           </div>
         </div>
