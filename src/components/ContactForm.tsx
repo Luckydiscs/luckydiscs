@@ -12,6 +12,7 @@ import {
   SelectTrigger, 
   SelectValue
 } from "@/components/ui/select";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -33,24 +34,65 @@ const ContactForm = () => {
     setFormData((prev) => ({ ...prev, subject: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
+    try {
+      // Save to database
+      const { error: dbError } = await supabase
+        .from('contact_inquiries')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+          }
+        ]);
+
+      if (dbError) {
+        throw dbError;
+      }
+
+      // Send notification emails
+      const emailResponse = await supabase.functions.invoke('send-contact-notification', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }
       });
+
+      if (emailResponse.error) {
+        console.error('Email sending failed:', emailResponse.error);
+        // Still show success to user as the data was saved
+      }
+
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you as soon as possible. You'll receive a confirmation email shortly.",
+      });
+
+      // Reset form
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
       });
+
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact us directly if the problem persists.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
