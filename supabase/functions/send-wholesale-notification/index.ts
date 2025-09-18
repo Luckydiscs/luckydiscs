@@ -18,6 +18,71 @@ interface WholesaleNotificationRequest {
   message?: string;
 }
 
+const baseStyles = {
+  bodyBg: "#0b0b0b",
+  cardBg: "#101010",
+  dark: "#0b0b0b",
+  text: "#e5e5e5",
+  muted: "#a1a1aa",
+  border: "#262626",
+  accent: "#39ff14",
+  accentDark: "#1ade00",
+};
+
+const headerHtml = (logoUrl: string) => `
+  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:${baseStyles.accent};\">
+    <tr>
+      <td align=\"center\" style=\"padding:28px 12px;\">
+        <img src=\"${logoUrl}\" alt=\"Lucky Discs\" width=\"140\" height=\"auto\" style=\"display:block;border:0;outline:none;text-decoration:none;\">
+        <div style=\"font:600 14px/1.4, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial; color:#000; margin-top:6px;\">Premium Disc Golf Equipment</div>
+      </td>
+    </tr>
+  </table>`;
+
+const footerHtml = () => `
+  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#0f0f0f;border-top:1px solid ${baseStyles.border};\">
+    <tr>
+      <td align=\"center\" style=\"padding:24px 16px;\">
+        <div style=\"font:500 13px/1.6, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial; color:${baseStyles.muted};\">
+          Lucky Discs • Nokia, Finland
+          <br />This is an automated message — you can reply directly to this email.
+        </div>
+      </td>
+    </tr>
+  </table>`;
+
+const containerOpen = () => `
+  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:${baseStyles.bodyBg};\">
+    <tr>
+      <td align=\"center\" style=\"padding:32px 16px;\">
+        <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:640px;background:${baseStyles.cardBg};border:1px solid ${baseStyles.border};border-radius:14px;\">
+          <tr><td style=\"padding:32px 28px 8px 28px;\">`;
+
+const containerClose = () => `
+          </td></tr>
+        </table>
+      </td>
+    </tr>
+  </table>`;
+
+const section = (content: string) => `
+  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin:0 0 20px 0;\">
+    <tr><td>${content}</td></tr>
+  </table>`;
+
+const button = (href: string, label: string) => `
+  <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\">
+    <tr>
+      <td style=\"border-radius:10px;\" bgcolor=\"${baseStyles.accent}\">
+        <a href=\"${href}\" style=\"display:inline-block;padding:14px 22px;border-radius:10px;font:700 15px/1, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:#000;text-decoration:none;background:${baseStyles.accent};\">${label}</a>
+      </td>
+    </tr>
+  </table>`;
+
+const adminBlock = (label: string, value: string) => `
+  <div style=\"font:600 13px/1.4, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.muted};margin:0 0 6px 0;\">${label}</div>
+  <div style=\"font:500 16px/1.6, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.text};word-break:break-word;\">${value}</div>`;
+
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
@@ -27,140 +92,85 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const data: WholesaleNotificationRequest = await req.json();
 
-      // Send notification to customer service
-      const customerServiceResponse = await resend.emails.send({
-        from: "Lucky Discs <onboarding@resend.dev>",
-        to: ["laplandvibe@gmail.com"], // Temporary - using your verified email  
-        subject: `[LUCKY DISCS WHOLESALE] ${data.company_name} - ${data.contact_person}`,
-        html: `
-        <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif; background: #f5f5f5;">
-          <!-- Header -->
-          <div style="background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%); padding: 30px; text-align: center;">
-            <h1 style="color: black; margin: 0; font-size: 28px; font-weight: bold;">Lucky Discs</h1>
-            <p style="color: black; margin: 10px 0 0 0; font-size: 14px; opacity: 0.8;">New Wholesale Application</p>
-          </div>
-          
-          <!-- Content -->
-          <div style="background: white; padding: 30px;">
-            <h2 style="color: #333; margin: 0 0 20px 0;">Company Information:</h2>
-            <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <p style="margin: 5px 0; color: #333;"><strong>Company Name:</strong> ${data.company_name}</p>
-              <p style="margin: 5px 0; color: #333;"><strong>Contact Person:</strong> ${data.contact_person}</p>
-              <p style="margin: 5px 0; color: #333;"><strong>Email:</strong> ${data.email}</p>
-              <p style="margin: 5px 0; color: #333;"><strong>Phone:</strong> ${data.phone || 'Not provided'}</p>
-              <p style="margin: 5px 0; color: #333;"><strong>Country:</strong> ${data.country}</p>
-              <p style="margin: 5px 0; color: #333;"><strong>Business Type:</strong> ${data.business_type}</p>
-            </div>
-            
-            ${data.message ? `
-              <h3 style="color: #333; margin: 25px 0 15px 0;">Additional Message:</h3>
-              <div style="background: #f0f7ff; padding: 20px; border-radius: 8px; border-left: 4px solid #00ff41;">
-                <p style="margin: 0; color: #333; line-height: 1.6; white-space: pre-wrap;">${data.message}</p>
-              </div>
-            ` : ''}
-          </div>
-          
-          <!-- Footer -->
-          <div style="background: #333; padding: 20px; text-align: center;">
-            <p style="margin: 0; color: #ccc; font-size: 12px;">
-              This email was sent automatically from the Lucky Discs wholesale application form.
-            </p>
-          </div>
-        </div>
-      `,
+    const origin = req.headers.get("origin") ?? "https://luckydiscs.fi";
+    const logoUrl = `${origin}/lucky-discs-logo.png`;
+    const productsUrl = `${origin}/discs`;
+
+    // Admin notification
+    const adminHtml = `
+      ${headerHtml(logoUrl)}
+      ${containerOpen()}
+        ${section(`<h1 style=\"margin:0 0 4px 0;font:800 22px/1.2, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.accent};\">New wholesale application</h1>
+        <div style=\"font:500 14px/1.6, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.muted};margin:6px 0 0 0;\">A company applied via wholesale form.</div>`)}
+        ${section(`
+          ${adminBlock('Company', data.company_name)}
+          ${adminBlock('Contact', data.contact_person)}
+          ${adminBlock('Email', `<a href=\"mailto:${data.email}\" style=\"color:${baseStyles.accent};text-decoration:none;\">${data.email}</a>`)}
+          ${adminBlock('Phone', data.phone || 'Not provided')}
+          ${adminBlock('Country', data.country)}
+          ${adminBlock('Business type', data.business_type)}
+        `)}
+        ${data.message ? section(`
+          <div style=\"font:700 14px/1.4, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.accent};margin:10px 0;\">Message</div>
+          <div style=\"background:#0f0f0f;border:1px solid ${baseStyles.border};border-radius:12px;padding:16px;color:${baseStyles.text};font:500 15px/1.7, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;white-space:pre-wrap;\">${data.message}</div>
+        `) : ''}
+        ${section(button(`mailto:${data.email}?subject=Re:%20Wholesale%20application%20-%20${encodeURIComponent(data.company_name)}`,'Reply to applicant'))}
+      ${containerClose()}
+      ${footerHtml()}
+    `;
+
+    const customerServiceResponse = await resend.emails.send({
+      from: "Lucky Discs <onboarding@resend.dev>",
+      to: ["laplandvibe@gmail.com"],
+      subject: `[LUCKY DISCS WHOLESALE] ${data.company_name} - ${data.contact_person}`,
+      html: adminHtml,
     });
 
-    // Send confirmation to applicant
+    // Applicant confirmation
+    const confirmationHtml = `
+      ${headerHtml(logoUrl)}
+      ${containerOpen()}
+        ${section(`<h1 style=\"margin:0 0 10px 0;font:800 26px/1.2, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.accent};\">Kiitos tukkupyyntösi lähettämisestä! 🏪</h1>
+        <div style=\"font:500 16px/1.7, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.text};\">Hei ${data.contact_person}, vastaanotimme tukkupyyntösi yritykseltä \"${data.company_name}\".</div>`)}
+        ${section(`
+          <div style=\"background:${baseStyles.accent};color:#000;border-radius:12px;padding:18px;text-align:center;font:700 15px/1.4, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;\">Käsittelemme hakemuksesi 1–2 arkipäivässä</div>
+        `)}
+        ${section(`
+          <div style=\"font:500 14px/1.7, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.muted};\">
+            Kysyttävää? <a href=\"mailto:asiakaspalvelu@luckydiscs.fi\" style=\"color:${baseStyles.accent};text-decoration:none;\">asiakaspalvelu@luckydiscs.fi</a> • +358 44 989 4225
+          </div>
+        `)}
+        ${section(`<div style=\"text-align:center;\">${button(productsUrl,'Tutustu tuotteisiin')}</div>`)}
+      ${containerClose()}
+      ${footerHtml()}
+    `;
+
     const confirmationResponse = await resend.emails.send({
       from: "Lucky Discs <onboarding@resend.dev>",
       to: [data.email],
-      subject: "Wholesale Application Received - Lucky Discs 🥏",
-      html: `
-        <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif; background: linear-gradient(135deg, #000 0%, #1a1a1a 100%); color: white;">
-          <!-- Header with Logo -->
-          <div style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%);">
-            <h1 style="color: black; margin: 0; font-size: 32px; font-weight: bold; text-shadow: none;">Lucky Discs</h1>
-            <p style="color: black; margin: 10px 0 0 0; font-size: 16px; opacity: 0.8;">Premium Disc Golf Equipment</p>
-          </div>
-          
-          <!-- Main Content -->
-          <div style="padding: 40px 30px;">
-            <h2 style="color: #00ff41; margin: 0 0 20px 0; font-size: 28px;">Thank you for your wholesale application! 🏪</h2>
-            
-            <p style="font-size: 16px; line-height: 1.6; color: #e0e0e0;">Hi ${data.contact_person},</p>
-            
-            <p style="font-size: 16px; line-height: 1.6; margin: 20px 0; color: #e0e0e0;">
-              We have successfully received your wholesale application for <strong style="color: #00ff41;">${data.company_name}</strong>.
-            </p>
-            
-            <div style="background: linear-gradient(135deg, #00ff41 10%, #00cc33 100%); color: black; padding: 25px; border-radius: 10px; margin: 30px 0; text-align: center;">
-              <h3 style="margin: 0 0 10px 0;">⚡ Application Review Process</h3>
-              <p style="margin: 0; font-weight: 500;">Our wholesale team will review your application and contact you within 2 business days.</p>
-            </div>
-            
-            <div style="background: #222; padding: 25px; border-radius: 10px; margin: 30px 0; border-left: 4px solid #00ff41;">
-              <h3 style="color: #00ff41; margin: 0 0 15px 0;">Your Application Details:</h3>
-              <p style="color: #e0e0e0; margin: 5px 0;"><strong style="color: #00ff41;">Company:</strong> ${data.company_name}</p>
-              <p style="color: #e0e0e0; margin: 5px 0;"><strong style="color: #00ff41;">Country:</strong> ${data.country}</p>
-              <p style="color: #e0e0e0; margin: 5px 0;"><strong style="color: #00ff41;">Business Type:</strong> ${data.business_type}</p>
-            </div>
-            
-            <p style="font-size: 16px; color: #e0e0e0; margin: 30px 0;">
-              If you have any questions about your application, feel free to contact us:
-            </p>
-            
-            <div style="background: #111; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <p style="margin: 5px 0; color: #e0e0e0;"><strong style="color: #00ff41;">📧 Email:</strong> <a href="mailto:asiakaspalvelu@luckydiscs.fi" style="color: #00ff41; text-decoration: none;">asiakaspalvelu@luckydiscs.fi</a></p>
-              <p style="margin: 5px 0; color: #e0e0e0;"><strong style="color: #00ff41;">📞 Phone:</strong> +358 44 989 4225</p>
-            </div>
-            
-            <!-- CTA Button -->
-            <div style="text-align: center; margin: 40px 0;">
-              <a href="https://luckydiscs.fi/discs" style="display: inline-block; background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%); color: black; text-decoration: none; padding: 15px 30px; border-radius: 8px; font-weight: bold; font-size: 16px;">
-                🥏 Browse Our Products
-              </a>
-            </div>
-          </div>
-          
-          <!-- Footer -->
-          <div style="background: #111; padding: 30px; text-align: center; border-top: 2px solid #00ff41;">
-            <p style="color: #888; font-size: 14px; margin: 0 0 10px 0;">
-              Lucky Discs Wholesale Team<br>
-              Premium Disc Golf Equipment
-            </p>
-            <p style="color: #666; font-size: 12px; margin: 0;">
-              Nokia, Finland | Made with 🍀 for disc golf businesses
-            </p>
-            <p style="color: #666; font-size: 11px; margin: 20px 0 0 0;">
-              This is an automated confirmation email. You can reply directly to this email if needed.
-            </p>
-          </div>
-        </div>
-      `,
+      subject: "Tukkupyyntö vastaanotettu – Lucky Discs",
+      html: confirmationHtml,
     });
 
     console.log("Emails sent successfully:", { customerServiceResponse, confirmationResponse });
 
-    return new Response(JSON.stringify({ 
-      success: true, 
-      customerServiceId: customerServiceResponse.data?.id,
-      confirmationId: confirmationResponse.data?.id 
-    }), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-        ...corsHeaders,
-      },
-    });
-  } catch (error: any) {
-    console.error("Error in send-wholesale-notification function:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({
+        success: true,
+        customerServiceId: customerServiceResponse.data?.id,
+        confirmationId: confirmationResponse.data?.id,
+      }),
       {
-        status: 500,
+        status: 200,
         headers: { "Content-Type": "application/json", ...corsHeaders },
       }
     );
+  } catch (error: any) {
+    console.error("Error in send-wholesale-notification function:", error);
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500,
+      headers: { "Content-Type": "application/json", ...corsHeaders },
+    });
   }
 };
 
