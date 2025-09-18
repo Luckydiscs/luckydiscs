@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
 import danielVictoryImage from "@/assets/daniel-victory-photo.png";
 import danielSignatureDisc from "@/assets/daniel-signature-disc.jpg";
+import moneyShotDisc from "@/assets/money-shot-disc.png";
+import DiscPromotion from "@/components/DiscPromotion";
 import { Trophy, Calendar, MapPin, ExternalLink, Users, Disc, ShoppingCart, Globe } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -229,12 +231,24 @@ const Team = () => {
 
         {/* Social Media Links */}
         <section className="py-16 px-4 bg-gradient-to-br from-gray-900/30 to-black">
-          <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-8 text-white">{t('team.followJourney')}</h2>
-            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-              {t('team.followDesc')}
-            </p>
-            <div className="flex justify-center gap-4 flex-wrap">
+          <div className="container mx-auto">
+            {/* Money Shot Disc Promotion */}
+            <div className="mb-16">
+              <DiscPromotion 
+                discName="moneyShot"
+                discImage={moneyShotDisc}
+                flightNumbers={{ speed: 4, glide: 3, turn: 1, fade: 3 }}
+                buyUrl="https://kesapelit.fi/tuote/premium-money-shot"
+                variant="inline"
+              />
+            </div>
+            
+            <div className="text-center">
+              <h2 className="text-3xl font-bold mb-8 text-white">{t('team.followJourney')}</h2>
+              <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+                {t('team.followDesc')}
+              </p>
+              <div className="flex justify-center gap-4 flex-wrap">
               <Button variant="outline" size="lg" className="border-lucky-green text-lucky-green hover:bg-lucky-green hover:text-black" asChild>
                 <a href="https://www.instagram.com/luckydiscsofficial" target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="h-5 w-5 mr-2" />

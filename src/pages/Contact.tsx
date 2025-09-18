@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import DiscPromotion from "@/components/DiscPromotion";
+import jailbreakDisc from "@/assets/jailbreak-disc.png";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -154,6 +156,17 @@ const Contact = () => {
       {/* FAQ Section */}
       <section className="py-16 bg-black">
         <div className="container mx-auto px-4">
+          {/* Jailbreak Disc Promotion */}
+          <div className="mb-16">
+            <DiscPromotion 
+              discName="jailbreak"
+              discImage={jailbreakDisc}
+              buyUrl="https://kesapelit.fi/tuote/premium-jailbreak"
+              variant="compact"
+              showFlightNumbers={false}
+            />
+          </div>
+          
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-heading mb-8 text-center">
               {t('contact.faqTitle')}

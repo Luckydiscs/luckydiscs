@@ -134,6 +134,12 @@ const translations = {
     'discs.needHelp': 'Need help choosing the right disc for your game?',
     'discs.selectionGuide': 'Disc Selection Guide',
     
+    // Individual disc names
+    'discs.bankRobber': 'Bank Robber',
+    'discs.treasureHunt': 'Treasure Hunt', 
+    'discs.moneyShot': 'Money Shot',
+    'discs.jailbreak': 'Jailbreak',
+
     // Individual disc descriptions
     'discs.bankRobberDesc': 'A versatile control driver that steals the show on technical fairways. Reliable flight path with excellent glide.',
     'discs.treasureHuntDesc': 'The ultimate treasure hunting disc for maximum distance with reliable fade. Perfect for open fairways and bomber shots.',
@@ -453,6 +459,12 @@ const translations = {
     'discs.needHelp': 'Tarvitsetko apua oikean kiekon valinnassa peliisi?',
     'discs.selectionGuide': 'Kiekkovalikoima opas',
     
+    // Individual disc names
+    'discs.bankRobber': 'Bank Robber',
+    'discs.treasureHunt': 'Treasure Hunt', 
+    'discs.moneyShot': 'Money Shot',
+    'discs.jailbreak': 'Jailbreak',
+
     // Individual disc descriptions
     'discs.bankRobberDesc': 'Monipuolinen fairway-driver, joka on suunniteltu tarkkuutta ja kontrollia vaativille fairway-heitoille. Nopeus 8 tekee siitä täydellisen tasapainon hallinnan ja matkan välille. Luotettava lentoreitti (-1/2) varmistaa, että kiekko käyttäytyy ennustettavasti joka heitossa. Erinomainen valinta teknisille radoille ja kun tarkkuus on tärkeämpää kuin maksimimatka.',
     'discs.treasureHuntDesc': 'Nopea distance driver (nopeus 12) maksimimatkaa tavoitteleville pelaajille. Erinomainen liito (6) auttaa kiekkoa lentämään pitkälle, kun taas luotettava fade (3) varmistaa vasemmanpuoleisen lopetuksen. Vakaus-arvo -1 tekee siitä stabiilia mutta ei liian ylistabiilia. Täydellinen avoimille fairwayille, joilla voit päästää kiekon lentämään täydellä voimalla. Suunniteltu voimakkaasti heittäville pelaajille, jotka haluavat maksimaalisen matkan luotettavuudesta tinkimättä.',

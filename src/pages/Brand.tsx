@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
+import DiscPromotion from "@/components/DiscPromotion";
+import bankRobberDisc from "@/assets/bank-robber-disc.png";
 
 // Import images properly
 import proPlayerImage from "/public/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png";
@@ -322,10 +324,22 @@ const Brand = () => {
       
       {/* CTA Section */}
       <section className="py-16 bg-lucky-green text-black">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-heading mb-4">
-            {t('brand.joinLuckyFamily')}
-          </h2>
+        <div className="container mx-auto px-4">
+          {/* Bank Robber Disc Promotion */}
+          <div className="mb-12">
+            <DiscPromotion 
+              discName="bankRobber"
+              discImage={bankRobberDisc}
+              flightNumbers={{ speed: 8, glide: 5, turn: -1, fade: 2 }}
+              buyUrl="https://kesapelit.fi/tuote/premium-bank-robber"
+              variant="inline"
+            />
+          </div>
+          
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-heading mb-4">
+              {t('brand.joinLuckyFamily')}
+            </h2>
           <p className="text-black/80 max-w-2xl mx-auto mb-8 text-lg">
             {t('brand.joinDesc')}
           </p>
