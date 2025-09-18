@@ -371,9 +371,9 @@ const translations = {
     'featured.subtitle': 'Tutustu suosituimpiin kiekkomalleihimme, joista jokainen on valmistettu premium-materiaaleista ja erottuvilla design-ratkaisuilla.',
     'featured.viewAllDiscs': 'Katso kaikki kiekot',
     
-    // Disc descriptions
-    'disc.bankRobber.description': 'Nopea driver, joka tarjoaa vertaansa vailla olevaa vakautta voimakkaasti heittäville pelaajille.',
-    'disc.treasureHunt.description': 'Keskietäisyyskiekko erinomaisella liidolla ja luotettavalla fadella.',
+    // Disc descriptions  
+    'disc.bankRobber.description': 'Luotettava fairway-driver kontrolloiduille heitoille. Täydellinen tasapaino nopeuden ja hallinnan välillä.',
+    'disc.treasureHunt.description': 'Distance driver maksimimatkalle. Nopea kiekko luotettavalla fadella pitkiä heittoja varten.',
     'disc.moneyShot.description': 'Erikoisputter uskomattomalla otteella ja tarkkuudella.',
     'disc.jailbreak.description': 'Vapaudu perinteisistä heitoista tällä vallankumouksellisella kiekolla. Lentoluvut salaisia.',
     
@@ -454,10 +454,10 @@ const translations = {
     'discs.selectionGuide': 'Kiekkovalikoima opas',
     
     // Individual disc descriptions
-    'discs.bankRobberDesc': 'Monipuolinen hallintadriveri, joka varastaa shown teknisillä fairwayilla. Luotettava lentoreitti erinomaisella liidolla.',
-    'discs.treasureHuntDesc': 'Äärimmäinen aarteenetsintäkiekko maksimimatkalle luotettavalla fadella. Täydellinen avoimille fairwayille ja pitkille heitoille.',
-    'discs.moneyShotDesc': 'Kun on osuttava ratkaisevaan approach-heittoon, Money Shot antaa johdonmukaisia tuloksia joka kerta. Toimii loistavasti myös heittoputteerina.',
-    'discs.jailbreakDesc': 'Vapaudu perinteisistä heitoista tällä vallankumouksellisella kiekolla. Lentoluvut salaisia - koe mysteeri itse.',
+    'discs.bankRobberDesc': 'Monipuolinen fairway-driver, joka on suunniteltu tarkkuutta ja kontrollia vaativille fairway-heitoille. Nopeus 8 tekee siitä täydellisen tasapainon hallinnan ja matkan välille. Luotettava lentoreitti (-1/2) varmistaa, että kiekko käyttäytyy ennustettavasti joka heitossa. Erinomainen valinta teknisille radoille ja kun tarkkuus on tärkeämpää kuin maksimimatka.',
+    'discs.treasureHuntDesc': 'Nopea distance driver (nopeus 12) maksimimatkaa tavoitteleville pelaajille. Erinomainen liito (6) auttaa kiekkoa lentämään pitkälle, kun taas luotettava fade (3) varmistaa vasemmanpuoleisen lopetuksen. Turn-arvo -1 tekee siitä stabiilia mutta ei liian ylistabiilia. Täydellinen avoimille fairwayille, joilla voit päästää kiekon lentämään täydellä voimalla. Suunniteltu voimakkaasti heittäville pelaajille, jotka haluavat maksimaalisen matkan luotettavuudesta tinkimättä.',
+    'discs.moneyShotDesc': 'Luotettava putter (nopeus 3) tarkkoihin approach-heittoihin ja puttaukseen. Matala glide-arvo (3) tarkoittaa, että kiekko putoaa pehmeästi ilman liikaa liukumista. Turn 1 ja fade 3 antavat hieman instabiliteettiä alkuun, mutta voimakas fade tuo kiekon varmasti takaisin vasemmalle. Erinomainen otteessa ja käsissä, tarjoaa luotettavuutta kun jokainen heitto ratkaisee. Toimii loistavasti myös lyhyisiin approach-heittoihin, joissa tarkkuus on avain menestykseen.',
+    'discs.jailbreakDesc': 'Mystinen kiekko, jonka lentoluvut ovat salaisia. Tämä vallankumouksellinen malli haastaa perinteiset käsitykset siitä, miten kiekko voi lentää. Ainutlaatuinen muotoilu ja salaiset ominaisuudet tekevät jokaisesta heitosta yllätyksen. Vain kokeilemalla voit selvittää, miten Jailbreak käyttäytyy eri olosuhteissa. Jotkut sanovat sen olevan driver, toiset väittävät sen olevan mid-range - totuus paljastuu vasta kentällä. Suunniteltu seikkailunhaluisille pelaajille, jotka haluavat jotain täysin erilaista pelaamiseen.',
     
     // Team Page  
     'team.title': 'Lucky Discs Tiimi',
