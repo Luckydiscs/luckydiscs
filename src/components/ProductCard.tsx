@@ -8,10 +8,10 @@ interface ProductCardProps {
   imageSrc: string;
   name: string;
   description: string;
-  speed: number;
-  glide: number;
-  turn: number;
-  fade: number;
+  speed: number | string;
+  glide: number | string;
+  turn: number | string;
+  fade: number | string;
   isNewRelease?: boolean;
 }
 
