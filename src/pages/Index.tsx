@@ -206,10 +206,10 @@ const Index = () => {
                   that professional players demand. From crucial putts to game-winning drives, 
                   our discs perform when it counts most.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
                   <Button 
                     size="lg"
-                    className="bg-lucky-green hover:bg-white text-black font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="bg-lucky-green hover:bg-white text-black font-semibold transition-all duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto"
                     onClick={() => navigate('/discs')}
                   >
                     Shop Tournament Discs
@@ -217,7 +217,7 @@ const Index = () => {
                   <Button 
                     size="lg"
                     variant="outline"
-                    className="border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 shadow-lg"
+                    className="border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 shadow-lg w-full sm:w-auto"
                     onClick={() => navigate('/team')}
                   >
                     Meet Our Team
