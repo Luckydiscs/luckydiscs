@@ -3,8 +3,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WholesaleForm from "@/components/WholesaleForm";
 import { Briefcase, CheckCircle2, Package, Truck } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const Wholesale = () => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -61,11 +63,10 @@ const Wholesale = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
         <div className="container mx-auto px-4 relative z-10 max-w-4xl text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
-            Lucky Discs Wholesale
+            {t('wholesale.title')}
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Partner with Lucky Discs to bring our premium disc golf products to your customers. 
-            Competitive wholesale pricing, unique designs, and reliable support.
+            {t('wholesale.subtitle')}
           </p>
         </div>
       </section>
@@ -76,10 +77,10 @@ const Wholesale = () => {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-3xl md:text-4xl font-heading mb-4">
-                Apply for <span className="text-lucky-green">Wholesale Access</span>
+                {t('wholesale.applyTitle')}
               </h2>
               <p className="text-gray-300 text-lg">
-                Complete the form below and our team will contact you within 2 business days
+                {t('wholesale.applySubtitle')}
               </p>
             </div>
             
@@ -94,7 +95,7 @@ const Wholesale = () => {
       <section className="py-16 bg-black/50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-heading mb-12 text-center">
-            Why Partner With <span className="text-lucky-green">Lucky Discs</span>
+            {t('wholesale.whyPartner')}
           </h2>
           
           <div 
@@ -106,9 +107,9 @@ const Wholesale = () => {
               <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black mb-4">
                 <CheckCircle2 size={32} />
               </div>
-              <h3 className="text-xl font-heading mb-3">Competitive Margins</h3>
+              <h3 className="text-xl font-heading mb-3">{t('wholesale.competitiveMargins')}</h3>
               <p className="text-gray-400">
-                Our wholesale pricing structure is designed to ensure healthy profit margins for our retail partners.
+                {t('wholesale.competitiveMarginsDesc')}
               </p>
             </div>
             
@@ -116,9 +117,9 @@ const Wholesale = () => {
               <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black mb-4">
                 <Package size={32} />
               </div>
-              <h3 className="text-xl font-heading mb-3">Unique Products</h3>
+              <h3 className="text-xl font-heading mb-3">{t('wholesale.uniqueProducts')}</h3>
               <p className="text-gray-400">
-                Stand out with our distinctive designs and premium quality discs that can't be found elsewhere.
+                {t('wholesale.uniqueProductsDesc')}
               </p>
             </div>
             
@@ -126,9 +127,9 @@ const Wholesale = () => {
               <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black mb-4">
                 <Truck size={32} />
               </div>
-              <h3 className="text-xl font-heading mb-3">Reliable Shipping</h3>
+              <h3 className="text-xl font-heading mb-3">{t('wholesale.reliableShipping')}</h3>
               <p className="text-gray-400">
-                Fast fulfillment with global shipping options to ensure your inventory is always stocked.
+                {t('wholesale.reliableShippingDesc')}
               </p>
             </div>
             
@@ -136,9 +137,9 @@ const Wholesale = () => {
               <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black mb-4">
                 <Briefcase size={32} />
               </div>
-              <h3 className="text-xl font-heading mb-3">Marketing Support</h3>
+              <h3 className="text-xl font-heading mb-3">{t('wholesale.marketingSupport')}</h3>
               <p className="text-gray-400">
-                Access to high-quality product images, descriptions, and marketing materials to help drive sales.
+                {t('wholesale.marketingSupportDesc')}
               </p>
             </div>
           </div>
@@ -150,43 +151,35 @@ const Wholesale = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-heading mb-8 text-center">
-              Program <span className="text-lucky-green">Details</span>
+              {t('wholesale.programDetails')}
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white/5 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-heading mb-3 text-lucky-green">Minimum Orders</h3>
-                <p className="text-gray-300">
-                  Initial orders: 24 discs minimum<br/>
-                  Reorders: 12 discs minimum<br/>
-                  Mix and match models and colors
+                <h3 className="text-xl font-heading mb-3 text-lucky-green">{t('wholesale.minimumOrders')}</h3>
+                <p className="text-gray-300" style={{ whiteSpace: 'pre-line' }}>
+                  {t('wholesale.minimumOrdersDesc')}
                 </p>
               </div>
               
               <div className="bg-white/5 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-heading mb-3 text-lucky-green">Pricing</h3>
-                <p className="text-gray-300">
-                  Standard keystone: 50% of MSRP<br/>
-                  Volume discounts available<br/>
-                  Special introductory pricing
+                <h3 className="text-xl font-heading mb-3 text-lucky-green">{t('wholesale.pricing')}</h3>
+                <p className="text-gray-300" style={{ whiteSpace: 'pre-line' }}>
+                  {t('wholesale.pricingDesc')}
                 </p>
               </div>
               
               <div className="bg-white/5 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-heading mb-3 text-lucky-green">Shipping</h3>
-                <p className="text-gray-300">
-                  3 business days processing<br/>
-                  Global shipping available<br/>
-                  Drop shipping for qualifying partners
+                <h3 className="text-xl font-heading mb-3 text-lucky-green">{t('wholesale.shipping')}</h3>
+                <p className="text-gray-300" style={{ whiteSpace: 'pre-line' }}>
+                  {t('wholesale.shippingDesc')}
                 </p>
               </div>
               
               <div className="bg-white/5 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-heading mb-3 text-lucky-green">Payment</h3>
-                <p className="text-gray-300">
-                  Cards, PayPal, bank transfers<br/>
-                  Net 30 for established retailers<br/>
-                  All prices in USD
+                <h3 className="text-xl font-heading mb-3 text-lucky-green">{t('wholesale.payment')}</h3>
+                <p className="text-gray-300" style={{ whiteSpace: 'pre-line' }}>
+                  {t('wholesale.paymentDesc')}
                 </p>
               </div>
             </div>
