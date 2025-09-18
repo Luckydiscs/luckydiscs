@@ -73,6 +73,7 @@ const Navbar = () => {
             <Button
               variant="default"
               className="bg-gradient-to-r from-primary to-primary-dark text-primary-foreground hover:from-primary-dark hover:to-primary transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary/25 font-bold px-6"
+              onClick={() => console.log('Navbar wholesale button clicked')}
             >
               {t('nav.getWholesaleAccess')}
             </Button>
@@ -137,7 +138,10 @@ const Navbar = () => {
                 <Button
                   variant="outline"
                   className="border-lucky-green text-lucky-green hover:bg-lucky-green hover:text-black transition-all duration-300"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    console.log('Mobile navbar wholesale button clicked');
+                    toggleMenu();
+                  }}
                 >
                   {t('nav.getWholesaleAccess')}
                 </Button>
