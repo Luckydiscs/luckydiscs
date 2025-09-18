@@ -13,9 +13,11 @@ import {
   SelectValue
 } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const [formData, setFormData] = useState({
@@ -71,8 +73,8 @@ const ContactForm = () => {
       }
 
       toast({
-        title: "Message sent successfully!",
-        description: "We'll get back to you as soon as possible. You'll receive a confirmation email shortly.",
+        title: t('contactForm.successTitle'),
+        description: t('contactForm.successDescription'),
       });
 
       // Reset form
@@ -86,8 +88,8 @@ const ContactForm = () => {
     } catch (error) {
       console.error('Error submitting contact form:', error);
       toast({
-        title: "Failed to send message",
-        description: "Please try again or contact us directly if the problem persists.",
+        title: t('contactForm.errorTitle'),
+        description: t('contactForm.errorDescription'),
         variant: "destructive",
       });
     } finally {
@@ -99,27 +101,27 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="name">Your Name</Label>
+          <Label htmlFor="name">{t('contactForm.yourName')}</Label>
           <Input
             id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="John Doe"
+            placeholder={t('contactForm.placeholders.name')}
             required
             className="bg-black/5 border-gray-700 focus:border-lucky-green"
           />
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="email">Email Address</Label>
+          <Label htmlFor="email">{t('contactForm.emailAddress')}</Label>
           <Input
             id="email"
             name="email"
             type="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="john@example.com"
+            placeholder={t('contactForm.placeholders.email')}
             required
             className="bg-black/5 border-gray-700 focus:border-lucky-green"
           />
@@ -127,28 +129,28 @@ const ContactForm = () => {
       </div>
       
       <div className="space-y-2">
-        <Label htmlFor="subject">Subject</Label>
+        <Label htmlFor="subject">{t('contactForm.subject')}</Label>
         <Select onValueChange={handleSelectChange} value={formData.subject}>
           <SelectTrigger id="subject" className="bg-black/5 border-gray-700 focus:border-lucky-green">
-            <SelectValue placeholder="Select a subject" />
+            <SelectValue placeholder={t('contactForm.selectSubject')} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="general">General Inquiry</SelectItem>
-            <SelectItem value="wholesale">Wholesale Question</SelectItem>
-            <SelectItem value="sponsorship">Sponsorship</SelectItem>
-            <SelectItem value="support">Product Support</SelectItem>
+            <SelectItem value="general">{t('contactForm.generalInquiry')}</SelectItem>
+            <SelectItem value="wholesale">{t('contactForm.wholesaleQuestion')}</SelectItem>
+            <SelectItem value="sponsorship">{t('contactForm.sponsorship')}</SelectItem>
+            <SelectItem value="support">{t('contactForm.productSupport')}</SelectItem>
           </SelectContent>
         </Select>
       </div>
       
       <div className="space-y-2">
-        <Label htmlFor="message">Your Message</Label>
+        <Label htmlFor="message">{t('contactForm.yourMessage')}</Label>
         <Textarea
           id="message"
           name="message"
           value={formData.message}
           onChange={handleChange}
-          placeholder="How can we help you?"
+          placeholder={t('contactForm.placeholders.message')}
           required
           className="min-h-[150px] bg-black/5 border-gray-700 focus:border-lucky-green"
         />
@@ -159,7 +161,7 @@ const ContactForm = () => {
         className="w-full md:w-auto bg-lucky-green text-black hover:bg-white hover:text-black"
         disabled={isSubmitting}
       >
-        {isSubmitting ? "Sending..." : "Send Message"}
+        {isSubmitting ? t('contactForm.sending') : t('contactForm.sendMessage')}
       </Button>
     </form>
   );
