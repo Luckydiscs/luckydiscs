@@ -17,7 +17,6 @@ import { supabase } from "@/integrations/supabase/client";
 const ContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   
   const [formData, setFormData] = useState({
     name: "",
@@ -71,26 +70,18 @@ const ContactForm = () => {
         // Still show success to user as the data was saved
       }
 
-      // Show success state
-      setIsSuccess(true);
-      
       toast({
         title: "Message sent successfully!",
         description: "We'll get back to you as soon as possible. You'll receive a confirmation email shortly.",
       });
 
-      // Reset form after showing success
+      // Reset form
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
       });
-
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        setIsSuccess(false);
-      }, 5000);
 
     } catch (error) {
       console.error('Error submitting contact form:', error);
@@ -103,29 +94,6 @@ const ContactForm = () => {
       setIsSubmitting(false);
     }
   };
-
-  if (isSuccess) {
-    return (
-      <div className="text-center py-12 space-y-4">
-        <div className="w-16 h-16 mx-auto bg-green-500 rounded-full flex items-center justify-center mb-4">
-          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <h3 className="text-2xl font-bold text-green-600">Message Sent Successfully!</h3>
-        <p className="text-gray-600 max-w-md mx-auto">
-          Thank you for contacting us! We've received your message and will get back to you as soon as possible. 
-          You should also receive a confirmation email shortly.
-        </p>
-        <button 
-          onClick={() => setIsSuccess(false)}
-          className="mt-6 px-6 py-2 bg-lucky-green text-black rounded-lg hover:bg-white transition-colors"
-        >
-          Send Another Message
-        </button>
-      </div>
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
