@@ -170,7 +170,7 @@ const Brand = () => {
             >
               <div className="bg-gradient-to-b from-lucky-green/10 to-black/30 p-8 rounded-xl border border-lucky-green/20 text-center hover:transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-black font-bold text-2xl">⚡</span>
+                  <span className="text-black font-bold text-2xl">P</span>
                 </div>
                 <h3 className="text-2xl font-heading mb-4 text-white">Bold Innovation</h3>
                 <p className="text-gray-300 mb-4">
@@ -182,7 +182,7 @@ const Brand = () => {
               
               <div className="bg-gradient-to-b from-lucky-green/10 to-black/30 p-8 rounded-xl border border-lucky-green/20 text-center hover:transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-black font-bold text-2xl">🏆</span>
+                  <span className="text-black font-bold text-2xl">E</span>
                 </div>
                 <h3 className="text-2xl font-heading mb-4 text-white">Quality First</h3>
                 <p className="text-gray-300 mb-4">
@@ -194,7 +194,7 @@ const Brand = () => {
               
               <div className="bg-gradient-to-b from-lucky-green/10 to-black/30 p-8 rounded-xl border border-lucky-green/20 text-center hover:transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-black font-bold text-2xl">🎯</span>
+                  <span className="text-black font-bold text-2xl">S</span>
                 </div>
                 <h3 className="text-2xl font-heading mb-4 text-white">Community Growth</h3>
                 <p className="text-gray-300 mb-4">

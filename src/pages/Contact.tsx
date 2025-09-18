@@ -40,7 +40,7 @@ const Contact = () => {
               <div className="space-y-4">
                 <div className="flex items-center">
                   <div className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black mr-4">
-                    <Mail size={20} />
+                    <Mail size={24} strokeWidth={2} />
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Email</p>
@@ -50,7 +50,7 @@ const Contact = () => {
                 
                 <div className="flex items-center">
                   <div className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black mr-4">
-                    <Phone size={20} />
+                    <Phone size={24} strokeWidth={2} />
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Phone</p>
@@ -60,7 +60,7 @@ const Contact = () => {
                 
                 <div className="flex items-center">
                   <div className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black mr-4">
-                    <MapPin size={20} />
+                    <MapPin size={24} strokeWidth={2} />
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Location</p>
@@ -78,7 +78,7 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black hover:bg-white transition-colors duration-300"
                   >
-                    <Instagram size={20} />
+                    <Instagram size={24} strokeWidth={2} />
                   </a>
                   <a 
                     href="https://www.facebook.com/LuckyDiscs" 
@@ -86,7 +86,7 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black hover:bg-white transition-colors duration-300"
                   >
-                    <Facebook size={20} />
+                    <Facebook size={24} strokeWidth={2} />
                   </a>
                   <a 
                     href="https://www.youtube.com/@LuckyDiscs" 
@@ -94,7 +94,7 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black hover:bg-white transition-colors duration-300"
                   >
-                    <Youtube size={20} />
+                    <Youtube size={24} strokeWidth={2} />
                   </a>
                 </div>
               </div>

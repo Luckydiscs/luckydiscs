@@ -50,19 +50,15 @@ const HeroSection = () => {
               <h3 className="text-lg font-semibold mb-4 text-lucky-green">What are you looking for?</h3>
               <div className="space-y-2 text-sm text-white/80">
                 <div className="flex items-center gap-2">
-                  <span className="text-lucky-green">📦</span>
                   <span><strong>Wholesale:</strong> Become a retailer</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-lucky-green">🥏</span>
                   <span><strong>Discs:</strong> Browse our collection</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-lucky-green">🏆</span>
                   <span><strong>Team:</strong> Meet our players</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-lucky-green">✨</span>
                   <span><strong>Brand:</strong> Our story</span>
                 </div>
               </div>
@@ -73,7 +69,7 @@ const HeroSection = () => {
                 className="bg-lucky-green text-black hover:bg-white hover:text-black px-8 font-semibold text-lg"
                 onClick={() => navigate('/wholesale')}
               >
-                🚀 Get Wholesale Access
+                Get Wholesale Access
               </Button>
               <Button 
                 size="lg"
@@ -81,29 +77,29 @@ const HeroSection = () => {
                 className="border-2 border-white text-white hover:bg-white hover:text-black px-8 bg-transparent text-lg"
                 onClick={() => navigate('/discs')}
               >
-                🥏 Explore Our Discs
+                Explore Our Discs
               </Button>
             </div>
             
             {/* Quick Links */}
             <div className="flex flex-wrap gap-4 justify-center text-sm">
               <button 
-                onClick={() => navigate('/team')} 
-                className="text-white/70 hover:text-lucky-green transition-colors flex items-center gap-1"
+                className="bg-lucky-green text-black px-6 py-3 rounded-lg font-semibold hover:bg-white transition-colors duration-300"
+                onClick={() => navigate('/team')}
               >
-                🏆 Our Team
+                Our Team
               </button>
               <button 
-                onClick={() => navigate('/brand')} 
-                className="text-white/70 hover:text-lucky-green transition-colors flex items-center gap-1"
+                className="bg-transparent border-2 border-lucky-green text-white px-6 py-3 rounded-lg font-semibold hover:bg-lucky-green hover:text-black transition-colors duration-300"
+                onClick={() => navigate('/brand')}
               >
-                ✨ Our Story
+                Our Story
               </button>
               <button 
-                onClick={() => navigate('/contact')} 
-                className="text-white/70 hover:text-lucky-green transition-colors flex items-center gap-1"
+                className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors duration-300"
+                onClick={() => navigate('/contact')}
               >
-                📞 Contact
+                Contact
               </button>
             </div>
           </div>

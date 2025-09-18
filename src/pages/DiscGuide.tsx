@@ -168,7 +168,7 @@ const DiscGuide = () => {
               <CardHeader>
                 <div className="flex items-center gap-4">
                   <div className="w-20 h-20 bg-lucky-green/20 rounded-full flex items-center justify-center">
-                    <span className="text-2xl">🎯</span>
+                    <span className="text-2xl text-lucky-green font-bold">P</span>
                   </div>
                   <div>
                     <CardTitle className="text-lucky-green">Putters</CardTitle>
@@ -208,7 +208,7 @@ const DiscGuide = () => {
               <Card className="bg-white/5 border-white/10">
                 <CardHeader>
                   <CardTitle className="text-lucky-green flex items-center gap-2">
-                    <span className="text-2xl">⚡</span>
+                    <span className="text-2xl font-bold">S</span>
                     Speed (1-14)
                   </CardTitle>
                 </CardHeader>
