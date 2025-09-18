@@ -14,7 +14,7 @@ const Team = () => {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="pt-40 pb-16 bg-gradient-to-br from-black via-gray-900/50 to-black relative overflow-hidden">
+        <section className="pt-20 pb-16 bg-gradient-to-br from-black via-gray-900/50 to-black relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
           <div className="container mx-auto text-center relative z-10 px-4">
             <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">

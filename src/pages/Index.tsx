@@ -216,7 +216,7 @@ const Index = () => {
                   <Button 
                     size="lg"
                     variant="outline"
-                    className="border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300 shadow-lg"
+                    className="border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 shadow-lg"
                     onClick={() => navigate('/team')}
                   >
                     Meet Our Team
