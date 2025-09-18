@@ -29,99 +29,99 @@ const Privacy = () => {
       
       <main className="flex-1 pt-20 sm:pt-24 md:pt-32">
         <div className="container mx-auto px-4 py-16 max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-heading mb-8">Tietosuojaseloste</h1>
+          <h1 className="text-4xl md:text-5xl font-heading mb-8">Privacy Policy</h1>
           
           <div className="prose prose-invert max-w-none">
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">1. Rekisterinpitäjä</h2>
+              <h2 className="text-2xl font-heading mb-4">1. Data Controller</h2>
               <p className="text-gray-300 mb-4">
                 VESITIIVIS Oy<br />
-                Y-tunnus: 3368925-4<br />
-                Sähköposti: asiakaspalvelu@luckydiscs.fi<br />
-                Puhelin: +358 44 989 4225
+                Business ID: 3368925-4<br />
+                Email: asiakaspalvelu@luckydiscs.fi<br />
+                Phone: +358 44 989 4225
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">2. Henkilötietojen käyttötarkoitus</h2>
+              <h2 className="text-2xl font-heading mb-4">2. Purpose of Personal Data Processing</h2>
               <p className="text-gray-300 mb-4">
-                Käsittelemme henkilötietojasi seuraaviin tarkoituksiin:
+                We process your personal data for the following purposes:
               </p>
               <ul className="text-gray-300 mb-4 list-disc list-inside">
-                <li>Asiakaspalvelun ja yhteydenottojen hoitaminen</li>
-                <li>Tukkukauppahakemusten käsittely</li>
-                <li>Markkinointiviestinnän lähettäminen (suostumuksella)</li>
-                <li>Verkkosivuston toiminnallisuuden parantaminen</li>
+                <li>Customer service and handling inquiries</li>
+                <li>Processing wholesale applications</li>
+                <li>Sending marketing communications (with consent)</li>
+                <li>Improving website functionality</li>
               </ul>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">3. Käsiteltävät henkilötiedot</h2>
+              <h2 className="text-2xl font-heading mb-4">3. Personal Data Processed</h2>
               <p className="text-gray-300 mb-4">
-                Voimme kerätä ja käsitellä seuraavia henkilötietoja:
+                We may collect and process the following personal data:
               </p>
               <ul className="text-gray-300 mb-4 list-disc list-inside">
-                <li>Nimi</li>
-                <li>Sähköpostiosoite</li>
-                <li>Puhelinnumero</li>
-                <li>Yrityksen tiedot (tukkukauppa-asiakkailla)</li>
-                <li>IP-osoite ja selaintiedot</li>
-                <li>Evästeiden kautta kerätyt tiedot</li>
+                <li>Name</li>
+                <li>Email address</li>
+                <li>Phone number</li>
+                <li>Company information (for wholesale customers)</li>
+                <li>IP address and browser information</li>
+                <li>Data collected through cookies</li>
               </ul>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">4. Henkilötietojen luovuttaminen</h2>
+              <h2 className="text-2xl font-heading mb-4">4. Disclosure of Personal Data</h2>
               <p className="text-gray-300 mb-4">
-                Emme luovuta henkilötietojasi ulkopuolisille tahoille ilman suostumustasi, 
-                paitsi lain edellyttämissä tapauksissa tai palveluntarjoajille, jotka 
-                auttavat meitä palvelujen tuottamisessa.
+                We do not disclose your personal data to third parties without your consent, 
+                except in cases required by law or to service providers who 
+                assist us in providing services.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">5. Henkilötietojen säilytysaika</h2>
+              <h2 className="text-2xl font-heading mb-4">5. Retention Period of Personal Data</h2>
               <p className="text-gray-300 mb-4">
-                Säilytämme henkilötietoja vain niin kauan kuin se on tarpeellista 
-                käsittelyn tarkoituksen kannalta tai lain vaatimana aikana.
+                We retain personal data only as long as necessary 
+                for the purpose of processing or as required by law.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">6. Rekisteröidyn oikeudet</h2>
+              <h2 className="text-2xl font-heading mb-4">6. Data Subject Rights</h2>
               <p className="text-gray-300 mb-4">
-                Sinulla on oikeus:
+                You have the right to:
               </p>
               <ul className="text-gray-300 mb-4 list-disc list-inside">
-                <li>Saada tietoa henkilötietojesi käsittelystä</li>
-                <li>Tarkastaa sinusta tallennetut tiedot</li>
-                <li>Oikaista virheellisiä tietoja</li>
-                <li>Poistaa tietosi (oikeus tulla unohdetuksi)</li>
-                <li>Rajoittaa käsittelyä</li>
-                <li>Siirtää tietosi toiselle palveluntarjoajalle</li>
-                <li>Vastustaa käsittelyä</li>
-                <li>Peruuttaa antamasi suostumus</li>
+                <li>Receive information about the processing of your personal data</li>
+                <li>Access your stored data</li>
+                <li>Correct incorrect information</li>
+                <li>Delete your data (right to be forgotten)</li>
+                <li>Restrict processing</li>
+                <li>Transfer your data to another service provider</li>
+                <li>Object to processing</li>
+                <li>Withdraw your given consent</li>
               </ul>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">7. Evästeet</h2>
+              <h2 className="text-2xl font-heading mb-4">7. Cookies</h2>
               <p className="text-gray-300 mb-4">
-                Verkkosivustomme käyttää evästeitä sivuston toiminnallisuuden 
-                parantamiseksi ja käyttökokemuksen optimoimiseksi. 
-                Voit hallita evästeasetuksia selaimen asetuksista.
+                Our website uses cookies to improve website functionality 
+                and optimize user experience. 
+                You can manage cookie settings in your browser settings.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">8. Yhteydenotto</h2>
+              <h2 className="text-2xl font-heading mb-4">8. Contact</h2>
               <p className="text-gray-300 mb-4">
-                Jos sinulla on kysymyksiä tietosuojasta tai haluat käyttää 
-                oikeuksiasi, ota yhteyttä:
+                If you have questions about privacy or wish to exercise 
+                your rights, please contact us:
               </p>
               <p className="text-gray-300">
-                Sähköposti: asiakaspalvelu@luckydiscs.fi<br />
-                Puhelin: +358 44 989 4225
+                Email: asiakaspalvelu@luckydiscs.fi<br />
+                Phone: +358 44 989 4225
               </p>
             </section>
           </div>

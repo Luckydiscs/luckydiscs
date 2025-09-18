@@ -29,89 +29,89 @@ const Terms = () => {
       
       <main className="flex-1 pt-20 sm:pt-24 md:pt-32">
         <div className="container mx-auto px-4 py-16 max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-heading mb-8">Käyttöehdot</h1>
+          <h1 className="text-4xl md:text-5xl font-heading mb-8">Terms of Service</h1>
           
           <div className="prose prose-invert max-w-none">
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">1. Yleistä</h2>
+              <h2 className="text-2xl font-heading mb-4">1. General</h2>
               <p className="text-gray-300 mb-4">
-                Nämä käyttöehdot koskevat Lucky Discs -verkkosivuston käyttöä. 
-                Käyttämällä sivustoa hyväksyt nämä ehdot kokonaisuudessaan.
+                These terms of service apply to the use of the Lucky Discs website. 
+                By using the website, you accept these terms in their entirety.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">2. Palveluntarjoaja</h2>
+              <h2 className="text-2xl font-heading mb-4">2. Service Provider</h2>
               <p className="text-gray-300 mb-4">
                 VESITIIVIS Oy<br />
-                Y-tunnus: 3368925-4<br />
-                Sähköposti: asiakaspalvelu@luckydiscs.fi<br />
-                Puhelin: +358 44 989 4225
+                Business ID: 3368925-4<br />
+                Email: asiakaspalvelu@luckydiscs.fi<br />
+                Phone: +358 44 989 4225
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">3. Sivuston käyttö</h2>
+              <h2 className="text-2xl font-heading mb-4">3. Website Usage</h2>
               <p className="text-gray-300 mb-4">
-                Sivustoa tulee käyttää lainmukaisesti ja hyvän tavan mukaisesti. 
-                Kiellettyä on:
+                The website must be used lawfully and in accordance with good practice. 
+                The following is prohibited:
               </p>
               <ul className="text-gray-300 mb-4 list-disc list-inside">
-                <li>Sivuston tai sen sisällön luvaton kopiointi</li>
-                <li>Haitallisen koodin tai ohjelmiston käyttö</li>
-                <li>Muiden käyttäjien häirintä</li>
-                <li>Valheellisen tiedon antaminen</li>
+                <li>Unauthorized copying of the website or its content</li>
+                <li>Use of malicious code or software</li>
+                <li>Harassment of other users</li>
+                <li>Providing false information</li>
               </ul>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">4. Tekijänoikeudet</h2>
+              <h2 className="text-2xl font-heading mb-4">4. Copyright</h2>
               <p className="text-gray-300 mb-4">
-                Kaikki sivuston sisältö on tekijänoikeudellisesti suojattua. 
-                Sisällön käyttö on sallittu vain henkilökohtaiseen, 
-                ei-kaupalliseen tarkoitukseen.
+                All website content is protected by copyright. 
+                Content usage is permitted only for personal, 
+                non-commercial purposes.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">5. Tukkukauppa</h2>
+              <h2 className="text-2xl font-heading mb-4">5. Wholesale</h2>
               <p className="text-gray-300 mb-4">
-                Tukkukaupan ehdot ja hinnat sovitaan erikseen. 
-                Tukkukauppahakemus ei sido kumpaakaan osapuolta sopimukseen.
+                Wholesale terms and prices are agreed separately. 
+                A wholesale application does not bind either party to an agreement.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">6. Vastuunrajoitus</h2>
+              <h2 className="text-2xl font-heading mb-4">6. Limitation of Liability</h2>
               <p className="text-gray-300 mb-4">
-                VESITIIVIS Oy ei vastaa sivuston käytöstä aiheutuvista 
-                välillisistä tai välittömistä vahingoista. Sivuston 
-                toiminnallisuutta ei taata keskeytyksettömäksi.
+                VESITIIVIS Oy is not responsible for indirect or direct 
+                damages caused by the use of the website. Website 
+                functionality is not guaranteed to be uninterrupted.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">7. Ehtojen muuttaminen</h2>
+              <h2 className="text-2xl font-heading mb-4">7. Changes to Terms</h2>
               <p className="text-gray-300 mb-4">
-                Pidätämme oikeuden muuttaa näitä ehtoja milloin tahansa. 
-                Muutokset astuvat voimaan heti julkaisemisen jälkeen.
+                We reserve the right to change these terms at any time. 
+                Changes take effect immediately upon publication.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">8. Sovellettava laki</h2>
+              <h2 className="text-2xl font-heading mb-4">8. Applicable Law</h2>
               <p className="text-gray-300 mb-4">
-                Näihin ehtoihin sovelletaan Suomen lakia. 
-                Mahdolliset riitaisuudet ratkaistaan Suomen tuomioistuimissa.
+                Finnish law applies to these terms. 
+                Any disputes will be resolved in Finnish courts.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">9. Yhteydenotto</h2>
+              <h2 className="text-2xl font-heading mb-4">9. Contact</h2>
               <p className="text-gray-300">
-                Kysymykset käyttöehdoista:<br />
-                Sähköposti: asiakaspalvelu@luckydiscs.fi<br />
-                Puhelin: +358 44 989 4225
+                Questions about terms of service:<br />
+                Email: asiakaspalvelu@luckydiscs.fi<br />
+                Phone: +358 44 989 4225
               </p>
             </section>
           </div>
