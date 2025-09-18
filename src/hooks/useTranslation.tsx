@@ -345,7 +345,7 @@ const translations = {
     'hero.modernDiscs': 'MODERNIT KIEKOT.',
     'hero.wildStyle': 'VILLI TYYLI.',
     'hero.luckyThrows': 'ONNEKKAITA HEITTOJA.',
-    'hero.subtitle': 'Premium frisbee golf -varusteet, jotka on suunniteltu tyylillä ja suunniteltu tehoon. Pelaajille, jotka haluavat erottua ja suoriutua parhaimmillaan.',
+    'hero.subtitle': 'Premium frisbee golf -välineet, jotka on muotoiltu tyylikkäästi ja suunniteltu suorituskykyä varten. Pelaajille, jotka haluavat erottua joukosta ja pelata parhaimmillaan.',
     'hero.whatAreYouLookingFor': 'Mitä etsit?',
     'hero.wholesaleDescription': 'Jälleenmyynti: Ryhdy jälleenmyyjäksi',
     'hero.discsDescription': 'Kiekot: Selaa valikoimaamme',
@@ -360,7 +360,7 @@ const translations = {
     // Featured Disc
     'featured.featuredDisc': 'Suosittu kiekko',
     'featured.treasureHunt': 'Treasure Hunt',
-    'featured.treasureHuntDescription': 'Meidän erikoiskeskietäisyyden kiekko poikkeuksellisella liidolla ja luotettavalla fadella. Täydellinen hallittuihin heittoihin ja johdonmukaiseen suoritukseen jokaisessa heitossa.',
+    'featured.treasureHuntDescription': 'Keskietäisyyskiekkomme poikkeuksellisella liidolla ja luotettavalla fadella. Täydellinen hallittuihin heittoihin ja tasaiseen suoritukseen jokaisessa heitossa.',
     'featured.shopNow': 'Osta nyt',
     'featured.wholesaleInquiry': 'Jälleenmyyjä kysely',
     'featured.speed': 'Nopeus',
@@ -372,10 +372,10 @@ const translations = {
     'featured.viewAllDiscs': 'Katso kaikki kiekot',
     
     // Disc descriptions
-    'disc.bankRobber.description': 'Nopea driver, joka tarjoaa vertaansa vailla olevaa vakautta tehonheittäjille.',
-    'disc.treasureHunt.description': 'Keskietäisyyden kiekko erinomaisella liidolla ja luotettavalla fadella.',
-    'disc.moneyShot.description': 'Meidän erikoisputter uskomattomalla otteella ja tarkkuudella.',
-    'disc.jailbreak.description': 'Murra vapaa perinteisistä heitoista tällä vallankumouksellisella kiekolla. Lentoluvut salassa.',
+    'disc.bankRobber.description': 'Nopea driver, joka tarjoaa vertaansa vailla olevaa vakautta voimakkaasti heittäville pelaajille.',
+    'disc.treasureHunt.description': 'Keskietäisyyskiekko erinomaisella liidolla ja luotettavalla fadella.',
+    'disc.moneyShot.description': 'Erikoisputter uskomattomalla otteella ja tarkkuudella.',
+    'disc.jailbreak.description': 'Vapaudu perinteisistä heitoista tällä vallankumouksellisella kiekolla. Lentoluvut salaisia.',
     
     // Action Section
     'action.title': 'Lucky Discs toiminnassa',
@@ -395,7 +395,7 @@ const translations = {
     
     // Features
     'features.title': 'Miksi valita Lucky Discs',
-    'features.subtitle': 'Olemme omistautuneet luomaan premium frisbee golf -välineitä, jotka suoriutuvat yhtä hyvin kuin näyttävät.',
+    'features.subtitle': 'Olemme omistautuneet valmistamaan premium frisbee golf -välineitä, jotka toimivat yhtä hyvin kuin näyttävät.',
     'features.premiumMaterials': 'Premium materiaalit',
     'features.premiumMaterialsDesc': 'Kaikki kiekkomme on valmistettu korkealaatuisista polymeereistä paremman kestävyyden ja johdonmukaisen lennon varmistamiseksi.',
     'features.fastShipping': 'Nopea toimitus',
@@ -407,7 +407,7 @@ const translations = {
     
     // Wholesale Page
     'wholesale.title': 'Lucky Discs Jälleenmyynti',
-    'wholesale.subtitle': 'Tee yhteistyötä Lucky Discsin kanssa tuodaksesi premium frisbee golf -tuotteemme asiakkaillesi. Kilpailukykyinen tukkuhinta, ainutlaatuiset muotoilut ja luotettava tuki.',
+    'wholesale.subtitle': 'Tee yhteistyötä Lucky Discsin kanssa tuodaksesi premium frisbee golf -tuotteemme asiakkaillesi. Kilpailukykyiset hinnat, ainutlaatuiset mallit ja luotettava tuki.',
     'wholesale.applyTitle': 'Ryhdy jälleenmyyjäksi',
     'wholesale.applySubtitle': 'Täytä alla oleva lomake, niin tiimimme ottaa yhteyttä 2 arkipäivän kuluessa',
     'wholesale.whyPartner': 'Miksi tehdä yhteistyötä Lucky Discsin kanssa',
@@ -431,7 +431,7 @@ const translations = {
     
     // Discs Page
     'discs.title': 'Kiekkovalikoima',
-    'discs.subtitle': 'Tutustu premium frisbee golf -välineiden valikoimaamme, joka on suunniteltu suorituskykyä varten ja omaleimaisella Lucky-tyylillä.',
+    'discs.subtitle': 'Tutustu premium frisbee golf -välineidemme valikoimaan, joka on suunniteltu suorituskykyä silmällä pitäen ja omaleimaisella Lucky-tyylillä.',
     'discs.allDiscs': 'Kaikki kiekot',
     'discs.drivers': 'Driverit',
     'discs.fairway': 'Fairway',
@@ -454,14 +454,14 @@ const translations = {
     'discs.selectionGuide': 'Kiekkovalikoima opas',
     
     // Individual disc descriptions
-    'discs.bankRobberDesc': 'Monipuolinen hallinta-driver, joka varastaa shown teknisillä fairwaylla. Luotettava lentoreitti erinomaisella liidolla.',
-    'discs.treasureHuntDesc': 'Äärimmäinen aarteenetsintäkiekko maksimimatkalle luotettavalla fadella. Täydellinen avoimille fairwaylle ja pommiheitoille.',
-    'discs.moneyShotDesc': 'Kun täytyy osua siihen ratkaisevaan approach-heittoon, Money Shot toimittaa johdonmukaisia tuloksia joka kerta. Toimii loistavasti myös heittoputteerina.',
-    'discs.jailbreakDesc': 'Murtaudu vapaaksi perinteisistä heitoista tällä vallankumouksellisella kiekolla. Lentoluvut salattuja - koe mysteeri itse.',
+    'discs.bankRobberDesc': 'Monipuolinen hallintadriveri, joka varastaa shown teknisillä fairwayilla. Luotettava lentoreitti erinomaisella liidolla.',
+    'discs.treasureHuntDesc': 'Äärimmäinen aarteenetsintäkiekko maksimimatkalle luotettavalla fadella. Täydellinen avoimille fairwayille ja pitkille heitoille.',
+    'discs.moneyShotDesc': 'Kun on osuttava ratkaisevaan approach-heittoon, Money Shot antaa johdonmukaisia tuloksia joka kerta. Toimii loistavasti myös heittoputteerina.',
+    'discs.jailbreakDesc': 'Vapaudu perinteisistä heitoista tällä vallankumouksellisella kiekolla. Lentoluvut salaisia - koe mysteeri itse.',
     
     // Team Page  
     'team.title': 'Lucky Discs Tiimi',
-    'team.subtitle': 'Mestaruustason suorituskykyä. Tiimimme edustaa Lucky Discsiä korkeimmalla tasolla, tuoden voittoja ja näkyvyyttä brändillemme kansainvälisillä turnausriskonteleilla.',
+    'team.subtitle': 'Mestaruustason suorituskykyä. Tiimimme edustaa Lucky Discsiä korkeimmalla tasolla, tuoden voittoja ja näkyvyyttä brändillemme kansainvälisillä turnauskentillä.',
     'team.meetChampion': 'Tutustu mestariimme',
     'team.championSubtitle': 'Daniel Davidsson - 2025 Suomen mestari',
     'team.danielTitle': 'Tiimin kapteeni ja 2025 Suomen mestari',
@@ -625,7 +625,7 @@ const translations = {
     'cta.applyForWholesale': 'Hae tukkukaupan pääsyä',
     
     // Footer
-    'footer.description': 'Premium frisbee golf -välineet villillä tyylillä ja poikkeuksellisella suorituskyvyllä. Lucky Discs - tuo onnea peliisi.',
+    'footer.description': 'Premium frisbee golf -välineet villillä tyylillä ja erinomaisella suorituskyvyllä. Lucky Discs - tuo onnea peliisi.',
     'footer.quickLinks': 'Pikalinkit',
     'footer.discGuide': 'Kiekko-opas',
     'footer.contactInfo': 'Yhteystiedot',
