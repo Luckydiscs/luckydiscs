@@ -65,12 +65,14 @@ const Navbar = () => {
           <Link to="/contact" className="hover:text-primary transition-all duration-300 font-semibold relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
             📞 Contact
           </Link>
-          <Button
-            variant="default"
-            className="bg-gradient-to-r from-primary to-primary-dark text-primary-foreground hover:from-primary-dark hover:to-primary transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary/25 font-bold px-6"
-          >
-            🚀 Get Wholesale Access
-          </Button>
+          <Link to="/wholesale">
+            <Button
+              variant="default"
+              className="bg-gradient-to-r from-primary to-primary-dark text-primary-foreground hover:from-primary-dark hover:to-primary transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary/25 font-bold px-6"
+            >
+              🚀 Get Wholesale Access
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -125,13 +127,15 @@ const Navbar = () => {
             >
               Contact
             </Link>
-            <Button
-              variant="outline"
-              className="border-lucky-green text-lucky-green hover:bg-lucky-green hover:text-black transition-all duration-300 mt-4"
-              onClick={toggleMenu}
-            >
-              Get Wholesale Access
-            </Button>
+            <Link to="/wholesale">
+              <Button
+                variant="outline"
+                className="border-lucky-green text-lucky-green hover:bg-lucky-green hover:text-black transition-all duration-300 mt-4"
+                onClick={toggleMenu}
+              >
+                Get Wholesale Access
+              </Button>
+            </Link>
           </div>
         </div>
       )}

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   imageSrc: string;
@@ -26,6 +27,7 @@ const ProductCard = ({
   isNewRelease = false 
 }: ProductCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
 
   // Add page-specific SEO meta tags
   useEffect(() => {
@@ -83,8 +85,11 @@ const ProductCard = ({
           </div>
         </div>
         
-        <Button className="w-full bg-lucky-green hover:bg-white text-black transition-all mt-auto">
-          View Details
+        <Button 
+          className="w-full bg-lucky-green hover:bg-white text-black transition-all mt-auto"
+          onClick={() => navigate('/wholesale')}
+        >
+          Get Wholesale Info
         </Button>
       </CardContent>
     </Card>
