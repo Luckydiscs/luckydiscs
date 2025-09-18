@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
 import FeaturedDisc from "@/components/FeaturedDisc";
 import ProductCard from "@/components/ProductCard";
-import performanceChart from "@/assets/performance-chart.png";
+import performanceChart from "@/assets/performance-chart-simple.png";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Disc, TruckIcon, Award, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
