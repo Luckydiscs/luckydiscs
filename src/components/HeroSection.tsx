@@ -35,7 +35,7 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 z-10 py-20">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 text-foreground mb-12 lg:mb-0">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight text-white">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold mb-6 leading-tight text-white">
               <span className="text-primary">MODERN DISCS.</span><br />
               <span>WILD STYLE.</span><br />
               <span>LUCKY THROWS.</span>

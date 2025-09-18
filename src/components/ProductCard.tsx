@@ -58,7 +58,7 @@ const ProductCard = ({
           <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-48 h-6 bg-black/20 rounded-full blur-md disc-shadow transition-all duration-500"></div>
         </div>
         
-        <h3 className="text-xl sm:text-2xl font-heading tracking-wide text-center mb-2 text-white font-bold drop-shadow-lg">{name}</h3>
+        <h3 className="text-xl sm:text-2xl font-heading tracking-wide text-center mb-2 text-white font-semibold drop-shadow-lg">{name}</h3>
         
         <p className="text-center text-gray-400 mb-4 line-clamp-2 h-12 text-sm sm:text-base">
           {description}

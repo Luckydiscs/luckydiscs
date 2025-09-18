@@ -17,7 +17,7 @@ const Team = () => {
         <section className="pt-20 pb-16 bg-gradient-to-br from-black via-gray-900/50 to-black relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
           <div className="container mx-auto text-center relative z-10 px-4">
-            <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
+            <h1 className="text-3xl md:text-4xl lg:text-6xl font-semibold mb-4 md:mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
               Lucky Discs Team
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6 md:mb-8 px-2">
@@ -32,7 +32,7 @@ const Team = () => {
           <div className="container mx-auto">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-4xl font-bold mb-4 text-white">Meet Our Champion</h2>
+                <h2 className="text-4xl font-semibold mb-4 text-white">Meet Our Champion</h2>
                 <p className="text-xl text-gray-300">Daniel Davidsson - 2025 Finnish National Champion</p>
               </div>
 
@@ -47,7 +47,7 @@ const Team = () => {
                 
                 <div className="space-y-8">
                   <div>
-                    <h3 className="text-3xl font-bold mb-4 text-white">Daniel Davidsson</h3>
+                    <h3 className="text-3xl font-semibold mb-4 text-white">Daniel Davidsson</h3>
                     <p className="text-lg text-lucky-green font-semibold mb-4">Team Captain & Finnish National Champion 2025</p>
                     
                     <div className="bg-gradient-to-r from-lucky-green/10 to-transparent p-6 rounded-lg border-l-4 border-lucky-green">

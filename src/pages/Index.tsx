@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
 import FeaturedDisc from "@/components/FeaturedDisc";
 import ProductCard from "@/components/ProductCard";
+import performanceChart from "@/assets/performance-chart.png";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Disc, TruckIcon, Award, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -129,7 +130,7 @@ const Index = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-heading mb-6 text-white font-bold">
+            <h2 className="text-4xl md:text-6xl font-heading mb-6 text-white font-semibold">
               Lucky Discs in Action
             </h2>
             <p className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed">
@@ -147,7 +148,7 @@ const Index = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-bold mb-1">Tournament Play</h3>
+                <h3 className="font-heading text-lg font-semibold mb-1">Tournament Play</h3>
                 <p className="text-sm text-gray-300">Professional precision</p>
               </div>
             </div>
@@ -160,7 +161,7 @@ const Index = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-bold mb-1">Elite Performance</h3>
+                <h3 className="font-heading text-lg font-semibold mb-1">Elite Performance</h3>
                 <p className="text-sm text-gray-300">Championship level play</p>
               </div>
             </div>
@@ -192,15 +193,15 @@ const Index = () => {
             </div>
           </div>
           
-          {/* Featured Action Shot */}
+          {/* Performance Visualization */}
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-lucky-green/20 p-8 shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
             <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
               <div>
-                <h3 className="text-3xl font-heading font-bold text-white mb-4 drop-shadow-lg">
+                <h3 className="text-3xl font-heading font-semibold text-white mb-4 drop-shadow-lg">
                   Performance Under Pressure
                 </h3>
-                <p className="text-gray-100 mb-6 leading-relaxed text-lg font-medium drop-shadow-md">
+                <p className="text-gray-100 mb-6 leading-relaxed text-base font-normal drop-shadow-md">
                   When every throw matters, Lucky Discs deliver the consistency and reliability 
                   that professional players demand. From crucial putts to game-winning drives, 
                   our discs perform when it counts most.
@@ -225,11 +226,11 @@ const Index = () => {
               </div>
               <div className="relative">
                 <img 
-                  src="/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png" 
-                  alt="Daniel Davidsson showcasing Lucky Discs performance in tournament play" 
-                  className="w-full h-80 object-cover rounded-xl shadow-2xl"
+                  src={performanceChart} 
+                  alt="Performance improvement chart showing consistency gains with Lucky Discs" 
+                  className="w-full rounded-xl shadow-2xl"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-lucky-green/30 to-transparent rounded-xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-lucky-green/10 to-transparent rounded-xl"></div>
               </div>
             </div>
           </div>
