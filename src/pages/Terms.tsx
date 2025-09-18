@@ -1,7 +1,28 @@
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Terms = () => {
+  useEffect(() => {
+    // SEO optimization
+    document.title = "Terms of Service - Lucky Discs | Website Terms & Conditions";
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Lucky Discs terms of service and website usage conditions. Legal information about using our website, wholesale program, and product purchases.');
+    }
+    
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', 'Lucky Discs Terms of Service - Legal Information');
+    }
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', 'Terms and conditions for Lucky Discs website usage, wholesale partnerships, and legal disclaimers. Finnish law and jurisdiction.');
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />

@@ -1,10 +1,31 @@
 
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
 
 const Contact = () => {
+  useEffect(() => {
+    // SEO optimization
+    document.title = "Contact Lucky Discs - Customer Service & Business Inquiries | Finland";
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Contact Lucky Discs for customer service, wholesale inquiries, sponsorship opportunities. Based in Finland, serving worldwide. Email: asiakaspalvelu@luckydiscs.fi');
+    }
+    
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', 'Contact Lucky Discs - Customer Service & Business Inquiries');
+    }
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', 'Get in touch with Lucky Discs team for product questions, wholesale partnerships, sponsorships and more. Professional support from Finland.');
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />

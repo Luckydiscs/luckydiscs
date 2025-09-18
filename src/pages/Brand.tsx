@@ -17,6 +17,24 @@ const Brand = () => {
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    // SEO optimization
+    document.title = "Our Brand Story - Lucky Discs | Finnish Premium Disc Golf Manufacturer";
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Founded in 2022 in Finland, Lucky Discs combines premium performance with bold designs. Learn about our casino-inspired aesthetics, Finnish manufacturing, and community commitment.');
+    }
+    
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', 'The Lucky Story - Finnish Premium Disc Golf Brand');
+    }
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', 'Founded in Nokia, Finland in 2022. Revolutionizing disc golf with casino-inspired designs, premium materials, and bold innovation. Made in Finland with European quality.');
+    }
+
     const observerOptions = {
       threshold: 0.2,
       rootMargin: "0px 0px -10% 0px"

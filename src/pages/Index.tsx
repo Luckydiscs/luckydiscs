@@ -68,6 +68,24 @@ const Index = () => {
 
   useEffect(() => {
     setIsVisible(true);
+    
+    // SEO optimization
+    document.title = "Lucky Discs - Premium Disc Golf Equipment | Modern Discs with Wild Style";
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Premium disc golf equipment with tournament-tested quality. Featuring the Bank Robber, Treasure Hunt, Money Shot and mysterious Jailbreak discs. Bold designs, reliable performance.');
+    }
+    
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', 'Lucky Discs - Premium Disc Golf Equipment | Wild Style Tournament Discs');
+    }
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', 'Modern Discs. Wild Style. Lucky Throws. Discover our premium disc golf collection including Bank Robber, Treasure Hunt, and Money Shot discs.');
+    }
   }, []);
 
   return (

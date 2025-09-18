@@ -1,7 +1,28 @@
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Privacy = () => {
+  useEffect(() => {
+    // SEO optimization
+    document.title = "Privacy Policy - Lucky Discs | Data Protection & Cookie Information";
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Lucky Discs privacy policy and data protection information. Learn how we handle personal data, cookies, and your rights under Finnish and EU privacy laws.');
+    }
+    
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', 'Lucky Discs Privacy Policy - Data Protection Information');
+    }
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', 'Comprehensive privacy policy covering data collection, usage, storage and your rights. GDPR compliant data protection practices.');
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />

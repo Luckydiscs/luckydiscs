@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import danielVictoryImage from "@/assets/daniel-victory-photo.png";
@@ -8,6 +9,26 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const Team = () => {
+  useEffect(() => {
+    // SEO optimization
+    document.title = "Team Lucky Discs - Daniel Davidsson 2025 Finnish Champion | Pro Players";
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Meet Daniel Davidsson, 2025 Finnish National Champion and Lucky Discs team captain. Follow our championship team and signature Money Shot disc performance.');
+    }
+    
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', 'Team Lucky Discs - Daniel Davidsson Finnish Champion 2025');
+    }
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', 'Championship-proven performance with Daniel Davidsson leading Team Lucky Discs. 2025 Finnish National Champion throwing Money Shot and Lucky Discs exclusively.');
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-black text-white">
       <Navbar />

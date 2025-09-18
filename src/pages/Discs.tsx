@@ -75,6 +75,26 @@ const Discs = () => {
     : discs.filter(disc => disc.type === selectedType);
 
   useEffect(() => {
+    // SEO optimization
+    document.title = "Disc Golf Collection - All Lucky Discs Models | Drivers, Putters & More";
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Browse our complete disc golf collection. Bank Robber control driver, Treasure Hunt distance driver, Money Shot putter, and mysterious Jailbreak. Learn flight numbers and disc categories.');
+    }
+    
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', 'Lucky Discs Collection - Premium Disc Golf Equipment');
+    }
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', 'Complete Lucky Discs collection: drivers, fairway discs, mid-range and putters. Tournament-approved discs with distinctive designs and reliable performance.');
+    }
+  }, []);
+
+  useEffect(() => {
     if (headerRef.current) {
       const observer = new IntersectionObserver(
         ([e]) => {
