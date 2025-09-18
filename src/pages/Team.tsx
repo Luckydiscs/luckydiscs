@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useTranslation } from "@/hooks/useTranslation";
 import danielVictoryImage from "@/assets/daniel-victory-photo.png";
 import danielSignatureDisc from "@/assets/daniel-signature-disc.jpg";
 import { Trophy, Calendar, MapPin, ExternalLink, Users, Disc, ShoppingCart, Globe } from "lucide-react";
@@ -9,6 +10,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const Team = () => {
+  const { t } = useTranslation();
+  
   useEffect(() => {
     // SEO optimization
     document.title = "Team Lucky Discs - Daniel Davidsson 2025 Finnish Champion | Pro Players";
@@ -39,11 +42,10 @@ const Team = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
           <div className="container mx-auto text-center relative z-10 px-4">
             <h1 className="text-3xl md:text-4xl lg:text-6xl font-semibold mb-4 md:mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
-              Lucky Discs Team
+              {t('team.title')}
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6 md:mb-8 px-2">
-              Championship-proven performance. Our team represents Lucky Discs at the highest level, 
-              bringing victory and visibility to our brand on international tournament fields.
+              {t('team.subtitle')}
             </p>
           </div>
         </section>
@@ -53,8 +55,8 @@ const Team = () => {
           <div className="container mx-auto">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-4xl font-semibold mb-4 text-white">Meet Our Champion</h2>
-                <p className="text-xl text-gray-300">Daniel Davidsson - 2025 Finnish National Champion</p>
+                <h2 className="text-4xl font-semibold mb-4 text-white">{t('team.meetChampion')}</h2>
+                <p className="text-xl text-gray-300">{t('team.championSubtitle')}</p>
               </div>
 
               <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
@@ -69,12 +71,11 @@ const Team = () => {
                 <div className="space-y-8">
                   <div>
                     <h3 className="text-3xl font-semibold mb-4 text-white">Daniel Davidsson</h3>
-                    <p className="text-lg text-lucky-green font-semibold mb-4">Team Captain & Finnish National Champion 2025</p>
+                    <p className="text-lg text-lucky-green font-semibold mb-4">{t('team.danielTitle')}</p>
                     
                     <div className="bg-gradient-to-r from-lucky-green/10 to-transparent p-6 rounded-lg border-l-4 border-lucky-green">
                       <p className="text-white font-medium">
-                        "I joined the Lucky Discs team in 2025 and won my first Finnish championship right away. 
-                        Lucky discs gave me the confidence and precision I needed to win."
+                        {t('team.danielQuote')}
                       </p>
                       <p className="text-lucky-green mt-2 text-sm">- Daniel Davidsson, Finnish Champion 2025</p>
                     </div>
@@ -83,13 +84,13 @@ const Team = () => {
                   <div className="grid grid-cols-2 gap-6">
                     <div className="bg-gray-900/50 p-6 rounded-lg border border-gray-800">
                       <div className="text-2xl font-bold text-lucky-green mb-2">2025</div>
-                      <p className="text-white font-medium">Finnish Champion</p>
-                      <p className="text-gray-400 text-sm">Open Division Gold</p>
+                      <p className="text-white font-medium">{t('team.finnishChampion')}</p>
+                      <p className="text-gray-400 text-sm">{t('team.openDivisionGold')}</p>
                     </div>
                     <div className="bg-gray-900/50 p-6 rounded-lg border border-gray-800">
                       <div className="text-2xl font-bold text-lucky-green mb-2">#76456</div>
-                      <p className="text-white font-medium">PDGA Player</p>
-                      <p className="text-gray-400 text-sm">Professional Rating</p>
+                      <p className="text-white font-medium">{t('team.pdgaPlayer')}</p>
+                      <p className="text-gray-400 text-sm">{t('team.professionalRating')}</p>
                     </div>
                   </div>
                 </div>
@@ -147,10 +148,9 @@ const Team = () => {
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="order-2 lg:order-1 space-y-8">
                   <div>
-                    <h3 className="text-3xl font-bold mb-4 text-white">Daniel's Signature Disc</h3>
+                    <h3 className="text-3xl font-bold mb-4 text-white">{t('team.signatureDisc')}</h3>
                     <p className="text-lg text-gray-300 mb-6">
-                      The Money Shot - Daniel's championship-winning disc. Designed for precision and reliability 
-                      in crucial moments, this disc embodies the Lucky Discs philosophy of creating your own luck.
+                      {t('team.signatureDiscDesc')}
                     </p>
                   </div>
 
@@ -158,13 +158,13 @@ const Team = () => {
                     <div className="bg-gray-900/50 p-4 md:p-6 rounded-lg border border-gray-800">
                       <h4 className="text-lg md:text-xl font-bold text-white mb-4 flex items-center gap-2">
                         <ShoppingCart className="h-5 w-5 flex-shrink-0" />
-                        <span className="break-words">Get Your Lucky Discs</span>
+                        <span className="break-words">{t('team.getLuckyDiscs')}</span>
                       </h4>
                       <div className="space-y-3">
                         <div>
-                          <p className="text-lucky-green font-medium text-sm md:text-base">Finland Residents:</p>
+                          <p className="text-lucky-green font-medium text-sm md:text-base">{t('team.finlandResidents')}</p>
                           <p className="text-gray-300 text-xs md:text-sm break-words">
-                            Purchase Daniel's signature disc and all Lucky Discs at{" "}
+                            {t('team.finlandDesc')}{" "}
                             <a 
                               href="https://kesapelit.fi/" 
                               target="_blank" 
@@ -178,11 +178,10 @@ const Team = () => {
                         <div>
                           <p className="text-lucky-green font-medium flex items-center gap-2 text-sm md:text-base">
                             <Globe className="h-4 w-4 flex-shrink-0" />
-                            <span>International Customers:</span>
+                            <span>{t('team.internationalCustomers')}</span>
                           </p>
                           <p className="text-gray-300 text-xs md:text-sm break-words">
-                            Contact your nearest retailer! Suggest Lucky Discs to your local shop 
-                            and we'll get our discs available in your area too.
+                            {t('team.internationalDesc')}
                           </p>
                         </div>
                       </div>
@@ -207,22 +206,22 @@ const Team = () => {
         {/* Team Stats */}
         <section className="py-16 px-4 bg-black">
           <div className="container mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12 text-white">2025 Championship Results</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-white">{t('team.championshipResults')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 p-8 rounded-lg border border-gray-700 text-center">
                 <div className="text-4xl font-bold text-lucky-green mb-2">🥇</div>
-                <p className="text-lg font-semibold text-white">Finnish National</p>
-                <p className="text-sm text-gray-400">Championship Gold</p>
+                <p className="text-lg font-semibold text-white">{t('team.finnishNational')}</p>
+                <p className="text-sm text-gray-400">{t('team.championshipGold')}</p>
               </div>
               <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 p-8 rounded-lg border border-gray-700 text-center">
                 <div className="text-4xl font-bold text-lucky-green mb-2">15+</div>
-                <p className="text-lg font-semibold text-white">Tournaments</p>
-                <p className="text-sm text-gray-400">Competed in 2025</p>
+                <p className="text-lg font-semibold text-white">{t('team.tournaments')}</p>
+                <p className="text-sm text-gray-400">{t('team.competedIn2025')}</p>
               </div>
               <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 p-8 rounded-lg border border-gray-700 text-center">
                 <div className="text-4xl font-bold text-lucky-green mb-2">100%</div>
-                <p className="text-lg font-semibold text-white">Lucky Discs</p>
-                <p className="text-sm text-gray-400">Championship setup</p>
+                <p className="text-lg font-semibold text-white">{t('team.luckyDiscs')}</p>
+                <p className="text-sm text-gray-400">{t('team.championshipSetup')}</p>
               </div>
             </div>
           </div>
@@ -231,9 +230,9 @@ const Team = () => {
         {/* Social Media Links */}
         <section className="py-16 px-4 bg-gradient-to-br from-gray-900/30 to-black">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-8 text-white">Follow Our Journey</h2>
+            <h2 className="text-3xl font-bold mb-8 text-white">{t('team.followJourney')}</h2>
             <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-              Stay updated with team results, behind-the-scenes content, and the latest Lucky Discs releases.
+              {t('team.followDesc')}
             </p>
             <div className="flex justify-center gap-4 flex-wrap">
               <Button variant="outline" size="lg" className="border-lucky-green text-lucky-green hover:bg-lucky-green hover:text-black" asChild>

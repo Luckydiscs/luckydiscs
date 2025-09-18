@@ -10,6 +10,7 @@ import {
   TabsList, 
   TabsTrigger 
 } from "@/components/ui/tabs";
+import { useTranslation } from "@/hooks/useTranslation";
 import treasureHuntDisc from "@/assets/treasure-hunt-disc.png";
 import bankRobberDisc from "@/assets/bank-robber-disc.png";
 import moneyShotDisc from "@/assets/money-shot-disc.png";
@@ -20,7 +21,7 @@ const discs = [
     id: 1,
     name: "Bank Robber",
     imageSrc: bankRobberDisc,
-    description: "A versatile control driver that steals the show on technical fairways. Reliable flight path with excellent glide.",
+    descriptionKey: "discs.bankRobberDesc",
     speed: 8,
     glide: 5,
     turn: -1,
@@ -32,7 +33,7 @@ const discs = [
     id: 2,
     name: "Treasure Hunt",
     imageSrc: treasureHuntDisc,
-    description: "The ultimate treasure hunting disc for maximum distance with reliable fade. Perfect for open fairways and bomber shots.",
+    descriptionKey: "discs.treasureHuntDesc",
     speed: 12,
     glide: 6,
     turn: -1,
@@ -44,7 +45,7 @@ const discs = [
     id: 3,
     name: "Money Shot",
     imageSrc: moneyShotDisc,
-    description: "When you need to nail that crucial approach shot, the Money Shot delivers consistent results every time. Also works great as a throwing putter.",
+    descriptionKey: "discs.moneyShotDesc",
     speed: 4,
     glide: 3,
     turn: 1,
@@ -56,7 +57,7 @@ const discs = [
     id: 4,
     name: "Jailbreak",
     imageSrc: jailbreakDisc,
-    description: "Break free from conventional throws with this revolutionary disc. Flight numbers classified - experience the mystery yourself.",
+    descriptionKey: "discs.jailbreakDesc",
     speed: "?",
     glide: "?",
     turn: "?",
@@ -67,6 +68,7 @@ const discs = [
 ];
 
 const Discs = () => {
+  const { t } = useTranslation();
   const [selectedType, setSelectedType] = useState("all");
   const headerRef = useRef<HTMLDivElement>(null);
 
@@ -126,11 +128,10 @@ const Discs = () => {
         
         <div className="container mx-auto px-4 relative z-10 max-w-3xl text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
-            Our Disc Collection
+            {t('discs.title')}
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Discover our lineup of premium disc golf equipment, engineered for performance
-            and designed with our distinctive Lucky style.
+            {t('discs.subtitle')}
           </p>
         </div>
       </section>
@@ -145,35 +146,35 @@ const Discs = () => {
                 onClick={() => setSelectedType("all")}
                 className="data-[state=active]:bg-lucky-green data-[state=active]:text-black"
               >
-                All Discs
+                {t('discs.allDiscs')}
               </TabsTrigger>
               <TabsTrigger 
                 value="driver" 
                 onClick={() => setSelectedType("driver")}
                 className="data-[state=active]:bg-lucky-green data-[state=active]:text-black"
               >
-                Drivers
+                {t('discs.drivers')}
               </TabsTrigger>
               <TabsTrigger 
                 value="fairway" 
                 onClick={() => setSelectedType("fairway")}
                 className="data-[state=active]:bg-lucky-green data-[state=active]:text-black"
               >
-                Fairway
+                {t('discs.fairway')}
               </TabsTrigger>
               <TabsTrigger 
                 value="midrange" 
                 onClick={() => setSelectedType("midrange")}
                 className="data-[state=active]:bg-lucky-green data-[state=active]:text-black"
               >
-                Mid-Range
+                {t('discs.midRange')}
               </TabsTrigger>
               <TabsTrigger 
                 value="putter" 
                 onClick={() => setSelectedType("putter")}
                 className="data-[state=active]:bg-lucky-green data-[state=active]:text-black"
               >
-                Putters
+                {t('discs.putters')}
               </TabsTrigger>
             </TabsList>
             
@@ -184,7 +185,7 @@ const Discs = () => {
                     key={disc.id}
                     imageSrc={disc.imageSrc}
                     name={disc.name}
-                    description={disc.description}
+                    description={t(disc.descriptionKey)}
                     speed={disc.speed}
                     glide={disc.glide}
                     turn={disc.turn}
@@ -202,7 +203,7 @@ const Discs = () => {
                     key={disc.id}
                     imageSrc={disc.imageSrc}
                     name={disc.name}
-                    description={disc.description}
+                    description={t(disc.descriptionKey)}
                     speed={disc.speed}
                     glide={disc.glide}
                     turn={disc.turn}
@@ -220,7 +221,7 @@ const Discs = () => {
                     key={disc.id}
                     imageSrc={disc.imageSrc}
                     name={disc.name}
-                    description={disc.description}
+                    description={t(disc.descriptionKey)}
                     speed={disc.speed}
                     glide={disc.glide}
                     turn={disc.turn}
@@ -238,7 +239,7 @@ const Discs = () => {
                     key={disc.id}
                     imageSrc={disc.imageSrc}
                     name={disc.name}
-                    description={disc.description}
+                    description={t(disc.descriptionKey)}
                     speed={disc.speed}
                     glide={disc.glide}
                     turn={disc.turn}
@@ -256,7 +257,7 @@ const Discs = () => {
                     key={disc.id}
                     imageSrc={disc.imageSrc}
                     name={disc.name}
-                    description={disc.description}
+                    description={t(disc.descriptionKey)}
                     speed={disc.speed}
                     glide={disc.glide}
                     turn={disc.turn}
@@ -275,43 +276,39 @@ const Discs = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-heading mb-6">
-              Disc Golf Categories Explained
+              {t('discs.categoriesTitle')}
             </h2>
             <p className="text-gray-300 text-lg">
-              Each disc category serves a specific purpose in your disc golf arsenal
+              {t('discs.categoriesSubtitle')}
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
-              <h3 className="text-xl font-heading mb-3 text-lucky-green">Drivers</h3>
-              <p className="text-gray-300 text-sm">
-                High-speed discs designed for maximum distance. Best for experienced players with strong arms.
-                Speed: 9-14
+              <h3 className="text-xl font-heading mb-3 text-lucky-green">{t('discs.drivers')}</h3>
+              <p className="text-gray-300 text-sm" style={{ whiteSpace: 'pre-line' }}>
+                {t('discs.driversDesc')}
               </p>
             </div>
             
             <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
-              <h3 className="text-xl font-heading mb-3 text-lucky-green">Fairway Drivers</h3>
-              <p className="text-gray-300 text-sm">
-                Controllable drivers perfect for accuracy and moderate distance. Great for all skill levels.
-                Speed: 6-8
+              <h3 className="text-xl font-heading mb-3 text-lucky-green">{t('discs.fairway')} Drivers</h3>
+              <p className="text-gray-300 text-sm" style={{ whiteSpace: 'pre-line' }}>
+                {t('discs.fairwayDesc')}
               </p>
             </div>
             
             <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
-              <h3 className="text-xl font-heading mb-3 text-lucky-green">Mid-Range</h3>
-              <p className="text-gray-300 text-sm">
-                Reliable approach discs with predictable flight patterns. Essential for accurate mid-distance shots.
-                Speed: 4-5
+              <h3 className="text-xl font-heading mb-3 text-lucky-green">{t('discs.midRange')}</h3>
+              <p className="text-gray-300 text-sm" style={{ whiteSpace: 'pre-line' }}>
+                {t('discs.midRangeDesc')}
               </p>
             </div>
             
             <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
-              <h3 className="text-xl font-heading mb-3 text-lucky-green">Putters</h3>
-              <p className="text-gray-300 text-sm">
-                Low-speed discs for putting and short approaches. Some work great for controlled throws too.
-                Speed: 1-4
+              <h3 className="text-xl font-heading mb-3 text-lucky-green">{t('discs.putters')}</h3>
+              <p className="text-gray-300 text-sm" style={{ whiteSpace: 'pre-line' }}>
+                {t('discs.puttersDesc')}
               </p>
             </div>
           </div>
@@ -323,44 +320,40 @@ const Discs = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-heading mb-6 text-center">
-              Understanding Disc Flight Numbers
+              {t('discs.flightNumbersTitle')}
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white/5 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-heading mb-4 text-lucky-green">Speed & Glide</h3>
+                <h3 className="text-xl font-heading mb-4 text-lucky-green">{t('discs.speedGlide')}</h3>
                 <p className="mb-4 text-gray-300">
-                  <strong>Speed (1-14):</strong> Indicates how much force is required to make the disc fly as intended.
-                  Higher numbers need more power and are typically distance drivers.
+                  <strong>Speed (1-14):</strong> {t('discs.speedDesc')}
                 </p>
                 <p className="text-gray-300">
-                  <strong>Glide (1-7):</strong> Represents a disc's ability to maintain loft during flight.
-                  Higher glide helps discs fly farther with less effort.
+                  <strong>Glide (1-7):</strong> {t('discs.glideDesc')}
                 </p>
               </div>
               
               <div className="bg-white/5 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-heading mb-4 text-lucky-green">Turn & Fade</h3>
+                <h3 className="text-xl font-heading mb-4 text-lucky-green">{t('discs.turnFade')}</h3>
                 <p className="mb-4 text-gray-300">
-                  <strong>Turn (-5 to 1):</strong> The tendency of a disc to turn right (for right-handed backhand throws) 
-                  during the high-speed portion of flight. Lower numbers mean more turn.
+                  <strong>Turn (-5 to 1):</strong> {t('discs.turnDesc')}
                 </p>
                 <p className="text-gray-300">
-                  <strong>Fade (0-5):</strong> The disc's tendency to hook left (for right-handed backhand throws)
-                  at the end of flight. Higher numbers indicate a stronger fade.
+                  <strong>Fade (0-5):</strong> {t('discs.fadeDesc')}
                 </p>
               </div>
             </div>
             
             <div className="mt-8 text-center">
               <p className="text-gray-400">
-                Need help choosing the right disc for your game?
+                {t('discs.needHelp')}
               </p>
               <Button 
                 className="mt-4 bg-lucky-green text-black hover:bg-white hover:text-black"
                 onClick={() => window.location.href = '/disc-guide'}
               >
-                Disc Selection Guide
+                {t('discs.selectionGuide')}
               </Button>
             </div>
           </div>

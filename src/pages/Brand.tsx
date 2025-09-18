@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "@/hooks/useTranslation";
 
 // Import images properly
 import proPlayerImage from "/public/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png";
@@ -14,6 +15,7 @@ import treasureDiscImage from "/public/lovable-uploads/f2a202e9-26ab-435b-bcf0-d
 import goldDiscImage from "/public/lovable-uploads/6c56f0b3-a367-4e99-b234-5ce2b5e8c32c.png";
 
 const Brand = () => {
+  const { t } = useTranslation();
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -70,25 +72,24 @@ const Brand = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
         <div className="container mx-auto px-4 relative z-10 max-w-3xl text-center">
           <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
-            The Lucky Story
+            {t('brand.title')}
           </h1>
           <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8 max-w-3xl mx-auto px-4">
-            More than just disc golf equipment - Lucky Discs represents bold style, 
-            premium performance, and the thrill of the perfect throw. We're revolutionizing disc golf with cutting-edge designs and unmatched quality.
+            {t('brand.subtitle')}
           </p>
           
           <div className="flex flex-wrap justify-center gap-6 mt-12">
             <div className="text-center">
               <div className="text-3xl font-bold text-lucky-green">2022</div>
-              <div className="text-sm text-gray-400">Founded</div>
+              <div className="text-sm text-gray-400">{t('brand.founded')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-lucky-green">Growing</div>
-              <div className="text-sm text-gray-400">Retailer Network</div>
+              <div className="text-sm text-gray-400">{t('brand.retailerNetwork')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-lucky-green">1000+</div>
-              <div className="text-sm text-gray-400">Happy Customers</div>
+              <div className="text-sm text-gray-400">{t('brand.happyCustomers')}</div>
             </div>
           </div>
         </div>
@@ -103,36 +104,31 @@ const Brand = () => {
           >
             <div>
               <h2 className="text-4xl md:text-5xl font-heading mb-8">
-                How It All <span className="text-lucky-green">Began</span>
+                {t('brand.howItBegan')}
               </h2>
               
               <div className="space-y-6 text-lg">
                 <p className="text-gray-300">
-                  <span className="text-lucky-green font-semibold">Founded in 2022</span> by a group of passionate disc golf enthusiasts with backgrounds in design and manufacturing, 
-                  Lucky Discs emerged from a desire to bring more style and character to the sport we love.
+                  <span className="text-lucky-green font-semibold">{t('brand.founded')} 2022</span> {t('brand.foundedStory')}
                 </p>
                 
                 <p className="text-gray-300">
-                  We noticed that while disc golf was <span className="text-white font-semibold">growing rapidly</span>, the visual design of discs hadn't evolved much. 
-                  That's when we decided to combine <span className="text-lucky-green font-semibold">premium performance</span> with bold, distinctive designs that give players 
-                  a way to express themselves on the course.
+                  {t('brand.growingStory')}
                 </p>
                 
                 <div className="bg-gradient-to-r from-lucky-green/20 to-transparent p-6 rounded-lg border-l-4 border-lucky-green mb-4">
-                  <h4 className="text-white font-bold text-lg mb-2">🇫🇮 Made in Finland</h4>
+                  <h4 className="text-white font-bold text-lg mb-2">🇫🇮 {t('brand.madeInFinland')}</h4>
                   <p className="text-gray-300">
-                    All Lucky Discs are <span className="text-lucky-green font-semibold">proudly manufactured in Nokia, Finland</span> using premium European materials and 
-                    cutting-edge production techniques. Our Finnish heritage ensures exceptional quality control and 
-                    environmental responsibility in every disc we produce.
+                    {t('brand.madeInFinlandDesc')}
                   </p>
                 </div>
                 
                 <div className="bg-gradient-to-r from-lucky-green/10 to-transparent p-6 rounded-lg border-l-4 border-lucky-green">
-                  <h4 className="text-white font-bold text-lg mb-4">Connect & Shop</h4>
+                  <h4 className="text-white font-bold text-lg mb-4">{t('brand.connectShop')}</h4>
                   <div className="flex flex-wrap gap-4">
                     <Link to="/discs">
                       <Button className="bg-lucky-green text-black hover:bg-white hover:text-black">
-                        Shop Discs
+                        {t('brand.shopDiscs')}
                       </Button>
                     </Link>
                     <a 
@@ -141,7 +137,7 @@ const Brand = () => {
                       rel="noopener noreferrer"
                       className="text-lucky-green hover:text-white transition-colors font-semibold"
                     >
-                      Follow on Instagram
+                      {t('brand.followInstagram')}
                     </a>
                     <a 
                       href="https://www.facebook.com/LuckyDiscs" 
@@ -149,7 +145,7 @@ const Brand = () => {
                       rel="noopener noreferrer"
                       className="text-lucky-green hover:text-white transition-colors font-semibold"
                     >
-                      Like on Facebook
+                      {t('brand.likeOnFacebook')}
                     </a>
                   </div>
                 </div>
@@ -164,7 +160,7 @@ const Brand = () => {
               />
               <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-4/5 h-12 bg-lucky-green/30 rounded-full blur-2xl"></div>
               <div className="absolute top-4 right-4 bg-lucky-green text-black px-4 py-2 rounded-full font-bold text-sm">
-                Pro Team
+                {t('brand.proTeam')}
               </div>
             </div>
           </div>
@@ -176,10 +172,10 @@ const Brand = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-heading mb-4 text-center">
-              Why Choose <span className="text-lucky-green">Lucky Discs</span>?
+              {t('brand.whyChoose')}
             </h2>
             <p className="text-gray-300 text-center mb-16 text-xl max-w-3xl mx-auto">
-              We don't just make discs - we craft experiences that elevate your game and express your style.
+              {t('brand.whyChooseDesc')}
             </p>
             
             <div 
@@ -190,36 +186,33 @@ const Brand = () => {
                 <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-black font-bold text-2xl">P</span>
                 </div>
-                <h3 className="text-2xl font-heading mb-4 text-white">Bold Innovation</h3>
+                <h3 className="text-2xl font-heading mb-4 text-white">{t('brand.boldInnovation')}</h3>
                 <p className="text-gray-300 mb-4">
-                  We're not afraid to push the boundaries of disc design, both visually and technically, 
-                  to create products that stand out and perform.
+                  {t('brand.boldInnovationDesc')}
                 </p>
-                <div className="text-lucky-green font-semibold">Premium Materials + Cutting-Edge Design</div>
+                <div className="text-lucky-green font-semibold">{t('brand.premiumMaterialsDesign')}</div>
               </div>
               
               <div className="bg-gradient-to-b from-lucky-green/10 to-black/30 p-8 rounded-xl border border-lucky-green/20 text-center hover:transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-black font-bold text-2xl">E</span>
                 </div>
-                <h3 className="text-2xl font-heading mb-4 text-white">Quality First</h3>
+                <h3 className="text-2xl font-heading mb-4 text-white">{t('brand.qualityFirst')}</h3>
                 <p className="text-gray-300 mb-4">
-                  We never compromise on materials or manufacturing. Every disc that bears the Lucky logo 
-                  is crafted to exacting standards.
+                  {t('brand.qualityFirstDesc')}
                 </p>
-                <div className="text-lucky-green font-semibold">Tournament-Grade Performance</div>
+                <div className="text-lucky-green font-semibold">{t('brand.tournamentGrade')}</div>
               </div>
               
               <div className="bg-gradient-to-b from-lucky-green/10 to-black/30 p-8 rounded-xl border border-lucky-green/20 text-center hover:transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-black font-bold text-2xl">S</span>
                 </div>
-                <h3 className="text-2xl font-heading mb-4 text-white">Community Growth</h3>
+                <h3 className="text-2xl font-heading mb-4 text-white">{t('brand.communityGrowth')}</h3>
                 <p className="text-gray-300 mb-4">
-                  We're committed to growing the sport by supporting events, players, and initiatives 
-                  that bring more people to disc golf.
+                  {t('brand.communityGrowthDesc')}
                 </p>
-                <div className="text-lucky-green font-semibold">Player Sponsorships + Tournament Support</div>
+                <div className="text-lucky-green font-semibold">{t('brand.playerSponsorships')}</div>
               </div>
             </div>
           </div>
@@ -260,24 +253,19 @@ const Brand = () => {
             
             <div className="order-1 md:order-2">
               <h2 className="text-3xl md:text-4xl font-heading mb-6">
-                Our Design <span className="text-lucky-green">Philosophy</span>
+                {t('brand.designPhilosophy')}
               </h2>
               
               <p className="text-gray-300 mb-4">
-                Every Lucky disc tells a story. Our design aesthetic draws inspiration from casino gaming, 
-                western themes, and treasure-hunting adventures - all combined with the technical precision 
-                required for disc golf equipment.
+                {t('brand.designDesc1')}
               </p>
               
               <p className="text-gray-300 mb-4">
-                Each model features meticulously crafted artwork that complements the disc's purpose. 
-                The Bank Robber driver conveys speed and boldness, while the Treasure Hunt mid-range 
-                suggests accuracy and exploration.
+                {t('brand.designDesc2')}
               </p>
               
               <p className="text-gray-300">
-                We use a distinctive color palette with vibrant base colors and contrasting stamps 
-                to ensure our discs are not just functional but also visually striking on the course.
+                {t('brand.designDesc3')}
               </p>
             </div>
           </div>
@@ -292,34 +280,31 @@ const Brand = () => {
             ref={(el) => (sectionRefs.current[3] = el)}
           >
             <h2 className="text-3xl md:text-4xl font-heading mb-8 text-center">
-              Sponsorships & <span className="text-lucky-green">Community</span>
+              {t('brand.sponsorshipsCommunity')}
             </h2>
             
             <p className="text-gray-300 text-center mb-10 max-w-3xl mx-auto">
-              Lucky Discs is proud to support the disc golf community through player sponsorships, 
-              tournament partnerships, and local course development initiatives.
+              {t('brand.sponsorshipsDesc')}
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
               <div className="bg-white/5 p-6 rounded-lg border border-white/10">
-                <h3 className="text-xl font-heading mb-4">Player Sponsorships</h3>
+                <h3 className="text-xl font-heading mb-4">{t('brand.playerSponsorshipsTitle')}</h3>
                 <p className="text-gray-400 mb-4">
-                  We sponsor players at all levels, from up-and-coming talents to established professionals. 
-                  Our team represents the brand's values both on and off the course.
+                  {t('brand.playerSponsorshipsDesc')}
                 </p>
                 <p className="text-gray-400">
-                  Interested in joining Team Lucky? We review applications quarterly.
+                  {t('brand.interestedSponsorships')}
                 </p>
               </div>
               
               <div className="bg-white/5 p-6 rounded-lg border border-white/10">
-                <h3 className="text-xl font-heading mb-4">Tournament Support</h3>
+                <h3 className="text-xl font-heading mb-4">{t('brand.tournamentSupport')}</h3>
                 <p className="text-gray-400 mb-4">
-                  Lucky Discs sponsors tournaments across the country, providing custom discs, 
-                  merchandise, and prize packages to support the competitive scene.
+                  {t('brand.tournamentSupportDesc')}
                 </p>
                 <p className="text-gray-400">
-                  Planning an event? We'd love to discuss partnership opportunities.
+                  {t('brand.planningEvent')}
                 </p>
               </div>
             </div>
@@ -327,7 +312,7 @@ const Brand = () => {
             <div className="text-center">
               <Link to="/contact">
                 <Button className="bg-lucky-green text-black hover:bg-white hover:text-black">
-                  Contact Us About Partnerships <ArrowRight className="ml-2 h-5 w-5" />
+                  {t('brand.contactPartnerships')} <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
             </div>
@@ -339,22 +324,22 @@ const Brand = () => {
       <section className="py-16 bg-lucky-green text-black">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-heading mb-4">
-            Join the Lucky Family
+            {t('brand.joinLuckyFamily')}
           </h2>
           <p className="text-black/80 max-w-2xl mx-auto mb-8 text-lg">
-            Whether you're a player, retailer, or event organizer, we'd love to collaborate with you.
+            {t('brand.joinDesc')}
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/discs">
               <Button className="bg-black text-white hover:bg-white hover:text-black">
-                Shop Our Discs
+                {t('brand.shopOurDiscs')}
               </Button>
             </Link>
             
             <Link to="/wholesale">
               <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white">
-                Become a Retailer
+                {t('brand.becomeRetailer')}
               </Button>
             </Link>
           </div>
