@@ -33,7 +33,7 @@ const headerHtml = (logoUrl: string) => `
   <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:${baseStyles.accent};\">
     <tr>
       <td align=\"center\" style=\"padding:28px 12px;\">
-        <img src=\"${logoUrl}\" alt=\"Lucky Discs\" width=\"140\" height=\"auto\" style=\"display:block;border:0;outline:none;text-decoration:none;\">
+        <img src=\"${logoUrl}\" alt=\"Lucky Discs\" width=\"180\" height=\"auto\" style=\"display:block;border:0;outline:none;text-decoration:none;\">
         <div style=\"font:600 14px/1.4, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial; color:#000; margin-top:6px;\">Premium Disc Golf Equipment</div>
       </td>
     </tr>
@@ -130,17 +130,17 @@ const handler = async (req: Request): Promise<Response> => {
     const confirmationHtml = `
       ${headerHtml(logoUrl)}
       ${containerOpen()}
-        ${section(`<h1 style=\"margin:0 0 10px 0;font:800 26px/1.2, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.accent};\">Kiitos tukkupyyntösi lähettämisestä! 🏪</h1>
-        <div style=\"font:500 16px/1.7, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.text};\">Hei ${data.contact_person}, vastaanotimme tukkupyyntösi yritykseltä \"${data.company_name}\".</div>`)}
+        ${section(`<h1 style=\"margin:0 0 10px 0;font:800 26px/1.2, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.accent};\">Thank you for your wholesale inquiry! 🏪</h1>
+        <div style=\"font:500 16px/1.7, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.text};\">Hi ${data.contact_person}, we received your wholesale inquiry from \"${data.company_name}\".</div>`)}
         ${section(`
-          <div style=\"background:${baseStyles.accent};color:#000;border-radius:12px;padding:18px;text-align:center;font:700 15px/1.4, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;\">Käsittelemme hakemuksesi 1–2 arkipäivässä</div>
+          <div style=\"background:${baseStyles.accent};color:#000;border-radius:12px;padding:18px;text-align:center;font:700 15px/1.4, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;\">We'll process your application within 1-2 business days</div>
         `)}
         ${section(`
           <div style=\"font:500 14px/1.7, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.muted};\">
-            Kysyttävää? <a href=\"mailto:asiakaspalvelu@luckydiscs.fi\" style=\"color:${baseStyles.accent};text-decoration:none;\">asiakaspalvelu@luckydiscs.fi</a> • +358 44 989 4225
+            Questions? <a href=\"mailto:asiakaspalvelu@luckydiscs.fi\" style=\"color:${baseStyles.accent};text-decoration:none;\">asiakaspalvelu@luckydiscs.fi</a> • +358 44 989 4225
           </div>
         `)}
-        ${section(`<div style=\"text-align:center;\">${button(productsUrl,'Tutustu tuotteisiin')}</div>`)}
+        ${section(`<div style=\"text-align:center;\">${button(productsUrl,'View products')}</div>`)}
       ${containerClose()}
       ${footerHtml()}
     `;
@@ -148,7 +148,7 @@ const handler = async (req: Request): Promise<Response> => {
     const confirmationResponse = await resend.emails.send({
       from: "Lucky Discs <onboarding@resend.dev>",
       to: [data.email],
-      subject: "Tukkupyyntö vastaanotettu – Lucky Discs",
+      subject: "Wholesale inquiry received – Lucky Discs",
       html: confirmationHtml,
     });
 

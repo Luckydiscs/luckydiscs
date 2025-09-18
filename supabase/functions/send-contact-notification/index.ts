@@ -30,7 +30,7 @@ const headerHtml = (logoUrl: string) => `
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${baseStyles.accent};">
     <tr>
       <td align="center" style="padding:28px 12px;">
-        <img src="${logoUrl}" alt="Lucky Discs" width="140" height="auto" style="display:block;border:0;outline:none;text-decoration:none;">
+        <img src="${logoUrl}" alt="Lucky Discs" width="180" height="auto" style="display:block;border:0;outline:none;text-decoration:none;">
         <div style="font:600 14px/1.4, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial; color:#000; margin-top:6px;">Premium Disc Golf Equipment</div>
       </td>
     </tr>
@@ -124,24 +124,24 @@ const handler = async (req: Request): Promise<Response> => {
     const confirmationHtml = `
       ${headerHtml(logoUrl)}
       ${containerOpen()}
-        ${section(`<h1 style=\"margin:0 0 10px 0;font:800 26px/1.2, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.accent};\">Kiitos yhteydenotosta! 🥏</h1>
-        <div style=\"font:500 16px/1.7, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.text};\">Hei ${data.name}, vastaanotimme viestisi aiheesta \"${data.subject}\".</div>`)}
+        ${section(`<h1 style=\"margin:0 0 10px 0;font:800 26px/1.2, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.accent};\">Thank you for contacting us! 🥏</h1>
+        <div style=\"font:500 16px/1.7, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.text};\">Hi ${data.name}, we received your message about \"${data.subject}\".</div>`)}
         ${section(`
           <div style=\"background:#0f0f0f;border:1px solid ${baseStyles.border};border-radius:12px;padding:16px;\">
-            <div style=\"font:700 13px/1.4, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.accent};margin:0 0 8px 0;\">Viestisi</div>
+            <div style=\"font:700 13px/1.4, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.accent};margin:0 0 8px 0;\">Your message</div>
             <div style=\"color:${baseStyles.text};font:500 15px/1.7, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;white-space:pre-wrap;\">${data.message}</div>
           </div>
         `)}
         ${section(`
-          <div style=\"background:${baseStyles.accent};color:#000;border-radius:12px;padding:18px;text-align:center;font:700 15px/1.4, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;\">Vastaamme 24 h kuluessa (arkisin)</div>
+          <div style=\"background:${baseStyles.accent};color:#000;border-radius:12px;padding:18px;text-align:center;font:700 15px/1.4, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;\">We'll respond within 24 hours (weekdays)</div>
         `)}
         ${section(`
           <div style=\"font:500 14px/1.7, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.muted};\">
-            Kiireellisissä asioissa tavoitat meidät: 
+            For urgent matters, contact us: 
             <a href=\"mailto:asiakaspalvelu@luckydiscs.fi\" style=\"color:${baseStyles.accent};text-decoration:none;\">asiakaspalvelu@luckydiscs.fi</a> • +358 44 989 4225
           </div>
         `)}
-        ${section(`<div style=\"text-align:center;\">${button(discsUrl,'Selaa kiekkojamme')}</div>`)}
+        ${section(`<div style=\"text-align:center;\">${button(discsUrl,'Browse our discs')}</div>`)}
       ${containerClose()}
       ${footerHtml()}
     `;
@@ -149,7 +149,7 @@ const handler = async (req: Request): Promise<Response> => {
     const confirmationResponse = await resend.emails.send({
       from: "Lucky Discs <onboarding@resend.dev>",
       to: [data.email],
-      subject: "Viestisi vastaanotettu – Lucky Discs",
+      subject: "Message received – Lucky Discs",
       html: confirmationHtml,
     });
 
