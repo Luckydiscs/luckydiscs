@@ -12,6 +12,7 @@ import Footer from "@/components/Footer";
 import bankRobberDisc from "@/assets/bank-robber-disc.png";
 import treasureHuntDisc from "@/assets/treasure-hunt-disc.png";
 import moneyShotDisc from "@/assets/money-shot-disc.png";
+import jailbreakDisc from "@/assets/jailbreak-disc.png";
 
 const featuredProducts = [
   {
@@ -46,6 +47,17 @@ const featuredProducts = [
     turn: 1,
     fade: 3,
     isNewRelease: false
+  },
+  {
+    id: 4,
+    name: "Jailbreak",
+    imageSrc: jailbreakDisc,
+    description: "Break free from conventional throws with this revolutionary disc. Flight numbers classified.",
+    speed: "?",
+    glide: "?",
+    turn: "?",
+    fade: "?",
+    isNewRelease: true
   }
 ];
 
@@ -80,7 +92,7 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {featuredProducts.map((product) => (
               <ProductCard
                 key={product.id}
