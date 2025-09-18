@@ -67,7 +67,7 @@ const FeaturedDisc = () => {
                 <Button 
                   size="lg"
                   className="bg-primary text-primary-foreground hover:bg-primary/90 px-8"
-                  onClick={() => navigate('/discs')}
+                  onClick={() => navigate('/wholesale')}
                 >
                   {t('featured.shopNow')} <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
