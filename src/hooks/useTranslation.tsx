@@ -339,7 +339,7 @@ const translations = {
     'nav.brand': 'Brändi',
     'nav.team': 'Tiimi',
     'nav.contact': 'Yhteystiedot',
-    'nav.getWholesaleAccess': 'Hanki tukkukaupan pääsy',
+    'nav.getWholesaleAccess': 'Ryhdy jälleenmyyjäksi',
     
     // Hero Section
     'hero.modernDiscs': 'MODERNIT KIEKOT.',

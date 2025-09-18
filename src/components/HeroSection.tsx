@@ -51,10 +51,7 @@ const HeroSection = () => {
               <h3 className="text-lg font-semibold mb-4 text-lucky-green">{t('hero.whatAreYouLookingFor')}</h3>
               <div className="space-y-3">
                 <button 
-                  onClick={() => {
-                    console.log('Wholesale button clicked, navigating to /wholesale');
-                    navigate('/wholesale');
-                  }}
+                  onClick={() => navigate('/wholesale')}
                   className="w-full text-left p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/10 group"
                 >
                   <div className="flex items-center gap-3">
@@ -126,10 +123,7 @@ const HeroSection = () => {
               <Button 
                 size="lg"
                 className="bg-lucky-green text-black hover:bg-white hover:text-black px-8 font-semibold text-lg"
-                onClick={() => {
-                  console.log('Main wholesale button clicked, navigating to /wholesale');
-                  navigate('/wholesale');
-                }}
+                onClick={() => navigate('/wholesale')}
               >
                 {t('hero.getWholesaleAccess')}
               </Button>
