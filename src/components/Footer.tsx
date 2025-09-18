@@ -13,7 +13,7 @@ const Footer = () => {
               <img
                 src={logo}
                 alt="Lucky Discs logo"
-                className="h-16 w-auto"
+                className="h-24 w-auto"
               />
             </div>
             <p className="text-gray-300 text-base leading-relaxed">
@@ -88,7 +88,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="text-gray-300">
                 <strong className="text-white">Email:</strong><br />
-                info@luckydiscs.com
+                asiakaspalvelu@luckydiscs.fi
               </li>
               <li className="text-gray-300">
                 <strong className="text-white">Phone:</strong><br />

@@ -1,14 +1,26 @@
 User-agent: Googlebot
 Allow: /
+Disallow: /*lovable*
+Disallow: /*lovableproject*
 
 User-agent: Bingbot
 Allow: /
+Disallow: /*lovable*
+Disallow: /*lovableproject*
 
 User-agent: Twitterbot
 Allow: /
+Disallow: /*lovable*
+Disallow: /*lovableproject*
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /*lovable*
+Disallow: /*lovableproject*
 
 User-agent: *
 Allow: /
+Disallow: /*lovable*
+Disallow: /*lovableproject*
+
+Sitemap: https://www.luckydiscs.fi/sitemap.xml

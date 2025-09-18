@@ -93,6 +93,15 @@ const Brand = () => {
                   a way to express themselves on the course.
                 </p>
                 
+                <div className="bg-gradient-to-r from-lucky-green/20 to-transparent p-6 rounded-lg border-l-4 border-lucky-green mb-4">
+                  <h4 className="text-white font-bold text-lg mb-2">🇫🇮 Made in Finland</h4>
+                  <p className="text-gray-300">
+                    All Lucky Discs are <span className="text-lucky-green font-semibold">proudly manufactured in Nokia, Finland</span> using premium European materials and 
+                    cutting-edge production techniques. Our Finnish heritage ensures exceptional quality control and 
+                    environmental responsibility in every disc we produce.
+                  </p>
+                </div>
+                
                 <div className="bg-gradient-to-r from-lucky-green/10 to-transparent p-6 rounded-lg border-l-4 border-lucky-green">
                   <p className="text-white font-medium">
                     "I joined the Lucky Discs team in 2025 and won my first Finnish championship right away. 
@@ -105,7 +114,7 @@ const Brand = () => {
             
             <div className="relative">
               <img 
-                src="/src/assets/daniel-davidsson.png" 
+                src="/public/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png" 
                 alt="Professional disc golf player" 
                 className="rounded-lg shadow-2xl max-w-full mx-auto"
               />

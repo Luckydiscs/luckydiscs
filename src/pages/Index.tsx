@@ -129,7 +129,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
               <img 
-                src="/src/assets/disc-golf-pro-action-1.jpg" 
+                src="/public/lovable-uploads/8ae2dde2-ac3a-4144-9b11-35d02bc07d57.png" 
                 alt="Professional disc golf tournament action at Ledgestone Open with proper throwing form" 
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -142,7 +142,7 @@ const Index = () => {
             
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
               <img 
-                src="/src/assets/disc-golf-pro-action-2.jpg" 
+                src="/public/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png" 
                 alt="Professional female disc golf player demonstrating perfect throwing technique at PDGA event" 
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -155,7 +155,7 @@ const Index = () => {
             
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
               <img 
-                src="/src/assets/disc-golf-pro-action-3.jpg" 
+                src="/public/lovable-uploads/770642ce-cd09-4bd5-ad75-cfdf0deeac1c.png" 
                 alt="PDGA Pro Worlds tournament coverage showcasing elite level disc golf competition" 
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -168,7 +168,7 @@ const Index = () => {
             
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
               <img 
-                src="/src/assets/disc-golf-pro-action-4.jpg" 
+                src="/public/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png" 
                 alt="Top professional disc golf shots compilation from PDGA Pro Worlds tournament" 
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -213,7 +213,7 @@ const Index = () => {
               </div>
               <div className="relative">
                 <img 
-                  src="/src/assets/daniel-action-shot.png" 
+                  src="/public/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png" 
                   alt="Daniel Davidsson showcasing Lucky Discs performance in tournament play" 
                   className="w-full h-80 object-cover rounded-xl shadow-2xl"
                 />
