@@ -82,23 +82,26 @@ const HeroSection = () => {
             </div>
             
             {/* Quick Links */}
-            <div className="flex flex-wrap gap-4 justify-center text-sm">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 text-sm w-full sm:w-auto">
               <button 
-                className="bg-lucky-green text-black px-6 py-3 rounded-lg font-semibold hover:bg-white transition-colors duration-300"
+                className="bg-lucky-green text-black px-6 py-3 rounded-lg font-semibold hover:bg-white transition-colors duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
                 onClick={() => navigate('/team')}
               >
+                <span>👥</span>
                 Our Team
               </button>
               <button 
-                className="bg-transparent border-2 border-lucky-green text-white px-6 py-3 rounded-lg font-semibold hover:bg-lucky-green hover:text-black transition-colors duration-300"
+                className="bg-transparent border-2 border-lucky-green text-white px-6 py-3 rounded-lg font-semibold hover:bg-lucky-green hover:text-black transition-colors duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
                 onClick={() => navigate('/brand')}
               >
+                <span>📖</span>
                 Our Story
               </button>
               <button 
-                className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors duration-300"
+                className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
                 onClick={() => navigate('/contact')}
               >
+                <span>✉️</span>
                 Contact
               </button>
             </div>
