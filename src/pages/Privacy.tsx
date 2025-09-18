@@ -6,7 +6,7 @@ const Privacy = () => {
     <div className="min-h-screen bg-black text-white">
       <Navbar />
       
-      <main className="flex-1 pt-32">
+      <main className="flex-1 pt-20 sm:pt-24 md:pt-32">
         <div className="container mx-auto px-4 py-16 max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-heading mb-8">Tietosuojaseloste</h1>
           
