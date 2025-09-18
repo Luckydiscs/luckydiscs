@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -10,23 +9,84 @@ const Wholesale = () => {
 
   useEffect(() => {
     setIsVisible(true);
+    
+    // SEO optimization
+    document.title = "Wholesale Program - Lucky Discs | Become a Retailer Partner";
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Join Lucky Discs wholesale program. Competitive margins, unique products, reliable shipping. Apply now to become an authorized retailer partner.');
+    }
+    
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', 'Lucky Discs Wholesale Program - Become a Retailer Partner');
+    }
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', 'Partner with Lucky Discs for premium disc golf products. Competitive wholesale pricing, marketing support, and reliable fulfillment.');
+    }
   }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Lucky Discs Wholesale Program",
+            "description": "Join Lucky Discs wholesale program for premium disc golf products with competitive margins and marketing support.",
+            "url": "https://luckydiscs.com/wholesale",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "Lucky Discs",
+              "description": "Premium disc golf equipment manufacturer offering wholesale partnerships",
+              "offers": {
+                "@type": "Offer",
+                "description": "Wholesale disc golf products with competitive margins and marketing support"
+              }
+            }
+          })
+        }}
+      />
+      
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-40 pb-16 bg-gradient-to-br from-black via-gray-900/50 to-black relative overflow-hidden">
+      <section className="pt-40 pb-12 bg-gradient-to-br from-black via-gray-900/50 to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
-        <div className="container mx-auto px-4 relative z-10 max-w-3xl text-center">
+        <div className="container mx-auto px-4 relative z-10 max-w-4xl text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
             Lucky Discs Wholesale
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
             Partner with Lucky Discs to bring our premium disc golf products to your customers. 
-            We offer competitive wholesale pricing, unique designs, and reliable support.
+            Competitive wholesale pricing, unique designs, and reliable support.
           </p>
+        </div>
+      </section>
+      
+      {/* Application Form - Moved to top for better conversion */}
+      <section className="py-16 bg-gradient-to-b from-gray-900/50 to-black/80">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-heading mb-4">
+                Apply for <span className="text-lucky-green">Wholesale Access</span>
+              </h2>
+              <p className="text-gray-300 text-lg">
+                Complete the form below and our team will contact you within 2 business days
+              </p>
+            </div>
+            
+            <div className="bg-white/5 rounded-lg p-6 md:p-8 border border-white/10 backdrop-blur-sm">
+              <WholesaleForm />
+            </div>
+          </div>
         </div>
       </section>
       
@@ -86,64 +146,49 @@ const Wholesale = () => {
       </section>
       
       {/* Wholesale Program Details */}
-      <section className="py-16 bg-black">
+      <section className="py-16 bg-black/50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-heading mb-8 text-center">
-              Wholesale Program Details
+              Program <span className="text-lucky-green">Details</span>
             </h2>
             
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white/5 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-heading mb-3">Minimum Order Requirements</h3>
+                <h3 className="text-xl font-heading mb-3 text-lucky-green">Minimum Orders</h3>
                 <p className="text-gray-300">
-                  Initial orders start at 24 discs, with a minimum reorder of 12 discs. 
-                  Mix and match different models and colors to find the perfect inventory for your customer base.
+                  Initial orders: 24 discs minimum<br/>
+                  Reorders: 12 discs minimum<br/>
+                  Mix and match models and colors
                 </p>
               </div>
               
               <div className="bg-white/5 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-heading mb-3">Pricing Structure</h3>
+                <h3 className="text-xl font-heading mb-3 text-lucky-green">Pricing</h3>
                 <p className="text-gray-300">
-                  Wholesale pricing varies by model, with standard keystone pricing at 50% of MSRP. 
-                  Volume discounts are available for larger orders, and we offer special pricing for new retailer introductory packages.
+                  Standard keystone: 50% of MSRP<br/>
+                  Volume discounts available<br/>
+                  Special introductory pricing
                 </p>
               </div>
               
               <div className="bg-white/5 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-heading mb-3">Shipping & Lead Times</h3>
+                <h3 className="text-xl font-heading mb-3 text-lucky-green">Shipping</h3>
                 <p className="text-gray-300">
-                  Orders are typically processed within 3 business days. Domestic shipping via UPS or FedEx with tracking provided. 
-                  International shipping available with competitive rates. Drop shipping services available for qualifying partners.
+                  3 business days processing<br/>
+                  Global shipping available<br/>
+                  Drop shipping for qualifying partners
                 </p>
               </div>
               
               <div className="bg-white/5 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-heading mb-3">Payment Terms</h3>
+                <h3 className="text-xl font-heading mb-3 text-lucky-green">Payment</h3>
                 <p className="text-gray-300">
-                  We accept credit cards, PayPal, and bank transfers. Net 30 terms available for established retailers 
-                  after 3 successful orders. All prices are in USD unless otherwise specified.
+                  Cards, PayPal, bank transfers<br/>
+                  Net 30 for established retailers<br/>
+                  All prices in USD
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Application Form */}
-      <section className="py-16 bg-gradient-to-b from-black/80 to-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-heading mb-6 text-center">
-              Apply for Wholesale Access
-            </h2>
-            <p className="text-gray-300 text-center mb-8">
-              Complete the form below to apply for a wholesale account. Our team will review your application 
-              and be in touch within 2 business days.
-            </p>
-            
-            <div className="bg-white/5 rounded-lg p-6 md:p-8 border border-white/10">
-              <WholesaleForm />
             </div>
           </div>
         </div>

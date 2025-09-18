@@ -6,24 +6,20 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { supabase } from "@/integrations/supabase/client";
 
 const WholesaleForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const [formData, setFormData] = useState({
-    businessName: "",
-    contactName: "",
+    company_name: "",
+    contact_person: "",
     email: "",
     phone: "",
-    website: "",
-    address: "",
-    city: "",
-    state: "",
-    zip: "",
     country: "",
-    additionalInfo: "",
-    existingRetailer: false,
+    business_type: "",
+    message: "",
     newsletter: true
   });
 
@@ -36,51 +32,105 @@ const WholesaleForm = () => {
     setFormData((prev) => ({ ...prev, [name]: checked }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const { error } = await supabase
+        .from('wholesale_inquiries')
+        .insert([
+          {
+            company_name: formData.company_name,
+            contact_person: formData.contact_person,
+            email: formData.email,
+            phone: formData.phone || null,
+            country: formData.country,
+            business_type: formData.business_type,
+            message: formData.message || null,
+          }
+        ]);
+
+      if (error) {
+        throw error;
+      }
+
+      // Subscribe to newsletter if opted in
+      if (formData.newsletter) {
+        await supabase
+          .from('newsletter_subscriptions')
+          .insert([
+            {
+              email: formData.email,
+              source: 'wholesale_form'
+            }
+          ]);
+      }
+
       toast({
-        title: "Wholesale Application Received!",
-        description: "We'll review your application and get back to you shortly.",
+        title: "Application Submitted Successfully!",
+        description: "We'll review your wholesale application and contact you within 2 business days.",
       });
+
+      // Reset form
+      setFormData({
+        company_name: "",
+        contact_person: "",
+        email: "",
+        phone: "",
+        country: "",
+        business_type: "",
+        message: "",
+        newsletter: true
+      });
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Submission Failed",
+        description: "Please try again or contact us directly if the problem persists.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="space-y-2">
-        <Label htmlFor="businessName">Business Name</Label>
-        <Input
-          id="businessName"
-          name="businessName"
-          value={formData.businessName}
-          onChange={handleChange}
-          placeholder="Your Business Name"
-          required
-          className="bg-black/5 border-gray-700 focus:border-lucky-green"
-        />
-      </div>
-      
+      {/* Company and Contact Info - Two columns */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="contactName">Contact Name</Label>
+          <Label htmlFor="company_name">Company Name *</Label>
           <Input
-            id="contactName"
-            name="contactName"
-            value={formData.contactName}
+            id="company_name"
+            name="company_name"
+            value={formData.company_name}
             onChange={handleChange}
-            placeholder="John Doe"
+            placeholder="Your Business Name"
             required
             className="bg-black/5 border-gray-700 focus:border-lucky-green"
           />
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="email">Email Address</Label>
+          <Label htmlFor="contact_person">Contact Person *</Label>
+          <Input
+            id="contact_person"
+            name="contact_person"
+            value={formData.contact_person}
+            onChange={handleChange}
+            placeholder="John Doe"
+            required
+            className="bg-black/5 border-gray-700 focus:border-lucky-green"
+          />
+        </div>
+      </div>
+      
+      {/* Email and Phone - Two columns */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <Label htmlFor="email">Email Address *</Label>
           <Input
             id="email"
             name="email"
@@ -92,9 +142,7 @@ const WholesaleForm = () => {
             className="bg-black/5 border-gray-700 focus:border-lucky-green"
           />
         </div>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
         <div className="space-y-2">
           <Label htmlFor="phone">Phone Number</Label>
           <Input
@@ -106,107 +154,51 @@ const WholesaleForm = () => {
             className="bg-black/5 border-gray-700 focus:border-lucky-green"
           />
         </div>
-        
-        <div className="space-y-2">
-          <Label htmlFor="website">Business Website</Label>
-          <Input
-            id="website"
-            name="website"
-            value={formData.website}
-            onChange={handleChange}
-            placeholder="https://yourbusiness.com"
-            className="bg-black/5 border-gray-700 focus:border-lucky-green"
-          />
-        </div>
       </div>
       
-      <div className="space-y-2">
-        <Label htmlFor="address">Address</Label>
-        <Input
-          id="address"
-          name="address"
-          value={formData.address}
-          onChange={handleChange}
-          placeholder="123 Business St."
-          className="bg-black/5 border-gray-700 focus:border-lucky-green"
-        />
-      </div>
-      
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* Country and Business Type - Two columns */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="city">City</Label>
-          <Input
-            id="city"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-            placeholder="New York"
-            className="bg-black/5 border-gray-700 focus:border-lucky-green"
-          />
-        </div>
-        
-        <div className="space-y-2">
-          <Label htmlFor="state">State/Province</Label>
-          <Input
-            id="state"
-            name="state"
-            value={formData.state}
-            onChange={handleChange}
-            placeholder="NY"
-            className="bg-black/5 border-gray-700 focus:border-lucky-green"
-          />
-        </div>
-        
-        <div className="space-y-2">
-          <Label htmlFor="zip">ZIP/Postal Code</Label>
-          <Input
-            id="zip"
-            name="zip"
-            value={formData.zip}
-            onChange={handleChange}
-            placeholder="10001"
-            className="bg-black/5 border-gray-700 focus:border-lucky-green"
-          />
-        </div>
-        
-        <div className="space-y-2">
-          <Label htmlFor="country">Country</Label>
+          <Label htmlFor="country">Country *</Label>
           <Input
             id="country"
             name="country"
             value={formData.country}
             onChange={handleChange}
             placeholder="United States"
+            required
+            className="bg-black/5 border-gray-700 focus:border-lucky-green"
+          />
+        </div>
+        
+        <div className="space-y-2">
+          <Label htmlFor="business_type">Business Type *</Label>
+          <Input
+            id="business_type"
+            name="business_type"
+            value={formData.business_type}
+            onChange={handleChange}
+            placeholder="Retail Store, Pro Shop, Online Store, etc."
+            required
             className="bg-black/5 border-gray-700 focus:border-lucky-green"
           />
         </div>
       </div>
       
+      {/* Message - Full width */}
       <div className="space-y-2">
-        <Label htmlFor="additionalInfo">Additional Information</Label>
+        <Label htmlFor="message">Tell us about your business</Label>
         <Textarea
-          id="additionalInfo"
-          name="additionalInfo"
-          value={formData.additionalInfo}
+          id="message"
+          name="message"
+          value={formData.message}
           onChange={handleChange}
-          placeholder="Tell us about your business, your customers, or ask any questions you may have."
+          placeholder="Tell us about your business, your customers, expected volume, or any questions you may have."
           className="min-h-[100px] bg-black/5 border-gray-700 focus:border-lucky-green"
         />
       </div>
       
-      <div className="flex items-center space-x-2">
-        <Checkbox 
-          id="existingRetailer" 
-          checked={formData.existingRetailer}
-          onCheckedChange={(checked) => 
-            handleCheckboxChange("existingRetailer", checked as boolean)
-          }
-        />
-        <Label htmlFor="existingRetailer" className="text-sm">
-          I currently sell disc golf products at my store/online
-        </Label>
-      </div>
-      
+      {/* Newsletter checkbox */}
       <div className="flex items-center space-x-2">
         <Checkbox 
           id="newsletter" 
@@ -220,12 +212,13 @@ const WholesaleForm = () => {
         </Label>
       </div>
       
+      {/* Submit button */}
       <Button 
         type="submit" 
-        className="w-full md:w-auto bg-lucky-green text-black hover:bg-white hover:text-black"
+        className="w-full md:w-auto bg-lucky-green text-black hover:bg-white hover:text-black font-semibold px-8"
         disabled={isSubmitting}
       >
-        {isSubmitting ? "Submitting..." : "Submit Application"}
+        {isSubmitting ? "Submitting Application..." : "Submit Wholesale Application"}
       </Button>
     </form>
   );
