@@ -35,8 +35,8 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-black bg-opacity-90 text-white py-1 shadow-md"
-          : "bg-transparent text-white py-1 sm:py-2"
+          ? "bg-black bg-opacity-95 text-white py-2 shadow-md"
+          : "bg-black bg-opacity-80 md:bg-transparent text-white py-2 md:py-2"
       }`}
     >
       <div className="container px-4 mx-auto flex justify-between items-center">
@@ -44,7 +44,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt="Lucky Discs - Premium Disc Golf Equipment"
-            className="h-30 sm:h-32 md:h-36 w-auto transition-all duration-300 group-hover:scale-105"
+            className="h-12 sm:h-16 md:h-20 lg:h-24 w-auto transition-all duration-300 group-hover:scale-105"
           />
         </Link>
 
