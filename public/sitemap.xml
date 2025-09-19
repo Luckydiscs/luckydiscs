@@ -70,6 +70,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.luckydiscs.fi/contact?lang=en"/>
   </url>
   
+  <!-- FAQ Page -->
+  <url>
+    <loc>https://www.luckydiscs.fi/faq</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.luckydiscs.fi/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luckydiscs.fi/faq?lang=en"/>
+  </url>
+  
   <!-- Privacy Page -->
   <url>
     <loc>https://www.luckydiscs.fi/privacy</loc>

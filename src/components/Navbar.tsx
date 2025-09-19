@@ -68,6 +68,9 @@ const Navbar = () => {
           <Link to="/contact" className="hover:text-primary transition-all duration-300 font-semibold relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
             {t('nav.contact')}
           </Link>
+          <Link to="/faq" className="hover:text-primary transition-all duration-300 font-semibold relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
+            FAQ
+          </Link>
           <LanguageSwitcher />
           <Link to="/wholesale">
             <Button
@@ -130,6 +133,13 @@ const Navbar = () => {
               onClick={toggleMenu}
             >
               {t('nav.contact')}
+            </Link>
+            <Link
+              to="/faq"
+              className="text-lg py-2 border-b border-gray-800 hover:text-lucky-green"
+              onClick={toggleMenu}
+            >
+              FAQ
             </Link>
             <div className="flex justify-between items-center mt-4">
               <LanguageSwitcher />
