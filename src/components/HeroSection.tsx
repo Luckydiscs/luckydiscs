@@ -16,7 +16,7 @@ const HeroSection = () => {
         style={{
           backgroundImage: `url(${heroImage})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'right center',
+          backgroundPosition: '65% center',
           backgroundRepeat: 'no-repeat'
         }}
       ></div>
@@ -33,7 +33,7 @@ const HeroSection = () => {
       ></div>
       
       {/* Dark overlay */}
-      <div className="absolute inset-0 z-0 bg-black/60"></div>
+      <div className="absolute inset-0 z-0 bg-black/50 md:bg-black/60"></div>
       
       <div className="absolute inset-0 z-0 opacity-30">
         <div className="bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-lucky-green/20 to-transparent absolute inset-0"></div>
