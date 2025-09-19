@@ -145,7 +145,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="text-gray-300">
                 <strong className="text-white">{t('footer.email')}</strong><br />
-                asiakaspalvelu@luckydiscs.fi
+                {t('contact.emailAddress')}
               </li>
               <li className="text-gray-300">
                 <strong className="text-white">{t('footer.location')}</strong><br />

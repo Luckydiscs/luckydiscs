@@ -17,7 +17,7 @@ const Contact = () => {
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Contact Lucky Discs for customer service, wholesale inquiries, sponsorship opportunities. Based in Finland, serving worldwide. Email: asiakaspalvelu@luckydiscs.fi');
+      metaDescription.setAttribute('content', `Contact Lucky Discs for customer service, wholesale inquiries, sponsorship opportunities. Based in Finland, serving worldwide. Email: ${t('contact.emailAddress')}`);
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
@@ -68,7 +68,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">{t('contact.email')}</p>
-                    <p className="font-medium">asiakaspalvelu@luckydiscs.fi</p>
+                    <p className="font-medium">{t('contact.emailAddress')}</p>
                   </div>
                 </div>
                 

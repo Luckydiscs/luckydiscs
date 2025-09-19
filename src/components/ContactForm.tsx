@@ -25,6 +25,7 @@ const ContactForm = () => {
     email: "",
     subject: "",
     message: "",
+    honeypot: "", // Bot protection field
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -39,6 +40,13 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    
+    // Bot protection - if honeypot field is filled, it's likely a bot
+    if (formData.honeypot) {
+      console.log('Bot detected, blocking submission');
+      setIsSubmitting(false);
+      return;
+    }
     
     try {
       // Save to database
@@ -83,6 +91,7 @@ const ContactForm = () => {
         email: "",
         subject: "",
         message: "",
+        honeypot: "",
       });
 
     } catch (error) {
@@ -127,6 +136,17 @@ const ContactForm = () => {
           />
         </div>
       </div>
+      
+      {/* Honeypot field - hidden from users, used for bot detection */}
+      <input
+        type="text"
+        name="honeypot"
+        value={formData.honeypot}
+        onChange={handleChange}
+        style={{ display: 'none' }}
+        tabIndex={-1}
+        autoComplete="off"
+      />
       
       <div className="space-y-2">
         <Label htmlFor="subject">{t('contactForm.subject')}</Label>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
 import FeaturedDisc from "@/components/FeaturedDisc";
 import ProductCard from "@/components/ProductCard";
+import SocialMediaShowcase from "@/components/SocialMediaShowcase";
 import performanceChart from "@/assets/performance-chart-simple.png";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Disc, TruckIcon, Award, Users } from "lucide-react";
@@ -327,6 +328,9 @@ const Index = () => {
           </Button>
         </div>
       </section>
+      
+      {/* Social Media Showcase */}
+      <SocialMediaShowcase />
       
       <Footer />
     </div>

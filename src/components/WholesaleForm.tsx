@@ -22,7 +22,8 @@ const WholesaleForm = () => {
     country: "",
     business_type: "",
     message: "",
-    newsletter: true
+    newsletter: true,
+    honeypot: "", // Bot protection field
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -37,6 +38,13 @@ const WholesaleForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    
+    // Bot protection - if honeypot field is filled, it's likely a bot
+    if (formData.honeypot) {
+      console.log('Bot detected, blocking submission');
+      setIsSubmitting(false);
+      return;
+    }
     
     try {
       const { error } = await supabase
@@ -101,7 +109,8 @@ const WholesaleForm = () => {
         country: "",
         business_type: "",
         message: "",
-        newsletter: true
+        newsletter: true,
+        honeypot: "",
       });
 
     } catch (error) {
@@ -204,6 +213,17 @@ const WholesaleForm = () => {
           />
         </div>
       </div>
+      
+      {/* Honeypot field - hidden from users, used for bot detection */}
+      <input
+        type="text"
+        name="honeypot"
+        value={formData.honeypot}
+        onChange={handleChange}
+        style={{ display: 'none' }}
+        tabIndex={-1}
+        autoComplete="off"
+      />
       
       {/* Message - Full width */}
       <div className="space-y-2">

@@ -233,6 +233,7 @@ const translations = {
     'contact.contactInfo': 'Contact Information',
     'contact.contactInfoDesc': 'Our team is available Monday through Friday, 9am to 5pm (EET). We aim to respond to all inquiries within 24 hours.',
     'contact.email': 'Email',
+    'contact.emailAddress': 'sales@luckydiscs.fi',
     'contact.phone': 'Phone',
     'contact.location': 'Location',
     'contact.companyLocation': 'Lucky Discs Finland',
@@ -331,6 +332,17 @@ const translations = {
     'footer.privacyPolicy': 'Privacy Policy',
     'footer.termsOfService': 'Terms of Service',
     
+    // Social Media
+    'social.title': 'Follow Our Journey',
+    'social.subtitle': 'Connect with us on social media for the latest disc golf content, behind-the-scenes action, and community highlights.',
+    'social.instagramDesc': 'Daily content, product reveals, and community highlights from the world of disc golf.',
+    'social.facebookDesc': 'Connect with our community, get updates, and join discussions about disc golf.',
+    'social.youtubeDesc': 'Watch action videos, tutorials, and behind-the-scenes content from our team.',
+    'social.followUs': 'Follow Us',
+    'social.videoHighlight': 'Featured Videos',
+    'social.videoDesc': 'Check out our latest disc golf action videos and tutorials on YouTube.',
+    'social.watchVideos': 'Watch Videos',
+    
     // 404 Page
     'notFound.title': 'Page Not Found',
     'notFound.description': 'The page you are looking for could not be found. Get to know our team captain or check out our products.',
@@ -340,7 +352,7 @@ const translations = {
     // Privacy Policy
     'privacy.title': 'Privacy Policy',
     'privacy.dataController': '1. Data Controller',
-    'privacy.dataControllerContent': 'VESITIIVIS Oy\nBusiness ID: 3368925-4\nEmail: asiakaspalvelu@luckydiscs.fi\nPhone: +358 44 989 4225',
+    'privacy.dataControllerContent': 'VESITIIVIS Oy\nBusiness ID: 3368925-4\nEmail: sales@luckydiscs.fi\nPhone: +358 44 989 4225',
     'privacy.purposeOfProcessing': '2. Purpose of Personal Data Processing',
     'privacy.purposeOfProcessingContent': 'We process your personal data for the following purposes:',
     'privacy.purposeList': '• Customer service and handling inquiries\n• Processing wholesale applications\n• Sending marketing communications (with consent)\n• Improving website functionality\n• Social media marketing and engagement\n• Analytics and website optimization',
@@ -360,14 +372,14 @@ const translations = {
     'privacy.socialMediaContent': 'We maintain presence on various social media platforms including Facebook, Instagram, TikTok, and YouTube. When you interact with our social media content or visit our profiles, those platforms may collect data according to their own privacy policies. We may use this data for marketing and customer engagement purposes.',
     'privacy.contact': '9. Contact',
     'privacy.contactContent': 'If you have questions about privacy or wish to exercise your rights, please contact us:',
-    'privacy.contactInfo': 'Email: asiakaspalvelu@luckydiscs.fi\nPhone: +358 44 989 4225',
+    'privacy.contactInfo': 'Email: sales@luckydiscs.fi\nPhone: +358 44 989 4225',
     
     // Terms of Service
     'terms.title': 'Terms of Service',
     'terms.general': '1. General',
     'terms.generalContent': 'These terms of service apply to the use of the Lucky Discs website. By using the website, you accept these terms in their entirety.',
     'terms.serviceProvider': '2. Service Provider',
-    'terms.serviceProviderContent': 'VESITIIVIS Oy\nBusiness ID: 3368925-4\nEmail: asiakaspalvelu@luckydiscs.fi\nPhone: +358 44 989 4225',
+    'terms.serviceProviderContent': 'VESITIIVIS Oy\nBusiness ID: 3368925-4\nEmail: sales@luckydiscs.fi\nPhone: +358 44 989 4225',
     'terms.websiteUsage': '3. Website Usage',
     'terms.websiteUsageContent': 'The website must be used lawfully and in accordance with good practice. The following is prohibited:',
     'terms.prohibitedList': '• Unauthorized copying of the website or its content\n• Use of malicious code or software\n• Harassment of other users\n• Providing false information',
@@ -383,7 +395,7 @@ const translations = {
     'terms.applicableLawContent': 'Finnish law applies to these terms. Any disputes will be resolved in Finnish courts.',
     'terms.contact': '9. Contact',
     'terms.contactContent': 'Questions about terms of service:',
-    'terms.contactInfo': 'Email: asiakaspalvelu@luckydiscs.fi\nPhone: +358 44 989 4225',
+    'terms.contactInfo': 'Email: sales@luckydiscs.fi\nPhone: +358 44 989 4225',
   },
   fi: {
     // Navbar
@@ -606,6 +618,7 @@ const translations = {
     'contact.contactInfo': 'Yhteystiedot',
     'contact.contactInfoDesc': 'Tiimimme on käytettävissä maanantaista perjantaihin, klo 9-17 (EET). Pyrimme vastaamaan kaikkiin kyselyihin 24 tunnin kuluessa.',
     'contact.email': 'Sähköposti',
+    'contact.emailAddress': 'asiakaspalvelu@luckydiscs.fi',
     'contact.phone': 'Puhelin',
     'contact.location': 'Sijainti',
     'contact.companyLocation': 'Lucky Discs Suomi',
@@ -703,6 +716,17 @@ const translations = {
     'footer.allRightsReserved': 'Kaikki oikeudet pidätetään.',
     'footer.privacyPolicy': 'Tietosuojakäytäntö',
     'footer.termsOfService': 'Käyttöehdot',
+    
+    // Social Media
+    'social.title': 'Seuraa matkaarnme',
+    'social.subtitle': 'Yhdisty kanssamme sosiaalisessa mediassa saadaksesi uusinta frisbee golf -sisältöä, kulissien takaiset toimet ja yhteisön kohokohtia.',
+    'social.instagramDesc': 'Päivittäistä sisältöä, tuotepaljastuksia ja yhteisön kohokohtia frisbee golfin maailmasta.',
+    'social.facebookDesc': 'Yhdisty yhteisöömme, saa päivityksiä ja osallistu frisbee golf -keskusteluihin.',
+    'social.youtubeDesc': 'Katso toimintavideoita, oppaita ja kulissien takaiset sisällöt tiimiltämme.',
+    'social.followUs': 'Seuraa meitä',
+    'social.videoHighlight': 'Esitellyt videot',
+    'social.videoDesc': 'Tutustu uusimpiin frisbee golf -toimintavideoihimme ja oppaisiin YouTubessa.',
+    'social.watchVideos': 'Katso videot',
     
     // 404 Page
     'notFound.title': 'Sivu ei löytynyt',
