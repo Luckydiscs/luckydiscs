@@ -62,9 +62,106 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white pt-16 pb-8">
+    <footer className="bg-black text-white pt-12 pb-6">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        {/* Mobile-First Compact Layout */}
+        <div className="block md:hidden space-y-8">
+          {/* Logo + Social */}
+          <div className="text-center space-y-4">
+            <img
+              src={logo}
+              alt="Lucky Discs logo"
+              className="h-20 w-auto mx-auto"
+            />
+            <div className="flex justify-center space-x-6">
+              <a
+                href="https://www.instagram.com/luckydiscsofficial"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-lucky-green transition-colors"
+              >
+                <Instagram size={28} />
+              </a>
+              <a
+                href="https://www.facebook.com/LuckyDiscs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-lucky-green transition-colors"
+              >
+                <Facebook size={28} />
+              </a>
+              <a
+                href="https://www.youtube.com/@LuckyDiscs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-lucky-green transition-colors"
+              >
+                <Youtube size={28} />
+              </a>
+            </div>
+          </div>
+
+          {/* Essential Links in 2 columns */}
+          <div className="grid grid-cols-2 gap-4 text-center">
+            <Link to="/discs" className="text-gray-300 hover:text-lucky-green transition-colors text-lg font-medium">
+              {t('nav.discs')}
+            </Link>
+            <Link to="/contact" className="text-gray-300 hover:text-lucky-green transition-colors text-lg font-medium">
+              {t('nav.contact')}
+            </Link>
+            <Link to="/team" className="text-gray-300 hover:text-lucky-green transition-colors text-lg font-medium">
+              {t('nav.team')}
+            </Link>
+            <Link to="/wholesale" className="text-gray-300 hover:text-lucky-green transition-colors text-lg font-medium">
+              {t('nav.wholesale')}
+            </Link>
+          </div>
+
+          {/* Newsletter - Compact */}
+          <div className="text-center space-y-3">
+            <h3 className="text-lg font-heading text-white">{t('footer.newsletter')}</h3>
+            {isSubscribed ? (
+              <div className="bg-lucky-green/20 border border-lucky-green/40 rounded-lg p-3 inline-block">
+                <CheckCircle className="h-6 w-6 text-lucky-green mx-auto mb-1" />
+                <p className="text-lucky-green font-semibold text-sm">
+                  {t('footer.thanksForSubscribing')}
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleNewsletterSubmit} className="flex max-w-xs mx-auto">
+                <Input
+                  type="email"
+                  placeholder={t('footer.yourEmail')}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isSubmitting}
+                  className="bg-gray-900 border-gray-700 focus:border-lucky-green text-white placeholder:text-gray-500 text-sm rounded-r-none"
+                />
+                <Button 
+                  type="submit"
+                  size="sm"
+                  disabled={isSubmitting}
+                  className="bg-lucky-green text-black hover:bg-opacity-80 disabled:opacity-50 rounded-l-none"
+                >
+                  {isSubmitting ? (
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-black border-t-transparent" />
+                  ) : (
+                    <Send size={16} />
+                  )}
+                </Button>
+              </form>
+            )}
+          </div>
+
+          {/* Contact Info - Essential Only */}
+          <div className="text-center text-gray-400 text-sm space-y-1">
+            <p>{t('contact.emailAddress')}</p>
+            <p>Nokia, Finland</p>
+          </div>
+        </div>
+
+        {/* Desktop Layout - Keep Original */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           <div className="space-y-6">
             <div className="flex items-center">
               <img
@@ -205,14 +302,17 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
-          <p className="mb-4">© {new Date().getFullYear()} Lucky Discs. {t('footer.allRightsReserved')}</p>
-          <div className="flex justify-center space-x-6 text-sm">
+        <div className="border-t border-gray-800 pt-6 mt-8 text-center text-gray-400">
+          <p className="mb-3 text-sm">© {new Date().getFullYear()} Lucky Discs. {t('footer.allRightsReserved')}</p>
+          <div className="flex justify-center space-x-4 md:space-x-6 text-xs md:text-sm">
             <Link to="/privacy" className="hover:text-lucky-green transition-colors">
               {t('footer.privacyPolicy')}
             </Link>
             <Link to="/terms" className="hover:text-lucky-green transition-colors">
               {t('footer.termsOfService')}
+            </Link>
+            <Link to="/faq" className="hover:text-lucky-green transition-colors">
+              FAQ
             </Link>
           </div>
         </div>
