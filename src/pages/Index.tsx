@@ -101,7 +101,7 @@ const Index = () => {
       <FeaturedDisc />
       
       {/* Featured Products */}
-      <section className="py-20 relative">
+      <section className="py-12 md:py-16 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-900/20 via-black to-black z-0"></div>
         
         <div className="container mx-auto px-4 relative z-10">

@@ -9,7 +9,7 @@ const FeaturedDisc = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="relative -mt-20 z-20">
+    <section className="relative -mt-32 md:-mt-40 z-20">
       <div className="container mx-auto px-4">
         <div className="bg-gradient-to-r from-black/90 via-black/95 to-black/90 backdrop-blur-sm rounded-2xl border border-primary/20 overflow-hidden shadow-2xl">
           <div className="flex flex-col lg:flex-row items-center">

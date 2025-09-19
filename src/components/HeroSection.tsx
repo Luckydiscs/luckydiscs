@@ -9,14 +9,25 @@ const HeroSection = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="hero-gradient min-h-[75vh] md:min-h-screen flex items-center relative overflow-hidden">
-      {/* Background Image */}
+    <section className="hero-gradient min-h-[70vh] md:min-h-[85vh] flex items-center relative overflow-hidden">
+      {/* Mobile Background Image */}
       <div 
-        className="absolute inset-0 z-0 opacity-50"
+        className="md:hidden absolute inset-0 z-0 opacity-50"
         style={{
           backgroundImage: `url(${heroImage})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center bottom',
+          backgroundRepeat: 'no-repeat'
+        }}
+      ></div>
+      
+      {/* Desktop background positioning */}
+      <div 
+        className="hidden md:block absolute inset-0 z-0 opacity-50"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+          backgroundSize: 'cover', 
+          backgroundPosition: 'center right',
           backgroundRepeat: 'no-repeat'
         }}
       ></div>
@@ -34,7 +45,7 @@ const HeroSection = () => {
         <div className="absolute top-3/4 -right-20 w-60 h-60 rounded-full bg-lucky-gold/10 blur-xl animate-spin-slow"></div>
       </div>
       
-      <div className="container mx-auto px-4 z-10 py-20">
+      <div className="container mx-auto px-4 z-10 py-12 md:py-16">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 text-foreground mb-12 lg:mb-0">
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold mb-6 leading-tight text-white">
