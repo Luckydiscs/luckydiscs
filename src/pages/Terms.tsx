@@ -1,27 +1,42 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const Terms = () => {
+  const { t, language } = useTranslation();
+  
   useEffect(() => {
     // SEO optimization
-    document.title = "Terms of Service - Lucky Discs | Website Terms & Conditions";
+    const title = language === 'fi' 
+      ? "Käyttöehdot - Lucky Discs | Verkkosivuston käyttöehdot"
+      : "Terms of Service - Lucky Discs | Website Terms & Conditions";
+    document.title = title;
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Lucky Discs terms of service and website usage conditions. Legal information about using our website, wholesale program, and product purchases.');
+      const description = language === 'fi'
+        ? 'Lucky Discs käyttöehdot ja verkkosivuston käyttöohjeet. Lakitiedot verkkosivustomme, tukkukauppaohjelman ja tuoteostojen käytöstä.'
+        : 'Lucky Discs terms of service and website usage conditions. Legal information about using our website, wholesale program, and product purchases.';
+      metaDescription.setAttribute('content', description);
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute('content', 'Lucky Discs Terms of Service - Legal Information');
+      const ogTitleText = language === 'fi'
+        ? 'Lucky Discs Käyttöehdot - Lakitiedot'
+        : 'Lucky Discs Terms of Service - Legal Information';
+      ogTitle.setAttribute('content', ogTitleText);
     }
     
     const ogDescription = document.querySelector('meta[property="og:description"]');
     if (ogDescription) {
-      ogDescription.setAttribute('content', 'Terms and conditions for Lucky Discs website usage, wholesale partnerships, and legal disclaimers. Finnish law and jurisdiction.');
+      const ogDescText = language === 'fi'
+        ? 'Käyttöehdot Lucky Discs verkkosivuston käytölle, tukkukauppakumppanuuksille ja lakimääräykset. Suomen laki ja lainkäyttö.'
+        : 'Terms and conditions for Lucky Discs website usage, wholesale partnerships, and legal disclaimers. Finnish law and jurisdiction.';
+      ogDescription.setAttribute('content', ogDescText);
     }
-  }, []);
+  }, [language]);
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -29,90 +44,76 @@ const Terms = () => {
       
       <main className="flex-1 pt-20 sm:pt-24 md:pt-32">
         <div className="container mx-auto px-4 py-16 max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-heading mb-8">Terms of Service</h1>
+          <h1 className="text-4xl md:text-5xl font-heading mb-8">{t('terms.title')}</h1>
           
           <div className="prose prose-invert max-w-none">
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">1. General</h2>
+              <h2 className="text-2xl font-heading mb-4">{t('terms.general')}</h2>
               <p className="text-gray-300 mb-4">
-                These terms of service apply to the use of the Lucky Discs website. 
-                By using the website, you accept these terms in their entirety.
+                {t('terms.generalContent')}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">2. Service Provider</h2>
+              <h2 className="text-2xl font-heading mb-4">{t('terms.serviceProvider')}</h2>
+              <div className="text-gray-300 mb-4 whitespace-pre-line">
+                {t('terms.serviceProviderContent')}
+              </div>
+            </section>
+
+            <section className="mb-12">
+              <h2 className="text-2xl font-heading mb-4">{t('terms.websiteUsage')}</h2>
               <p className="text-gray-300 mb-4">
-                VESITIIVIS Oy<br />
-                Business ID: 3368925-4<br />
-                Email: asiakaspalvelu@luckydiscs.fi<br />
-                Phone: +358 44 989 4225
+                {t('terms.websiteUsageContent')}
+              </p>
+              <div className="text-gray-300 mb-4 whitespace-pre-line">
+                {t('terms.prohibitedList')}
+              </div>
+            </section>
+
+            <section className="mb-12">
+              <h2 className="text-2xl font-heading mb-4">{t('terms.copyright')}</h2>
+              <p className="text-gray-300 mb-4">
+                {t('terms.copyrightContent')}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">3. Website Usage</h2>
+              <h2 className="text-2xl font-heading mb-4">{t('terms.wholesale')}</h2>
               <p className="text-gray-300 mb-4">
-                The website must be used lawfully and in accordance with good practice. 
-                The following is prohibited:
-              </p>
-              <ul className="text-gray-300 mb-4 list-disc list-inside">
-                <li>Unauthorized copying of the website or its content</li>
-                <li>Use of malicious code or software</li>
-                <li>Harassment of other users</li>
-                <li>Providing false information</li>
-              </ul>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">4. Copyright</h2>
-              <p className="text-gray-300 mb-4">
-                All website content is protected by copyright. 
-                Content usage is permitted only for personal, 
-                non-commercial purposes.
+                {t('terms.wholesaleContent')}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">5. Wholesale</h2>
+              <h2 className="text-2xl font-heading mb-4">{t('terms.liability')}</h2>
               <p className="text-gray-300 mb-4">
-                Wholesale terms and prices are agreed separately. 
-                A wholesale application does not bind either party to an agreement.
+                {t('terms.liabilityContent')}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">6. Limitation of Liability</h2>
+              <h2 className="text-2xl font-heading mb-4">{t('terms.changes')}</h2>
               <p className="text-gray-300 mb-4">
-                VESITIIVIS Oy is not responsible for indirect or direct 
-                damages caused by the use of the website. Website 
-                functionality is not guaranteed to be uninterrupted.
+                {t('terms.changesContent')}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">7. Changes to Terms</h2>
+              <h2 className="text-2xl font-heading mb-4">{t('terms.applicableLaw')}</h2>
               <p className="text-gray-300 mb-4">
-                We reserve the right to change these terms at any time. 
-                Changes take effect immediately upon publication.
+                {t('terms.applicableLawContent')}
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">8. Applicable Law</h2>
+              <h2 className="text-2xl font-heading mb-4">{t('terms.contact')}</h2>
               <p className="text-gray-300 mb-4">
-                Finnish law applies to these terms. 
-                Any disputes will be resolved in Finnish courts.
+                {t('terms.contactContent')}
               </p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-heading mb-4">9. Contact</h2>
-              <p className="text-gray-300">
-                Questions about terms of service:<br />
-                Email: asiakaspalvelu@luckydiscs.fi<br />
-                Phone: +358 44 989 4225
-              </p>
+              <div className="text-gray-300 whitespace-pre-line">
+                {t('terms.contactInfo')}
+              </div>
             </section>
           </div>
         </div>
