@@ -73,11 +73,11 @@ const Index = () => {
     setIsVisible(true);
     
     // SEO optimization
-    document.title = "Lucky Discs Disc Golf - Premium Disc Golf Equipment | Wild Style";
+    document.title = "Lucky Discs Disc Golf - Premium Finnish Disc Golf Equipment | Professional Quality";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Lucky Discs disc golf equipment with tournament-tested quality. Modern disc golf discs with wild style featuring the Bank Robber, Treasure Hunt, Money Shot and Jailbreak.');
+      metaDescription.setAttribute('content', 'Lucky Discs disc golf equipment - Premium Finnish manufacturer of professional disc golf discs. Tournament-tested quality featuring Bank Robber, Treasure Hunt, Money Shot and Jailbreak.');
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
