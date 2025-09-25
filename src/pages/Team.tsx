@@ -16,11 +16,11 @@ const Team = () => {
   
   useEffect(() => {
     // SEO optimization
-    document.title = "Lucky Discs Team - Daniel Davidsson 2025 Finnish Champion | Pro Players";
+    document.title = "Lucky Discs Team - Daniel Davidsson Finnish Champion | Professional Team";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Lucky Discs Team featuring Daniel Davidsson, 2025 Finnish National Champion. Professional disc golf team using Lucky Discs exclusively for championship performance.');
+      metaDescription.setAttribute('content', 'Lucky Discs team featuring Daniel Davidsson, 2025 Finnish National Champion. Professional disc golf team using Lucky Discs exclusively for championship performance.');
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');

@@ -78,11 +78,11 @@ const Discs = () => {
 
   useEffect(() => {
     // SEO optimization
-    document.title = "Lucky Discs Collection - Premium Disc Golf Discs | Complete Range";
+    document.title = "Lucky Discs Discs - Premium Disc Golf Collection | Complete Range";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Lucky Discs collection of premium disc golf discs. Featuring Bank Robber, Treasure Hunt, Money Shot and Jailbreak discs with detailed flight numbers and specifications.');
+      metaDescription.setAttribute('content', 'Lucky Discs discs collection of premium disc golf equipment. Featuring Lucky Discs Bank Robber, Treasure Hunt, Money Shot and Jailbreak discs with detailed specifications.');
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
@@ -128,7 +128,7 @@ const Discs = () => {
         
         <div className="container mx-auto px-4 relative z-10 max-w-3xl text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
-            Lucky Discs Collection
+            Lucky Discs Discs
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
             {t('discs.subtitle')}

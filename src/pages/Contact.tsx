@@ -13,11 +13,11 @@ const Contact = () => {
 
   useEffect(() => {
     // SEO optimization
-    document.title = "Lucky Discs Contact - Customer Service & Wholesale Inquiries";
+    document.title = "Lucky Discs Contact - Customer Service & Support | Get Help";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Lucky Discs contact information for customer service, wholesale inquiries, sponsorship opportunities. Professional disc golf support from Finland worldwide.');
+      metaDescription.setAttribute('content', 'Lucky Discs contact information for customer service, wholesale inquiries, sponsorship opportunities. Professional Lucky Discs support from Finland worldwide.');
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');

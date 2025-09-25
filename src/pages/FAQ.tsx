@@ -18,7 +18,7 @@ const FAQ = () => {
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Lucky Discs FAQ with answers about shipping, products, wholesale, disc golf basics and customer support. Get help with Lucky Discs questions.');
+      metaDescription.setAttribute('content', 'Lucky Discs FAQ with answers about shipping, products, wholesale, disc golf basics and Lucky Discs customer support. Get help with questions.');
     }
 
     // Structured data for FAQ

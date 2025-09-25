@@ -13,11 +13,11 @@ const Wholesale = () => {
     setIsVisible(true);
     
     // SEO optimization
-    document.title = "Lucky Discs Wholesale Program | Become a Retailer Partner";
+    document.title = "Lucky Discs Wholesale - Become Retailer Partner | Wholesale Program";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Lucky Discs wholesale program with competitive margins, unique products, reliable shipping. Apply to become an authorized Lucky Discs retailer partner.');
+      metaDescription.setAttribute('content', 'Lucky Discs wholesale program with competitive margins, unique products, reliable shipping. Apply to become Lucky Discs wholesale retailer partner.');
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');

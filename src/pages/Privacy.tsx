@@ -9,14 +9,14 @@ const Privacy = () => {
   useEffect(() => {
     // SEO optimization
     const title = language === 'fi' 
-      ? "Lucky Discs Tietosuojakäytäntö | Tietosuoja & Evästeet"
-      : "Lucky Discs Privacy Policy | Data Protection & Cookie Information";
+      ? "Lucky Discs Tietosuoja | Tietosuojakäytäntö & Evästeet"
+      : "Lucky Discs Privacy | Privacy Policy & Data Protection";
     document.title = title;
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       const description = language === 'fi'
-        ? 'Lucky Discs tietosuojakäytäntö. Opi kuinka käsittelemme henkilötietoja, evästeitä ja oikeuksiasi Lucky Discs palveluissa Suomen ja EU:n tietosuojalakien mukaisesti.'
+        ? 'Lucky Discs tietosuoja ja tietosuojakäytäntö. Opi kuinka Lucky Discs käsittelee henkilötietoja, evästeitä ja oikeuksiasi Suomen ja EU:n tietosuojalakien mukaisesti.'
         : 'Lucky Discs privacy policy explaining data processing, user rights, cookies, and contact information for Lucky Discs services under Finnish and EU data protection laws.';
       metaDescription.setAttribute('content', description);
     }
@@ -44,7 +44,7 @@ const Privacy = () => {
       
       <main className="flex-1 pt-20 sm:pt-24 md:pt-32">
         <div className="container mx-auto px-4 py-16 max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-heading mb-8">Lucky Discs Privacy Policy</h1>
+          <h1 className="text-4xl md:text-5xl font-heading mb-8">Lucky Discs Privacy</h1>
           
           <div className="prose prose-invert max-w-none">
             <section className="mb-12">

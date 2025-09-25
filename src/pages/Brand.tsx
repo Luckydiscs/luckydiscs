@@ -22,7 +22,7 @@ const Brand = () => {
 
   useEffect(() => {
     // SEO optimization
-    document.title = "Lucky Discs Brand Story | Finnish Premium Disc Golf Manufacturer";
+    document.title = "Lucky Discs Brand - Finnish Premium Disc Golf Manufacturer Story";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -74,7 +74,7 @@ const Brand = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
         <div className="container mx-auto px-4 relative z-10 max-w-3xl text-center">
           <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
-            Lucky Discs Brand Story
+            Lucky Discs Brand
           </h1>
           <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8 max-w-3xl mx-auto px-4">
             {t('brand.subtitle')}
