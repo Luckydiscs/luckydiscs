@@ -16,11 +16,11 @@ const Team = () => {
   
   useEffect(() => {
     // SEO optimization
-    document.title = "Team Lucky Discs - Daniel Davidsson 2025 Finnish Champion | Pro Players";
+    document.title = "Lucky Discs Team - Daniel Davidsson 2025 Finnish Champion | Pro Players";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Meet Daniel Davidsson, 2025 Finnish National Champion and Lucky Discs team captain. Follow our championship team and signature Money Shot disc performance.');
+      metaDescription.setAttribute('content', 'Lucky Discs Team featuring Daniel Davidsson, 2025 Finnish National Champion. Professional disc golf team using Lucky Discs exclusively for championship performance.');
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
@@ -44,7 +44,7 @@ const Team = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
           <div className="container mx-auto text-center relative z-10 px-4">
             <h1 className="text-3xl md:text-4xl lg:text-6xl font-semibold mb-4 md:mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
-              {t('team.title')}
+              Lucky Discs Team
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6 md:mb-8 px-2">
               {t('team.subtitle')}

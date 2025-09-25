@@ -14,11 +14,11 @@ const FAQ = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    document.title = t('faq.title') + " - Lucky Discs";
+    document.title = "Lucky Discs FAQ - Frequently Asked Questions | Customer Support";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', t('faq.metaDescription'));
+      metaDescription.setAttribute('content', 'Lucky Discs FAQ with answers about shipping, products, wholesale, disc golf basics and customer support. Get help with Lucky Discs questions.');
     }
 
     // Structured data for FAQ
@@ -75,7 +75,7 @@ const FAQ = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
         <div className="container mx-auto px-4 relative z-10 max-w-3xl text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-100 via-lucky-green to-gray-100 bg-clip-text text-transparent">
-            {t('faq.title')}
+            Lucky Discs FAQ
           </h1>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto">
             {t('faq.subtitle')}

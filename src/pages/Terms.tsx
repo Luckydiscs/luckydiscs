@@ -9,15 +9,15 @@ const Terms = () => {
   useEffect(() => {
     // SEO optimization
     const title = language === 'fi' 
-      ? "Käyttöehdot - Lucky Discs | Verkkosivuston käyttöehdot"
-      : "Terms of Service - Lucky Discs | Website Terms & Conditions";
+      ? "Lucky Discs Käyttöehdot | Verkkosivuston käyttöehdot"
+      : "Lucky Discs Terms of Service | Website Terms & Conditions";
     document.title = title;
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       const description = language === 'fi'
-        ? 'Lucky Discs käyttöehdot ja verkkosivuston käyttöohjeet. Lakitiedot verkkosivustomme, tukkukauppaohjelman ja tuoteostojen käytöstä.'
-        : 'Lucky Discs terms of service and website usage conditions. Legal information about using our website, wholesale program, and product purchases.';
+        ? 'Lucky Discs käyttöehdot ja verkkosivuston käyttöohjeet. Lakitiedot Lucky Discs verkkosivustomme, tukkukauppaohjelman ja tuoteostojen käytöstä.'
+        : 'Lucky Discs terms of service covering website usage, wholesale program, liability, and legal conditions for Lucky Discs customers and retailers.';
       metaDescription.setAttribute('content', description);
     }
     
@@ -44,7 +44,7 @@ const Terms = () => {
       
       <main className="flex-1 pt-20 sm:pt-24 md:pt-32">
         <div className="container mx-auto px-4 py-16 max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-heading mb-8">{t('terms.title')}</h1>
+          <h1 className="text-4xl md:text-5xl font-heading mb-8">Lucky Discs Terms of Service</h1>
           
           <div className="prose prose-invert max-w-none">
             <section className="mb-12">

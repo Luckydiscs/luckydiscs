@@ -77,7 +77,7 @@ const Index = () => {
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Premium disc golf equipment with tournament-tested quality. Featuring the Bank Robber, Treasure Hunt, Money Shot and mysterious Jailbreak discs. Bold designs, reliable performance.');
+      metaDescription.setAttribute('content', 'Lucky Discs premium disc golf equipment with tournament-tested quality. Modern discs with wild style featuring the Bank Robber, Treasure Hunt, Money Shot and mysterious Jailbreak discs.');
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');

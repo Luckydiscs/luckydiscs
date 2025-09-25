@@ -22,11 +22,11 @@ const Brand = () => {
 
   useEffect(() => {
     // SEO optimization
-    document.title = "Our Brand Story - Lucky Discs | Finnish Premium Disc Golf Manufacturer";
+    document.title = "Lucky Discs Brand Story | Finnish Premium Disc Golf Manufacturer";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Founded in 2022 in Finland, Lucky Discs combines premium performance with bold designs. Learn about our casino-inspired aesthetics, Finnish manufacturing, and community commitment.');
+      metaDescription.setAttribute('content', 'Lucky Discs brand story - Founded in 2022 in Finland. Premium disc golf manufacturer with casino-inspired designs, Finnish quality, and championship performance.');
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
@@ -74,7 +74,7 @@ const Brand = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
         <div className="container mx-auto px-4 relative z-10 max-w-3xl text-center">
           <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
-            {t('brand.title')}
+            Lucky Discs Brand Story
           </h1>
           <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8 max-w-3xl mx-auto px-4">
             {t('brand.subtitle')}

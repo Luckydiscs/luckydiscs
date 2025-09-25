@@ -49,9 +49,9 @@ const HeroSection = () => {
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 text-foreground mb-12 lg:mb-0">
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold mb-6 leading-tight text-white">
-              <span className="text-primary">{t('hero.modernDiscs')}</span><br />
-              <span>{t('hero.wildStyle')}</span><br />
-              <span>{t('hero.luckyThrows')}</span>
+              <span className="text-primary">Lucky Discs</span><br />
+              <span>Premium Disc Golf</span><br />
+              <span>Wild Style. Lucky Throws.</span>
             </h1>
             <p className="text-xl mb-8 text-white/90 max-w-lg">
               {t('hero.subtitle')}

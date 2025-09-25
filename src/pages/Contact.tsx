@@ -13,11 +13,11 @@ const Contact = () => {
 
   useEffect(() => {
     // SEO optimization
-    document.title = t('contact.title') + " - Lucky Discs";
+    document.title = "Lucky Discs Contact - Customer Service & Wholesale Inquiries";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', `Contact Lucky Discs for customer service, wholesale inquiries, sponsorship opportunities. Based in Finland, serving worldwide. Email: ${t('contact.emailAddress')}`);
+      metaDescription.setAttribute('content', 'Lucky Discs contact information for customer service, wholesale inquiries, sponsorship opportunities. Professional disc golf support from Finland worldwide.');
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
@@ -40,7 +40,7 @@ const Contact = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
         <div className="container mx-auto px-4 relative z-10 max-w-3xl text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
-            {t('contact.title')}
+            Lucky Discs Contact
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
             {t('contact.subtitle')}

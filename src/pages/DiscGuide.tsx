@@ -14,15 +14,15 @@ const DiscGuide = () => {
 
   useEffect(() => {
     // SEO optimization
-    document.title = "Disc Golf Guide - Learn Disc Golf Basics | Lucky Discs";
+    document.title = "Lucky Discs Disc Golf Guide - Learn Disc Golf Basics | Complete Guide";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Complete disc golf guide for beginners. Learn flight numbers, disc types, throwing techniques and course strategy with Lucky Discs premium equipment.');
+      metaDescription.setAttribute('content', 'Lucky Discs disc golf guide for beginners. Learn flight numbers, disc types, throwing techniques and course strategy with Lucky Discs premium equipment.');
     } else {
       const newMeta = document.createElement('meta');
       newMeta.name = 'description';
-      newMeta.content = 'Complete disc golf guide for beginners. Learn flight numbers, disc types, throwing techniques and course strategy with Lucky Discs premium equipment.';
+      newMeta.content = 'Lucky Discs disc golf guide for beginners. Learn flight numbers, disc types, throwing techniques and course strategy with Lucky Discs premium equipment.';
       document.head.appendChild(newMeta);
     }
 
@@ -60,7 +60,7 @@ const DiscGuide = () => {
         
         <div className="container mx-auto px-4 relative z-10 max-w-4xl text-center">
           <h1 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
-            Complete Disc Golf Guide
+            Lucky Discs Disc Golf Guide
           </h1>
           <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
             Master the fundamentals of disc golf with our comprehensive guide. Learn everything from basic throws to advanced course strategy using Lucky Discs premium equipment.

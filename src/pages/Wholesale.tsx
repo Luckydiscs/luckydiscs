@@ -13,11 +13,11 @@ const Wholesale = () => {
     setIsVisible(true);
     
     // SEO optimization
-    document.title = "Wholesale Program - Lucky Discs | Become a Retailer Partner";
+    document.title = "Lucky Discs Wholesale Program | Become a Retailer Partner";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Join Lucky Discs wholesale program. Competitive margins, unique products, reliable shipping. Apply now to become an authorized retailer partner.');
+      metaDescription.setAttribute('content', 'Lucky Discs wholesale program with competitive margins, unique products, reliable shipping. Apply to become an authorized Lucky Discs retailer partner.');
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
@@ -63,7 +63,7 @@ const Wholesale = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
         <div className="container mx-auto px-4 relative z-10 max-w-4xl text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
-            {t('wholesale.title')}
+            Lucky Discs Wholesale
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
             {t('wholesale.subtitle')}
