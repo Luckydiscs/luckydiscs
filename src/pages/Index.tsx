@@ -228,6 +228,7 @@ const Index = () => {
                 src="/lovable-uploads/8ae2dde2-ac3a-4144-9b11-35d02bc07d57.png" 
                 alt="Professional disc golf tournament action shot showing perfect throwing form" 
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -241,6 +242,7 @@ const Index = () => {
                 src="/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png" 
                 alt="Professional female disc golf player demonstrating perfect throwing technique" 
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -254,6 +256,7 @@ const Index = () => {
                 src="/lovable-uploads/770642ce-cd09-4bd5-ad75-cfdf0deeac1c.png" 
                 alt="PDGA Pro Worlds tournament coverage showcasing elite level disc golf competition" 
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -267,6 +270,7 @@ const Index = () => {
                 src="/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png" 
                 alt="Top professional disc golf action shots from major tournaments" 
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -310,6 +314,7 @@ const Index = () => {
                   src={performanceChart} 
                   alt="Performance improvement chart showing consistency gains with Lucky Discs" 
                   className="w-full rounded-xl shadow-2xl"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-lucky-green/10 to-transparent rounded-xl"></div>
               </div>

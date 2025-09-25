@@ -10,25 +10,23 @@ const HeroSection = () => {
 
   return (
     <section className="hero-gradient min-h-[70vh] md:min-h-[85vh] flex items-center relative overflow-hidden">
-      {/* Mobile Background Image */}
+      {/* Optimized Background Image with lazy loading concept */}
       <div 
-        className="md:hidden absolute inset-0 z-0 opacity-50"
+        className="md:hidden absolute inset-0 z-0 opacity-50 bg-cover bg-no-repeat"
         style={{
           backgroundImage: `url(${heroImage})`,
-          backgroundSize: 'cover',
           backgroundPosition: '65% center',
-          backgroundRepeat: 'no-repeat'
+          willChange: 'transform'
         }}
       ></div>
       
       {/* Desktop background positioning */}
       <div 
-        className="hidden md:block absolute inset-0 z-0 opacity-50"
+        className="hidden md:block absolute inset-0 z-0 opacity-50 bg-cover bg-no-repeat"
         style={{
           backgroundImage: `url(${heroImage})`,
-          backgroundSize: 'cover', 
           backgroundPosition: 'center right',
-          backgroundRepeat: 'no-repeat'
+          willChange: 'transform'
         }}
       ></div>
       

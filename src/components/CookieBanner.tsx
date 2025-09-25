@@ -9,7 +9,12 @@ const CookieBanner = () => {
     // Check if user has already made a choice
     const cookieConsent = localStorage.getItem('cookie-consent');
     if (!cookieConsent) {
-      setIsVisible(true);
+      // Delay showing cookie banner for better user experience (3 seconds)
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 3000);
+      
+      return () => clearTimeout(timer);
     }
   }, []);
 
