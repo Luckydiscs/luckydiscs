@@ -72,30 +72,86 @@ const Index = () => {
   useEffect(() => {
     setIsVisible(true);
     
-    // SEO optimization based on language
-    const pageTitle = language === 'fi' 
-      ? "Lucky Discs Frisbee Golf - Premium Laatu Suomesta | Ammattilaisvälineet"
-      : "Lucky Discs Disc Golf - Premium Finnish Disc Golf Equipment | Professional Quality";
-      
-    const pageDescription = language === 'fi'
-      ? 'Lucky Discs frisbee golf välineet - Premium suomalainen valmistaja. Ammattilaistasoisia frisbee golf kiekkoja sisältäen Bank Robber, Treasure Hunt, Money Shot ja Jailbreak mallit.'
-      : 'Lucky Discs disc golf equipment - Premium Finnish manufacturer of professional disc golf discs. Tournament-tested quality featuring Bank Robber, Treasure Hunt, Money Shot and Jailbreak.';
+    // ALWAYS prioritize English for SEO - Google should see English content primarily
+    const pageTitle = "Lucky Discs Disc Golf Equipment - Premium Finnish Quality | Professional Tournament Discs";
+    const pageDescription = 'Lucky Discs professional disc golf equipment from Finland. Premium tournament-tested discs including Bank Robber, Treasure Hunt, Money Shot and Jailbreak. Wholesale available for retailers.';
     
-    document.title = pageTitle;
+    // Only show Finnish in browser title if explicitly Finnish, but keep English for search engines
+    if (language === 'fi') {
+      document.title = "Lucky Discs Frisbee Golf - Premium Laatu Suomesta | Ammattilaisvälineet";
+    } else {
+      document.title = pageTitle;
+    }
     
+    // Always keep English meta description for search engines
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', pageDescription);
     }
     
+    // Add language targeting meta tags
+    const htmlLang = document.documentElement;
+    htmlLang.setAttribute('lang', language);
+    
+    // Add hreflang for proper language targeting
+    let hrefLangEN = document.querySelector('link[hreflang="en"]');
+    let hrefLangFI = document.querySelector('link[hreflang="fi"]');
+    
+    if (!hrefLangEN) {
+      hrefLangEN = document.createElement('link');
+      hrefLangEN.setAttribute('rel', 'alternate');
+      hrefLangEN.setAttribute('hreflang', 'en');
+      hrefLangEN.setAttribute('href', 'https://www.luckydiscs.fi');
+      document.head.appendChild(hrefLangEN);
+    }
+    
+    if (!hrefLangFI) {
+      hrefLangFI = document.createElement('link');
+      hrefLangFI.setAttribute('rel', 'alternate');
+      hrefLangFI.setAttribute('hreflang', 'fi');
+      hrefLangFI.setAttribute('href', 'https://www.luckydiscs.fi');
+      document.head.appendChild(hrefLangFI);
+    }
+    
+    // Always keep English Open Graph tags for social sharing and search engines
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute('content', 'Lucky Discs - Premium Disc Golf Equipment | Wild Style Tournament Discs');
+      ogTitle.setAttribute('content', 'Lucky Discs - Premium Disc Golf Equipment | Tournament Quality Discs');
     }
     
     const ogDescription = document.querySelector('meta[property="og:description"]');
     if (ogDescription) {
-      ogDescription.setAttribute('content', 'Modern Discs. Wild Style. Lucky Throws. Discover our premium disc golf collection including Bank Robber, Treasure Hunt, and Money Shot discs.');
+      ogDescription.setAttribute('content', 'Professional disc golf equipment from Finland. Modern discs with wild style for lucky throws. Premium quality Bank Robber, Treasure Hunt, Money Shot and Jailbreak discs.');
+    }
+    
+    // Add structured data for English SEO
+    const existingStructuredData = document.querySelector('script[type="application/ld+json"]#products-schema');
+    if (!existingStructuredData) {
+      const structuredData = document.createElement('script');
+      structuredData.type = 'application/ld+json';
+      structuredData.id = 'products-schema';
+      structuredData.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Lucky Discs Professional Disc Golf Equipment",
+        "description": "Premium disc golf discs manufactured in Finland. Tournament-tested professional quality equipment.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Lucky Discs"
+        },
+        "category": "Disc Golf Equipment",
+        "offers": {
+          "@type": "AggregateOffer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "EUR"
+        },
+        "manufacturer": {
+          "@type": "Organization",
+          "name": "Lucky Discs",
+          "url": "https://www.luckydiscs.fi"
+        }
+      });
+      document.head.appendChild(structuredData);
     }
   }, [language]);
 
