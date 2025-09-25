@@ -74,7 +74,7 @@ const Index = () => {
     
     // SEO optimization based on language
     const pageTitle = language === 'fi' 
-      ? "Lucky Discs Frisbee Golf - Premium Välineet Suomesta | Ammattilaislaatu"
+      ? "Lucky Discs Frisbee Golf - Premium Laatu Suomesta | Ammattilaisvälineet"
       : "Lucky Discs Disc Golf - Premium Finnish Disc Golf Equipment | Professional Quality";
       
     const pageDescription = language === 'fi'
