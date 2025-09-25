@@ -73,15 +73,11 @@ const Index = () => {
     setIsVisible(true);
     
     // ALWAYS prioritize English for SEO - Google should see English content primarily
-    const pageTitle = "Lucky Discs Disc Golf Equipment - Premium Finnish Quality | Professional Tournament Discs";
-    const pageDescription = 'Lucky Discs professional disc golf equipment from Finland. Premium tournament-tested discs including Bank Robber, Treasure Hunt, Money Shot and Jailbreak. Wholesale available for retailers.';
+    const pageTitle = "Lucky Discs - Premium Disc Golf Equipment | Professional Tournament Discs from Finland";
+    const pageDescription = "Lucky Discs - Premium Finnish disc golf equipment. Professional tournament-tested discs including Bank Robber, Treasure Hunt, Money Shot. Wholesale opportunities for retailers worldwide.";
     
-    // Only show Finnish in browser title if explicitly Finnish, but keep English for search engines
-    if (language === 'fi') {
-      document.title = "Lucky Discs Frisbee Golf - Premium Laatu Suomesta | Ammattilaisvälineet";
-    } else {
-      document.title = pageTitle;
-    }
+    // Always set English title and description for SEO regardless of language
+    document.title = pageTitle;
     
     // Always keep English meta description for search engines
     const metaDescription = document.querySelector('meta[name="description"]');
