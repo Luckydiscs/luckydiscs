@@ -446,7 +446,7 @@ const translations = {
     // Hero Section
     'hero.luckyDiscs': 'Lucky Discs',
     'hero.discGolfEquipment': 'Frisbee Golf Välineet',
-    'hero.premiumQuality': 'Premium Suomalaista Laatua',
+    'hero.premiumQuality': 'Premium Välineet Suomesta',
     'hero.modernDiscs': 'MODERNIT KIEKOT.',
     'hero.wildStyle': 'VILLI TYYLI.',
     'hero.luckyThrows': 'ONNEKKAITA HEITTOJA.',

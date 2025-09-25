@@ -74,11 +74,11 @@ const Index = () => {
     
     // SEO optimization based on language
     const pageTitle = language === 'fi' 
-      ? "Lucky Discs Frisbee Golf - Premium Suomalaiset Frisbee Golf Välineet | Ammattilaislaatu"
+      ? "Lucky Discs Frisbee Golf - Premium Välineet Suomesta | Ammattilaislaatu"
       : "Lucky Discs Disc Golf - Premium Finnish Disc Golf Equipment | Professional Quality";
       
     const pageDescription = language === 'fi'
-      ? 'Lucky Discs frisbee golf välineet - Premium suomalainen valmistaja ammattimaisista frisbee golf kiekoista. Turnaustestattu laatu sisältäen Bank Robber, Treasure Hunt, Money Shot ja Jailbreak kiekot.'
+      ? 'Lucky Discs frisbee golf välineet - Premium suomalainen valmistaja. Ammattilaistasoisia frisbee golf kiekkoja sisältäen Bank Robber, Treasure Hunt, Money Shot ja Jailbreak mallit.'
       : 'Lucky Discs disc golf equipment - Premium Finnish manufacturer of professional disc golf discs. Tournament-tested quality featuring Bank Robber, Treasure Hunt, Money Shot and Jailbreak.';
     
     document.title = pageTitle;
