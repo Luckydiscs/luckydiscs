@@ -66,18 +66,26 @@ const featuredProducts = [
 
 const Index = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
     
-    // SEO optimization
-    document.title = "Lucky Discs Disc Golf - Premium Finnish Disc Golf Equipment | Professional Quality";
+    // SEO optimization based on language
+    const pageTitle = language === 'fi' 
+      ? "Lucky Discs Frisbee Golf - Premium Suomalaiset Frisbee Golf Välineet | Ammattilaislaatu"
+      : "Lucky Discs Disc Golf - Premium Finnish Disc Golf Equipment | Professional Quality";
+      
+    const pageDescription = language === 'fi'
+      ? 'Lucky Discs frisbee golf välineet - Premium suomalainen valmistaja ammattimaisista frisbee golf kiekoista. Turnaustestattu laatu sisältäen Bank Robber, Treasure Hunt, Money Shot ja Jailbreak kiekot.'
+      : 'Lucky Discs disc golf equipment - Premium Finnish manufacturer of professional disc golf discs. Tournament-tested quality featuring Bank Robber, Treasure Hunt, Money Shot and Jailbreak.';
+    
+    document.title = pageTitle;
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Lucky Discs disc golf equipment - Premium Finnish manufacturer of professional disc golf discs. Tournament-tested quality featuring Bank Robber, Treasure Hunt, Money Shot and Jailbreak.');
+      metaDescription.setAttribute('content', pageDescription);
     }
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
@@ -89,7 +97,7 @@ const Index = () => {
     if (ogDescription) {
       ogDescription.setAttribute('content', 'Modern Discs. Wild Style. Lucky Throws. Discover our premium disc golf collection including Bank Robber, Treasure Hunt, and Money Shot discs.');
     }
-  }, []);
+  }, [language]);
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">

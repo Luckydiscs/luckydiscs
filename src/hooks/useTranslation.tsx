@@ -23,6 +23,9 @@ const translations = {
     'nav.getWholesaleAccess': 'Get Wholesale Access',
     
     // Hero Section
+    'hero.luckyDiscs': 'Lucky Discs',
+    'hero.discGolfEquipment': 'Disc Golf Equipment',
+    'hero.premiumQuality': 'Premium Finnish Quality',
     'hero.modernDiscs': 'MODERN DISCS.',
     'hero.wildStyle': 'WILD STYLE.',
     'hero.luckyThrows': 'LUCKY THROWS.',
@@ -441,6 +444,9 @@ const translations = {
     'nav.getWholesaleAccess': 'Ryhdy jälleenmyyjäksi',
     
     // Hero Section
+    'hero.luckyDiscs': 'Lucky Discs',
+    'hero.discGolfEquipment': 'Frisbee Golf Välineet',
+    'hero.premiumQuality': 'Premium Suomalaista Laatua',
     'hero.modernDiscs': 'MODERNIT KIEKOT.',
     'hero.wildStyle': 'VILLI TYYLI.',
     'hero.luckyThrows': 'ONNEKKAITA HEITTOJA.',
