@@ -53,8 +53,8 @@ const translations = {
     'featured.viewAllDiscs': 'View All Discs',
     
     // Disc descriptions
-    'disc.bankRobber.description': 'A high-speed driver with unmatched stability for power throwers.',
-    'disc.treasureHunt.description': 'Mid-range disc with excellent glide and reliable fade.',
+    'disc.bankRobber.description': 'Versatile fairway driver perfect for controlled throws with reliable flight path and consistent performance.',
+    'disc.treasureHunt.description': 'Distance driver designed for maximum distance. High-speed disc with reliable fade for long throws.',
     'disc.moneyShot.description': 'Our signature putter with incredible grip and accuracy.',
     'disc.jailbreak.description': 'Break free from conventional throws with this revolutionary disc. Flight numbers classified.',
     
