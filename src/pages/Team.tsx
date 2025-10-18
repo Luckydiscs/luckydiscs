@@ -15,23 +15,93 @@ const Team = () => {
   const { t } = useTranslation();
   
   useEffect(() => {
-    // SEO optimization
-    document.title = "Lucky Discs Team - Daniel Davidsson Finnish Champion | Professional Team";
+    // SEO Meta Tags
+    const pageTitle = "Lucky Discs Team - Daniel Davidsson Finnish Champion 2025 | Professional Disc Golf Team";
+    const pageDescription = "Meet the Lucky Discs professional team featuring Daniel Davidsson, 2025 Finnish Disc Golf Champion. Championship mindset, professional athletes, and tournament excellence.";
+    const pageKeywords = "Daniel Davidsson, Finnish Champion 2025, professional disc golf team, Lucky Discs team, disc golf athletes, tournament champions, Money Shot signature disc";
+    const canonicalUrl = "https://www.luckydiscs.fi/team";
+    const ogImage = "https://www.luckydiscs.fi/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png";
     
+    document.title = pageTitle;
+    
+    // Meta tags
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Lucky Discs team featuring Daniel Davidsson, 2025 Finnish National Champion. Professional disc golf team using Lucky Discs exclusively for championship performance.');
-    }
+    if (metaDescription) metaDescription.setAttribute('content', pageDescription);
     
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) {
-      ogTitle.setAttribute('content', 'Team Lucky Discs - Daniel Davidsson Finnish Champion 2025');
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords) metaKeywords.setAttribute('content', pageKeywords);
+    
+    // Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
     }
+    canonical.setAttribute('href', canonicalUrl);
+    
+    // Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', pageTitle);
     
     const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) {
-      ogDescription.setAttribute('content', 'Championship-proven performance with Daniel Davidsson leading Team Lucky Discs. 2025 Finnish National Champion throwing Money Shot and Lucky Discs exclusively.');
+    if (ogDescription) ogDescription.setAttribute('content', pageDescription);
+    
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
+    
+    const ogImageTag = document.querySelector('meta[property="og:image"]');
+    if (ogImageTag) ogImageTag.setAttribute('content', ogImage);
+    
+    // Twitter Card
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) twitterTitle.setAttribute('content', pageTitle);
+    
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDescription) twitterDescription.setAttribute('content', pageDescription);
+    
+    const twitterImage = document.querySelector('meta[name="twitter:image"]');
+    if (twitterImage) twitterImage.setAttribute('content', ogImage);
+    
+    // Hreflang
+    const updateOrCreateHreflang = (lang: string, url: string) => {
+      let hreflang = document.querySelector(`link[hreflang="${lang}"]`);
+      if (!hreflang) {
+        hreflang = document.createElement('link');
+        hreflang.setAttribute('rel', 'alternate');
+        hreflang.setAttribute('hreflang', lang);
+        document.head.appendChild(hreflang);
+      }
+      hreflang.setAttribute('href', url);
+    };
+    
+    updateOrCreateHreflang('en', canonicalUrl);
+    updateOrCreateHreflang('fi', canonicalUrl);
+    updateOrCreateHreflang('x-default', canonicalUrl);
+    
+    // Structured Data - Person & Athlete
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Daniel Davidsson",
+      "jobTitle": "Professional Disc Golf Player",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Lucky Discs"
+      },
+      "award": "Finnish Champion 2025",
+      "sport": "Disc Golf",
+      "image": ogImage,
+      "description": "Professional disc golf player and 2025 Finnish Champion representing Lucky Discs"
+    };
+    
+    let script = document.querySelector('script[type="application/ld+json"]');
+    if (!script) {
+      script = document.createElement('script');
+      script.setAttribute('type', 'application/ld+json');
+      document.head.appendChild(script);
     }
+    script.textContent = JSON.stringify(structuredData);
   }, []);
 
   return (

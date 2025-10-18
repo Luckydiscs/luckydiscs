@@ -77,24 +77,102 @@ const Discs = () => {
     : discs.filter(disc => disc.type === selectedType);
 
   useEffect(() => {
-    // SEO optimization
-    document.title = "Lucky Discs Discs - Premium Disc Golf Collection | Complete Range";
+    // SEO Meta Tags
+    const pageTitle = "Lucky Discs Collection - Premium Disc Golf Discs | Drivers, Fairways, Midranges & Putters";
+    const pageDescription = "Browse Lucky Discs complete collection of premium disc golf discs. Professional drivers, fairway discs, midranges and putters including Bank Robber, Treasure Hunt, Money Shot and Jailbreak. Find your perfect disc!";
+    const pageKeywords = "disc golf discs, drivers, fairway discs, mid-range discs, putters, Bank Robber, Treasure Hunt, Money Shot, Jailbreak, Lucky Discs collection, professional disc golf discs";
+    const canonicalUrl = "https://www.luckydiscs.fi/discs";
+    const ogImage = "https://www.luckydiscs.fi/lovable-uploads/4c26d096-cfa9-4173-afe7-93b4f8b28426.png";
     
+    document.title = pageTitle;
+    
+    // Meta tags
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Lucky Discs discs collection of premium disc golf equipment. Featuring Lucky Discs Bank Robber, Treasure Hunt, Money Shot and Jailbreak discs with detailed specifications.');
-    }
+    if (metaDescription) metaDescription.setAttribute('content', pageDescription);
     
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) {
-      ogTitle.setAttribute('content', 'Lucky Discs Collection - Premium Disc Golf Equipment');
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords) metaKeywords.setAttribute('content', pageKeywords);
+    
+    // Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
     }
+    canonical.setAttribute('href', canonicalUrl);
+    
+    // Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', pageTitle);
     
     const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) {
-      ogDescription.setAttribute('content', 'Complete Lucky Discs collection: drivers, fairway discs, mid-range and putters. Tournament-approved discs with distinctive designs and reliable performance.');
+    if (ogDescription) ogDescription.setAttribute('content', pageDescription);
+    
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
+    
+    const ogImageTag = document.querySelector('meta[property="og:image"]');
+    if (ogImageTag) ogImageTag.setAttribute('content', ogImage);
+    
+    // Twitter Card
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) twitterTitle.setAttribute('content', pageTitle);
+    
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDescription) twitterDescription.setAttribute('content', pageDescription);
+    
+    const twitterImage = document.querySelector('meta[name="twitter:image"]');
+    if (twitterImage) twitterImage.setAttribute('content', ogImage);
+    
+    // Hreflang
+    const updateOrCreateHreflang = (lang: string, url: string) => {
+      let hreflang = document.querySelector(`link[hreflang="${lang}"]`);
+      if (!hreflang) {
+        hreflang = document.createElement('link');
+        hreflang.setAttribute('rel', 'alternate');
+        hreflang.setAttribute('hreflang', lang);
+        document.head.appendChild(hreflang);
+      }
+      hreflang.setAttribute('href', url);
+    };
+    
+    updateOrCreateHreflang('en', canonicalUrl);
+    updateOrCreateHreflang('fi', canonicalUrl);
+    updateOrCreateHreflang('x-default', canonicalUrl);
+    
+    // Structured Data - Product Collection
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Lucky Discs Collection",
+      "description": pageDescription,
+      "itemListElement": discs.map((disc, index) => ({
+        "@type": "Product",
+        "position": index + 1,
+        "name": disc.name,
+        "description": t(disc.descriptionKey),
+        "image": `https://www.luckydiscs.fi${disc.imageSrc}`,
+        "brand": {
+          "@type": "Brand",
+          "name": "Lucky Discs"
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "EUR"
+        }
+      }))
+    };
+    
+    let script = document.querySelector('script[type="application/ld+json"]');
+    if (!script) {
+      script = document.createElement('script');
+      script.setAttribute('type', 'application/ld+json');
+      document.head.appendChild(script);
     }
-  }, []);
+    script.textContent = JSON.stringify(structuredData);
+  }, [t]);
 
   useEffect(() => {
     if (headerRef.current) {

@@ -12,24 +12,98 @@ const Contact = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    // SEO optimization
-    document.title = "Lucky Discs Contact - Customer Service & Support | Get Help";
+    // SEO Meta Tags
+    const pageTitle = "Contact Lucky Discs - Customer Service & Business Inquiries";
+    const pageDescription = "Contact Lucky Discs for customer support, wholesale inquiries, sponsorships, and partnerships. Email, phone, and social media support available. Based in Finland.";
+    const pageKeywords = "Lucky Discs contact, customer service, wholesale inquiry, business contact, disc golf support, Finland contact, sponsorship inquiry";
+    const canonicalUrl = "https://www.luckydiscs.fi/contact";
+    const ogImage = "https://www.luckydiscs.fi/lucky-discs-logo.png";
     
+    document.title = pageTitle;
+    
+    // Meta tags
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Lucky Discs contact information for customer service, wholesale inquiries, sponsorship opportunities. Professional Lucky Discs support from Finland worldwide.');
-    }
+    if (metaDescription) metaDescription.setAttribute('content', pageDescription);
     
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) {
-      ogTitle.setAttribute('content', t('contact.title') + ' - Lucky Discs');
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords) metaKeywords.setAttribute('content', pageKeywords);
+    
+    // Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
     }
+    canonical.setAttribute('href', canonicalUrl);
+    
+    // Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', pageTitle);
     
     const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) {
-      ogDescription.setAttribute('content', 'Get in touch with Lucky Discs team for product questions, wholesale partnerships, sponsorships and more. Professional support from Finland.');
+    if (ogDescription) ogDescription.setAttribute('content', pageDescription);
+    
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
+    
+    const ogImageTag = document.querySelector('meta[property="og:image"]');
+    if (ogImageTag) ogImageTag.setAttribute('content', ogImage);
+    
+    // Twitter Card
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) twitterTitle.setAttribute('content', pageTitle);
+    
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDescription) twitterDescription.setAttribute('content', pageDescription);
+    
+    const twitterImage = document.querySelector('meta[name="twitter:image"]');
+    if (twitterImage) twitterImage.setAttribute('content', ogImage);
+    
+    // Hreflang
+    const updateOrCreateHreflang = (lang: string, url: string) => {
+      let hreflang = document.querySelector(`link[hreflang="${lang}"]`);
+      if (!hreflang) {
+        hreflang = document.createElement('link');
+        hreflang.setAttribute('rel', 'alternate');
+        hreflang.setAttribute('hreflang', lang);
+        document.head.appendChild(hreflang);
+      }
+      hreflang.setAttribute('href', url);
+    };
+    
+    updateOrCreateHreflang('en', canonicalUrl);
+    updateOrCreateHreflang('fi', canonicalUrl);
+    updateOrCreateHreflang('x-default', canonicalUrl);
+    
+    // Structured Data - Contact Page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": pageTitle,
+      "description": pageDescription,
+      "url": canonicalUrl,
+      "about": {
+        "@type": "Organization",
+        "name": "Lucky Discs",
+        "email": "info@luckydiscs.fi",
+        "telephone": "+358 44 989 4225",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nokia",
+          "addressCountry": "FI"
+        }
+      }
+    };
+    
+    let script = document.querySelector('script[type="application/ld+json"]');
+    if (!script) {
+      script = document.createElement('script');
+      script.setAttribute('type', 'application/ld+json');
+      document.head.appendChild(script);
     }
-  }, [t]);
+    script.textContent = JSON.stringify(structuredData);
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white">
