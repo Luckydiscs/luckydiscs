@@ -1,95 +1,112 @@
 
-# Korjaussuunnitelma: Brand-sivu kontrastiongelma & Team-sivu tekstityyli
 
-## Ongelma 1: Brand-sivun vihreä osio (CTA Section)
+# UKK-sivun korjaukset: Sisältö ja visuaalinen luettavuus
 
-### Syy
-Brand-sivun alaosassa (rivit 410-446) on vihreä tausta (`bg-lucky-green`), mutta sen sisällä oleva DiscPromotion-komponentti käyttää `text-primary` (vihreä) ja `text-muted-foreground` (harmaa) värejä tekstiin. Tämä aiheuttaa vihreä-vihreällä -tilanteen, jossa kontrasti on olematon.
+## Ongelmat
 
-### Ratkaisu
-Luodaan DiscPromotion-komponenttiin uusi `lightBackground` prop, joka vaihtaa värit sopiviksi vaaleilla/vihreillä taustoilla:
-- Pääväri: musta (`text-black`) vihreän sijaan
-- Kuvausten teksti: tumma harmaa (`text-gray-700`) vaalean harmaan sijaan
-- Taustalaatikko: tumma gradient vaalean sijaan
+### 1. Virheellinen toimitus- ja maksutieto
+Nykyinen sisältö väittää, että Lucky Discs toimittaa maailmanlaajuisesti kuluttajille. Todellisuudessa:
+- Lucky Discs ei myy suoraan kuluttajille ulkomaille
+- Ulkomaiset asiakkaat voivat kysyä paikalliselta frisbeegolf-kauppiaalta, ottaisiko hän Lucky Discs -kiekot myyntiin
 
-### Muutettavat tiedostot
-1. **src/components/DiscPromotion.tsx**
-   - Lisätään `lightBackground?: boolean` prop
-   - Muutetaan inline-variantin värit dynaamisiksi: kun `lightBackground=true`, käytetään tummia värejä
-
-2. **src/pages/Brand.tsx** (rivi 414-420)
-   - Lisätään `lightBackground={true}` DiscPromotion-kutsuun
+### 2. Valkoinen teksti liian kirkas/raskas silmille
+Sama ongelma kuin Team-sivulla: `font-semibold` ja `text-gray-100` yhdistelmä on liian kirkas tummalla taustalla.
 
 ---
 
-## Ongelma 2: Team-sivun liian boldattu/hohtava valkoinen teksti
+## Päivitykset
 
-### Syy
-Team-sivulla käytetään useita font-weight luokkia (`font-semibold`, `font-bold`) valkoiselle tekstille tummalla taustalla. Bebas Neue -heading-fontti on jo luonnostaan paksu, ja ylimääräinen boldaus tekee siitä visuaalisesti raskaan ja vaikeasti luettavan.
+### Vaihe 1: Käännösten päivitys (useTranslation.tsx)
 
-### Ratkaisu
-Kevennetään tekstien painotusta:
-- `font-bold` → `font-semibold` tai `font-medium`
-- `font-semibold` → `font-medium` tai `font-normal`
-- Pienennetään heading-fontin käyttöä pienemmissä otsikoissa
+**Englanti:**
+```
+faq.shipping.question: "Do you ship worldwide?"
+faq.shipping.answer: "Currently, we do not ship directly to consumers worldwide. However, you can inquire with your local disc golf retailer about stocking Lucky Discs. For Finnish customers, free shipping is available on orders over €50. International customers may be responsible for customs duties."
 
-### Muutettavat tiedostot
-**src/pages/Team.tsx**
-- Rivi 111: `font-semibold` → `font-medium` (Hero H1)
-- Rivi 128: `font-semibold` → `font-medium` (Hall of Fame otsikko)
-- Rivi 148: `font-semibold` → `font-medium` (Daniel nimi)
-- Rivi 187: `font-bold` → `font-semibold` (Championship Mindset)
-- Rivi 197, 206, 215: `font-semibold` → `font-medium` (Excellence, Team Spirit, Innovation)
-- Rivi 233: `font-bold` → `font-semibold` (Are You Our Next Star)
-- Rivi 293: `font-bold` → `font-semibold` (Championship Results)
-- Rivi 329: `font-bold` → `font-semibold` (Follow Journey)
+faq.payment.question: "What payment methods do you accept?"
+faq.payment.answer: "We accept all major credit cards, PayPal, and bank transfers. For wholesale customers, we offer Net 30 payment terms after account approval."
+```
+
+**Suomi:**
+```
+faq.shipping.question: "Toimitatteko maailmanlaajuisesti?"
+faq.shipping.answer: "Emme tällä hetkellä toimita suoraan kuluttajille ulkomaille. Voit kuitenkin kysyä paikalliselta frisbeegolf-kauppiaaltasi, ottaisiko hän Lucky Discs -kiekot myyntiin. Suomalaiset asiakkaat saavat ilmaisen toimituksen yli 50€ tilauksista."
+
+faq.payment.question: "Mitä maksutapoja hyväksytte?"
+faq.payment.answer: "Hyväksymme kaikki suurimmat luottokortit, PayPalin ja pankkisiirrot. Jälleenmyyjäasiakkaille tarjoamme 30 päivän maksuehdon tilin hyväksynnän jälkeen."
+```
+
+### Vaihe 2: FAQ.tsx visuaaliset parannukset
+
+**Tekstien kevennys (kuten Team-sivulla):**
+- AccordionTrigger: `font-semibold` → `font-medium`
+- Osioiden otsikot (h2): `text-gray-100` → `text-gray-200`
+- Accordion tekstit: `text-xl md:text-2xl` → `text-lg md:text-xl` (hieman pienempi)
+- Hero otsikko: `font-bold` → `font-semibold`
+
+**Rivit ja muutokset:**
+- Rivi 77: `font-bold` → `font-semibold` (Hero H1)
+- Rivi 91: `text-gray-100` → `text-gray-200` (General Questions otsikko)
+- Rivi 96, 105, 114, 123: `font-semibold` → `font-medium` (Accordion kysymykset)
+- Rivi 134: `text-gray-100` → `text-gray-200` (Ordering & Shipping otsikko)
+- Rivi 139, 148, 157, 166: `font-semibold` → `font-medium`
+- Rivi 177: `text-gray-100` → `text-gray-200` (Products otsikko)
+- Rivi 182, 191, 200: `font-semibold` → `font-medium`
+- Rivi 212: `text-gray-100` → `text-gray-200` (Still Have Questions otsikko)
+
+---
+
+## Yhteenveto muutoksista
+
+| Tiedosto | Muutos |
+|----------|--------|
+| `src/hooks/useTranslation.tsx` | Päivitetään `faq.shipping.answer` (EN + FI) kuvaamaan, ettei suoraa toimitusta ulkomaille ole |
+| `src/hooks/useTranslation.tsx` | Päivitetään `faq.payment.answer` (EN + FI) vastaamaan jälleenmyyjäasiakkaita |
+| `src/pages/FAQ.tsx` | Kevennetään `font-weight` arvoja: `font-bold` → `font-semibold`, `font-semibold` → `font-medium` |
+| `src/pages/FAQ.tsx` | Pehmennetään otsikkovärejä: `text-gray-100` → `text-gray-200` |
 
 ---
 
 ## Tekninen toteutus
 
-### Vaihe 1: DiscPromotion.tsx päivitys
+### useTranslation.tsx - rivit 427-430 (EN) ja 858-861 (FI)
 
+**Englanti (rivit 427-430):**
 ```typescript
-interface DiscPromotionProps {
-  // ... olemassa olevat propsit
-  lightBackground?: boolean;  // UUSI
-}
-
-// Inline-variantissa (rivit 44-101):
-// Muutetaan värit dynaamisiksi:
-const textPrimary = lightBackground ? 'text-black' : 'text-primary';
-const textMuted = lightBackground ? 'text-gray-700' : 'text-muted-foreground';
-const bgGradient = lightBackground 
-  ? 'bg-gradient-to-r from-black/10 to-black/20 border-black/30' 
-  : 'bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20';
+'faq.shipping.question': 'Do you ship worldwide?',
+'faq.shipping.answer': 'Currently, we do not ship directly to consumers worldwide. However, you can inquire with your local disc golf retailer about stocking Lucky Discs. For Finnish customers, free shipping is available on orders over €50.',
+'faq.payment.question': 'What payment methods do you accept?',
+'faq.payment.answer': 'We accept all major credit cards, PayPal, and bank transfers. For wholesale customers, we offer Net 30 payment terms after account approval.',
 ```
 
-### Vaihe 2: Brand.tsx päivitys
+**Suomi (rivit 858-861):**
+```typescript
+'faq.shipping.question': 'Toimitatteko maailmanlaajuisesti?',
+'faq.shipping.answer': 'Emme tällä hetkellä toimita suoraan kuluttajille ulkomaille. Voit kuitenkin kysyä paikalliselta frisbeegolf-kauppiaaltasi, ottaisiko hän Lucky Discs -kiekot myyntiin. Suomalaiset asiakkaat saavat ilmaisen toimituksen yli 50€ tilauksista.',
+'faq.payment.question': 'Mitä maksutapoja hyväksytte?',
+'faq.payment.answer': 'Hyväksymme kaikki suurimmat luottokortit, PayPalin ja pankkisiirrot. Jälleenmyyjäasiakkaille tarjoamme 30 päivän maksuehdon tilin hyväksynnän jälkeen.',
+```
+
+### FAQ.tsx - visuaaliset muutokset
 
 ```tsx
-<DiscPromotion 
-  discName="bankRobber"
-  discImage={bankRobberDisc}
-  flightNumbers={{ speed: 8, glide: 5, turn: -1, fade: 2 }}
-  buyUrl="https://kesapelit.fi/tuote/premium-bank-robber"
-  variant="inline"
-  lightBackground={true}  // LISÄTÄÄN
-/>
+// Rivi 77: Hero otsikko
+<h1 className="text-4xl md:text-6xl font-semibold mb-6 ...">
+
+// Rivit 91, 134, 177, 212: Osioiden otsikot
+<h2 className="text-3xl md:text-4xl font-heading mb-6 text-gray-200">
+
+// Kaikki AccordionTrigger komponentit
+<AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
 ```
-
-### Vaihe 3: Team.tsx tekstipainotusten kevennys
-
-Kaikki `font-bold` → `font-semibold`
-Kaikki `font-semibold` → `font-medium`
 
 ---
 
-## Yhteenveto
+## Lopputulos
 
-| Sivu | Ongelma | Ratkaisu |
-|------|---------|----------|
-| Brand | Vihreä teksti vihreällä taustalla | `lightBackground` prop + mustat tekstit |
-| Team | Liian paksut valkoiset tekstit | Kevennetään font-weight arvoja |
+Tämän korjauksen jälkeen:
+- FAQ-sivu kertoo oikein, ettei suoraa kuluttajamyyntiä ulkomaille ole
+- Asiakkaita ohjataan kysymään paikalliselta jälleenmyyjältä
+- Valkoinen teksti on pehmeämpää ja helpommin luettavaa tummalla taustalla
+- Yhtenäinen visuaalinen tyyli Team-sivun kanssa
 
-Molemmat korjaukset parantavat luettavuutta ja kontrastia merkittävästi ilman visuaalisen identiteetin muuttamista.
