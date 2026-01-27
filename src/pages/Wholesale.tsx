@@ -136,7 +136,7 @@ const Wholesale = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
         <div className="container mx-auto px-4 relative z-10 max-w-4xl text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
-            Lucky Discs Wholesale
+            {t('wholesale.title')}
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
             {t('wholesale.subtitle')}
