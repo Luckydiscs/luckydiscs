@@ -1,0 +1,15 @@
+{
+  "name": "Lucky Discs",
+  "short_name": "Lucky Discs",
+  "icons": [
+    {
+      "src": "/lucky-discs-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#008800",
+  "background_color": "#000000",
+  "display": "standalone",
+  "start_url": "/"
+}

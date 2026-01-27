@@ -57,7 +57,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     
-    <!-- Structured Data -->
+    <!-- Structured Data - Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -73,8 +73,57 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "Customer Service",
-        "url": "https://luckydiscs.com/contact"
+        "url": "https://www.luckydiscs.fi/contact"
       }
+    }
+    </script>
+    
+    <!-- Structured Data - WebSite with SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Lucky Discs",
+      "url": "https://www.luckydiscs.fi",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.luckydiscs.fi/discs?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- Structured Data - Site Navigation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "SiteNavigationElement",
+          "position": 1,
+          "name": "Discs",
+          "url": "https://www.luckydiscs.fi/discs"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 2,
+          "name": "Team",
+          "url": "https://www.luckydiscs.fi/team"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 3,
+          "name": "Wholesale",
+          "url": "https://www.luckydiscs.fi/wholesale"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 4,
+          "name": "Contact",
+          "url": "https://www.luckydiscs.fi/contact"
+        }
+      ]
     }
     </script>
     
@@ -102,7 +151,11 @@
     </script>
     <!-- End Meta Pixel Code -->
     
-    <link rel="icon" href="/lucky-discs-logo.png" type="image/png">
+    <!-- Favicon Suite -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/lucky-discs-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/lucky-discs-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/lucky-discs-logo.png">
+    <link rel="manifest" href="/manifest.json">
   </head>
 
   <body>
