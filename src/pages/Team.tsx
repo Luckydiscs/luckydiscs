@@ -108,7 +108,7 @@ const Team = () => {
         <section className="pt-20 sm:pt-24 md:pt-32 lg:pt-40 pb-16 bg-gradient-to-br from-black via-gray-900/50 to-black relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
           <div className="container mx-auto text-center relative z-10 px-4">
-            <h1 className="text-3xl md:text-4xl lg:text-6xl font-semibold mb-4 md:mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
+            <h1 className="text-3xl md:text-4xl lg:text-6xl font-medium mb-4 md:mb-6 bg-gradient-to-r from-white via-lucky-green to-white bg-clip-text text-transparent">
               Lucky Discs Team
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6 md:mb-8 px-2">
@@ -125,7 +125,7 @@ const Team = () => {
                 <Badge className="bg-lucky-green/20 text-lucky-green border-lucky-green mb-4">
                   {t('team.hallOfFame')}
                 </Badge>
-                <h2 className="text-4xl font-semibold mb-4 text-white">{t('team.meetChampion')}</h2>
+                <h2 className="text-4xl font-medium mb-4 text-white">{t('team.meetChampion')}</h2>
                 <p className="text-xl text-gray-300">{t('team.championSubtitle')}</p>
               </div>
 
@@ -145,7 +145,7 @@ const Team = () => {
                 
                 <div className="space-y-8">
                   <div>
-                    <h3 className="text-3xl font-semibold mb-4 text-white">Daniel Davidsson</h3>
+                    <h3 className="text-3xl font-medium mb-4 text-white">Daniel Davidsson</h3>
                     <p className="text-lg text-lucky-green font-semibold mb-4">{t('team.danielTitle')}</p>
                     
                     <div className="bg-gradient-to-r from-lucky-green/10 to-transparent p-6 rounded-lg border-l-4 border-lucky-green mb-6">
@@ -184,7 +184,7 @@ const Team = () => {
         <section className="py-16 px-4 bg-gradient-to-br from-gray-900/50 to-black">
           <div className="container mx-auto">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl font-bold mb-8 text-white">Championship Mindset</h2>
+              <h2 className="text-3xl font-semibold mb-8 text-white">Championship Mindset</h2>
               <p className="text-lg text-gray-300 mb-8">
                 "Lucky isn't just our name - it's our philosophy. We believe that preparation meets opportunity on every throw, 
                 and our discs are designed to help players create their own luck on the course."
@@ -194,7 +194,7 @@ const Team = () => {
                   <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Trophy className="h-8 w-8 text-black" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">Excellence</h3>
+                  <h3 className="text-xl font-medium mb-2 text-white">Excellence</h3>
                   <p className="text-sm text-gray-400">
                     Championship-level performance in every disc we create.
                   </p>
@@ -203,7 +203,7 @@ const Team = () => {
                   <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Users className="h-8 w-8 text-black" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">Team Spirit</h3>
+                  <h3 className="text-xl font-medium mb-2 text-white">Team Spirit</h3>
                   <p className="text-sm text-gray-400">
                     Building success through collaboration and shared vision.
                   </p>
@@ -212,7 +212,7 @@ const Team = () => {
                   <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Disc className="h-8 w-8 text-black" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">Innovation</h3>
+                  <h3 className="text-xl font-medium mb-2 text-white">Innovation</h3>
                   <p className="text-sm text-gray-400">
                     Constantly pushing the boundaries of disc golf performance.
                   </p>
@@ -230,7 +230,7 @@ const Team = () => {
                 <Badge className="bg-lucky-green text-black font-bold mb-4">
                   {t('team.nowRecruiting')}
                 </Badge>
-                <h2 className="text-4xl font-bold mb-4 text-white">{t('team.lookingForStars')}</h2>
+                <h2 className="text-4xl font-semibold mb-4 text-white">{t('team.lookingForStars')}</h2>
                 <p className="text-xl text-gray-300">
                   {t('team.lookingForStarsDesc')}
                 </p>
@@ -290,7 +290,7 @@ const Team = () => {
         {/* Team Stats */}
         <section className="py-16 px-4 bg-black">
           <div className="container mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12 text-white">{t('team.championshipResults')}</h2>
+            <h2 className="text-3xl font-semibold text-center mb-12 text-white">{t('team.championshipResults')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 p-8 rounded-lg border border-gray-700 text-center">
                 <div className="text-4xl font-bold text-lucky-green mb-2">🥇</div>
@@ -326,7 +326,7 @@ const Team = () => {
             </div>
             
             <div className="text-center">
-              <h2 className="text-3xl font-bold mb-8 text-white">{t('team.followJourney')}</h2>
+              <h2 className="text-3xl font-semibold mb-8 text-white">{t('team.followJourney')}</h2>
               <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
                 {t('team.followDesc')}
               </p>

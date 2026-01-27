@@ -14,6 +14,7 @@ interface DiscPromotionProps {
   buyUrl: string;
   variant?: 'featured' | 'compact' | 'inline';
   showFlightNumbers?: boolean;
+  lightBackground?: boolean;
 }
 
 const DiscPromotion = ({ 
@@ -22,7 +23,8 @@ const DiscPromotion = ({
   flightNumbers, 
   buyUrl, 
   variant = 'featured',
-  showFlightNumbers = true 
+  showFlightNumbers = true,
+  lightBackground = false 
 }: DiscPromotionProps) => {
   const { t } = useTranslation();
 
@@ -41,11 +43,19 @@ const DiscPromotion = ({
   };
 
   if (variant === 'inline') {
+    // Dynamic colors for light/green backgrounds
+    const textPrimary = lightBackground ? 'text-black' : 'text-primary';
+    const textMuted = lightBackground ? 'text-gray-700' : 'text-muted-foreground';
+    const bgGradient = lightBackground 
+      ? 'bg-gradient-to-r from-black/10 to-black/20 border-black/30' 
+      : 'bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20';
+    const glowColor = lightBackground ? 'bg-black/20' : 'bg-primary/20';
+
     return (
-      <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-6 border border-primary/20">
+      <div className={`${bgGradient} rounded-xl p-6 border`}>
         <div className="flex flex-col sm:flex-row items-center gap-6">
           <div className="relative">
-            <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
+            <div className={`absolute inset-0 ${glowColor} rounded-full blur-xl animate-pulse`}></div>
             <img 
               src={discImage} 
               alt={discNames[discName]} 
@@ -55,35 +65,35 @@ const DiscPromotion = ({
           
           <div className="flex-1 text-center sm:text-left">
             <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
-              <Star className="w-4 h-4 text-accent fill-current" />
-              <span className="text-sm font-medium text-accent uppercase tracking-wide">
+              <Star className={`w-4 h-4 ${lightBackground ? 'text-black' : 'text-accent'} fill-current`} />
+              <span className={`text-sm font-medium ${lightBackground ? 'text-black' : 'text-accent'} uppercase tracking-wide`}>
                 Lucky Discs
               </span>
             </div>
-            <h3 className="text-xl font-heading mb-2 text-primary">
+            <h3 className={`text-xl font-heading mb-2 ${textPrimary}`}>
               {discNames[discName]}
             </h3>
-            <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+            <p className={`text-sm ${textMuted} mb-4 line-clamp-2`}>
               {discDescriptions[discName]}
             </p>
             
             {showFlightNumbers && flightNumbers && (
               <div className="flex justify-center sm:justify-start gap-3 mb-4">
                 <div className="text-center">
-                  <div className="text-lg font-bold text-primary">{flightNumbers.speed}</div>
-                  <div className="text-xs text-muted-foreground uppercase">{t('featured.speed')}</div>
+                  <div className={`text-lg font-bold ${textPrimary}`}>{flightNumbers.speed}</div>
+                  <div className={`text-xs ${textMuted} uppercase`}>{t('featured.speed')}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-lg font-bold text-primary">{flightNumbers.glide}</div>
-                  <div className="text-xs text-muted-foreground uppercase">{t('featured.glide')}</div>
+                  <div className={`text-lg font-bold ${textPrimary}`}>{flightNumbers.glide}</div>
+                  <div className={`text-xs ${textMuted} uppercase`}>{t('featured.glide')}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-lg font-bold text-primary">{flightNumbers.turn}</div>
-                  <div className="text-xs text-muted-foreground uppercase">{t('featured.turn')}</div>
+                  <div className={`text-lg font-bold ${textPrimary}`}>{flightNumbers.turn}</div>
+                  <div className={`text-xs ${textMuted} uppercase`}>{t('featured.turn')}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-lg font-bold text-primary">{flightNumbers.fade}</div>
-                  <div className="text-xs text-muted-foreground uppercase">{t('featured.fade')}</div>
+                  <div className={`text-lg font-bold ${textPrimary}`}>{flightNumbers.fade}</div>
+                  <div className={`text-xs ${textMuted} uppercase`}>{t('featured.fade')}</div>
                 </div>
               </div>
             )}
@@ -91,7 +101,9 @@ const DiscPromotion = ({
           
           <Button 
             size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 shrink-0"
+            className={lightBackground 
+              ? "bg-black text-white hover:bg-gray-800 px-6 shrink-0" 
+              : "bg-primary text-primary-foreground hover:bg-primary/90 px-6 shrink-0"}
             onClick={() => window.open(buyUrl, '_blank')}
           >
             {t('featured.shopNow')} <ArrowRight className="ml-2 h-4 w-4" />

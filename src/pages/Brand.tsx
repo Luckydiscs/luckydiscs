@@ -417,6 +417,7 @@ const Brand = () => {
               flightNumbers={{ speed: 8, glide: 5, turn: -1, fade: 2 }}
               buyUrl="https://kesapelit.fi/tuote/premium-bank-robber"
               variant="inline"
+              lightBackground={true}
             />
           </div>
           
