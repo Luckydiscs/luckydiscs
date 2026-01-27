@@ -196,14 +196,6 @@ const FAQ = () => {
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="custom-stamps" className="bg-white/5 border border-white/10 rounded-lg px-6">
-                  <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
-                    {t('faq.customStamps.question')}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-300 pt-3 text-lg md:text-xl leading-relaxed">
-                    {t('faq.customStamps.answer')}
-                  </AccordionContent>
-                </AccordionItem>
               </Accordion>
             </div>
           </section>
