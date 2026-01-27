@@ -1,58 +1,174 @@
 
 
-# UKK-sivun korjaukset: Sisältö ja visuaalinen luettavuus
+# SEO-parannukset: Favicon, Sitelinkit & Structured Data
 
-## Ongelmat
+## Ongelma 1: Google näyttää väärän kuvan faviconina
 
-### 1. Virheellinen toimitus- ja maksutieto
-Nykyinen sisältö väittää, että Lucky Discs toimittaa maailmanlaajuisesti kuluttajille. Todellisuudessa:
-- Lucky Discs ei myy suoraan kuluttajille ulkomaille
-- Ulkomaiset asiakkaat voivat kysyä paikalliselta frisbeegolf-kauppiaalta, ottaisiko hän Lucky Discs -kiekot myyntiin
+### Tilanne
+Google näyttää hakutuloksissa oranssin/kultaisen kiekon kuvan, ei Lucky Discs -logoa jossa on musta pataässä. Tämä johtuu useista tekijöistä:
+- Favicon on vain yksi PNG-tiedosto (512x512)
+- Google saattaa valita OG-kuvan tai muun sivuston kuvan
+- Selainvälimuisti ja Googlen indeksi eivät ole päivittyneet
 
-### 2. Valkoinen teksti liian kirkas/raskas silmille
-Sama ongelma kuin Team-sivulla: `font-semibold` ja `text-gray-100` yhdistelmä on liian kirkas tummalla taustalla.
+### Ratkaisu
+1. **Lisätään useita favicon-kokoja ja formaatteja** (index.html):
+   - 16x16, 32x32, 48x48 PNG-kuvat
+   - Apple Touch Icon (180x180)
+   - `manifest.json` PWA-tuki
+   - Varmistetaan että kuvat käyttävät mustalla pataässällä varustettua logoa
+
+2. **Päivitetään OG-kuva** kaikille sivuille osoittamaan samaan logoon
+
+## Ongelma 2: Vain 2 sitelinkkiä näkyy
+
+### Tilanne
+Google näyttää vain 2 sitelinkkiä ("Lucky Discs Discs" ja "Professional Team"). Tämä on normaalia uusille/pienille sivustoille.
+
+### Syyt
+- Sivuston ikä ja auktoriteetti
+- Puutteellinen structured data navigaatiolle
+- Sitemapin prioriteettiarvot
+
+### Ratkaisu
+1. **Lisätään WebSite structured data** (index.html):
+   - Sisältää `potentialAction` SearchAction-elementin
+   - Auttaa Googlea ymmärtämään sivuston rakennetta
+
+2. **Lisätään SiteNavigationElement structured data**:
+   - Määrittelee tärkeimmät sivut navigaatioelementeiksi
+   - Parantaa mahdollisuuksia saada lisää sitelinkkejä
+
+3. **Päivitetään sitemap.xml**:
+   - Päivitetään `lastmod` -päivämäärät ajankohtaisiksi
+   - Tarkistetaan prioriteetit
+
+## Ongelma 3: Muut SEO-korjaukset
+
+### Virheet
+1. **ContactPoint URL väärä** (index.html rivi 76):
+   - Nykyinen: `https://luckydiscs.com/contact`
+   - Pitäisi olla: `https://www.luckydiscs.fi/contact`
+
+2. **Sitemap vanhentunut**:
+   - lastmod: 2025-01-19 → 2026-01-27
 
 ---
 
-## Päivitykset
+## Muutettavat tiedostot
 
-### Vaihe 1: Käännösten päivitys (useTranslation.tsx)
+### 1. index.html
+- Päivitetään favicon-linkit (useita kokoja)
+- Lisätään Apple Touch Icon
+- Korjataan contactPoint URL
+- Lisätään WebSite structured data
+- Lisätään SiteNavigationElement structured data
 
-**Englanti:**
+### 2. public/sitemap.xml
+- Päivitetään lastmod-päivämäärät
+
+### 3. Uudet tiedostot (valinnainen)
+- `public/manifest.json` - PWA-tuki, parantaa favicon-näkyvyyttä
+
+---
+
+## Tekninen toteutus
+
+### index.html - Favicon-osio
+
+```html
+<!-- Favicon Suite -->
+<link rel="icon" type="image/png" sizes="32x32" href="/lucky-discs-logo.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/lucky-discs-logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/lucky-discs-logo.png">
+<link rel="manifest" href="/manifest.json">
 ```
-faq.shipping.question: "Do you ship worldwide?"
-faq.shipping.answer: "Currently, we do not ship directly to consumers worldwide. However, you can inquire with your local disc golf retailer about stocking Lucky Discs. For Finnish customers, free shipping is available on orders over €50. International customers may be responsible for customs duties."
 
-faq.payment.question: "What payment methods do you accept?"
-faq.payment.answer: "We accept all major credit cards, PayPal, and bank transfers. For wholesale customers, we offer Net 30 payment terms after account approval."
+### index.html - WebSite Structured Data
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Lucky Discs",
+  "url": "https://www.luckydiscs.fi",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.luckydiscs.fi/discs?search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
 ```
 
-**Suomi:**
+### index.html - SiteNavigationElement
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "SiteNavigationElement",
+      "position": 1,
+      "name": "Discs",
+      "url": "https://www.luckydiscs.fi/discs"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "position": 2,
+      "name": "Team",
+      "url": "https://www.luckydiscs.fi/team"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "position": 3,
+      "name": "Wholesale",
+      "url": "https://www.luckydiscs.fi/wholesale"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "position": 4,
+      "name": "Contact",
+      "url": "https://www.luckydiscs.fi/contact"
+    }
+  ]
+}
 ```
-faq.shipping.question: "Toimitatteko maailmanlaajuisesti?"
-faq.shipping.answer: "Emme tällä hetkellä toimita suoraan kuluttajille ulkomaille. Voit kuitenkin kysyä paikalliselta frisbeegolf-kauppiaaltasi, ottaisiko hän Lucky Discs -kiekot myyntiin. Suomalaiset asiakkaat saavat ilmaisen toimituksen yli 50€ tilauksista."
 
-faq.payment.question: "Mitä maksutapoja hyväksytte?"
-faq.payment.answer: "Hyväksymme kaikki suurimmat luottokortit, PayPalin ja pankkisiirrot. Jälleenmyyjäasiakkaille tarjoamme 30 päivän maksuehdon tilin hyväksynnän jälkeen."
+### public/manifest.json (uusi tiedosto)
+
+```json
+{
+  "name": "Lucky Discs",
+  "short_name": "Lucky Discs",
+  "icons": [
+    {
+      "src": "/lucky-discs-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#008800",
+  "background_color": "#000000",
+  "display": "standalone"
+}
 ```
 
-### Vaihe 2: FAQ.tsx visuaaliset parannukset
+---
 
-**Tekstien kevennys (kuten Team-sivulla):**
-- AccordionTrigger: `font-semibold` → `font-medium`
-- Osioiden otsikot (h2): `text-gray-100` → `text-gray-200`
-- Accordion tekstit: `text-xl md:text-2xl` → `text-lg md:text-xl` (hieman pienempi)
-- Hero otsikko: `font-bold` → `font-semibold`
+## Huomioitavaa
 
-**Rivit ja muutokset:**
-- Rivi 77: `font-bold` → `font-semibold` (Hero H1)
-- Rivi 91: `text-gray-100` → `text-gray-200` (General Questions otsikko)
-- Rivi 96, 105, 114, 123: `font-semibold` → `font-medium` (Accordion kysymykset)
-- Rivi 134: `text-gray-100` → `text-gray-200` (Ordering & Shipping otsikko)
-- Rivi 139, 148, 157, 166: `font-semibold` → `font-medium`
-- Rivi 177: `text-gray-100` → `text-gray-200` (Products otsikko)
-- Rivi 182, 191, 200: `font-semibold` → `font-medium`
-- Rivi 212: `text-gray-100` → `text-gray-200` (Still Have Questions otsikko)
+### Favicon-kuvan vaihto
+Jos haluat vaihtaa faviconin kuvaan jossa on **musta pataässä**, sinun tulee toimittaa kyseinen kuvatiedosto (esim. 512x512 PNG). Tällä hetkellä `public/lucky-discs-logo.png` on käytössä oleva kuva. Jos sinulla on eri logo pataässällä, lähetä se niin korvaan nykyisen.
+
+### Googlen indeksin päivittyminen
+- Muutokset eivät näy heti Googlessa
+- Google indeksoi sivustot omalla aikataulullaan (päivistä viikkoihin)
+- Voit nopeuttaa pyytämällä uudelleenindeksointia Google Search Consolessa
+
+### Sitelinkkien lisääminen
+- Google päättää itse kuinka monta sitelinkkiä näytetään
+- Structured data parantaa mahdollisuuksia, mutta ei takaa tuloksia
+- Sivuston kasvaessa ja saadessa lisää liikennettä, sitelinkkejä tulee lisää
 
 ---
 
@@ -60,53 +176,10 @@ faq.payment.answer: "Hyväksymme kaikki suurimmat luottokortit, PayPalin ja pank
 
 | Tiedosto | Muutos |
 |----------|--------|
-| `src/hooks/useTranslation.tsx` | Päivitetään `faq.shipping.answer` (EN + FI) kuvaamaan, ettei suoraa toimitusta ulkomaille ole |
-| `src/hooks/useTranslation.tsx` | Päivitetään `faq.payment.answer` (EN + FI) vastaamaan jälleenmyyjäasiakkaita |
-| `src/pages/FAQ.tsx` | Kevennetään `font-weight` arvoja: `font-bold` → `font-semibold`, `font-semibold` → `font-medium` |
-| `src/pages/FAQ.tsx` | Pehmennetään otsikkovärejä: `text-gray-100` → `text-gray-200` |
-
----
-
-## Tekninen toteutus
-
-### useTranslation.tsx - rivit 427-430 (EN) ja 858-861 (FI)
-
-**Englanti (rivit 427-430):**
-```typescript
-'faq.shipping.question': 'Do you ship worldwide?',
-'faq.shipping.answer': 'Currently, we do not ship directly to consumers worldwide. However, you can inquire with your local disc golf retailer about stocking Lucky Discs. For Finnish customers, free shipping is available on orders over €50.',
-'faq.payment.question': 'What payment methods do you accept?',
-'faq.payment.answer': 'We accept all major credit cards, PayPal, and bank transfers. For wholesale customers, we offer Net 30 payment terms after account approval.',
-```
-
-**Suomi (rivit 858-861):**
-```typescript
-'faq.shipping.question': 'Toimitatteko maailmanlaajuisesti?',
-'faq.shipping.answer': 'Emme tällä hetkellä toimita suoraan kuluttajille ulkomaille. Voit kuitenkin kysyä paikalliselta frisbeegolf-kauppiaaltasi, ottaisiko hän Lucky Discs -kiekot myyntiin. Suomalaiset asiakkaat saavat ilmaisen toimituksen yli 50€ tilauksista.',
-'faq.payment.question': 'Mitä maksutapoja hyväksytte?',
-'faq.payment.answer': 'Hyväksymme kaikki suurimmat luottokortit, PayPalin ja pankkisiirrot. Jälleenmyyjäasiakkaille tarjoamme 30 päivän maksuehdon tilin hyväksynnän jälkeen.',
-```
-
-### FAQ.tsx - visuaaliset muutokset
-
-```tsx
-// Rivi 77: Hero otsikko
-<h1 className="text-4xl md:text-6xl font-semibold mb-6 ...">
-
-// Rivit 91, 134, 177, 212: Osioiden otsikot
-<h2 className="text-3xl md:text-4xl font-heading mb-6 text-gray-200">
-
-// Kaikki AccordionTrigger komponentit
-<AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
-```
-
----
-
-## Lopputulos
-
-Tämän korjauksen jälkeen:
-- FAQ-sivu kertoo oikein, ettei suoraa kuluttajamyyntiä ulkomaille ole
-- Asiakkaita ohjataan kysymään paikalliselta jälleenmyyjältä
-- Valkoinen teksti on pehmeämpää ja helpommin luettavaa tummalla taustalla
-- Yhtenäinen visuaalinen tyyli Team-sivun kanssa
+| `index.html` | Favicon-linkit, Apple Touch Icon, manifest-linkki |
+| `index.html` | Korjataan contactPoint URL (.com → .fi) |
+| `index.html` | Lisätään WebSite structured data |
+| `index.html` | Lisätään SiteNavigationElement structured data |
+| `public/sitemap.xml` | Päivitetään lastmod-päivämäärät |
+| `public/manifest.json` | Uusi tiedosto PWA-tueksi |
 
