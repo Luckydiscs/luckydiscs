@@ -1,185 +1,73 @@
 
 
-# SEO-parannukset: Favicon, Sitelinkit & Structured Data
+# UKK-sisällön korjaukset: Liiketoimintamalli
 
-## Ongelma 1: Google näyttää väärän kuvan faviconina
+## Ongelmat
 
-### Tilanne
-Google näyttää hakutuloksissa oranssin/kultaisen kiekon kuvan, ei Lucky Discs -logoa jossa on musta pataässä. Tämä johtuu useista tekijöistä:
-- Favicon on vain yksi PNG-tiedosto (512x512)
-- Google saattaa valita OG-kuvan tai muun sivuston kuvan
-- Selainvälimuisti ja Googlen indeksi eivät ole päivittyneet
+UKK-sivun "Tilaaminen ja toimitus" -osio sisältää virheellistä tietoa Lucky Discsin liiketoimintamallista:
 
-### Ratkaisu
-1. **Lisätään useita favicon-kokoja ja formaatteja** (index.html):
-   - 16x16, 32x32, 48x48 PNG-kuvat
-   - Apple Touch Icon (180x180)
-   - `manifest.json` PWA-tuki
-   - Varmistetaan että kuvat käyttävät mustalla pataässällä varustettua logoa
+1. **Toimitus**: Väittää että suomalaiset saavat ilmaisen toimituksen yli 50€ tilauksista – mutta Lucky Discs ei myy suoraan kuluttajille
+2. **Maksutavat**: Puhuu kuluttajille suunnatuista maksutavoista, vaikka myynti tapahtuu jälleenmyyjien kautta
+3. **Palautuskäytäntö**: Lupaa 30 päivän tyytyväisyystakuun suoraan Lucky Discsilta
+4. **Mukautetut leimasimet**: Epäoleellinen kysymys, jota ei tarvita
 
-2. **Päivitetään OG-kuva** kaikille sivuille osoittamaan samaan logoon
+## Korjaukset
 
-## Ongelma 2: Vain 2 sitelinkkiä näkyy
+### Vaihe 1: Päivitä käännökset (useTranslation.tsx)
 
-### Tilanne
-Google näyttää vain 2 sitelinkkiä ("Lucky Discs Discs" ja "Professional Team"). Tämä on normaalia uusille/pienille sivustoille.
+**Suomi:**
 
-### Syyt
-- Sivuston ikä ja auktoriteetti
-- Puutteellinen structured data navigaatiolle
-- Sitemapin prioriteettiarvot
+| Avain | Uusi teksti |
+|-------|-------------|
+| `faq.shipping.question` | "Mistä voin ostaa Lucky Discs -kiekkoja?" |
+| `faq.shipping.answer` | "Suomessa Lucky Discs -kiekkoja myy kesapelit.fi. Ulkomaiset asiakkaat voivat kysyä paikalliselta frisbeegolf-kauppiaalta, ottaisiko hän Lucky Discs -kiekot myyntiin." |
+| `faq.payment.question` | "Miten jälleenmyyjäksi ryhtyminen toimii?" |
+| `faq.payment.answer` | "Käy Jälleenmyynti-sivullamme ja täytä hakulomake. Käsittelemme hakemukset 2 arkipäivässä ja otamme yhteyttä tarkemmilla tiedoilla." |
+| `faq.returns.question` | "Mikä on palautuskäytäntö?" |
+| `faq.returns.answer` | "Palautuskäytännöt riippuvat jälleenmyyjästä, jolta kiekon ostit. Ota yhteyttä suoraan kyseiseen kauppaan palautusasioissa." |
 
-### Ratkaisu
-1. **Lisätään WebSite structured data** (index.html):
-   - Sisältää `potentialAction` SearchAction-elementin
-   - Auttaa Googlea ymmärtämään sivuston rakennetta
+**Englanti:**
 
-2. **Lisätään SiteNavigationElement structured data**:
-   - Määrittelee tärkeimmät sivut navigaatioelementeiksi
-   - Parantaa mahdollisuuksia saada lisää sitelinkkejä
+| Avain | Uusi teksti |
+|-------|-------------|
+| `faq.shipping.question` | "Where can I buy Lucky Discs?" |
+| `faq.shipping.answer` | "In Finland, Lucky Discs are available at kesapelit.fi. International customers can ask their local disc golf retailer about stocking Lucky Discs products." |
+| `faq.payment.question` | "How does becoming a retailer work?" |
+| `faq.payment.answer` | "Visit our Wholesale page and fill out the application form. We process applications within 2 business days and will contact you with details." |
+| `faq.returns.question` | "What is the return policy?" |
+| `faq.returns.answer` | "Return policies depend on the retailer where you purchased your disc. Please contact that store directly for return inquiries." |
 
-3. **Päivitetään sitemap.xml**:
-   - Päivitetään `lastmod` -päivämäärät ajankohtaisiksi
-   - Tarkistetaan prioriteetit
+### Vaihe 2: Poista turha kysymys
 
-## Ongelma 3: Muut SEO-korjaukset
+Poistetaan "mukautetut kiekkoleimasimet" -kysymys kokonaan:
 
-### Virheet
-1. **ContactPoint URL väärä** (index.html rivi 76):
-   - Nykyinen: `https://luckydiscs.com/contact`
-   - Pitäisi olla: `https://www.luckydiscs.fi/contact`
+**FAQ.tsx**: Poistetaan AccordionItem "custom-stamps" (rivit 199-206)
 
-2. **Sitemap vanhentunut**:
-   - lastmod: 2025-01-19 → 2026-01-27
+**useTranslation.tsx**: Poistetaan käännösavaimet:
+- `faq.customStamps.question` (FI + EN)
+- `faq.customStamps.answer` (FI + EN)
 
----
+### Vaihe 3: Poista duplikaatti jälleenmyyjä-kysymys
 
-## Muutettavat tiedostot
+Nykyinen "Miten ryhdyn jälleenmyyjäksi?" (`faq.wholesale`) on nyt päällekkäinen uuden `faq.payment` -kysymyksen kanssa. 
 
-### 1. index.html
-- Päivitetään favicon-linkit (useita kokoja)
-- Lisätään Apple Touch Icon
-- Korjataan contactPoint URL
-- Lisätään WebSite structured data
-- Lisätään SiteNavigationElement structured data
-
-### 2. public/sitemap.xml
-- Päivitetään lastmod-päivämäärät
-
-### 3. Uudet tiedostot (valinnainen)
-- `public/manifest.json` - PWA-tuki, parantaa favicon-näkyvyyttä
+**Vaihtoehto**: Muutetaan `faq.wholesale` muuksi hyödylliseksi kysymykseksi tai poistetaan se.
 
 ---
 
-## Tekninen toteutus
-
-### index.html - Favicon-osio
-
-```html
-<!-- Favicon Suite -->
-<link rel="icon" type="image/png" sizes="32x32" href="/lucky-discs-logo.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/lucky-discs-logo.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/lucky-discs-logo.png">
-<link rel="manifest" href="/manifest.json">
-```
-
-### index.html - WebSite Structured Data
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Lucky Discs",
-  "url": "https://www.luckydiscs.fi",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://www.luckydiscs.fi/discs?search={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-```
-
-### index.html - SiteNavigationElement
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "itemListElement": [
-    {
-      "@type": "SiteNavigationElement",
-      "position": 1,
-      "name": "Discs",
-      "url": "https://www.luckydiscs.fi/discs"
-    },
-    {
-      "@type": "SiteNavigationElement",
-      "position": 2,
-      "name": "Team",
-      "url": "https://www.luckydiscs.fi/team"
-    },
-    {
-      "@type": "SiteNavigationElement",
-      "position": 3,
-      "name": "Wholesale",
-      "url": "https://www.luckydiscs.fi/wholesale"
-    },
-    {
-      "@type": "SiteNavigationElement",
-      "position": 4,
-      "name": "Contact",
-      "url": "https://www.luckydiscs.fi/contact"
-    }
-  ]
-}
-```
-
-### public/manifest.json (uusi tiedosto)
-
-```json
-{
-  "name": "Lucky Discs",
-  "short_name": "Lucky Discs",
-  "icons": [
-    {
-      "src": "/lucky-discs-logo.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "theme_color": "#008800",
-  "background_color": "#000000",
-  "display": "standalone"
-}
-```
-
----
-
-## Huomioitavaa
-
-### Favicon-kuvan vaihto
-Jos haluat vaihtaa faviconin kuvaan jossa on **musta pataässä**, sinun tulee toimittaa kyseinen kuvatiedosto (esim. 512x512 PNG). Tällä hetkellä `public/lucky-discs-logo.png` on käytössä oleva kuva. Jos sinulla on eri logo pataässällä, lähetä se niin korvaan nykyisen.
-
-### Googlen indeksin päivittyminen
-- Muutokset eivät näy heti Googlessa
-- Google indeksoi sivustot omalla aikataulullaan (päivistä viikkoihin)
-- Voit nopeuttaa pyytämällä uudelleenindeksointia Google Search Consolessa
-
-### Sitelinkkien lisääminen
-- Google päättää itse kuinka monta sitelinkkiä näytetään
-- Structured data parantaa mahdollisuuksia, mutta ei takaa tuloksia
-- Sivuston kasvaessa ja saadessa lisää liikennettä, sitelinkkejä tulee lisää
-
----
-
-## Yhteenveto muutoksista
+## Yhteenveto
 
 | Tiedosto | Muutos |
 |----------|--------|
-| `index.html` | Favicon-linkit, Apple Touch Icon, manifest-linkki |
-| `index.html` | Korjataan contactPoint URL (.com → .fi) |
-| `index.html` | Lisätään WebSite structured data |
-| `index.html` | Lisätään SiteNavigationElement structured data |
-| `public/sitemap.xml` | Päivitetään lastmod-päivämäärät |
-| `public/manifest.json` | Uusi tiedosto PWA-tueksi |
+| `src/hooks/useTranslation.tsx` | Päivitetään shipping, payment, returns -vastaukset vastaamaan liiketoimintamallia |
+| `src/hooks/useTranslation.tsx` | Poistetaan customStamps-käännökset |
+| `src/pages/FAQ.tsx` | Poistetaan "custom-stamps" AccordionItem |
+
+## Lopputulos
+
+FAQ kertoo oikein:
+- Lucky Discs ei myy suoraan kuluttajille
+- Suomalaiset ostavat kesapelit.fi:stä
+- Ulkomaalaiset kysyvät paikallisilta kauppiailta
+- Palautukset hoidetaan jälleenmyyjän kautta
 
