@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/useTranslation";
-import danielImage from "@/assets/daniel-davidsson.png";
+import luckyLogo from "@/assets/lucky-discs-transparent-logo.png";
 
 const NotFound = () => {
   const location = useLocation();
@@ -30,7 +30,7 @@ const NotFound = () => {
               </p>
               <div className="flex gap-4 flex-wrap">
                 <Button asChild>
-                  <Link to="/team">{t('notFound.readAboutDaniel')}</Link>
+                  <Link to="/team">{t('notFound.exploreTeam')}</Link>
                 </Button>
                 <Button variant="secondary" asChild>
                   <Link to="/discs">{t('notFound.exploreProducts')}</Link>
@@ -38,7 +38,7 @@ const NotFound = () => {
               </div>
             </div>
             <div className="relative">
-              <img src={danielImage} alt="Daniel Davidsson" className="rounded-xl shadow-xl w-full h-auto object-cover" />
+              <img src={luckyLogo} alt="Lucky Discs" className="rounded-xl shadow-xl w-full h-auto object-contain max-w-md mx-auto" />
               <div className="absolute inset-0 -z-10 blur-3xl opacity-30 bg-gradient-to-br from-primary/40 to-accent/30 rounded-full" />
             </div>
           </div>
