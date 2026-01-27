@@ -3,7 +3,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://www.luckydiscs.fi/</loc>
-    <lastmod>2025-01-19</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fi" href="https://www.luckydiscs.fi/"/>
@@ -13,7 +13,7 @@
   <!-- Discs Page -->
   <url>
     <loc>https://www.luckydiscs.fi/discs</loc>
-    <lastmod>2025-01-19</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="fi" href="https://www.luckydiscs.fi/discs"/>
@@ -23,7 +23,7 @@
   <!-- Disc Guide Page -->
   <url>
     <loc>https://www.luckydiscs.fi/disc-guide</loc>
-    <lastmod>2025-01-19</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fi" href="https://www.luckydiscs.fi/disc-guide"/>
@@ -33,7 +33,7 @@
   <!-- Wholesale Page -->
   <url>
     <loc>https://www.luckydiscs.fi/wholesale</loc>
-    <lastmod>2025-01-19</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fi" href="https://www.luckydiscs.fi/wholesale"/>
@@ -43,7 +43,7 @@
   <!-- Brand Page -->
   <url>
     <loc>https://www.luckydiscs.fi/brand</loc>
-    <lastmod>2025-01-19</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fi" href="https://www.luckydiscs.fi/brand"/>
@@ -53,7 +53,7 @@
   <!-- Team Page -->
   <url>
     <loc>https://www.luckydiscs.fi/team</loc>
-    <lastmod>2025-01-19</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="fi" href="https://www.luckydiscs.fi/team"/>
@@ -63,7 +63,7 @@
   <!-- Contact Page -->
   <url>
     <loc>https://www.luckydiscs.fi/contact</loc>
-    <lastmod>2025-01-19</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fi" href="https://www.luckydiscs.fi/contact"/>
@@ -73,7 +73,7 @@
   <!-- FAQ Page -->
   <url>
     <loc>https://www.luckydiscs.fi/faq</loc>
-    <lastmod>2025-01-19</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fi" href="https://www.luckydiscs.fi/faq"/>
@@ -83,7 +83,7 @@
   <!-- Privacy Page -->
   <url>
     <loc>https://www.luckydiscs.fi/privacy</loc>
-    <lastmod>2025-01-19</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="fi" href="https://www.luckydiscs.fi/privacy"/>
@@ -93,7 +93,7 @@
   <!-- Terms Page -->
   <url>
     <loc>https://www.luckydiscs.fi/terms</loc>
-    <lastmod>2025-01-19</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="fi" href="https://www.luckydiscs.fi/terms"/>
