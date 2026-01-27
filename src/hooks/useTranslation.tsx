@@ -427,7 +427,7 @@ const translations = {
     'faq.shipping.question': 'Do you ship worldwide?',
     'faq.shipping.answer': 'Currently, we do not ship directly to consumers worldwide. However, you can inquire with your local disc golf retailer about stocking Lucky Discs. For Finnish customers, free shipping is available on orders over €50.',
     'faq.payment.question': 'What payment methods do you accept?',
-    'faq.payment.answer': 'We accept all major credit cards, PayPal, and bank transfers. For wholesale customers, we offer Net 30 payment terms after account approval.',
+    'faq.payment.answer': 'For wholesale customers, we accept bank transfers and offer Net 30 payment terms after account approval. If you are a consumer, please purchase through your local disc golf retailer.',
     'faq.returns.question': 'What is your return policy?',
     'faq.returns.answer': 'We offer a 30-day satisfaction guarantee. You can return unused discs in original condition for a full refund or exchange. Return shipping costs may apply for international orders.',
     'faq.wholesale.question': 'How do I become a wholesale customer?',
