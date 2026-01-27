@@ -1,115 +1,95 @@
 
-# Daniel Davidsson -tiimisivun päivitys
+# Korjaussuunnitelma: Brand-sivu kontrastiongelma & Team-sivu tekstityyli
 
-## Tilanne
+## Ongelma 1: Brand-sivun vihreä osio (CTA Section)
 
-Daniel Davidsson ei enää jatka Lucky Discs -tiimissä vuonna 2026. Vuonna 2025 hän voitti Suomen mestaruuden Lucky Discs -tiimissä.
+### Syy
+Brand-sivun alaosassa (rivit 410-446) on vihreä tausta (`bg-lucky-green`), mutta sen sisällä oleva DiscPromotion-komponentti käyttää `text-primary` (vihreä) ja `text-muted-foreground` (harmaa) värejä tekstiin. Tämä aiheuttaa vihreä-vihreällä -tilanteen, jossa kontrasti on olematon.
 
-## Päivitykset
+### Ratkaisu
+Luodaan DiscPromotion-komponenttiin uusi `lightBackground` prop, joka vaihtaa värit sopiviksi vaaleilla/vihreillä taustoilla:
+- Pääväri: musta (`text-black`) vihreän sijaan
+- Kuvausten teksti: tumma harmaa (`text-gray-700`) vaalean harmaan sijaan
+- Taustalaatikko: tumma gradient vaalean sijaan
 
-### 1. Team.tsx - Sivu muutetaan kokonaan
+### Muutettavat tiedostot
+1. **src/components/DiscPromotion.tsx**
+   - Lisätään `lightBackground?: boolean` prop
+   - Muutetaan inline-variantin värit dynaamisiksi: kun `lightBackground=true`, käytetään tummia värejä
 
-**Nykyinen sisältö:** Daniel esitellään aktiivisena tiimin kapteenina
-**Uusi sisältö:** 
-- Daniel esitellään "menneisyyden menestystarinana" - vuonna 2025 voitti SM-kullan Lucky Discs -tiimissä
-- Selkeä maininta: "Sopimus ei jatkunut vuodelle 2026"
-- Uusi CTA-osio: "Oletko sinä seuraava tähtipelaajamme?" 
-- Kutsu pelaajia hakemaan tiimiin yhteystietoineen
+2. **src/pages/Brand.tsx** (rivi 414-420)
+   - Lisätään `lightBackground={true}` DiscPromotion-kutsuun
 
-**Poistettavat osiot:**
-- "Team Captain" -titteli
-- Danielin sitaatti aktiivisena pelaajana
-- "Danielin nimikirjoituskiekko" -osio (Money Shot jää mallistoon, mutta ei ole enää Danielin signature disc)
-- PDGA-pelaaja kortti (henkilökohtaiset tiedot)
+---
 
-**Lisättävät osiot:**
-- "Hall of Fame" / "Mestaruushistoria 2025" -osio
-- "Haemme uusia tiimipelaajia" -osio
-- Hakemuslomake tai linkki yhteystietoihin
+## Ongelma 2: Team-sivun liian boldattu/hohtava valkoinen teksti
 
-### 2. Käännökset (useTranslation.tsx)
+### Syy
+Team-sivulla käytetään useita font-weight luokkia (`font-semibold`, `font-bold`) valkoiselle tekstille tummalla taustalla. Bebas Neue -heading-fontti on jo luonnostaan paksu, ja ylimääräinen boldaus tekee siitä visuaalisesti raskaan ja vaikeasti luettavan.
 
-**Päivitettävät avaimet (englanti + suomi):**
-- `team.subtitle` → Tiimisivu päivitetään kertomaan menneestä menestyksestä ja tulevista mahdollisuuksista
-- `team.meetChampion` → "Our 2025 Championship Story" / "Mestaruustarivamme 2025"
-- `team.championSubtitle` → Maininta että sopimus ei jatkunut
-- `team.danielTitle` → "Finnish Champion 2025 with Lucky Discs"
-- `team.danielQuote` → Poistetaan tai muutetaan historialliseksi
-- `team.signatureDisc` → Poistetaan
-- `team.signatureDiscDesc` → Poistetaan
+### Ratkaisu
+Kevennetään tekstien painotusta:
+- `font-bold` → `font-semibold` tai `font-medium`
+- `font-semibold` → `font-medium` tai `font-normal`
+- Pienennetään heading-fontin käyttöä pienemmissä otsikoissa
 
-**Uudet avaimet:**
-- `team.lookingForStars` → "Are You Our Next Star?" / "Oletko sinä seuraava tähtipelaajamme?"
-- `team.joinTeamDesc` → Kuvaus mitä tarjoamme tiimipelaajille
-- `team.applyNow` → "Apply Now" / "Hae mukaan"
-- `team.contractEnded` → "Contract ended after 2025 season" / "Sopimus päättyi kauden 2025 jälkeen"
+### Muutettavat tiedostot
+**src/pages/Team.tsx**
+- Rivi 111: `font-semibold` → `font-medium` (Hero H1)
+- Rivi 128: `font-semibold` → `font-medium` (Hall of Fame otsikko)
+- Rivi 148: `font-semibold` → `font-medium` (Daniel nimi)
+- Rivi 187: `font-bold` → `font-semibold` (Championship Mindset)
+- Rivi 197, 206, 215: `font-semibold` → `font-medium` (Excellence, Team Spirit, Innovation)
+- Rivi 233: `font-bold` → `font-semibold` (Are You Our Next Star)
+- Rivi 293: `font-bold` → `font-semibold` (Championship Results)
+- Rivi 329: `font-bold` → `font-semibold` (Follow Journey)
 
-### 3. FAQ.tsx - Daniel-kysymyksen päivitys
-
-**Päivitettävät avaimet:**
-- `faq.danielCollaboration.question` → "Who won the Finnish Championship with Lucky Discs in 2025?"
-- `faq.danielCollaboration.answer` → Historiallinen kuvaus Danielin mestaruudesta
-
-### 4. NotFound.tsx - Poistetaan Daniel-viittaukset
-
-**Nykyinen:** "Read About Daniel" -nappi ja Danielin kuva
-**Uusi:** Yleinen "Explore Our Team" -nappi ja Lucky Discs -kuva tai jokin muu
-
-### 5. SEO-päivitykset Team.tsx:ssä
-
-- Päivitetään meta title: "Lucky Discs Team - 2025 Finnish Championship | Join Our Team"
-- Päivitetään meta description
-- Päivitetään structured data (Person → HistoricalEvent tai poistetaan)
+---
 
 ## Tekninen toteutus
 
-**Muutettavat tiedostot:**
-1. `src/pages/Team.tsx` - Suurin muutos, koko sivun uudelleenrakentaminen
-2. `src/hooks/useTranslation.tsx` - Käännösten päivitys (EN + FI)
-3. `src/pages/FAQ.tsx` - Pieni muutos, kysymys päivitetään
-4. `src/pages/NotFound.tsx` - Daniel-kuva ja -nappi poistetaan
+### Vaihe 1: DiscPromotion.tsx päivitys
 
-## Sivun uusi rakenne
+```typescript
+interface DiscPromotionProps {
+  // ... olemassa olevat propsit
+  lightBackground?: boolean;  // UUSI
+}
 
-```text
-+------------------------------------------+
-|           LUCKY DISCS TEAM               |
-|  Championship mindset, future stars      |
-+------------------------------------------+
-|                                          |
-|     2025 CHAMPIONSHIP HISTORY            |
-|  +------------------------------------+  |
-|  | Daniel Davidsson kuva              |  |
-|  | "Suomen mestari 2025 Lucky Discs   |  |
-|  |  tiimissä"                         |  |
-|  | Sopimus päättyi kauden 2025 jälkeen|  |
-|  +------------------------------------+  |
-|                                          |
-+------------------------------------------+
-|                                          |
-|     CHAMPIONSHIP MINDSET                 |
-|  (säilytetään nykyinen filosofia-osio)   |
-|                                          |
-+------------------------------------------+
-|                                          |
-|     ARE YOU OUR NEXT STAR?               |
-|  +------------------------------------+  |
-|  | Haemme uusia tiimipelaajia!        |  |
-|  | - Mitä tarjoamme                   |  |
-|  | - Mitä haemme                      |  |
-|  | [HAE MUKAAN] -nappi -> /contact    |  |
-|  +------------------------------------+  |
-|                                          |
-+------------------------------------------+
-|                                          |
-|     FOLLOW OUR JOURNEY                   |
-|  (säilytetään sosiaalisen median linkit) |
-|                                          |
-+------------------------------------------+
+// Inline-variantissa (rivit 44-101):
+// Muutetaan värit dynaamisiksi:
+const textPrimary = lightBackground ? 'text-black' : 'text-primary';
+const textMuted = lightBackground ? 'text-gray-700' : 'text-muted-foreground';
+const bgGradient = lightBackground 
+  ? 'bg-gradient-to-r from-black/10 to-black/20 border-black/30' 
+  : 'bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20';
 ```
 
-## Huomioitavaa
+### Vaihe 2: Brand.tsx päivitys
 
-- Money Shot -kiekko jää mallistoon, mutta ei ole enää "Danielin signature disc"
-- Danielin kuvia voidaan käyttää historiallisessa kontekstissa
-- Uusi fokus: tiimin kasvu ja uusien pelaajien rekrytointi
+```tsx
+<DiscPromotion 
+  discName="bankRobber"
+  discImage={bankRobberDisc}
+  flightNumbers={{ speed: 8, glide: 5, turn: -1, fade: 2 }}
+  buyUrl="https://kesapelit.fi/tuote/premium-bank-robber"
+  variant="inline"
+  lightBackground={true}  // LISÄTÄÄN
+/>
+```
+
+### Vaihe 3: Team.tsx tekstipainotusten kevennys
+
+Kaikki `font-bold` → `font-semibold`
+Kaikki `font-semibold` → `font-medium`
+
+---
+
+## Yhteenveto
+
+| Sivu | Ongelma | Ratkaisu |
+|------|---------|----------|
+| Brand | Vihreä teksti vihreällä taustalla | `lightBackground` prop + mustat tekstit |
+| Team | Liian paksut valkoiset tekstit | Kevennetään font-weight arvoja |
+
+Molemmat korjaukset parantavat luettavuutta ja kontrastia merkittävästi ilman visuaalisen identiteetin muuttamista.
