@@ -1,0 +1,49 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "redirects": [
+    { "source": "/tuote-osasto/kiekot/:path*", "destination": "/discs", "statusCode": 301 },
+    { "source": "/tuote-osasto/:path*", "destination": "/discs", "statusCode": 301 },
+    { "source": "/tuote/lucky-disc-money-shot-kiekko/:path*", "destination": "/discs", "statusCode": 301 },
+    { "source": "/tuote/lucky-disc-bank-robber-kiekko/:path*", "destination": "/discs", "statusCode": 301 },
+    { "source": "/tuote/lucky-disc-treasure-hunt-kiekko/:path*", "destination": "/discs", "statusCode": 301 },
+    { "source": "/tuote/:path*", "destination": "/discs", "statusCode": 301 },
+    { "source": "/kauppa/:path*", "destination": "/discs", "statusCode": 301 },
+    { "source": "/tietosuojaseloste", "destination": "/privacy", "statusCode": 301 },
+    { "source": "/tietosuojaseloste/", "destination": "/privacy", "statusCode": 301 },
+    { "source": "/kayttoehdot", "destination": "/terms", "statusCode": 301 },
+    { "source": "/kayttoehdot/", "destination": "/terms", "statusCode": 301 },
+    { "source": "/yhteystiedot", "destination": "/contact", "statusCode": 301 },
+    { "source": "/yhteystiedot/", "destination": "/contact", "statusCode": 301 },
+    { "source": "/tiimi", "destination": "/team", "statusCode": 301 },
+    { "source": "/tiimi/", "destination": "/team", "statusCode": 301 },
+    { "source": "/tukkumyynti", "destination": "/wholesale", "statusCode": 301 },
+    { "source": "/tukkumyynti/", "destination": "/wholesale", "statusCode": 301 }
+  ],
+  "rewrites": [
+    { "source": "/((?!assets|lovable-uploads|lucky-discs-logo|favicon|manifest|sitemap|robots|og-image).*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/lovable-uploads/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}
