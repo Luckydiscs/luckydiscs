@@ -124,3 +124,19 @@
 .hero-gradient {
   background: linear-gradient(135deg, #000000 0%, #202020 100%);
 }
+
+/* Prevent layout shift during language switching */
+img {
+  content-visibility: auto;
+}
+
+/* Smooth text transitions on language switch */
+h1, h2, h3, h4, p, span, a, button {
+  transition: none;
+}
+
+/* Reserve space for action shot images */
+.action-img-container {
+  aspect-ratio: 16/10;
+  contain: layout;
+}

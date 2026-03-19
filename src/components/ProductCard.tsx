@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -32,13 +32,7 @@ const ProductCard = ({
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  // Add page-specific SEO meta tags
-  useEffect(() => {
-    const existingMeta = document.querySelector('meta[name="description"]');
-    if (existingMeta && !existingMeta.getAttribute('data-page-specific')) {
-      existingMeta.setAttribute('content', 'Premium Lucky Discs collection featuring ' + name + ' and other high-performance disc golf equipment. Modern design meets tournament-level quality.');
-    }
-  }, [name]);
+  // Meta description removed - was overwriting page meta for every card rendered
 
   const isDescriptionLong = description.length > 100;
 
@@ -55,11 +49,13 @@ const ProductCard = ({
           </Badge>
         )}
         
-        <div className="mb-4 sm:mb-6 relative flex justify-center flex-grow">
-          <img 
-            src={imageSrc} 
-            alt={`${name} disc golf disc - ${t('productCard.speed')}: ${speed}, ${t('productCard.glide')}: ${glide}, ${t('productCard.turn')}: ${turn}, ${t('productCard.fade')}: ${fade}`} 
+        <div className="mb-4 sm:mb-6 relative flex justify-center flex-grow" style={{ aspectRatio: '1/1' }}>
+          <img
+            src={imageSrc}
+            alt={`${name} disc golf disc - ${t('productCard.speed')}: ${speed}, ${t('productCard.glide')}: ${glide}, ${t('productCard.turn')}: ${turn}, ${t('productCard.fade')}: ${fade}`}
             className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 object-contain disc-image transition-all duration-500"
+            width={320}
+            height={320}
             loading="lazy"
           />
           <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-48 h-6 bg-black/20 rounded-full blur-md disc-shadow transition-all duration-500"></div>

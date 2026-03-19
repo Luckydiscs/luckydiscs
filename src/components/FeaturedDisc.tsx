@@ -17,10 +17,12 @@ const FeaturedDisc = () => {
             <div className="lg:w-1/2 p-8 lg:p-16 flex justify-center relative">
               <div className="relative group">
                 <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl scale-150 animate-pulse"></div>
-                <img 
-                  src={treasureHuntDisc} 
-                  alt="Treasure Hunt - Featured Disc" 
+                <img
+                  src={treasureHuntDisc}
+                  alt="Treasure Hunt - Featured Disc"
                   className="relative z-10 w-80 h-80 lg:w-96 lg:h-96 xl:w-[420px] xl:h-[420px] object-contain transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 drop-shadow-2xl"
+                  width={420}
+                  height={420}
                 />
                 <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-3/4 h-10 bg-black/40 rounded-full blur-lg"></div>
               </div>
