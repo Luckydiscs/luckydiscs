@@ -5,9 +5,9 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import treasureHuntDisc from "@/assets/treasure-hunt-disc.png";
-import bankRobberDisc from "@/assets/bank-robber-disc.png";
-import moneyShotDisc from "@/assets/money-shot-disc.png";
+import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
+import bankRobberDisc from "@/assets/bank-robber-disc.webp";
+import moneyShotDisc from "@/assets/money-shot-disc.webp";
 
 const DiscGuide = () => {
   const navigate = useNavigate();

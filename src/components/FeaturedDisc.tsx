@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, Star } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
-import treasureHuntDisc from "@/assets/treasure-hunt-disc.png";
+import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
 
 const FeaturedDisc = () => {
   const navigate = useNavigate();

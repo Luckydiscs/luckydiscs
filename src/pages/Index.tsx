@@ -12,9 +12,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
 
-import bankRobberDisc from "@/assets/bank-robber-disc.png";
-import treasureHuntDisc from "@/assets/treasure-hunt-disc.png";
-import moneyShotDisc from "@/assets/money-shot-disc.png";
+import bankRobberDisc from "@/assets/bank-robber-disc.webp";
+import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
+import moneyShotDisc from "@/assets/money-shot-disc.webp";
 import jailbreakDisc from "@/assets/jailbreak-disc.png";
 
 const featuredProducts = [

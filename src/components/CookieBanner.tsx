@@ -31,43 +31,37 @@ const CookieBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-t border-gray-800 p-4 md:p-6">
-      <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="flex-1">
-            <h3 className="text-white font-semibold mb-2">🍪 Evästeet</h3>
-            <p className="text-gray-300 text-sm md:text-base">
-              Käytämme evästeitä sivuston toiminnallisuuden parantamiseksi ja 
-              käyttökokemuksen optimoimiseksi. Jatkamalla sivuston käyttöä 
-              hyväksyt evästeiden käytön.
-            </p>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-2 shrink-0">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={declineCookies}
-              className="border-gray-600 text-gray-300 hover:bg-gray-800"
-            >
-              Kieltäydy
-            </Button>
-            <Button
-              size="sm"
-              onClick={acceptCookies}
-              className="bg-lucky-green text-black hover:bg-lucky-green/90"
-            >
-              Hyväksy evästeet
-            </Button>
-          </div>
-          
+    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-50 bg-gray-900 border border-gray-700 rounded-lg shadow-2xl p-4">
+      <div className="flex items-start gap-3">
+        <div className="flex-1 min-w-0">
+          <p className="text-gray-300 text-sm leading-snug">
+            Käytämme evästeitä sivuston toiminnallisuuden ja käyttökokemuksen parantamiseksi.
+          </p>
+        </div>
+
+        <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={declineCookies}
-            className="absolute top-2 right-2 md:relative md:top-0 md:right-0 text-gray-400 hover:text-white transition-colors"
+            className="text-sm text-gray-400 hover:text-white transition-colors px-2 py-1"
           >
-            <X size={20} />
+            Kiellä
           </button>
+          <Button
+            size="sm"
+            onClick={acceptCookies}
+            className="bg-white text-black hover:bg-gray-200 font-medium text-sm px-4 py-1.5"
+          >
+            Hyväksy
+          </Button>
         </div>
+
+        <button
+          onClick={declineCookies}
+          className="text-gray-500 hover:text-white transition-colors -mt-1 -mr-1"
+          aria-label="Sulje"
+        >
+          <X size={16} />
+        </button>
       </div>
     </div>
   );

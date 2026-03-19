@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import DiscPromotion from "@/components/DiscPromotion";
-import bankRobberDisc from "@/assets/bank-robber-disc.png";
+import bankRobberDisc from "@/assets/bank-robber-disc.webp";
 
 // Import images properly
 import proPlayerImage from "/public/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png";

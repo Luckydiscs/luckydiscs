@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import heroImage from "@/assets/disc-golf-sunset-hero.png";
+import heroImage from "@/assets/disc-golf-sunset-hero.webp";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const HeroSection = () => {

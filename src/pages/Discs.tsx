@@ -11,9 +11,9 @@ import {
   TabsTrigger 
 } from "@/components/ui/tabs";
 import { useTranslation } from "@/hooks/useTranslation";
-import treasureHuntDisc from "@/assets/treasure-hunt-disc.png";
-import bankRobberDisc from "@/assets/bank-robber-disc.png";
-import moneyShotDisc from "@/assets/money-shot-disc.png";
+import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
+import bankRobberDisc from "@/assets/bank-robber-disc.webp";
+import moneyShotDisc from "@/assets/money-shot-disc.webp";
 import jailbreakDisc from "@/assets/jailbreak-disc.png";
 
 const discs = [

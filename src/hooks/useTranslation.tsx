@@ -264,7 +264,7 @@ const translations = {
     'contact.returnQuestion': 'What is your return policy?',
     'contact.returnAnswer': 'We offer a 30-day satisfaction guarantee on all purchases. If you\'re not completely satisfied, you can return unworn/unused merchandise for a full refund or exchange.',
     'contact.sponsorshipQuestion': 'How do I become a sponsored player?',
-    'contact.sponsorshipAnswer': 'We review sponsorship applications quarterly. Please email your player resume, social media links, and tournament history to sponsorships@luckydiscs.fi.',
+    'contact.sponsorshipAnswer': 'We review sponsorship applications quarterly. Please email your player resume, social media links, and tournament history to sales@luckydiscs.fi.',
     'contact.customQuestion': 'Can I request custom disc designs?',
     'contact.customAnswer': 'Yes! We offer custom designs for tournaments, events, and businesses. Minimum order quantities apply. Please contact us for details and pricing.',
     
@@ -693,7 +693,7 @@ const translations = {
     'contact.returnQuestion': 'Mikä on palautuskäytäntönne?',
     'contact.returnAnswer': 'Tarjoamme 30 päivän tyytyväisyystakuun kaikille ostoille. Jos et ole täysin tyytyväinen, voit palauttaa käyttämättömät tuotteet täydellä hyvityksellä tai vaihtona.',
     'contact.sponsorshipQuestion': 'Kuinka minusta tulee sponsoroitu pelaaja?',
-    'contact.sponsorshipAnswer': 'Käsittelemme sponsorointihakemuksia neljännesvuosittain. Lähetä pelaaja-ansioluettelosi, sosiaalisen median linkit ja turnaushistoria osoitteeseen sponsorships@luckydiscs.fi.',
+    'contact.sponsorshipAnswer': 'Käsittelemme sponsorointihakemuksia neljännesvuosittain. Lähetä pelaaja-ansioluettelosi, sosiaalisen median linkit ja turnaushistoria osoitteeseen sales@luckydiscs.fi.',
     'contact.customQuestion': 'Voinko pyytää räätälöityjä kiekkomalleja?',
     'contact.customAnswer': 'Kyllä! Tarjoamme räätälöityjä malleja turnauksille, tapahtumille ja yrityksille. Vähimmäistilausmäärät sovellettavissa. Ota yhteyttä yksityiskohtien ja hinnoittelun saamiseksi.',
     

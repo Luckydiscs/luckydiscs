@@ -6,7 +6,7 @@ import ContactForm from "@/components/ContactForm";
 import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import DiscPromotion from "@/components/DiscPromotion";
-import treasureHuntDisc from "@/assets/treasure-hunt-disc.png";
+import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
 
 const Contact = () => {
   const { t } = useTranslation();
