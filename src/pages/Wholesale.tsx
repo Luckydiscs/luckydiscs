@@ -115,7 +115,7 @@ const Wholesale = () => {
             "@type": "WebPage",
             "name": "Lucky Discs Wholesale Program",
             "description": "Join Lucky Discs wholesale program for premium disc golf products with competitive margins and marketing support.",
-            "url": "https://luckydiscs.com/wholesale",
+            "url": "https://www.luckydiscs.fi/wholesale",
             "mainEntity": {
               "@type": "Organization",
               "name": "Lucky Discs",
