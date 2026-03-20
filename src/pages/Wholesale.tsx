@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import WholesaleForm from "@/components/WholesaleForm";
 import { Briefcase, CheckCircle2, Package, Truck } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import useSEO from "@/hooks/useSEO";
 
 const Wholesale = () => {
   const { t } = useTranslation();
@@ -11,73 +12,15 @@ const Wholesale = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    
-    // SEO Meta Tags
-    const pageTitle = "Lucky Discs Wholesale Program - Partner With Premium Finnish Disc Golf Brand";
-    const pageDescription = "Join Lucky Discs wholesale program. Competitive margins, unique casino-themed designs, reliable shipping from Finland. Partner with the fastest-growing Finnish disc golf brand.";
-    const pageKeywords = "disc golf wholesale, retailer program, bulk disc orders, Lucky Discs wholesale, disc golf distributor, wholesale partnership, Finnish disc golf wholesale";
-    const canonicalUrl = "https://www.luckydiscs.fi/wholesale";
-    const ogImage = "https://www.luckydiscs.fi/lucky-discs-logo.png";
-    
-    document.title = pageTitle;
-    
-    // Meta tags
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute('content', pageDescription);
-    
-    const metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (metaKeywords) metaKeywords.setAttribute('content', pageKeywords);
-    
-    // Canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', canonicalUrl);
-    
-    // Open Graph tags
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', pageTitle);
-    
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) ogDescription.setAttribute('content', pageDescription);
-    
-    const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
-    
-    const ogImageTag = document.querySelector('meta[property="og:image"]');
-    if (ogImageTag) ogImageTag.setAttribute('content', ogImage);
-    
-    // Twitter Card
-    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-    if (twitterTitle) twitterTitle.setAttribute('content', pageTitle);
-    
-    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
-    if (twitterDescription) twitterDescription.setAttribute('content', pageDescription);
-    
-    const twitterImage = document.querySelector('meta[name="twitter:image"]');
-    if (twitterImage) twitterImage.setAttribute('content', ogImage);
-    
-    // Hreflang
-    const updateOrCreateHreflang = (lang: string, url: string) => {
-      let hreflang = document.querySelector(`link[hreflang="${lang}"]`);
-      if (!hreflang) {
-        hreflang = document.createElement('link');
-        hreflang.setAttribute('rel', 'alternate');
-        hreflang.setAttribute('hreflang', lang);
-        document.head.appendChild(hreflang);
-      }
-      hreflang.setAttribute('href', url);
-    };
-    
-    updateOrCreateHreflang('en', canonicalUrl);
-    updateOrCreateHreflang('fi', canonicalUrl);
-    updateOrCreateHreflang('x-default', canonicalUrl);
-    
-    // Structured Data - Service Offer
-    const structuredData = {
+  }, []);
+
+  useSEO({
+    title: "Lucky Discs Wholesale Program - Partner With Premium Finnish Disc Golf Brand",
+    description: "Join Lucky Discs wholesale program. Competitive margins, unique casino-themed designs, reliable shipping from Finland. Partner with the fastest-growing Finnish disc golf brand.",
+    keywords: "disc golf wholesale, retailer program, bulk disc orders, Lucky Discs wholesale, disc golf distributor, wholesale partnership, Finnish disc golf wholesale",
+    canonicalPath: "/wholesale",
+    ogImage: "https://www.luckydiscs.fi/lucky-discs-logo.png",
+    structuredData: {
       "@context": "https://schema.org",
       "@type": "Service",
       "serviceType": "Wholesale Distribution",
@@ -87,48 +30,17 @@ const Wholesale = () => {
         "url": "https://www.luckydiscs.fi"
       },
       "name": "Disc Golf Wholesale Program",
-      "description": pageDescription,
+      "description": "Join Lucky Discs wholesale program. Competitive margins, unique casino-themed designs, reliable shipping from Finland. Partner with the fastest-growing Finnish disc golf brand.",
       "areaServed": "Worldwide",
       "offers": {
         "@type": "Offer",
         "description": "Wholesale partnership for disc golf retailers and distributors"
       }
-    };
-    
-    let script = document.querySelector('script[type="application/ld+json"]');
-    if (!script) {
-      script = document.createElement('script');
-      script.setAttribute('type', 'application/ld+json');
-      document.head.appendChild(script);
     }
-    script.textContent = JSON.stringify(structuredData);
-  }, []);
+  });
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
-      {/* Structured Data for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Lucky Discs Wholesale Program",
-            "description": "Join Lucky Discs wholesale program for premium disc golf products with competitive margins and marketing support.",
-            "url": "https://www.luckydiscs.fi/wholesale",
-            "mainEntity": {
-              "@type": "Organization",
-              "name": "Lucky Discs",
-              "description": "Premium disc golf equipment manufacturer offering wholesale partnerships",
-              "offers": {
-                "@type": "Offer",
-                "description": "Wholesale disc golf products with competitive margins and marketing support"
-              }
-            }
-          })
-        }}
-      />
-      
       <Navbar />
       
       {/* Hero Section */}

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const CookieBanner = () => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -35,7 +37,7 @@ const CookieBanner = () => {
       <div className="flex items-start gap-3">
         <div className="flex-1 min-w-0">
           <p className="text-gray-300 text-sm leading-snug">
-            Käytämme evästeitä sivuston toiminnallisuuden ja käyttökokemuksen parantamiseksi.
+            {t('cookie.description')}
           </p>
         </div>
 
@@ -44,14 +46,14 @@ const CookieBanner = () => {
             onClick={declineCookies}
             className="text-sm text-gray-400 hover:text-white transition-colors px-2 py-1"
           >
-            Kiellä
+            {t('cookie.decline')}
           </button>
           <Button
             size="sm"
             onClick={acceptCookies}
             className="bg-white text-black hover:bg-gray-200 font-medium text-sm px-4 py-1.5"
           >
-            Hyväksy
+            {t('cookie.accept')}
           </Button>
         </div>
 

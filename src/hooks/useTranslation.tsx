@@ -13,6 +13,11 @@ const TranslationContext = createContext<TranslationContextType | undefined>(und
 // Translation data
 const translations = {
   en: {
+    // Cookie Banner
+    'cookie.description': 'We use cookies to improve site functionality and user experience.',
+    'cookie.accept': 'Accept',
+    'cookie.decline': 'Decline',
+
     // Navbar
     'nav.home': 'Home',
     'nav.discs': 'Discs',
@@ -443,6 +448,11 @@ const translations = {
   },
   fi: {
     // Navbar
+    // Cookie Banner
+    'cookie.description': 'Käytämme evästeitä sivuston toiminnallisuuden ja käyttökokemuksen parantamiseksi.',
+    'cookie.accept': 'Hyväksy',
+    'cookie.decline': 'Kiellä',
+
     'nav.home': 'Etusivu',
     'nav.discs': 'Kiekot',
     'nav.wholesale': 'Jälleenmyynti',

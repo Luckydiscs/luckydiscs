@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useMemo } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
+import useSEO from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -13,58 +14,43 @@ import {
 const FAQ = () => {
   const { t } = useTranslation();
 
-  useEffect(() => {
-    document.title = "Lucky Discs FAQ - Frequently Asked Questions | Customer Support";
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Lucky Discs FAQ with answers about shipping, products, wholesale, disc golf basics and Lucky Discs customer support. Get help with questions.');
-    }
-
-    // Structured data for FAQ
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": t('faq.shipping.question'),
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": t('faq.shipping.answer')
-          }
-        },
-        {
-          "@type": "Question", 
-          "name": t('faq.discChoice.question'),
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": t('faq.discChoice.answer')
-          }
-        },
-        {
-          "@type": "Question",
-          "name": t('faq.flightNumbers.question'),
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": t('faq.flightNumbers.answer')
-          }
+  const structuredData = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": t('faq.shipping.question'),
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": t('faq.shipping.answer')
         }
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
+      },
+      {
+        "@type": "Question",
+        "name": t('faq.discChoice.question'),
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": t('faq.discChoice.answer')
+        }
+      },
+      {
+        "@type": "Question",
+        "name": t('faq.flightNumbers.question'),
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": t('faq.flightNumbers.answer')
+        }
       }
-    };
-  }, [t]);
+    ]
+  }), [t]);
+
+  useSEO({
+    title: "Lucky Discs FAQ - Frequently Asked Questions | Customer Support",
+    description: "Lucky Discs FAQ with answers about shipping, products, wholesale, disc golf basics and Lucky Discs customer support. Get help with questions.",
+    canonicalPath: "/faq",
+    structuredData: structuredData
+  });
 
   return (
     <div className="min-h-screen bg-black text-white">

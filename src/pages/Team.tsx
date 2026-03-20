@@ -1,7 +1,7 @@
-import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
+import useSEO from "@/hooks/useSEO";
 import danielVictoryImage from "@/assets/daniel-victory-photo.webp";
 import moneyShotDisc from "@/assets/money-shot-disc.webp";
 import DiscPromotion from "@/components/DiscPromotion";
@@ -13,74 +13,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Team = () => {
   const { t } = useTranslation();
-  
-  useEffect(() => {
-    // SEO Meta Tags
-    const pageTitle = "Lucky Discs Team - 2025 Finnish Championship History | Join Our Team";
-    const pageDescription = "Lucky Discs team history featuring our 2025 Finnish Championship success. Looking for new team players - apply now to join our growing disc golf team!";
-    const pageKeywords = "Lucky Discs team, disc golf team Finland, Finnish Championship 2025, join disc golf team, professional disc golf, disc golf sponsorship";
-    const canonicalUrl = "https://www.luckydiscs.fi/team";
-    const ogImage = "https://www.luckydiscs.fi/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png";
-    
-    document.title = pageTitle;
-    
-    // Meta tags
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute('content', pageDescription);
-    
-    const metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (metaKeywords) metaKeywords.setAttribute('content', pageKeywords);
-    
-    // Canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', canonicalUrl);
-    
-    // Open Graph tags
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', pageTitle);
-    
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) ogDescription.setAttribute('content', pageDescription);
-    
-    const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
-    
-    const ogImageTag = document.querySelector('meta[property="og:image"]');
-    if (ogImageTag) ogImageTag.setAttribute('content', ogImage);
-    
-    // Twitter Card
-    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-    if (twitterTitle) twitterTitle.setAttribute('content', pageTitle);
-    
-    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
-    if (twitterDescription) twitterDescription.setAttribute('content', pageDescription);
-    
-    const twitterImage = document.querySelector('meta[name="twitter:image"]');
-    if (twitterImage) twitterImage.setAttribute('content', ogImage);
-    
-    // Hreflang
-    const updateOrCreateHreflang = (lang: string, url: string) => {
-      let hreflang = document.querySelector(`link[hreflang="${lang}"]`);
-      if (!hreflang) {
-        hreflang = document.createElement('link');
-        hreflang.setAttribute('rel', 'alternate');
-        hreflang.setAttribute('hreflang', lang);
-        document.head.appendChild(hreflang);
-      }
-      hreflang.setAttribute('href', url);
-    };
-    
-    updateOrCreateHreflang('en', canonicalUrl);
-    updateOrCreateHreflang('fi', canonicalUrl);
-    updateOrCreateHreflang('x-default', canonicalUrl);
-    
-    // Structured Data - SportsTeam
-    const structuredData = {
+
+  const ogImage = "https://www.luckydiscs.fi/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png";
+
+  useSEO({
+    title: "Lucky Discs Team - 2025 Finnish Championship History | Join Our Team",
+    description: "Lucky Discs team history featuring our 2025 Finnish Championship success. Looking for new team players - apply now to join our growing disc golf team!",
+    keywords: "Lucky Discs team, disc golf team Finland, Finnish Championship 2025, join disc golf team, professional disc golf, disc golf sponsorship",
+    canonicalPath: "/team",
+    ogImage: ogImage,
+    structuredData: {
       "@context": "https://schema.org",
       "@type": "SportsTeam",
       "name": "Lucky Discs Team",
@@ -88,16 +30,8 @@ const Team = () => {
       "description": "Professional disc golf team representing Lucky Discs brand",
       "award": "Finnish Championship 2025",
       "image": ogImage
-    };
-    
-    let script = document.querySelector('script[type="application/ld+json"]');
-    if (!script) {
-      script = document.createElement('script');
-      script.setAttribute('type', 'application/ld+json');
-      document.head.appendChild(script);
     }
-    script.textContent = JSON.stringify(structuredData);
-  }, []);
+  });
 
   return (
     <div className="min-h-screen flex flex-col bg-black text-white">

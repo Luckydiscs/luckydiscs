@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
 import FeaturedDisc from "@/components/FeaturedDisc";
@@ -11,164 +11,38 @@ import { ArrowRight, Disc, TruckIcon, Award, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
-
-import bankRobberDisc from "@/assets/bank-robber-disc.webp";
-import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
-import moneyShotDisc from "@/assets/money-shot-disc.webp";
-import jailbreakDisc from "@/assets/jailbreak-disc.png";
-
-const featuredProducts = [
-  {
-    id: 1,
-    name: "Bank Robber",
-    imageSrc: bankRobberDisc,
-    descriptionKey: "disc.bankRobber.description",
-    speed: 8,
-    glide: 5,
-    turn: -1,
-    fade: 2,
-    isNewRelease: true
-  },
-  {
-    id: 2,
-    name: "Treasure Hunt", 
-    imageSrc: treasureHuntDisc,
-    descriptionKey: "disc.treasureHunt.description",
-    speed: 12,
-    glide: 6,
-    turn: -1,
-    fade: 3,
-    isNewRelease: false
-  },
-  {
-    id: 3,
-    name: "Money Shot",
-    imageSrc: moneyShotDisc, 
-    descriptionKey: "disc.moneyShot.description",
-    speed: 4,
-    glide: 3,
-    turn: 1,
-    fade: 3,
-    isNewRelease: false
-  },
-  {
-    id: 4,
-    name: "Jailbreak",
-    imageSrc: jailbreakDisc,
-    descriptionKey: "disc.jailbreak.description",
-    speed: "?",
-    glide: "?",
-    turn: "?",
-    fade: "?",
-    isNewRelease: true
-  }
-];
+import useSEO from "@/hooks/useSEO";
+import discs from "@/data/discs";
 
 const Index = () => {
   const navigate = useNavigate();
-  const { t, language } = useTranslation();
-  const [isVisible, setIsVisible] = useState(false);
+  const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(true);
 
-  useEffect(() => {
-    setIsVisible(true);
-    
-    // SEO Meta Tags
-    const pageTitle = "Lucky Discs - Premium Disc Golf Equipment | Professional Tournament Discs from Finland";
-    const pageDescription = "Lucky Discs - Premium Finnish disc golf equipment. Professional tournament-tested discs including Bank Robber, Treasure Hunt, Money Shot. Wholesale opportunities for retailers worldwide.";
-    const pageKeywords = "disc golf equipment, Finnish disc golf, Bank Robber disc, Treasure Hunt disc, Money Shot disc, professional disc golf, tournament discs, wholesale disc golf";
-    const canonicalUrl = "https://www.luckydiscs.fi";
-    const ogImage = "https://www.luckydiscs.fi/lovable-uploads/682fc2dd-badc-4562-8574-aaab40a86d03.png";
-    
-    document.title = pageTitle;
-    
-    // Meta tags
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute('content', pageDescription);
-    
-    const metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (metaKeywords) metaKeywords.setAttribute('content', pageKeywords);
-    
-    // Canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', canonicalUrl);
-    
-    // Open Graph tags
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', pageTitle);
-    
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) ogDescription.setAttribute('content', pageDescription);
-    
-    const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
-    
-    const ogImageTag = document.querySelector('meta[property="og:image"]');
-    if (ogImageTag) ogImageTag.setAttribute('content', ogImage);
-    
-    // Twitter Card tags
-    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-    if (twitterTitle) twitterTitle.setAttribute('content', pageTitle);
-    
-    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
-    if (twitterDescription) twitterDescription.setAttribute('content', pageDescription);
-    
-    const twitterImage = document.querySelector('meta[name="twitter:image"]');
-    if (twitterImage) twitterImage.setAttribute('content', ogImage);
-    
-    // Hreflang tags
-    const updateOrCreateHreflang = (lang: string, url: string) => {
-      let hreflang = document.querySelector(`link[hreflang="${lang}"]`);
-      if (!hreflang) {
-        hreflang = document.createElement('link');
-        hreflang.setAttribute('rel', 'alternate');
-        hreflang.setAttribute('hreflang', lang);
-        document.head.appendChild(hreflang);
-      }
-      hreflang.setAttribute('href', url);
-    };
-    
-    updateOrCreateHreflang('en', canonicalUrl);
-    updateOrCreateHreflang('fi', canonicalUrl);
-    updateOrCreateHreflang('x-default', canonicalUrl);
-    
-    // Structured Data - Product Collection
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "name": "Lucky Discs Premium Disc Golf Equipment",
-      "description": pageDescription,
-      "url": canonicalUrl,
-      "itemListElement": featuredProducts.map((product, index) => ({
-        "@type": "Product",
-        "position": index + 1,
-        "name": product.name,
-        "description": t(product.descriptionKey),
-        "image": `https://www.luckydiscs.fi${product.imageSrc}`,
-        "brand": {
-          "@type": "Brand",
-          "name": "Lucky Discs"
-        },
-        "offers": {
-          "@type": "Offer",
-          "availability": "https://schema.org/InStock",
-          "priceCurrency": "EUR"
-        }
-      }))
-    };
-    
-    let script = document.querySelector('script[type="application/ld+json"]');
-    if (!script) {
-      script = document.createElement('script');
-      script.setAttribute('type', 'application/ld+json');
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify(structuredData);
-  }, [language]);
+  const structuredData = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Lucky Discs Premium Disc Golf Equipment",
+    "description": "Lucky Discs - Premium Finnish disc golf equipment.",
+    "url": "https://www.luckydiscs.fi",
+    "itemListElement": discs.map((product, index) => ({
+      "@type": "Product",
+      "position": index + 1,
+      "name": product.name,
+      "description": t(product.descriptionKey),
+      "image": `https://www.luckydiscs.fi${product.imageSrc}`,
+      "brand": { "@type": "Brand", "name": "Lucky Discs" },
+      "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR" }
+    }))
+  }), [t]);
+
+  useSEO({
+    title: "Lucky Discs - Premium Disc Golf Equipment | Professional Tournament Discs from Finland",
+    description: "Lucky Discs - Premium Finnish disc golf equipment. Professional tournament-tested discs including Bank Robber, Treasure Hunt, Money Shot. Wholesale opportunities for retailers worldwide.",
+    keywords: "disc golf equipment, Finnish disc golf, Bank Robber disc, Treasure Hunt disc, Money Shot disc, professional disc golf, tournament discs, wholesale disc golf",
+    canonicalPath: "",
+    structuredData,
+  });
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
@@ -193,7 +67,7 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {featuredProducts.map((product) => (
+            {discs.map((product) => (
               <ProductCard
                 key={product.id}
                 imageSrc={product.imageSrc}

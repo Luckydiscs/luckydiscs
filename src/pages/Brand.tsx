@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
+import useSEO from "@/hooks/useSEO";
 import DiscPromotion from "@/components/DiscPromotion";
 import bankRobberDisc from "@/assets/bank-robber-disc.webp";
 
@@ -20,73 +21,16 @@ const Brand = () => {
   const { t } = useTranslation();
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
-    // SEO Meta Tags
-    const pageTitle = "Lucky Discs Brand - Finnish Premium Disc Golf Manufacturer Story";
-    const pageDescription = "Lucky Discs brand story - Founded in 2022 in Finland. Premium disc golf manufacturer with casino-inspired designs, Finnish quality, and championship performance.";
-    const pageKeywords = "Lucky Discs brand, Finnish disc golf manufacturer, disc golf company, casino design discs, Nokia Finland, premium disc golf brand, disc golf innovation";
-    const canonicalUrl = "https://www.luckydiscs.fi/brand";
-    const ogImage = "https://www.luckydiscs.fi/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.png";
-    
-    document.title = pageTitle;
-    
-    // Meta tags
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute('content', pageDescription);
-    
-    const metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (metaKeywords) metaKeywords.setAttribute('content', pageKeywords);
-    
-    // Canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', canonicalUrl);
-    
-    // Open Graph tags
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', pageTitle);
-    
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) ogDescription.setAttribute('content', pageDescription);
-    
-    const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
-    
-    const ogImageTag = document.querySelector('meta[property="og:image"]');
-    if (ogImageTag) ogImageTag.setAttribute('content', ogImage);
-    
-    // Twitter Card
-    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-    if (twitterTitle) twitterTitle.setAttribute('content', pageTitle);
-    
-    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
-    if (twitterDescription) twitterDescription.setAttribute('content', pageDescription);
-    
-    const twitterImage = document.querySelector('meta[name="twitter:image"]');
-    if (twitterImage) twitterImage.setAttribute('content', ogImage);
-    
-    // Hreflang
-    const updateOrCreateHreflang = (lang: string, url: string) => {
-      let hreflang = document.querySelector(`link[hreflang="${lang}"]`);
-      if (!hreflang) {
-        hreflang = document.createElement('link');
-        hreflang.setAttribute('rel', 'alternate');
-        hreflang.setAttribute('hreflang', lang);
-        document.head.appendChild(hreflang);
-      }
-      hreflang.setAttribute('href', url);
-    };
-    
-    updateOrCreateHreflang('en', canonicalUrl);
-    updateOrCreateHreflang('fi', canonicalUrl);
-    updateOrCreateHreflang('x-default', canonicalUrl);
-    
-    // Structured Data - Brand & Organization
-    const structuredData = {
+  const pageDescription = "Lucky Discs brand story - Founded in 2022 in Finland. Premium disc golf manufacturer with casino-inspired designs, Finnish quality, and championship performance.";
+  const ogImage = "https://www.luckydiscs.fi/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.png";
+
+  useSEO({
+    title: "Lucky Discs Brand - Finnish Premium Disc Golf Manufacturer Story",
+    description: pageDescription,
+    keywords: "Lucky Discs brand, Finnish disc golf manufacturer, disc golf company, casino design discs, Nokia Finland, premium disc golf brand, disc golf innovation",
+    canonicalPath: "/brand",
+    ogImage: ogImage,
+    structuredData: {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Lucky Discs",
@@ -113,16 +57,10 @@ const Brand = () => {
         "name": "Lucky Discs",
         "slogan": "Modern Discs. Wild Style. Lucky Throws."
       }
-    };
-    
-    let script = document.querySelector('script[type="application/ld+json"]');
-    if (!script) {
-      script = document.createElement('script');
-      script.setAttribute('type', 'application/ld+json');
-      document.head.appendChild(script);
     }
-    script.textContent = JSON.stringify(structuredData);
+  });
 
+  useEffect(() => {
     const observerOptions = {
       threshold: 0.2,
       rootMargin: "0px 0px -10% 0px"

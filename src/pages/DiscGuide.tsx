@@ -1,10 +1,10 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import useSEO from "@/hooks/useSEO";
 import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
 import bankRobberDisc from "@/assets/bank-robber-disc.webp";
 import moneyShotDisc from "@/assets/money-shot-disc.webp";
@@ -12,24 +12,11 @@ import moneyShotDisc from "@/assets/money-shot-disc.webp";
 const DiscGuide = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // SEO optimization
-    document.title = "Lucky Discs Guide - Complete Disc Golf Guide | Learn Basics";
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Lucky Discs guide for disc golf beginners. Complete Lucky Discs guide covering flight numbers, disc types, throwing techniques and course strategy.');
-    } else {
-      const newMeta = document.createElement('meta');
-      newMeta.name = 'description';
-      newMeta.content = 'Lucky Discs guide for disc golf beginners. Complete Lucky Discs guide covering flight numbers, disc types, throwing techniques and course strategy.';
-      document.head.appendChild(newMeta);
-    }
-
-    // Add structured data for SEO
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.innerHTML = JSON.stringify({
+  useSEO({
+    title: "Lucky Discs Guide - Complete Disc Golf Guide | Learn Basics",
+    description: "Lucky Discs guide for disc golf beginners. Complete Lucky Discs guide covering flight numbers, disc types, throwing techniques and course strategy.",
+    canonicalPath: "/guide",
+    structuredData: {
       "@context": "https://schema.org",
       "@type": "Guide",
       "name": "Complete Disc Golf Guide for Beginners",
@@ -42,13 +29,8 @@ const DiscGuide = () => {
         "@type": "Organization",
         "name": "Lucky Discs"
       }
-    });
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
+    }
+  });
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white font-sans antialiased">
