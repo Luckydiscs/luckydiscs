@@ -73,9 +73,9 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send welcome email
     const emailResponse = await resend.emails.send({
-      from: "Lucky Discs <onboarding@resend.dev>",
+      from: "Lucky Discs <info@luckydiscs.fi>",
       to: [email],
-      subject: "Welcome to Lucky Discs Newsletter! 🥏",
+      subject: "Welcome to Lucky Discs Newsletter! ð¥",
       html: `
         <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif; background: linear-gradient(135deg, #000 0%, #1a1a1a 100%); color: white;">
           <!-- Header with Logo -->
@@ -86,7 +86,7 @@ const handler = async (req: Request): Promise<Response> => {
           
           <!-- Main Content -->
           <div style="padding: 40px 30px; text-align: center;">
-            <h2 style="color: #00ff41; margin: 0 0 20px 0; font-size: 28px;">Welcome to the Team! 🥏</h2>
+            <h2 style="color: #00ff41; margin: 0 0 20px 0; font-size: 28px;">Welcome to the Team! ð¥</h2>
             
             <p style="font-size: 16px; line-height: 1.6; margin: 20px 0; color: #e0e0e0;">
               Thank you for subscribing to the Lucky Discs newsletter! You're now part of our exclusive community of disc golf enthusiasts.
@@ -95,11 +95,11 @@ const handler = async (req: Request): Promise<Response> => {
             <div style="background: #222; padding: 30px; border-radius: 10px; margin: 30px 0; border-left: 4px solid #00ff41;">
               <h3 style="color: #00ff41; margin: 0 0 15px 0;">What to expect:</h3>
               <ul style="text-align: left; color: #e0e0e0; line-height: 1.8; padding-left: 20px;">
-                <li>🆕 New product launches and exclusive previews</li>
-                <li>💰 Special discounts and member-only offers</li>
-                <li>🏆 Pro player insights and tournament updates</li>
-                <li>📚 Disc selection guides and throwing tips</li>
-                <li>🎯 Course recommendations and community highlights</li>
+                <li>ð New product launches and exclusive previews</li>
+                <li>ð° Special discounts and member-only offers</li>
+                <li>ð Pro player insights and tournament updates</li>
+                <li>ð Disc selection guides and throwing tips</li>
+                <li>ð¯ Course recommendations and community highlights</li>
               </ul>
             </div>
             
