@@ -10,7 +10,7 @@ interface SEOConfig {
 }
 
 const BASE_URL = "https://www.luckydiscs.fi";
-const DEFAULT_OG_IMAGE = `${BASE_URL}/lovable-uploads/682fc2dd-badc-4562-8574-aaab40a86d03.png`;
+const DEFAULT_OG_IMAGE = `${BASE_URL}/lovable-uploads/682fc2dd-badc-4562-8574-aaab40a86d03.webp`;
 
 /**
  * Centralized SEO hook — replaces ~90 lines of duplicated boilerplate per page.

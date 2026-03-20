@@ -5,17 +5,20 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import useSEO from "@/hooks/useSEO";
-import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
-import bankRobberDisc from "@/assets/bank-robber-disc.webp";
-import moneyShotDisc from "@/assets/money-shot-disc.webp";
+import discs from "@/data/discs";
 
 const DiscGuide = () => {
   const navigate = useNavigate();
 
+  // Extract disc references from centralized data
+  const bankRobberDisc = discs.find(d => d.name === "Bank Robber")!;
+  const treasureHuntDisc = discs.find(d => d.name === "Treasure Hunt")!;
+  const moneyShotDisc = discs.find(d => d.name === "Money Shot")!;
+
   useSEO({
     title: "Lucky Discs Guide - Complete Disc Golf Guide | Learn Basics",
     description: "Lucky Discs guide for disc golf beginners. Complete Lucky Discs guide covering flight numbers, disc types, throwing techniques and course strategy.",
-    canonicalPath: "/guide",
+    canonicalPath: "/disc-guide",
     structuredData: {
       "@context": "https://schema.org",
       "@type": "Guide",
@@ -80,7 +83,7 @@ const DiscGuide = () => {
             <Card className="bg-white/5 border-white/10">
               <CardHeader>
                 <div className="flex items-center gap-4">
-                  <img src={treasureHuntDisc} alt="Treasure Hunt Driver Disc" className="w-20 h-20 object-contain" />
+                  <img src={treasureHuntDisc.imageSrc} alt="Treasure Hunt Driver Disc" className="w-20 h-20 object-contain" />
                   <div>
                     <CardTitle className="text-lucky-green">Distance Drivers</CardTitle>
                     <Badge variant="secondary">Speed 10-14</Badge>
@@ -103,7 +106,7 @@ const DiscGuide = () => {
             <Card className="bg-white/5 border-white/10">
               <CardHeader>
                 <div className="flex items-center gap-4">
-                  <img src={bankRobberDisc} alt="Bank Robber Control Driver" className="w-20 h-20 object-contain" />
+                  <img src={bankRobberDisc.imageSrc} alt="Bank Robber Control Driver" className="w-20 h-20 object-contain" />
                   <div>
                     <CardTitle className="text-lucky-green">Control Drivers</CardTitle>
                     <Badge variant="secondary">Speed 7-9</Badge>
@@ -126,7 +129,7 @@ const DiscGuide = () => {
             <Card className="bg-white/5 border-white/10">
               <CardHeader>
                 <div className="flex items-center gap-4">
-                  <img src={moneyShotDisc} alt="Money Shot Midrange Disc" className="w-20 h-20 object-contain" />
+                  <img src={moneyShotDisc.imageSrc} alt="Money Shot Midrange Disc" className="w-20 h-20 object-contain" />
                   <div>
                     <CardTitle className="text-lucky-green">Midrange Discs</CardTitle>
                     <Badge variant="secondary">Speed 4-6</Badge>

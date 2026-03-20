@@ -14,7 +14,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const Team = () => {
   const { t } = useTranslation();
 
-  const ogImage = "https://www.luckydiscs.fi/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png";
+  const ogImage = "https://www.luckydiscs.fi/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.webp";
 
   useSEO({
     title: "Lucky Discs Team - 2025 Finnish Championship History | Join Our Team",

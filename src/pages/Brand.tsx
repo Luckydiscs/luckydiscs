@@ -11,18 +11,18 @@ import DiscPromotion from "@/components/DiscPromotion";
 import bankRobberDisc from "@/assets/bank-robber-disc.webp";
 
 // Import images properly
-import proPlayerImage from "/public/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png";
-import blueDiscImage from "/public/lovable-uploads/682fc2dd-badc-4562-8574-aaab40a86d03.png";
-import pinkDiscImage from "/public/lovable-uploads/4c26d096-cfa9-4173-afe7-93b4f8b28426.png";
-import treasureDiscImage from "/public/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.png";
-import goldDiscImage from "/public/lovable-uploads/6c56f0b3-a367-4e99-b234-5ce2b5e8c32c.png";
+import proPlayerImage from "/public/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.webp";
+import blueDiscImage from "/public/lovable-uploads/682fc2dd-badc-4562-8574-aaab40a86d03.webp";
+import pinkDiscImage from "/public/lovable-uploads/4c26d096-cfa9-4173-afe7-93b4f8b28426.webp";
+import treasureDiscImage from "/public/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.webp";
+import goldDiscImage from "/public/lovable-uploads/6c56f0b3-a367-4e99-b234-5ce2b5e8c32c.webp";
 
 const Brand = () => {
   const { t } = useTranslation();
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const pageDescription = "Lucky Discs brand story - Founded in 2022 in Finland. Premium disc golf manufacturer with casino-inspired designs, Finnish quality, and championship performance.";
-  const ogImage = "https://www.luckydiscs.fi/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.png";
+  const ogImage = "https://www.luckydiscs.fi/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.webp";
 
   useSEO({
     title: "Lucky Discs Brand - Finnish Premium Disc Golf Manufacturer Story",

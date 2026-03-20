@@ -46,7 +46,7 @@ const Discs = () => {
     description: "Browse Lucky Discs complete collection of premium disc golf discs. Professional drivers, fairway discs, midranges and putters including Bank Robber, Treasure Hunt, Money Shot and Jailbreak.",
     keywords: "disc golf discs, drivers, fairway discs, mid-range discs, putters, Bank Robber, Treasure Hunt, Money Shot, Jailbreak, Lucky Discs collection",
     canonicalPath: "/discs",
-    ogImage: "https://www.luckydiscs.fi/lovable-uploads/4c26d096-cfa9-4173-afe7-93b4f8b28426.png",
+    ogImage: "https://www.luckydiscs.fi/lovable-uploads/4c26d096-cfa9-4173-afe7-93b4f8b28426.webp",
     structuredData,
   });
 

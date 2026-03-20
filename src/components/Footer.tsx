@@ -72,6 +72,8 @@ const Footer = () => {
               src={logo}
               alt="Lucky Discs logo"
               className="h-20 w-auto mx-auto"
+              width={80}
+              height={80}
             />
             <div className="flex justify-center space-x-6">
               <a
@@ -168,6 +170,8 @@ const Footer = () => {
                 src={logo}
                 alt="Lucky Discs logo"
                 className="h-36 w-auto"
+                width={144}
+                height={144}
               />
             </div>
             <p className="text-gray-300 text-base leading-relaxed">

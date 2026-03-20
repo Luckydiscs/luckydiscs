@@ -113,9 +113,9 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <img 
-                src="/lovable-uploads/8ae2dde2-ac3a-4144-9b11-35d02bc07d57.png" 
-                alt="Professional disc golf tournament action shot showing perfect throwing form" 
+              <img
+                src="/lovable-uploads/8ae2dde2-ac3a-4144-9b11-35d02bc07d57.webp"
+                alt="Professional disc golf tournament action shot showing perfect throwing form"
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 width={400}
                 height={256}
@@ -129,9 +129,9 @@ const Index = () => {
             </div>
             
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <img 
-                src="/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.png" 
-                alt="Professional female disc golf player demonstrating perfect throwing technique" 
+              <img
+                src="/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.webp"
+                alt="Professional female disc golf player demonstrating perfect throwing technique"
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 width={400}
                 height={256}
@@ -145,9 +145,9 @@ const Index = () => {
             </div>
             
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <img 
-                src="/lovable-uploads/770642ce-cd09-4bd5-ad75-cfdf0deeac1c.png" 
-                alt="PDGA Pro Worlds tournament coverage showcasing elite level disc golf competition" 
+              <img
+                src="/lovable-uploads/770642ce-cd09-4bd5-ad75-cfdf0deeac1c.webp"
+                alt="PDGA Pro Worlds tournament coverage showcasing elite level disc golf competition"
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 width={400}
                 height={256}
@@ -161,9 +161,9 @@ const Index = () => {
             </div>
             
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <img 
-                src="/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.png" 
-                alt="Top professional disc golf action shots from major tournaments" 
+              <img
+                src="/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.webp"
+                alt="Top professional disc golf action shots from major tournaments"
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 width={400}
                 height={256}
