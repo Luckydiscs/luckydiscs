@@ -41,8 +41,8 @@ const footerHtml = () => `
     <tr>
       <td align="center" style="padding:24px 16px;">
         <div style="font:500 13px/1.6, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial; color:${baseStyles.muted};">
-          Lucky Discs • Nokia, Finland
-          <br />This is an automated message — you can reply directly to this email.
+          Lucky Discs â¢ Nokia, Finland
+          <br />This is an automated message â you can reply directly to this email.
         </div>
       </td>
     </tr>
@@ -114,7 +114,7 @@ const handler = async (req: Request): Promise<Response> => {
     `;
 
     const customerServiceResponse = await resend.emails.send({
-      from: "Lucky Discs <onboarding@resend.dev>",
+      from: "Lucky Discs <info@luckydiscs.fi>",
       to: ["laplandvibe@gmail.com"],
       subject: `[LUCKY DISCS CONTACT] ${data.subject} - ${data.name}`,
       html: adminHtml,
@@ -124,7 +124,7 @@ const handler = async (req: Request): Promise<Response> => {
     const confirmationHtml = `
       ${headerHtml(logoUrl)}
       ${containerOpen()}
-        ${section(`<h1 style=\"margin:0 0 10px 0;font:800 26px/1.2, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.accent};\">Thank you for contacting us! 🥏</h1>
+        ${section(`<h1 style=\"margin:0 0 10px 0;font:800 26px/1.2, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.accent};\">Thank you for contacting us! ð¥</h1>
         <div style=\"font:500 16px/1.7, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.text};\">Hi ${data.name}, we received your message about \"${data.subject}\".</div>`)}
         ${section(`
           <div style=\"background:#0f0f0f;border:1px solid ${baseStyles.border};border-radius:12px;padding:16px;\">
@@ -138,7 +138,7 @@ const handler = async (req: Request): Promise<Response> => {
         ${section(`
           <div style=\"font:500 14px/1.7, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;color:${baseStyles.muted};\">
             For urgent matters, contact us: 
-            <a href=\"mailto:asiakaspalvelu@luckydiscs.fi\" style=\"color:${baseStyles.accent};text-decoration:none;\">asiakaspalvelu@luckydiscs.fi</a> • +358 44 989 4225
+            <a href=\"mailto:asiakaspalvelu@luckydiscs.fi\" style=\"color:${baseStyles.accent};text-decoration:none;\">asiakaspalvelu@luckydiscs.fi</a> â¢ +358 44 989 4225
           </div>
         `)}
         ${section(`<div style=\"text-align:center;\">${button(discsUrl,'Browse our discs')}</div>`)}
@@ -147,9 +147,9 @@ const handler = async (req: Request): Promise<Response> => {
     `;
 
     const confirmationResponse = await resend.emails.send({
-      from: "Lucky Discs <onboarding@resend.dev>",
+      from: "Lucky Discs <info@luckydiscs.fi>",
       to: [data.email],
-      subject: "Message received – Lucky Discs",
+      subject: "Message received â Lucky Discs",
       html: confirmationHtml,
     });
 
