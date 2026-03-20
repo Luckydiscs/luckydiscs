@@ -44,7 +44,7 @@ const ProductCard = ({
     >
       <CardContent className="p-4 sm:p-6 relative flex flex-col h-full">
         {isNewRelease && (
-          <Badge className="absolute top-2 sm:top-4 right-2 sm:right-4 z-10 bg-lucky-green text-black font-medium">
+          <Badge className="absolute top-2 sm:top-4 right-2 sm:right-4 z-10 bg-lucky-green text-white font-medium">
             {t('productCard.newRelease')}
           </Badge>
         )}
@@ -63,7 +63,7 @@ const ProductCard = ({
         
         <h3 className="text-xl sm:text-2xl font-heading tracking-wide text-center mb-2 text-white font-semibold drop-shadow-lg">{name}</h3>
         
-        <div className="text-center text-gray-400 mb-4 text-sm sm:text-base">
+        <div className="text-center text-gray-300 mb-4 text-sm sm:text-base">
           <p className={!isExpanded && isDescriptionLong ? "line-clamp-2" : ""}>
             {description}
           </p>
@@ -79,25 +79,25 @@ const ProductCard = ({
         
         <div className="flex justify-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
           <div className="text-center">
-            <span className="text-xs text-gray-400">{t('productCard.speed')}</span>
+            <span className="text-xs text-gray-300">{t('productCard.speed')}</span>
             <p className="text-lg sm:text-xl font-heading text-white">{speed}</p>
           </div>
           <div className="text-center">
-            <span className="text-xs text-gray-400">{t('productCard.glide')}</span>
+            <span className="text-xs text-gray-300">{t('productCard.glide')}</span>
             <p className="text-lg sm:text-xl font-heading text-white">{glide}</p>
           </div>
           <div className="text-center">
-            <span className="text-xs text-gray-400">{t('productCard.turn')}</span>
+            <span className="text-xs text-gray-300">{t('productCard.turn')}</span>
             <p className="text-lg sm:text-xl font-heading text-white">{turn}</p>
           </div>
           <div className="text-center">
-            <span className="text-xs text-gray-400">{t('productCard.fade')}</span>
+            <span className="text-xs text-gray-300">{t('productCard.fade')}</span>
             <p className="text-lg sm:text-xl font-heading text-white">{fade}</p>
           </div>
         </div>
         
         <Button 
-          className="w-full bg-lucky-green hover:bg-white text-black transition-all mt-auto"
+          className="w-full bg-lucky-green hover:bg-white text-white hover:text-black transition-all mt-auto"
           onClick={() => navigate('/wholesale')}
         >
           {t('productCard.getWholesaleInfo')}

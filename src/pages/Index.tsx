@@ -61,7 +61,7 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-heading mb-4">{t('featured.title')}</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-300 max-w-2xl mx-auto">
               {t('featured.subtitle')}
             </p>
           </div>
@@ -85,7 +85,7 @@ const Index = () => {
           <div className="text-center">
             <Button 
               onClick={() => navigate('/discs')}
-              className="bg-lucky-green text-black hover:bg-white hover:text-black transition-all text-lg px-8"
+              className="bg-lucky-green text-white hover:bg-white hover:text-black transition-all text-lg px-8"
             >
               {t('featured.viewAllDiscs')} <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
@@ -227,7 +227,7 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-heading mb-4">{t('features.title')}</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-300 max-w-2xl mx-auto">
               {t('features.subtitle')}
             </p>
           </div>
@@ -238,41 +238,41 @@ const Index = () => {
             }`}
           >
             <div className="text-center space-y-4">
-              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black">
+              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-white">
                 <Disc size={32} />
               </div>
               <h3 className="text-xl font-heading">{t('features.premiumMaterials')}</h3>
-              <p className="text-gray-400">
+              <p className="text-gray-300">
                 {t('features.premiumMaterialsDesc')}
               </p>
             </div>
             
             <div className="text-center space-y-4">
-              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black">
+              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-white">
                 <TruckIcon size={32} />
               </div>
               <h3 className="text-xl font-heading">{t('features.fastShipping')}</h3>
-              <p className="text-gray-400">
+              <p className="text-gray-300">
                 {t('features.fastShippingDesc')}
               </p>
             </div>
             
             <div className="text-center space-y-4">
-              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black">
+              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-white">
                 <Award size={32} />
               </div>
               <h3 className="text-xl font-heading">{t('features.tournamentTested')}</h3>
-              <p className="text-gray-400">
+              <p className="text-gray-300">
                 {t('features.tournamentTestedDesc')}
               </p>
             </div>
             
             <div className="text-center space-y-4">
-              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black">
+              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-white">
                 <Users size={32} />
               </div>
               <h3 className="text-xl font-heading">{t('features.communitySupport')}</h3>
-              <p className="text-gray-400">
+              <p className="text-gray-300">
                 {t('features.communitySupportDesc')}
               </p>
             </div>
@@ -281,10 +281,10 @@ const Index = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-20 bg-lucky-green text-black">
+      <section className="py-20 bg-lucky-green text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-heading mb-4">{t('cta.title')}</h2>
-          <p className="text-black/80 max-w-2xl mx-auto mb-8 text-lg">
+          <p className="text-white/80 max-w-2xl mx-auto mb-8 text-lg">
             {t('cta.subtitle')}
           </p>
           

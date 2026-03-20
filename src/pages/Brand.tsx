@@ -105,15 +105,15 @@ const Brand = () => {
           <div className="flex flex-wrap justify-center gap-6 mt-12">
             <div className="text-center">
               <div className="text-3xl font-bold text-lucky-green">2022</div>
-              <div className="text-sm text-gray-400">{t('brand.founded')}</div>
+              <div className="text-sm text-gray-300">{t('brand.founded')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-lucky-green">Growing</div>
-              <div className="text-sm text-gray-400">{t('brand.retailerNetwork')}</div>
+              <div className="text-sm text-gray-300">{t('brand.retailerNetwork')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-lucky-green">1000+</div>
-              <div className="text-sm text-gray-400">{t('brand.happyCustomers')}</div>
+              <div className="text-sm text-gray-300">{t('brand.happyCustomers')}</div>
             </div>
           </div>
         </div>
@@ -151,7 +151,7 @@ const Brand = () => {
                   <h4 className="text-white font-bold text-lg mb-4">{t('brand.connectShop')}</h4>
                   <div className="flex flex-wrap gap-4">
                     <Link to="/discs">
-                      <Button className="bg-lucky-green text-black hover:bg-white hover:text-black">
+                      <Button className="bg-lucky-green text-white hover:bg-white hover:text-black">
                         {t('brand.shopDiscs')}
                       </Button>
                     </Link>
@@ -183,7 +183,7 @@ const Brand = () => {
                 className="rounded-lg shadow-2xl max-w-full mx-auto"
               />
               <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-4/5 h-12 bg-lucky-green/30 rounded-full blur-2xl"></div>
-              <div className="absolute top-4 right-4 bg-lucky-green text-black px-4 py-2 rounded-full font-bold text-sm">
+              <div className="absolute top-4 right-4 bg-lucky-green text-white px-4 py-2 rounded-full font-bold text-sm">
                 {t('brand.proTeam')}
               </div>
             </div>
@@ -208,7 +208,7 @@ const Brand = () => {
             >
               <div className="bg-gradient-to-b from-lucky-green/10 to-black/30 p-8 rounded-xl border border-lucky-green/20 text-center hover:transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-black font-bold text-2xl">P</span>
+                  <span className="text-white font-bold text-2xl">P</span>
                 </div>
                 <h3 className="text-2xl font-heading mb-4 text-white">{t('brand.boldInnovation')}</h3>
                 <p className="text-gray-300 mb-4">
@@ -219,7 +219,7 @@ const Brand = () => {
               
               <div className="bg-gradient-to-b from-lucky-green/10 to-black/30 p-8 rounded-xl border border-lucky-green/20 text-center hover:transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-black font-bold text-2xl">E</span>
+                  <span className="text-white font-bold text-2xl">E</span>
                 </div>
                 <h3 className="text-2xl font-heading mb-4 text-white">{t('brand.qualityFirst')}</h3>
                 <p className="text-gray-300 mb-4">
@@ -230,7 +230,7 @@ const Brand = () => {
               
               <div className="bg-gradient-to-b from-lucky-green/10 to-black/30 p-8 rounded-xl border border-lucky-green/20 text-center hover:transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-black font-bold text-2xl">S</span>
+                  <span className="text-white font-bold text-2xl">S</span>
                 </div>
                 <h3 className="text-2xl font-heading mb-4 text-white">{t('brand.communityGrowth')}</h3>
                 <p className="text-gray-300 mb-4">
@@ -314,20 +314,20 @@ const Brand = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
               <div className="bg-white/5 p-6 rounded-lg border border-white/10">
                 <h3 className="text-xl font-heading mb-4">{t('brand.playerSponsorshipsTitle')}</h3>
-                <p className="text-gray-400 mb-4">
+                <p className="text-gray-300 mb-4">
                   {t('brand.playerSponsorshipsDesc')}
                 </p>
-                <p className="text-gray-400">
+                <p className="text-gray-300">
                   {t('brand.interestedSponsorships')}
                 </p>
               </div>
               
               <div className="bg-white/5 p-6 rounded-lg border border-white/10">
                 <h3 className="text-xl font-heading mb-4">{t('brand.tournamentSupport')}</h3>
-                <p className="text-gray-400 mb-4">
+                <p className="text-gray-300 mb-4">
                   {t('brand.tournamentSupportDesc')}
                 </p>
-                <p className="text-gray-400">
+                <p className="text-gray-300">
                   {t('brand.planningEvent')}
                 </p>
               </div>
@@ -335,7 +335,7 @@ const Brand = () => {
             
             <div className="text-center">
               <Link to="/contact">
-                <Button className="bg-lucky-green text-black hover:bg-white hover:text-black">
+                <Button className="bg-lucky-green text-white hover:bg-white hover:text-black">
                   {t('brand.contactPartnerships')} <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
@@ -345,7 +345,7 @@ const Brand = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-16 bg-lucky-green text-black">
+      <section className="py-16 bg-lucky-green text-white">
         <div className="container mx-auto px-4">
           {/* Bank Robber Disc Promotion */}
           <div className="mb-12">
@@ -363,7 +363,7 @@ const Brand = () => {
             <h2 className="text-3xl md:text-4xl font-heading mb-4">
               {t('brand.joinLuckyFamily')}
             </h2>
-          <p className="text-black/80 max-w-2xl mx-auto mb-8 text-lg">
+          <p className="text-white/80 max-w-2xl mx-auto mb-8 text-lg">
             {t('brand.joinDesc')}
           </p>
           
@@ -375,7 +375,7 @@ const Brand = () => {
             </Link>
             
             <Link to="/wholesale">
-              <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white">
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black">
                 {t('brand.becomeRetailer')}
               </Button>
             </Link>

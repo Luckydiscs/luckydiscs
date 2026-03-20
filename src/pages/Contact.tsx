@@ -65,38 +65,38 @@ const Contact = () => {
             <div className="lg:col-span-2 space-y-8">
               <div>
                 <h2 className="text-2xl md:text-3xl font-heading mb-6">{t('contact.contactInfo')}</h2>
-                <p className="text-gray-400 mb-8">
+                <p className="text-gray-300 mb-8">
                   {t('contact.contactInfoDesc')}
                 </p>
               </div>
               
               <div className="space-y-4">
                 <div className="flex items-center">
-                  <div className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black mr-4">
+                  <div className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-white mr-4">
                     <Mail size={24} strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">{t('contact.email')}</p>
+                    <p className="text-sm text-gray-300">{t('contact.email')}</p>
                     <p className="font-medium">{t('contact.emailAddress')}</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center">
-                  <div className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black mr-4">
+                  <div className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-white mr-4">
                     <Phone size={24} strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">{t('contact.phone')}</p>
+                    <p className="text-sm text-gray-300">{t('contact.phone')}</p>
                     <p className="font-medium">+358 44 989 4225</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center">
-                  <div className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black mr-4">
+                  <div className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-white mr-4">
                     <MapPin size={24} strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">{t('contact.location')}</p>
+                    <p className="text-sm text-gray-300">{t('contact.location')}</p>
                     <p className="font-medium">{t('contact.companyLocation')}</p>
                   </div>
                 </div>
@@ -109,7 +109,7 @@ const Contact = () => {
                     href="https://www.instagram.com/luckydiscsofficial" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black hover:bg-white transition-colors duration-300"
+                    className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-white transition-colors duration-300"
                   >
                     <Instagram size={24} strokeWidth={2} />
                   </a>
@@ -117,7 +117,7 @@ const Contact = () => {
                     href="https://www.facebook.com/LuckyDiscs" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black hover:bg-white transition-colors duration-300"
+                    className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-white transition-colors duration-300"
                   >
                     <Facebook size={24} strokeWidth={2} />
                   </a>
@@ -125,7 +125,7 @@ const Contact = () => {
                     href="https://www.youtube.com/@LuckyDiscs" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-black hover:bg-white transition-colors duration-300"
+                    className="bg-lucky-green w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-white transition-colors duration-300"
                   >
                     <Youtube size={24} strokeWidth={2} />
                   </a>
@@ -138,15 +138,15 @@ const Contact = () => {
                   <tbody>
                     <tr className="border-b border-gray-800">
                       <td className="py-2 font-medium">{t('contact.mondayFriday')}</td>
-                      <td className="py-2 text-gray-400">{t('contact.mondayFridayHours')}</td>
+                      <td className="py-2 text-gray-300">{t('contact.mondayFridayHours')}</td>
                     </tr>
                     <tr className="border-b border-gray-800">
                       <td className="py-2 font-medium">{t('contact.saturday')}</td>
-                      <td className="py-2 text-gray-400">{t('contact.closed')}</td>
+                      <td className="py-2 text-gray-300">{t('contact.closed')}</td>
                     </tr>
                     <tr>
                       <td className="py-2 font-medium">{t('contact.sunday')}</td>
-                      <td className="py-2 text-gray-400">{t('contact.closed')}</td>
+                      <td className="py-2 text-gray-300">{t('contact.closed')}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -185,28 +185,28 @@ const Contact = () => {
             <div className="space-y-6">
               <div className="bg-white/5 p-6 rounded-lg border border-white/10">
                 <h3 className="text-xl font-heading mb-2">{t('contact.shippingQuestion')}</h3>
-                <p className="text-gray-400">
+                <p className="text-gray-300">
                   {t('contact.shippingAnswer')}
                 </p>
               </div>
               
               <div className="bg-white/5 p-6 rounded-lg border border-white/10">
                 <h3 className="text-xl font-heading mb-2">{t('contact.returnQuestion')}</h3>
-                <p className="text-gray-400">
+                <p className="text-gray-300">
                   {t('contact.returnAnswer')}
                 </p>
               </div>
               
               <div className="bg-white/5 p-6 rounded-lg border border-white/10">
                 <h3 className="text-xl font-heading mb-2">{t('contact.sponsorshipQuestion')}</h3>
-                <p className="text-gray-400">
+                <p className="text-gray-300">
                   {t('contact.sponsorshipAnswer')}
                 </p>
               </div>
               
               <div className="bg-white/5 p-6 rounded-lg border border-white/10">
                 <h3 className="text-xl font-heading mb-2">{t('contact.customQuestion')}</h3>
-                <p className="text-gray-400">
+                <p className="text-gray-300">
                   {t('contact.customAnswer')}
                 </p>
               </div>

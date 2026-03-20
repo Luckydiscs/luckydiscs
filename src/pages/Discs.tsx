@@ -117,35 +117,35 @@ const Discs = () => {
               <TabsTrigger
                 value="all"
                 onClick={() => setSelectedType("all")}
-                className="data-[state=active]:bg-lucky-green data-[state=active]:text-black"
+                className="data-[state=active]:bg-lucky-green data-[state=active]:text-white"
               >
                 {t('discs.allDiscs')}
               </TabsTrigger>
               <TabsTrigger
                 value="driver"
                 onClick={() => setSelectedType("driver")}
-                className="data-[state=active]:bg-lucky-green data-[state=active]:text-black"
+                className="data-[state=active]:bg-lucky-green data-[state=active]:text-white"
               >
                 {t('discs.drivers')}
               </TabsTrigger>
               <TabsTrigger
                 value="fairway"
                 onClick={() => setSelectedType("fairway")}
-                className="data-[state=active]:bg-lucky-green data-[state=active]:text-black"
+                className="data-[state=active]:bg-lucky-green data-[state=active]:text-white"
               >
                 {t('discs.fairway')}
               </TabsTrigger>
               <TabsTrigger
                 value="midrange"
                 onClick={() => setSelectedType("midrange")}
-                className="data-[state=active]:bg-lucky-green data-[state=active]:text-black"
+                className="data-[state=active]:bg-lucky-green data-[state=active]:text-white"
               >
                 {t('discs.midRange')}
               </TabsTrigger>
               <TabsTrigger
                 value="putter"
                 onClick={() => setSelectedType("putter")}
-                className="data-[state=active]:bg-lucky-green data-[state=active]:text-black"
+                className="data-[state=active]:bg-lucky-green data-[state=active]:text-white"
               >
                 {t('discs.putters')}
               </TabsTrigger>
@@ -236,11 +236,11 @@ const Discs = () => {
             </div>
 
             <div className="mt-8 text-center">
-              <p className="text-gray-400">
+              <p className="text-gray-300">
                 {t('discs.needHelp')}
               </p>
               <Button
-                className="mt-4 bg-lucky-green text-black hover:bg-white hover:text-black"
+                className="mt-4 bg-lucky-green text-white hover:bg-white hover:text-black"
                 onClick={() => window.location.href = '/disc-guide'}
               >
                 {t('discs.selectionGuide')}

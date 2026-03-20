@@ -395,7 +395,7 @@ const DiscGuide = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg"
-              className="bg-lucky-green text-black hover:bg-white hover:text-black font-semibold"
+              className="bg-lucky-green text-white hover:bg-white hover:text-black font-semibold"
               onClick={() => navigate('/discs')}
             >
               Shop Our Discs

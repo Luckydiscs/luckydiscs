@@ -55,7 +55,7 @@ const SocialMediaShowcase = () => {
                   
                   <h3 className="text-xl font-heading text-white mb-2">{platform.name}</h3>
                   <p className="text-lucky-green font-medium mb-3">{platform.handle}</p>
-                  <p className="text-gray-400 text-sm mb-4 line-clamp-2">{platform.description}</p>
+                  <p className="text-gray-300 text-sm mb-4 line-clamp-2">{platform.description}</p>
                   
                   <a 
                     href={platform.url}
@@ -80,7 +80,7 @@ const SocialMediaShowcase = () => {
               href="https://www.youtube.com/@LuckyDiscs"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-lucky-green text-black px-6 py-3 rounded-lg font-semibold hover:bg-white transition-colors duration-300"
+              className="inline-flex items-center gap-2 bg-lucky-green text-white px-6 py-3 rounded-lg font-semibold hover:bg-white transition-colors duration-300"
             >
               <Youtube className="w-5 h-5" />
               {t('social.watchVideos')}

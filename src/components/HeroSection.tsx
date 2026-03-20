@@ -58,7 +58,7 @@ const HeroSection = () => {
             <div className="flex flex-wrap gap-4 mb-8">
               <Button 
                 size="lg"
-                className="bg-lucky-green text-black hover:bg-white hover:text-black px-8 font-semibold text-lg"
+                className="bg-lucky-green text-white hover:bg-white hover:text-black px-8 font-semibold text-lg"
                 onClick={() => navigate('/wholesale')}
               >
                 {t('nav.getWholesaleAccess')}

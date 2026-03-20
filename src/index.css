@@ -16,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    --primary: 120 100% 32%;
+    --primary: 142 72% 38%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 16%;
@@ -33,12 +33,12 @@
 
     --border: 0 0% 88%;
     --input: 0 0% 88%;
-    --ring: 120 100% 32%;
+    --ring: 142 72% 38%;
 
     --radius: 0.5rem;
 
     /* Lucky Discs Brand Colors */
-    --lucky-green: 120 100% 32%;
+    --lucky-green: 142 72% 38%;
     --lucky-gold: 45 100% 50%;
     --lucky-black: 0 0% 8%;
     --lucky-white: 0 0% 98%;
@@ -63,7 +63,7 @@
     --popover: 0 0% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 120 100% 32%;
+    --primary: 142 72% 38%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 16%;
@@ -80,10 +80,10 @@
 
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 120 100% 32%;
+    --ring: 142 72% 38%;
 
     /* Lucky Discs Brand Colors - Dark Mode */
-    --lucky-green: 120 100% 32%;
+    --lucky-green: 142 72% 38%;
     --lucky-gold: 45 100% 50%;
     --lucky-black: 0 0% 8%;
     --lucky-white: 0 0% 98%;

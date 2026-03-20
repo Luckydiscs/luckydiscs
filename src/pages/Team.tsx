@@ -89,7 +89,7 @@ const Team = () => {
                     </div>
                     
                     <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700">
-                      <p className="text-gray-400 text-sm flex items-center gap-2">
+                      <p className="text-gray-300 text-sm flex items-center gap-2">
                         <span className="text-yellow-500">⚠️</span>
                         {t('team.contractEnded')}
                       </p>
@@ -100,12 +100,12 @@ const Team = () => {
                     <div className="bg-gray-900/50 p-6 rounded-lg border border-gray-800">
                       <div className="text-2xl font-bold text-lucky-green mb-2">🥇</div>
                       <p className="text-white font-medium">{t('team.finnishChampion')}</p>
-                      <p className="text-gray-400 text-sm">{t('team.openDivisionGold')}</p>
+                      <p className="text-gray-300 text-sm">{t('team.openDivisionGold')}</p>
                     </div>
                     <div className="bg-gray-900/50 p-6 rounded-lg border border-gray-800">
                       <div className="text-2xl font-bold text-lucky-green mb-2">2025</div>
                       <p className="text-white font-medium">{t('team.championshipYear')}</p>
-                      <p className="text-gray-400 text-sm">{t('team.withLuckyDiscs')}</p>
+                      <p className="text-gray-300 text-sm">{t('team.withLuckyDiscs')}</p>
                     </div>
                   </div>
                 </div>
@@ -126,28 +126,28 @@ const Team = () => {
               <div className="grid md:grid-cols-3 gap-8 mt-12">
                 <div className="text-center">
                   <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Trophy className="h-8 w-8 text-black" />
+                    <Trophy className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-xl font-medium mb-2 text-white">Excellence</h3>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-gray-300">
                     Championship-level performance in every disc we create.
                   </p>
                 </div>
                 <div className="text-center">
                   <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="h-8 w-8 text-black" />
+                    <Users className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-xl font-medium mb-2 text-white">Team Spirit</h3>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-gray-300">
                     Building success through collaboration and shared vision.
                   </p>
                 </div>
                 <div className="text-center">
                   <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Disc className="h-8 w-8 text-black" />
+                    <Disc className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-xl font-medium mb-2 text-white">Innovation</h3>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-gray-300">
                     Constantly pushing the boundaries of disc golf performance.
                   </p>
                 </div>
@@ -161,7 +161,7 @@ const Team = () => {
           <div className="container mx-auto">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <Badge className="bg-lucky-green text-black font-bold mb-4">
+                <Badge className="bg-lucky-green text-white font-bold mb-4">
                   {t('team.nowRecruiting')}
                 </Badge>
                 <h2 className="text-4xl font-semibold mb-4 text-white">{t('team.lookingForStars')}</h2>
@@ -205,7 +205,7 @@ const Team = () => {
               <div className="text-center">
                 <Button 
                   size="lg" 
-                  className="bg-lucky-green text-black hover:bg-lucky-green/90 font-bold text-lg px-8 py-6"
+                  className="bg-lucky-green text-white hover:bg-lucky-green/90 font-bold text-lg px-8 py-6"
                   asChild
                 >
                   <Link to="/contact">
@@ -213,7 +213,7 @@ const Team = () => {
                     {t('team.applyNow')}
                   </Link>
                 </Button>
-                <p className="text-gray-400 mt-4 text-sm">
+                <p className="text-gray-300 mt-4 text-sm">
                   {t('team.applyHint')}
                 </p>
               </div>
@@ -229,17 +229,17 @@ const Team = () => {
               <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 p-8 rounded-lg border border-gray-700 text-center">
                 <div className="text-4xl font-bold text-lucky-green mb-2">🥇</div>
                 <p className="text-lg font-semibold text-white">{t('team.finnishNational')}</p>
-                <p className="text-sm text-gray-400">{t('team.championshipGold')}</p>
+                <p className="text-sm text-gray-300">{t('team.championshipGold')}</p>
               </div>
               <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 p-8 rounded-lg border border-gray-700 text-center">
                 <div className="text-4xl font-bold text-lucky-green mb-2">2025</div>
                 <p className="text-lg font-semibold text-white">{t('team.historicYear')}</p>
-                <p className="text-sm text-gray-400">{t('team.firstChampionship')}</p>
+                <p className="text-sm text-gray-300">{t('team.firstChampionship')}</p>
               </div>
               <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 p-8 rounded-lg border border-gray-700 text-center">
                 <div className="text-4xl font-bold text-lucky-green mb-2">100%</div>
                 <p className="text-lg font-semibold text-white">{t('team.luckyDiscs')}</p>
-                <p className="text-sm text-gray-400">{t('team.championshipSetup')}</p>
+                <p className="text-sm text-gray-300">{t('team.championshipSetup')}</p>
               </div>
             </div>
           </div>

@@ -89,41 +89,41 @@ const Wholesale = () => {
             }`}
           >
             <div className="bg-black/30 p-6 rounded-lg border border-white/10 text-center">
-              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black mb-4">
+              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-white mb-4">
                 <CheckCircle2 size={32} />
               </div>
               <h3 className="text-xl font-heading mb-3">{t('wholesale.competitiveMargins')}</h3>
-              <p className="text-gray-400">
+              <p className="text-gray-300">
                 {t('wholesale.competitiveMarginsDesc')}
               </p>
             </div>
             
             <div className="bg-black/30 p-6 rounded-lg border border-white/10 text-center">
-              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black mb-4">
+              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-white mb-4">
                 <Package size={32} />
               </div>
               <h3 className="text-xl font-heading mb-3">{t('wholesale.uniqueProducts')}</h3>
-              <p className="text-gray-400">
+              <p className="text-gray-300">
                 {t('wholesale.uniqueProductsDesc')}
               </p>
             </div>
             
             <div className="bg-black/30 p-6 rounded-lg border border-white/10 text-center">
-              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black mb-4">
+              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-white mb-4">
                 <Truck size={32} />
               </div>
               <h3 className="text-xl font-heading mb-3">{t('wholesale.reliableShipping')}</h3>
-              <p className="text-gray-400">
+              <p className="text-gray-300">
                 {t('wholesale.reliableShippingDesc')}
               </p>
             </div>
             
             <div className="bg-black/30 p-6 rounded-lg border border-white/10 text-center">
-              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-black mb-4">
+              <div className="bg-lucky-green w-16 h-16 rounded-full flex items-center justify-center mx-auto text-white mb-4">
                 <Briefcase size={32} />
               </div>
               <h3 className="text-xl font-heading mb-3">{t('wholesale.marketingSupport')}</h3>
-              <p className="text-gray-400">
+              <p className="text-gray-300">
                 {t('wholesale.marketingSupportDesc')}
               </p>
             </div>

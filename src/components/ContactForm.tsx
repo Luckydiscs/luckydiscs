@@ -178,7 +178,7 @@ const ContactForm = () => {
       
       <Button 
         type="submit" 
-        className="w-full md:w-auto bg-lucky-green text-black hover:bg-white hover:text-black"
+        className="w-full md:w-auto bg-lucky-green text-white hover:bg-white hover:text-black"
         disabled={isSubmitting}
       >
         {isSubmitting ? t('contactForm.sending') : t('contactForm.sendMessage')}

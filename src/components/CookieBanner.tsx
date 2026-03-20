@@ -51,7 +51,7 @@ const CookieBanner = () => {
           <Button
             size="sm"
             onClick={acceptCookies}
-            className="bg-green-600 text-white hover:bg-green-500 font-semibold text-sm px-4 py-1.5 border-0"
+            className="bg-lucky-green text-white hover:bg-lucky-green/80 font-semibold text-sm px-4 py-1.5 border-0"
           >
             {t('cookie.accept')}
           </Button>

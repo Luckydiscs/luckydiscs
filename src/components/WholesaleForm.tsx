@@ -255,7 +255,7 @@ const WholesaleForm = () => {
       {/* Submit button */}
       <Button 
         type="submit" 
-        className="w-full md:w-auto bg-lucky-green text-black hover:bg-white hover:text-black font-semibold px-8"
+        className="w-full md:w-auto bg-lucky-green text-white hover:bg-white hover:text-black font-semibold px-8"
         disabled={isSubmitting}
       >
         {isSubmitting ? t('wholesaleForm.submitting') : t('wholesaleForm.submit')}

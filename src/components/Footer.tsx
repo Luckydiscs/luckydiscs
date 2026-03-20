@@ -80,7 +80,7 @@ const Footer = () => {
                 href="https://www.instagram.com/luckydiscsofficial"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-lucky-green transition-colors"
+                className="text-gray-300 hover:text-lucky-green transition-colors"
               >
                 <Instagram size={28} />
               </a>
@@ -88,7 +88,7 @@ const Footer = () => {
                 href="https://www.facebook.com/LuckyDiscs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-lucky-green transition-colors"
+                className="text-gray-300 hover:text-lucky-green transition-colors"
               >
                 <Facebook size={28} />
               </a>
@@ -96,7 +96,7 @@ const Footer = () => {
                 href="https://www.youtube.com/@LuckyDiscs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-lucky-green transition-colors"
+                className="text-gray-300 hover:text-lucky-green transition-colors"
               >
                 <Youtube size={28} />
               </a>
@@ -143,7 +143,7 @@ const Footer = () => {
                   type="submit"
                   size="sm"
                   disabled={isSubmitting}
-                  className="bg-lucky-green text-black hover:bg-opacity-80 disabled:opacity-50 rounded-l-none"
+                  className="bg-lucky-green text-white hover:bg-opacity-80 disabled:opacity-50 rounded-l-none"
                 >
                   {isSubmitting ? (
                     <div className="animate-spin rounded-full h-4 w-4 border-2 border-black border-t-transparent" />
@@ -156,7 +156,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Info - Essential Only */}
-          <div className="text-center text-gray-400 text-sm space-y-1">
+          <div className="text-center text-gray-300 text-sm space-y-1">
             <p>{t('contact.emailAddress')}</p>
             <p>Nokia, Finland</p>
           </div>
@@ -182,7 +182,7 @@ const Footer = () => {
                 href="https://www.instagram.com/luckydiscsofficial"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-lucky-green transition-colors"
+                className="text-gray-300 hover:text-lucky-green transition-colors"
               >
                 <Instagram size={24} />
               </a>
@@ -190,7 +190,7 @@ const Footer = () => {
                 href="https://www.facebook.com/LuckyDiscs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-lucky-green transition-colors"
+                className="text-gray-300 hover:text-lucky-green transition-colors"
               >
                 <Facebook size={24} />
               </a>
@@ -198,7 +198,7 @@ const Footer = () => {
                 href="https://www.youtube.com/@LuckyDiscs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-lucky-green transition-colors"
+                className="text-gray-300 hover:text-lucky-green transition-colors"
               >
                 <Youtube size={24} />
               </a>
@@ -293,7 +293,7 @@ const Footer = () => {
                   type="submit"
                   size="icon" 
                   disabled={isSubmitting}
-                  className="bg-lucky-green text-black hover:bg-opacity-80 disabled:opacity-50"
+                  className="bg-lucky-green text-white hover:bg-opacity-80 disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <div className="animate-spin rounded-full h-4 w-4 border-2 border-black border-t-transparent" />
@@ -306,7 +306,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-6 mt-8 text-center text-gray-400">
+        <div className="border-t border-gray-800 pt-6 mt-8 text-center text-gray-300">
           <p className="mb-3 text-sm">© {new Date().getFullYear()} Lucky Discs. {t('footer.allRightsReserved')}</p>
           <div className="flex justify-center space-x-4 md:space-x-6 text-xs md:text-sm">
             <Link to="/privacy" className="hover:text-lucky-green transition-colors">
