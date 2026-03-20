@@ -18,6 +18,21 @@ Allow: /
 Disallow: /*lovable*
 Disallow: /*lovableproject*
 
+User-agent: GPTBot
+Allow: /
+Disallow: /*lovable*
+Disallow: /*lovableproject*
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /*lovable*
+Disallow: /*lovableproject*
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /*lovable*
+Disallow: /*lovableproject*
+
 User-agent: *
 Allow: /
 Disallow: /*lovableproject*
