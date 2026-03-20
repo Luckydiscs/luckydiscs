@@ -55,7 +55,7 @@ const DiscPromotion = ({
       <div className={`${bgGradient} rounded-xl p-6 border`}>
         <div className="flex flex-col sm:flex-row items-center gap-6">
           <div className="relative">
-            <div className={`absolute inset-0 ${glowColor} rounded-full blur-xl animate-pulse`}></div>
+            <div className={`absolute inset-0 ${glowColor} rounded-full blur-xl `}></div>
             <img 
               src={discImage} 
               alt={discNames[discName]} 
@@ -125,7 +125,7 @@ const DiscPromotion = ({
           </div>
           
           <div className="relative mb-4">
-            <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl "></div>
             <img 
               src={discImage} 
               alt={discNames[discName]} 
@@ -178,7 +178,7 @@ const DiscPromotion = ({
       <div className="flex flex-col lg:flex-row items-center">
         <div className="lg:w-1/2 p-8 lg:p-16 flex justify-center relative">
           <div className="relative group">
-            <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl scale-150 animate-pulse"></div>
+            <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl scale-150 "></div>
             <img 
               src={discImage} 
               alt={discNames[discName]} 
