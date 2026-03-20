@@ -44,14 +44,14 @@ const CookieBanner = () => {
         <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={declineCookies}
-            className="text-sm text-gray-400 hover:text-white transition-colors px-2 py-1"
+            className="text-sm text-white border border-gray-500 hover:border-white hover:bg-white/10 transition-colors px-3 py-1.5 rounded-md"
           >
             {t('cookie.decline')}
           </button>
           <Button
             size="sm"
             onClick={acceptCookies}
-            className="bg-white text-black hover:bg-gray-200 font-medium text-sm px-4 py-1.5"
+            className="bg-green-600 text-white hover:bg-green-500 font-semibold text-sm px-4 py-1.5 border-0"
           >
             {t('cookie.accept')}
           </Button>
