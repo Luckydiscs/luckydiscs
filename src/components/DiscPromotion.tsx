@@ -129,7 +129,9 @@ const DiscPromotion = ({
             <img 
               src={discImage} 
               alt={discNames[discName]} 
-              className="relative z-10 w-32 h-32 mx-auto object-contain transition-all duration-500 hover:scale-110 hover:rotate-12"
+              className="relative z-10 w-56 h-56 sm:w-64 sm:h-64 mx-auto object-contain transition-all duration-500 hover:scale-110 hover:rotate-12"
+              width={256}
+              height={256}
             />
           </div>
           
