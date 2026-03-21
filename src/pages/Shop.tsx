@@ -36,7 +36,7 @@ const products: Product[] = [
     originalPrice: 13.90,
     image: moneyShotDisc,
     type: "Midrange",
-    description: "\u00c4\u00e4rimm\u00e4isen luotettava l\u00e4hestymiskiekko. Kest\u00e4\u00e4 tuulen, paineen ja kovatkin vedot.",
+    description: "Äärimmäisen luotettava lähestymiskiekko. Kestää tuulen, paineen ja kovatkin vedot.",
     weight: "169-172g",
     color: "Keltainen",
     flightNumbers: { speed: 5, glide: 5, turn: -1, fade: 1 }
@@ -50,7 +50,7 @@ const products: Product[] = [
     originalPrice: 19.90,
     image: moneyShotDisc,
     type: "Midrange",
-    description: "\u00c4\u00e4rimm\u00e4isen luotettava l\u00e4hestymiskiekko premium-muovissa. Paras tuntuma ja kesto.",
+    description: "Äärimmäisen luotettava lähestymiskiekko premium-muovissa. Paras tuntuma ja kesto.",
     weight: "165-168g",
     color: "Keltainen",
     flightNumbers: { speed: 5, glide: 5, turn: -1, fade: 1 }
@@ -64,7 +64,7 @@ const products: Product[] = [
     originalPrice: 17.90,
     image: moneyShotDisc,
     type: "Midrange",
-    description: "Money Shot huippumuovissa. Ultrium tarjoaa erinomaisen gripin ja pitk\u00e4n k\u00e4ytt\u00f6i\u00e4n.",
+    description: "Money Shot huippumuovissa. Ultrium tarjoaa erinomaisen gripin ja pitkän käyttöiän.",
     weight: "169-172g",
     color: "Keltainen",
     flightNumbers: { speed: 5, glide: 5, turn: -1, fade: 1 }
@@ -78,7 +78,7 @@ const products: Product[] = [
     originalPrice: 19.90,
     image: treasureHuntDisc,
     type: "Fairway Driver",
-    description: "Pitk\u00e4\u00e4 liitoa, maksimaalista pituutta ja luotettavuutta. Huippu fairway-driver!",
+    description: "Pitkää liitoa, maksimaalista pituutta ja luotettavuutta. Huippu fairway-driver!",
     weight: "169-172g",
     color: "Oranssi",
     flightNumbers: { speed: 7, glide: 5, turn: -1, fade: 1 }
@@ -152,9 +152,9 @@ const ShopProductCard = ({ product, onAddToCart }: { product: Product; onAddToCa
 
         {/* Price */}
         <div className="flex items-baseline gap-2 mb-3">
-          <span className="text-2xl font-bold text-white">\u20ac{product.price.toFixed(2)}</span>
+          <span className="text-2xl font-bold text-white">€{product.price.toFixed(2)}</span>
           {product.originalPrice && (
-            <span className="text-sm text-gray-500 line-through">\u20ac{product.originalPrice.toFixed(2)}</span>
+            <span className="text-sm text-gray-500 line-through">€{product.originalPrice.toFixed(2)}</span>
           )}
         </div>
 
@@ -172,7 +172,7 @@ const ShopProductCard = ({ product, onAddToCart }: { product: Product; onAddToCa
 
         {/* Weight/Color */}
         <div className="text-xs text-gray-500 mb-4">
-          {product.weight} \u00b7 {product.color}
+          {product.weight} · {product.color}
         </div>
 
         {/* Add to Cart */}
@@ -181,7 +181,7 @@ const ShopProductCard = ({ product, onAddToCart }: { product: Product; onAddToCa
           className="mt-auto w-full bg-lucky-green hover:bg-lucky-green/90 text-black font-semibold py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-lucky-green/20 active:scale-[0.98]"
         >
           <ShoppingCart className="w-4 h-4" />
-          Lis\u00e4\u00e4 koriin
+          Lisää koriin
         </button>
       </div>
     </div>
@@ -216,7 +216,7 @@ const CartSidebar = () => {
           {items.length === 0 ? (
             <div className="text-center py-16">
               <ShoppingCart className="w-12 h-12 mx-auto text-gray-700 mb-4" />
-              <p className="text-gray-500">Ostoskori on tyhj\u00e4</p>
+              <p className="text-gray-500">Ostoskori on tyhjä</p>
             </div>
           ) : (
             items.map((item) => (
@@ -242,7 +242,7 @@ const CartSidebar = () => {
                       </button>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-white">\u20ac{(item.price * item.quantity).toFixed(2)}</span>
+                      <span className="text-sm font-medium text-white">€{(item.price * item.quantity).toFixed(2)}</span>
                       <button
                         onClick={() => removeItem(item.id)}
                         className="text-gray-500 hover:text-red-400 transition-colors"
@@ -261,22 +261,22 @@ const CartSidebar = () => {
         {items.length > 0 && (
           <div className="border-t border-white/10 p-5 space-y-3">
             <div className="flex justify-between text-sm text-gray-400">
-              <span>V\u00e4litotaali</span>
-              <span>\u20ac{total.toFixed(2)}</span>
+              <span>Välitotaali</span>
+              <span>€{total.toFixed(2)}</span>
             </div>
             <div className="flex justify-between text-sm text-gray-400">
               <span>Toimitus</span>
-              <span>\u20ac{shipping.toFixed(2)}</span>
+              <span>€{shipping.toFixed(2)}</span>
             </div>
             <div className="flex justify-between text-lg font-bold text-white pt-2 border-t border-white/10">
-              <span>Yhteens\u00e4</span>
-              <span>\u20ac{(total + shipping).toFixed(2)}</span>
+              <span>Yhteensä</span>
+              <span>€{(total + shipping).toFixed(2)}</span>
             </div>
             <button className="w-full bg-lucky-green hover:bg-lucky-green/90 text-black font-bold py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-lucky-green/20 active:scale-[0.98] mt-2">
               Siirry kassalle
             </button>
             <button onClick={clearCart} className="w-full text-sm text-gray-500 hover:text-gray-300 transition-colors py-1">
-              Tyhjenn\u00e4 ostoskori
+              Tyhjennä ostoskori
             </button>
           </div>
         )}
@@ -335,7 +335,7 @@ const Shop = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <Badge className="bg-lucky-green/10 text-lucky-green border-lucky-green/20 mb-4 px-4 py-1">
-              Varastontyhjennys \u2013 jopa -50%
+              Varastontyhjennys – jopa -50%
             </Badge>
             <h1 className="text-4xl md:text-6xl font-heading tracking-tight mb-4">
               Lucky Discs
@@ -354,11 +354,11 @@ const Shop = () => {
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-gray-400">
             <div className="flex items-center gap-2">
               <Truck className="w-4 h-4 text-lucky-green" />
-              <span>Toimitus \u20ac5.90</span>
+              <span>Toimitus €5.90</span>
             </div>
             <div className="flex items-center gap-2">
               <Package className="w-4 h-4 text-lucky-green" />
-              <span>1\u20133 pv toimitusaika</span>
+              <span>1–3 pv toimitusaika</span>
             </div>
             <div className="flex items-center gap-2">
               <Star className="w-4 h-4 text-lucky-green" />
@@ -409,12 +409,12 @@ const Shop = () => {
               <div className="bg-white/5 rounded-xl p-6 border border-white/10 text-center">
                 <Truck className="w-8 h-8 text-lucky-green mx-auto mb-3" />
                 <h3 className="font-medium text-white mb-1">Nopea toimitus</h3>
-                <p className="text-sm text-gray-400">1\u20133 arkip\u00e4iv\u00e4\u00e4 tilauksesta</p>
+                <p className="text-sm text-gray-400">1–3 arkipäivää tilauksesta</p>
               </div>
               <div className="bg-white/5 rounded-xl p-6 border border-white/10 text-center">
                 <Package className="w-8 h-8 text-lucky-green mx-auto mb-3" />
                 <h3 className="font-medium text-white mb-1">Posti / Matkahuolto</h3>
-                <p className="text-sm text-gray-400">Toimituskulut \u20ac5.90</p>
+                <p className="text-sm text-gray-400">Toimituskulut €5.90</p>
               </div>
               <div className="bg-white/5 rounded-xl p-6 border border-white/10 text-center">
                 <Star className="w-8 h-8 text-lucky-green mx-auto mb-3" />
