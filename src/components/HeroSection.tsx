@@ -66,7 +66,7 @@ const HeroSection = () => {
               <Button 
                 size="lg"
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-black px-8 bg-transparent text-lg"
+                className="border-2 border-white text-white hover:bg-white hover:text-black hover:scale-105 active:scale-95 transition-all duration-200 px-8 bg-transparent text-lg"
                 onClick={() => navigate('/discs')}
               >
                 {t('hero.exploreOurDiscs')}
