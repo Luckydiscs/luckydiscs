@@ -5,6 +5,9 @@ import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Plus, Minus, X, Trash2, ChevronDown } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import moneyShotDisc from "@/assets/money-shot-disc.webp";
+import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
+import jailbreakDisc from "@/assets/jailbreak-disc.png";
 
 interface Product {
   id: string;
@@ -31,7 +34,7 @@ const PRODUCTS: Product[] = [
     type: "Midrange",
     price: 9.90,
     originalPrice: 13.90,
-    description: "Äärimmäisen luotettava lähestymiskiekko. Kestää tuulen, paineen ja kovatkin vedot.",
+    description: "ÃÃ¤rimmÃ¤isen luotettava lÃ¤hestymiskiekko. KestÃ¤Ã¤ tuulen, paineen ja kovatkin vedot.",
     flightNumbers: { speed: 5, glide: 5, turn: -1, fade: 1 },
     weights: ["169-172g", "173-176g"],
     colors: [
@@ -42,7 +45,7 @@ const PRODUCTS: Product[] = [
       { name: "Vaaleansininen", value: "#7DD3FC" },
       { name: "Valkoinen", value: "#F8FAFC" }
     ],
-    image: "/discs/money-shot.webp",
+    image: moneyShotDisc,
     inStock: true
   },
   {
@@ -53,7 +56,7 @@ const PRODUCTS: Product[] = [
     type: "Midrange",
     price: 9.90,
     originalPrice: 19.90,
-    description: "Äärimmäisen luotettava lähestymiskiekko premium-muovissa. Paras tuntuma ja kesto.",
+    description: "ÃÃ¤rimmÃ¤isen luotettava lÃ¤hestymiskiekko premium-muovissa. Paras tuntuma ja kesto.",
     flightNumbers: { speed: 5, glide: 5, turn: -1, fade: 1 },
     weights: ["165-168g", "169-172g", "173-176g"],
     colors: [
@@ -61,7 +64,7 @@ const PRODUCTS: Product[] = [
       { name: "Pinkki", value: "#EC4899" },
       { name: "Vaaleanpunainen", value: "#F9A8D4" }
     ],
-    image: "/discs/money-shot.webp",
+    image: moneyShotDisc,
     inStock: true
   },
   {
@@ -72,7 +75,7 @@ const PRODUCTS: Product[] = [
     type: "Midrange",
     price: 9.90,
     originalPrice: 17.90,
-    description: "Money Shot huippumuovissa. Ultrium tarjoaa erinomaisen gripin ja pitkän käyttöiän.",
+    description: "Money Shot huippumuovissa. Ultrium tarjoaa erinomaisen gripin ja pitkÃ¤n kÃ¤yttÃ¶iÃ¤n.",
     flightNumbers: { speed: 5, glide: 5, turn: -1, fade: 1 },
     weights: ["169-172g", "173-176g"],
     colors: [
@@ -83,7 +86,7 @@ const PRODUCTS: Product[] = [
       { name: "Sininen", value: "#3B82F6" },
       { name: "Vaaleansininen", value: "#7DD3FC" }
     ],
-    image: "/discs/money-shot.webp",
+    image: moneyShotDisc,
     inStock: true
   },
   {
@@ -103,7 +106,7 @@ const PRODUCTS: Product[] = [
       { name: "Vaaleansininen", value: "#7DD3FC" },
       { name: "Violetti", value: "#8B5CF6" }
     ],
-    image: "/discs/treasure-hunt.webp",
+    image: treasureHuntDisc,
     inStock: true
   },
   {
@@ -117,7 +120,7 @@ const PRODUCTS: Product[] = [
     flightNumbers: { speed: 0, glide: 0, turn: 0, fade: 0 },
     weights: ["Yksi koko"],
     colors: [{ name: "Vakio", value: "#22C55E" }],
-    image: "/discs/marker.webp",
+    image: moneyShotDisc,
     inStock: true
   }
 ];
@@ -139,7 +142,7 @@ function ProductCard({ product, onAddToCart }: { product: Product; onAddToCart: 
   const [showOptions, setShowOptions] = useState(false);
 
   return (
-    <div className="bg-gray-900/60 border border-gray-800 rounded-xl overflow-hidden hover:border-lucky-green/40 transition-all duration-300">
+    <div className="bg-gray-900/60 border border-gray-800 rounded-xl overflow-hidden hover:border-lucky-green/40 hover:-translate-y-1 hover:shadow-lg hover:shadow-lucky-green/10 transition-all duration-300">
       <div className="relative aspect-square bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center p-8">
         <img src={product.image} alt={product.name} className="w-48 h-48 object-contain" loading="lazy"
           onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }} />
@@ -158,8 +161,8 @@ function ProductCard({ product, onAddToCart }: { product: Product; onAddToCart: 
             {product.plastic && <span className="text-lucky-green text-sm">{product.plastic} muovi</span>}
           </div>
           <div className="text-right">
-            <div className="text-white font-bold text-xl">€{product.price.toFixed(2)}</div>
-            {product.originalPrice && <div className="text-gray-500 line-through text-sm">€{product.originalPrice.toFixed(2)}</div>}
+            <div className="text-white font-bold text-xl">â¬{product.price.toFixed(2)}</div>
+            {product.originalPrice && <div className="text-gray-500 line-through text-sm">â¬{product.originalPrice.toFixed(2)}</div>}
           </div>
         </div>
 
@@ -176,7 +179,7 @@ function ProductCard({ product, onAddToCart }: { product: Product; onAddToCart: 
 
         <button onClick={() => setShowOptions(!showOptions)}
           className="w-full flex items-center justify-between text-gray-300 text-sm mb-3 hover:text-white transition-colors">
-          <span>{selectedWeight} • {selectedColor}</span>
+          <span>{selectedWeight} â¢ {selectedColor}</span>
           <ChevronDown className={`w-4 h-4 transition-transform ${showOptions ? "rotate-180" : ""}`} />
         </button>
 
@@ -192,7 +195,7 @@ function ProductCard({ product, onAddToCart }: { product: Product; onAddToCart: 
               </div>
             </div>
             <div>
-              <label className="text-gray-400 text-xs mb-1 block">Väri</label>
+              <label className="text-gray-400 text-xs mb-1 block">VÃ¤ri</label>
               <div className="flex flex-wrap gap-2">
                 {product.colors.map((c) => (
                   <button key={c.name} onClick={() => setSelectedColor(c.name)}
@@ -205,8 +208,8 @@ function ProductCard({ product, onAddToCart }: { product: Product; onAddToCart: 
         )}
 
         <Button onClick={() => onAddToCart(product, selectedWeight, selectedColor)}
-          className="w-full bg-lucky-green text-white hover:bg-lucky-green/80 font-semibold">
-          <ShoppingCart className="w-4 h-4 mr-2" /> Lisää koriin
+          className="w-full bg-lucky-green text-white hover:bg-lucky-green/80 hover:scale-[1.02] active:scale-95 transition-all duration-200 font-semibold">
+          <ShoppingCart className="w-4 h-4 mr-2" /> LisÃ¤Ã¤ koriin
         </Button>
       </div>
     </div>
@@ -230,7 +233,7 @@ function CartSidebar() {
           {items.length === 0 ? (
             <div className="text-center text-gray-500 py-12">
               <ShoppingCart className="w-12 h-12 mx-auto mb-4 opacity-50" />
-              <p>Ostoskori on tyhjä</p>
+              <p>Ostoskori on tyhjÃ¤</p>
             </div>
           ) : (
             items.map((item) => (
@@ -239,7 +242,7 @@ function CartSidebar() {
                   onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }} />
                 <div className="flex-1 min-w-0">
                   <h4 className="text-white font-semibold text-sm truncate">{item.name}</h4>
-                  <p className="text-gray-400 text-xs">{item.weight} • {item.color}</p>
+                  <p className="text-gray-400 text-xs">{item.weight} â¢ {item.color}</p>
                   <div className="flex items-center justify-between mt-2">
                     <div className="flex items-center gap-2">
                       <button onClick={() => updateQuantity(item.id, item.weight, item.color, item.quantity - 1)}
@@ -248,7 +251,7 @@ function CartSidebar() {
                       <button onClick={() => updateQuantity(item.id, item.weight, item.color, item.quantity + 1)}
                         className="w-7 h-7 rounded bg-gray-700 text-white flex items-center justify-center hover:bg-gray-600"><Plus className="w-3 h-3" /></button>
                     </div>
-                    <span className="text-white font-semibold">€{(item.price * item.quantity).toFixed(2)}</span>
+                    <span className="text-white font-semibold">â¬{(item.price * item.quantity).toFixed(2)}</span>
                   </div>
                 </div>
                 <button onClick={() => removeItem(item.id, item.weight, item.color)}
@@ -261,15 +264,15 @@ function CartSidebar() {
         {items.length > 0 && (
           <div className="border-t border-gray-800 p-6 space-y-4">
             <div className="space-y-2 text-sm">
-              <div className="flex justify-between text-gray-300"><span>Välisumma</span><span>€{totalPrice.toFixed(2)}</span></div>
-              <div className="flex justify-between text-gray-300"><span>Toimitus (Posti/Matkahuolto)</span><span>€{SHIPPING_COST.toFixed(2)}</span></div>
+              <div className="flex justify-between text-gray-300"><span>VÃ¤lisumma</span><span>â¬{totalPrice.toFixed(2)}</span></div>
+              <div className="flex justify-between text-gray-300"><span>Toimitus (Posti/Matkahuolto)</span><span>â¬{SHIPPING_COST.toFixed(2)}</span></div>
               <div className="flex justify-between text-white font-bold text-lg pt-2 border-t border-gray-700">
-                <span>Yhteensä</span><span>€{(totalPrice + SHIPPING_COST).toFixed(2)}</span>
+                <span>YhteensÃ¤</span><span>â¬{(totalPrice + SHIPPING_COST).toFixed(2)}</span>
               </div>
             </div>
-            <Button className="w-full bg-lucky-green text-white hover:bg-lucky-green/80 font-bold text-lg py-6"
+            <Button className="w-full bg-lucky-green text-white hover:bg-lucky-green/80 hover:scale-[1.02] active:scale-95 transition-all duration-200 font-bold text-lg py-6"
               onClick={() => alert("Stripe-maksu aktivoidaan pian!")}>Siirry maksamaan</Button>
-            <button onClick={clearCart} className="w-full text-gray-500 hover:text-gray-300 text-sm text-center">Tyhjennä ostoskori</button>
+            <button onClick={clearCart} className="w-full text-gray-500 hover:text-gray-300 text-sm text-center">TyhjennÃ¤ ostoskori</button>
           </div>
         )}
       </div>
@@ -307,7 +310,7 @@ export default function Shop() {
         <div className="container mx-auto max-w-4xl">
           <Badge className="bg-lucky-green/20 text-lucky-green mb-4">Verkkokauppa</Badge>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 font-display uppercase">Lucky Discs Kauppa</h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">Tilaa suomalaiset huippukiekot suoraan kotiovelle. Toimitus Posti/Matkahuolto €5.90.</p>
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">Tilaa suomalaiset huippukiekot suoraan kotiovelle. Toimitus Posti/Matkahuolto â¬5.90.</p>
         </div>
       </section>
 
@@ -343,7 +346,7 @@ export default function Shop() {
           <div className="mt-16 bg-gray-900/40 border border-gray-800 rounded-xl p-8 text-center">
             <h3 className="text-white font-bold text-xl mb-4">Toimitustiedot</h3>
             <div className="grid sm:grid-cols-3 gap-6 text-gray-300">
-              <div><div className="text-lucky-green font-bold text-2xl mb-1">€5.90</div><div className="text-sm">Posti / Matkahuolto</div></div>
+              <div><div className="text-lucky-green font-bold text-2xl mb-1">â¬5.90</div><div className="text-sm">Posti / Matkahuolto</div></div>
               <div><div className="text-lucky-green font-bold text-2xl mb-1">1-3 pv</div><div className="text-sm">Toimitusaika</div></div>
               <div><div className="text-lucky-green font-bold text-2xl mb-1">Suomi</div><div className="text-sm">Toimitusalue</div></div>
             </div>
