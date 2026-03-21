@@ -5,9 +5,9 @@ import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Plus, Minus, X, Trash2, ChevronDown, Package, Truck, Star } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import moneyShotDisc from "@/assets/money-shot-disc.png";
-import treasureHuntDisc from "@/assets/treasure-hunt-disc.png";
-import bankRobberDisc from "@/assets/bank-robber-disc.png";
+import moneyShotDisc from "@/assets/money-shot-disc.webp";
+import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
+import bankRobberDisc from "@/assets/bank-robber-disc.webp";
 
 const MARKER_IMG = "https://lh3.googleusercontent.com/d/1JbjeGjuNwWg4j09FZehByL5h4Z9Zakqw=s800";
 
