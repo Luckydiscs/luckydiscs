@@ -97,7 +97,7 @@ const ProductCard = ({
         </div>
         
         <Button 
-          className="w-full bg-lucky-green hover:bg-white text-white hover:text-black transition-all mt-auto"
+          className="w-full bg-lucky-green hover:bg-white text-white hover:text-black hover:scale-105 active:scale-95 transition-all mt-auto"
           onClick={() => navigate('/wholesale')}
         >
           {t('productCard.getWholesaleInfo')}
