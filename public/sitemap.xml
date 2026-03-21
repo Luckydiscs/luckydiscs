@@ -90,4 +90,12 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.luckydiscs.fi/terms"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luckydiscs.fi/terms"/>
   </url>
+  <url>
+    <loc>https://www.luckydiscs.fi/shop</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.luckydiscs.fi/shop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luckydiscs.fi/shop" />
+  </url>
 </urlset>
