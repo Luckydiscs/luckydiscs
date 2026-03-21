@@ -108,12 +108,12 @@ const Brand = () => {
               <div className="text-sm text-gray-300">{t('brand.founded')}</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-lucky-green">Growing</div>
-              <div className="text-sm text-gray-300">{t('brand.retailerNetwork')}</div>
+              <div className="text-3xl font-bold text-lucky-green">Nokia</div>
+              <div className="text-sm text-gray-300">Valmistuspaikka</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-lucky-green">1000+</div>
-              <div className="text-sm text-gray-300">{t('brand.happyCustomers')}</div>
+              <div className="text-3xl font-bold text-lucky-green">4</div>
+              <div className="text-sm text-gray-300">Kiekkomallia</div>
             </div>
           </div>
         </div>
@@ -141,7 +141,7 @@ const Brand = () => {
                 </p>
                 
                 <div className="bg-gradient-to-r from-lucky-green/20 to-transparent p-6 rounded-lg border-l-4 border-lucky-green mb-4">
-                  <h4 className="text-white font-bold text-lg mb-2">🇫🇮 {t('brand.madeInFinland')}</h4>
+                  <h4 className="text-white font-bold text-lg mb-2">ð«ð® {t('brand.madeInFinland')}</h4>
                   <p className="text-gray-300">
                     {t('brand.madeInFinlandDesc')}
                   </p>
