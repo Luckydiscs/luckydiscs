@@ -1,5 +1,7 @@
 # Welcome to your Lovable project
 
+<!-- Lucky Discs - Finnish disc golf brand -->
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/920eb87b-c0d9-4fd4-83c7-e01d8de040e3
