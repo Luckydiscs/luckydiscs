@@ -43,7 +43,7 @@ const Footer = () => {
       } else {
         setIsSubscribed(true);
         toast({
-          title: "Successfully Subscribed! 🍀",
+          title: "Successfully Subscribed! ð",
           description: "Welcome to Lucky Discs newsletter! Check your email for confirmation.",
         });
       }
@@ -68,7 +68,7 @@ const Footer = () => {
         <div className="block md:hidden space-y-8">
           {/* Logo + Social */}
           <div className="text-center space-y-4">
-            <img
+            <img loading="lazy"
               src={logo}
               alt="Lucky Discs logo"
               className="h-20 w-auto mx-auto"
@@ -80,7 +80,7 @@ const Footer = () => {
                 href="https://www.instagram.com/luckydiscsofficial"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-lucky-green transition-colors"
+                className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200"
               >
                 <Instagram size={28} />
               </a>
@@ -88,7 +88,7 @@ const Footer = () => {
                 href="https://www.facebook.com/LuckyDiscs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-lucky-green transition-colors"
+                className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200"
               >
                 <Facebook size={28} />
               </a>
@@ -96,7 +96,7 @@ const Footer = () => {
                 href="https://www.youtube.com/@LuckyDiscs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-lucky-green transition-colors"
+                className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200"
               >
                 <Youtube size={28} />
               </a>
@@ -105,16 +105,16 @@ const Footer = () => {
 
           {/* Essential Links in 2 columns */}
           <div className="grid grid-cols-2 gap-4 text-center">
-            <Link to="/discs" className="text-gray-300 hover:text-lucky-green transition-colors text-lg font-medium">
+            <Link to="/discs" className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200 text-lg font-medium">
               {t('nav.discs')}
             </Link>
-            <Link to="/contact" className="text-gray-300 hover:text-lucky-green transition-colors text-lg font-medium">
+            <Link to="/contact" className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200 text-lg font-medium">
               {t('nav.contact')}
             </Link>
-            <Link to="/team" className="text-gray-300 hover:text-lucky-green transition-colors text-lg font-medium">
+            <Link to="/team" className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200 text-lg font-medium">
               {t('nav.team')}
             </Link>
-            <Link to="/wholesale" className="text-gray-300 hover:text-lucky-green transition-colors text-lg font-medium">
+            <Link to="/wholesale" className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200 text-lg font-medium">
               {t('nav.wholesale')}
             </Link>
           </div>
@@ -166,7 +166,7 @@ const Footer = () => {
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           <div className="space-y-6">
             <div className="flex items-center">
-              <img
+              <img loading="lazy"
                 src={logo}
                 alt="Lucky Discs logo"
                 className="h-36 w-auto"
@@ -182,7 +182,7 @@ const Footer = () => {
                 href="https://www.instagram.com/luckydiscsofficial"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-lucky-green transition-colors"
+                className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200"
               >
                 <Instagram size={24} />
               </a>
@@ -190,7 +190,7 @@ const Footer = () => {
                 href="https://www.facebook.com/LuckyDiscs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-lucky-green transition-colors"
+                className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200"
               >
                 <Facebook size={24} />
               </a>
@@ -198,7 +198,7 @@ const Footer = () => {
                 href="https://www.youtube.com/@LuckyDiscs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-lucky-green transition-colors"
+                className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200"
               >
                 <Youtube size={24} />
               </a>
@@ -209,32 +209,32 @@ const Footer = () => {
             <h3 className="text-xl font-heading mb-4 text-white">{t('footer.quickLinks')}</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
+                <Link to="/" className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200 text-base">
                   {t('nav.home')}
                 </Link>
               </li>
               <li>
-                <Link to="/discs" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
+                <Link to="/discs" className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200 text-base">
                   {t('nav.discs')}
                 </Link>
               </li>
               <li>
-                <Link to="/disc-guide" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
+                <Link to="/disc-guide" className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200 text-base">
                   {t('footer.discGuide')}
                 </Link>
               </li>
               <li>
-                <Link to="/team" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
+                <Link to="/team" className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200 text-base">
                   {t('nav.team')}
                 </Link>
               </li>
               <li>
-                <Link to="/wholesale" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
+                <Link to="/wholesale" className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200 text-base">
                   {t('nav.wholesale')}
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-lucky-green transition-colors text-base">
+                <Link to="/contact" className="text-gray-300 hover:text-lucky-green hover:scale-110 transition-all duration-200 text-base">
                   {t('nav.contact')}
                 </Link>
               </li>
@@ -307,15 +307,15 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 pt-6 mt-8 text-center text-gray-300">
-          <p className="mb-3 text-sm">© {new Date().getFullYear()} Lucky Discs. {t('footer.allRightsReserved')}</p>
+          <p className="mb-3 text-sm">Â© {new Date().getFullYear()} Lucky Discs. {t('footer.allRightsReserved')}</p>
           <div className="flex justify-center space-x-4 md:space-x-6 text-xs md:text-sm">
-            <Link to="/privacy" className="hover:text-lucky-green transition-colors">
+            <Link to="/privacy" className="hover:text-lucky-green hover:scale-110 transition-all duration-200">
               {t('footer.privacyPolicy')}
             </Link>
-            <Link to="/terms" className="hover:text-lucky-green transition-colors">
+            <Link to="/terms" className="hover:text-lucky-green hover:scale-110 transition-all duration-200">
               {t('footer.termsOfService')}
             </Link>
-            <Link to="/faq" className="hover:text-lucky-green transition-colors">
+            <Link to="/faq" className="hover:text-lucky-green hover:scale-110 transition-all duration-200">
               FAQ
             </Link>
           </div>
