@@ -17,7 +17,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(__dirname, "..", "dist");
 const BASE_URL = "https://www.luckydiscs.fi";
 
-// ── Route SEO definitions ──────────────────────────────────────────────
+// ââ Route SEO definitions ââââââââââââââââââââââââââââââââââââââââââââââ
 const routes = [
   {
     path: "/discs",
@@ -29,10 +29,10 @@ const routes = [
       <p>Browse our complete lineup of premium disc golf discs, designed and tested in Finland.</p>
       <h2>Our Discs</h2>
       <ul>
-        <li><strong>Bank Robber</strong> — High-speed distance driver (13 / 5 / -1 / 3). A premium overstable distance driver for experienced players seeking maximum control.</li>
-        <li><strong>Treasure Hunt</strong> — Control fairway driver (7 / 5 / -1 / 1). A versatile fairway driver that flies true in any conditions.</li>
-        <li><strong>Money Shot</strong> — All-purpose midrange (5 / 5 / -1 / 1). A straight-flying midrange disc that's perfect for approaches and accurate lines.</li>
-        <li><strong>Jailbreak</strong> — Stable putting putter (2 / 3 / 0 / 1). A reliable, stable putter designed for confident putting inside and outside the circle.</li>
+        <li><strong>Bank Robber</strong> â High-speed distance driver (13 / 5 / -1 / 3). A premium overstable distance driver for experienced players seeking maximum control.</li>
+        <li><strong>Treasure Hunt</strong> â Control fairway driver (7 / 5 / -1 / 1). A versatile fairway driver that flies true in any conditions.</li>
+        <li><strong>Money Shot</strong> â All-purpose midrange (5 / 5 / -1 / 1). A straight-flying midrange disc that's perfect for approaches and accurate lines.</li>
+        <li><strong>Jailbreak</strong> â Stable putting putter (2 / 3 / 0 / 1). A reliable, stable putter designed for confident putting inside and outside the circle.</li>
       </ul>`,
   },
   {
@@ -46,7 +46,7 @@ const routes = [
       <h2>Understanding Flight Numbers</h2>
       <p>Every disc has four flight numbers: Speed, Glide, Turn, and Fade. These numbers describe how a disc will fly through the air.</p>
       <h2>Disc Types</h2>
-      <p>Distance Drivers, Fairway Drivers, Midranges, and Putters — each type serves a different purpose on the course.</p>`,
+      <p>Distance Drivers, Fairway Drivers, Midranges, and Putters â each type serves a different purpose on the course.</p>`,
   },
   {
     path: "/wholesale",
@@ -111,10 +111,17 @@ const routes = [
     description: "Lucky Discs terms of service. Read our terms and conditions for using our website and purchasing our products.",
     keywords: "Lucky Discs terms of service, terms and conditions",
     content: `<h1>Terms of Service</h1><p>These terms govern your use of the Lucky Discs website and services.</p>`,
-  },
+  },,
+    {
+      path: '/shop',
+      title: 'Lucky Discs Verkkokauppa - Osta Frisbeegolfkiekkoja',
+      description: 'Tilaa Lucky Discs premium-frisbeegolfkiekot suoraan kotiovelle. Money Shot, Treasure Hunt ja muut kiekot edullisesti. Toimitus Posti/Matkahuolto.',
+      h1: 'Lucky Discs Kauppa',
+      content: 'Tilaa suomalaiset premium-frisbeegolfkiekot verkkokaupastamme. Money Shot midrange, Treasure Hunt fairway driver ja Lucky Discs markkeri.'
+    }
 ];
 
-// ── Main ───────────────────────────────────────────────────────────────
+// ââ Main âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 const templateHtml = fs.readFileSync(path.join(DIST, "index.html"), "utf-8");
 
 let created = 0;
@@ -192,7 +199,7 @@ for (const route of routes) {
   // This gives crawlers meaningful content even without JavaScript
   html = html.replace(
     '<div id="root"></div>',
-    `<div id="root"></div>\n    <noscript>\n      <div class="seo-content">\n        ${route.content}\n        <p><a href="${BASE_URL}">Lucky Discs</a> — Modern Discs. Wild Style. Lucky Throws.</p>\n      </div>\n    </noscript>`
+    `<div id="root"></div>\n    <noscript>\n      <div class="seo-content">\n        ${route.content}\n        <p><a href="${BASE_URL}">Lucky Discs</a> â Modern Discs. Wild Style. Lucky Throws.</p>\n      </div>\n    </noscript>`
   );
 
   // Write to dist/{route}/index.html
@@ -201,7 +208,7 @@ for (const route of routes) {
   fs.writeFileSync(path.join(routeDir, "index.html"), html, "utf-8");
   created++;
 
-  console.log(`  ✓ ${route.path}/index.html`);
+  console.log(`  â ${route.path}/index.html`);
 }
 
-console.log(`\n✅ Generated ${created} pre-rendered SEO pages in dist/`);
+console.log(`\nâ Generated ${created} pre-rendered SEO pages in dist/`);
