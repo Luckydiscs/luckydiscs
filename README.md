@@ -1,6 +1,6 @@
 # Welcome to your Lovable project
 
-<!-- Lucky Discs - Finnish disc golf brand -->
+<!-- Lucky Discs - Finnish disc golf brand - v0.1.0 -->
 
 ## Project info
 
