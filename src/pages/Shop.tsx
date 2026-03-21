@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { ShoppingCart, Plus, Minus, X, Truck, Shield, ChevronDown, Star, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
