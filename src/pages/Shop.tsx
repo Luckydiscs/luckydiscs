@@ -338,7 +338,7 @@ const navigate = useNavigate();
                   <span>€{(total + shipping).toFixed(2)}</span>
                 </div>
               </div>
-              <button className="w-full py-4 rounded-xl font-black text-sm uppercase tracking-wider bg-green-500 hover:bg-green-400 text-black transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25 glow-pulse" onClick={() => { setIsOpen(false); navigate('/shop/kassa'); }}>
+              <button className="w-full py-4 rounded-xl font-black text-sm uppercase tracking-wider bg-green-500 hover:bg-green-400 text-black transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25 glow-pulse" onClick={() => { onClose(); navigate('/shop/kassa'); }}>
                 Siirry kassalle
               </button>
               <button onClick={clearCart} className="w-full py-2 text-xs text-gray-500 hover:text-red-400 transition-colors uppercase tracking-wider">
