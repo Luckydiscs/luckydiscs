@@ -19,7 +19,7 @@ const shopStyles = `
   75% { transform: translateY(-25px) rotateY(-15deg) rotateX(3deg); }
 }
 @keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.15); }
+  0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.15); }h
   50% { box-shadow: 0 0 40px rgba(34, 197, 94, 0.3), 0 0 80px rgba(34, 197, 94, 0.1); }
 }
 @keyframes fadeSlideUp {
