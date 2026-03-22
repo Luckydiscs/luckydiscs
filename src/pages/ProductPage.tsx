@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ShoppingCart, ChevronRight } from "lucide-react";
-import { discs } from "@/data/discs";
+import discs from "@/data/discs";
 
 const shopProducts = [
   {
