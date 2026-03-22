@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -262,7 +263,8 @@ const ShopProductCard = ({ product, index }: { product: Product; index: number }
 
 // ── Cart Sidebar ──
 const CartSidebar = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
-  const { items, removeItem, updateQuantity, clearCart } = useCart();
+const navigate = useNavigate();
+    const { items, removeItem, updateQuantity, clearCart } = useCart();
   const total = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
   const shipping = total > 0 ? 5.90 : 0;
 
@@ -336,7 +338,7 @@ const CartSidebar = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
                   <span>€{(total + shipping).toFixed(2)}</span>
                 </div>
               </div>
-              <button className="w-full py-4 rounded-xl font-black text-sm uppercase tracking-wider bg-green-500 hover:bg-green-400 text-black transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25 glow-pulse">
+              <button className="w-full py-4 rounded-xl font-black text-sm uppercase tracking-wider bg-green-500 hover:bg-green-400 text-black transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25 glow-pulse" onClick={() => { setIsOpen(false); navigate('/shop/kassa'); }}>
                 Siirry kassalle
               </button>
               <button onClick={clearCart} className="w-full py-2 text-xs text-gray-500 hover:text-red-400 transition-colors uppercase tracking-wider">
