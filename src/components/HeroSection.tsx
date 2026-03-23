@@ -9,7 +9,7 @@ const HeroSection = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="hero-gradient min-h-[70vh] md:min-h-[8h5vh] flex items-center relative overflow-hidden pt-20 sm:pt-24 md:pt-28">
+    <section className="hero-gradient min-h-[70vh] md:min-h-[85vh] flex items-center relative overflow-hidden pt-20 sm:pt-24 md:pt-28">
       {/* Optimized Background Image with lazy loading concept */}
       <div 
         className="md:hidden absolute inset-0 z-0 opacity-50 bg-cover bg-no-repeat"
