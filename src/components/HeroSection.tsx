@@ -92,15 +92,13 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Desktop disc image */}
-        <div className="hidden lg:flex flex-1 justify-center items-center">
-          <img
-            src="/images/brand/treasure-hunt-promo.png"
-            alt="Lucky Discs Treasure Hunt"
-            className="w-[420px] h-auto drop-shadow-2xl animate-float"
-            loading="eager"
-          />
-        </div>
+        {/* Desktop disc image - baked into background layer */}
+        <div
+          className="hidden lg:block flex-1 h-[500px] bg-contain bg-center bg-no-repeat"
+          style={{ backgroundImage: `url('/images/brand/treasure-hunt-promo.png')` }}
+          role="img"
+          aria-label="Lucky Discs Treasure Hunt"
+        />
         </div>
       </div>
 
