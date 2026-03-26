@@ -45,7 +45,11 @@ const translations = {
     'hero.ourTeam': 'Our Team',
     'hero.ourStory': 'Our Story',
     'hero.contact': 'Contact',
-    
+    'hero.shopDiscs': 'Osta kiekot',
+    'hero.exploreDiscs': 'Tutustu kiekkoihin',
+    'hero.summerSale': 'Kesän erikoistarjous',
+    'hero.scrollDown': 'Scroll down',
+
     // Featured Disc
     'featured.featuredDisc': 'Featured Disc',
     'featured.treasureHunt': 'Treasure Hunt',
@@ -479,7 +483,11 @@ const translations = {
     'hero.ourTeam': 'Tiimimme',
     'hero.ourStory': 'Tarinämme',
     'hero.contact': 'Yhteystiedot',
-    
+    'hero.shopDiscs': 'Osta kiekot',
+    'hero.exploreDiscs': 'Tutustu kiekkoihin',
+    'hero.summerSale': 'Kesän erikoistarjous',
+    'hero.scrollDown': 'Vieritä alas',
+
     // Featured Disc
     'featured.featuredDisc': 'Suosittu kiekko',
     'featured.treasureHunt': 'Treasure Hunt',

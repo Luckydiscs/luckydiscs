@@ -1,80 +1,109 @@
 
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import heroImage from "@/assets/disc-golf-sunset-hero.webp";
 import { useTranslation } from "@/hooks/useTranslation";
+import { ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   return (
-    <section className="hero-gradient min-h-[70vh] md:min-h-[85vh] flex items-center relative overflow-hidden pt-20 sm:pt-24 md:pt-28">
-      {/* Optimized Background Image with lazy loading concept */}
-      <div 
-        className="md:hidden absolute inset-0 z-0 opacity-50 bg-cover bg-no-repeat"
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+      {/* Full-viewport background image */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundPosition: '65% center',
-          willChange: 'transform'
+          backgroundImage: `url('/images/brand/finnish-sunset-course.jpg')`,
         }}
-      ></div>
-      
-      {/* Desktop background positioning */}
-      <div 
-        className="hidden md:block absolute inset-0 z-0 opacity-50 bg-cover bg-no-repeat"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundPosition: 'center right',
-          willChange: 'transform'
-        }}
-      ></div>
-      
-      {/* Dark overlay */}
-      <div className="absolute inset-0 z-0 bg-black/50 md:bg-black/60"></div>
-      
-      <div className="absolute inset-0 z-0 opacity-30">
-        <div className="bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-lucky-green/20 to-transparent absolute inset-0"></div>
-      </div>
-      
-      {/* Animated discs in background */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute top-1/4 -left-20 w-40 h-40 rounded-full bg-lucky-green/10 blur-xl animate-spin-slow"></div>
-        <div className="absolute top-3/4 -right-20 w-60 h-60 rounded-full bg-lucky-gold/10 blur-xl animate-spin-slow"></div>
-      </div>
-      
-      <div className="container mx-auto px-4 z-10 py-12 md:py-16">
-        <div className="flex flex-col lg:flex-row items-center">
-          <div className="lg:w-1/2 text-foreground mb-12 lg:mb-0">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold mb-6 leading-tight text-white">
-              <span className="text-primary">{t('hero.luckyDiscs')}</span><br />
-              <span>{t('hero.discGolfEquipment')}</span><br />
-              <span>{t('hero.premiumQuality')}</span>
-            </h1>
-            <p className="text-xl mb-8 text-white/90 max-w-lg">
-              {t('hero.subtitle')}
-            </p>
-            
-            <div className="flex flex-wrap gap-4 mb-8">
-              <Button 
-                size="lg"
-                className="bg-lucky-green text-white hover:bg-white hover:text-black px-8 font-semibold text-lg"
-                onClick={() => navigate('/wholesale')}
-              >
-                {t('nav.getWholesaleAccess')}
-              </Button>
-              <Button 
-                size="lg"
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-black hover:scale-105 active:scale-95 transition-all duration-200 px-8 bg-transparent text-lg"
-                onClick={() => navigate('/discs')}
-              >
-                {t('hero.exploreOurDiscs')}
-              </Button>
+      />
+
+      {/* Deep cinematic gradient overlay */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-r from-black via-black/80 to-black/30" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-t from-black/90 via-transparent to-black/50" />
+
+      {/* Subtle green atmospheric glow */}
+      <div className="absolute bottom-0 left-0 w-1/2 h-1/3 z-0 bg-lucky-green/10 blur-3xl rounded-full" />
+
+      {/* Main content */}
+      <div className="container mx-auto px-4 z-10 pt-20 pb-20 md:pt-28 md:pb-32">
+        <div className="max-w-3xl">
+          {/* Pre-heading label + summer sale badge */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
+            <div className="flex items-center gap-3">
+              <div className="h-px w-12 bg-lucky-gold" />
+              <span className="font-display text-lucky-gold text-sm uppercase tracking-[0.3em]">
+                Premium Finnish Disc Golf
+              </span>
             </div>
+            <div className="relative inline-block self-start sm:self-auto">
+              <div className="absolute inset-0 rounded-full bg-lucky-gold/30 blur-md animate-pulse" />
+              <div
+                className="relative bg-lucky-gold text-black font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg border border-lucky-gold/50"
+                style={{ animation: "badge-pulse 3s ease-in-out infinite" }}
+              >
+                {t('hero.summerSale')}
+              </div>
+            </div>
+          </div>
+
+          {/* Main headline */}
+          <h1 className="font-heading text-[clamp(4rem,12vw,9rem)] leading-none tracking-wide text-white mb-2">
+            LUCKY DISC
+            <span className="text-lucky-gold">$</span>
+          </h1>
+
+          {/* Secondary headline in Barlow Condensed */}
+          <p className="font-display text-[clamp(1.25rem,3vw,2rem)] font-semibold uppercase tracking-[0.2em] text-white/60 mb-8">
+            {t('hero.modernDiscs')} &nbsp;
+            <span className="text-lucky-green">{t('hero.wildStyle')}</span>
+          </p>
+
+          {/* Body copy */}
+          <p className="font-sans text-lg text-white/75 max-w-xl mb-10 leading-relaxed">
+            {t('hero.subtitle')}
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-row gap-3 sm:gap-4">
+            <a
+              href="https://kesapelit.fi/?utm_source=luckydiscs&utm_medium=website&utm_campaign=hero&utm_content=osta"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                size="lg"
+                className="bg-lucky-green hover:bg-lucky-green/90 text-white font-display font-semibold uppercase tracking-wider text-xs sm:text-base px-4 sm:px-8 py-4 sm:py-6 h-auto transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg shadow-lucky-green/30"
+              >
+                {t('hero.shopDiscs')}
+              </Button>
+            </a>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 border-white/40 text-white hover:border-white hover:bg-white/10 font-display font-semibold uppercase tracking-wider text-xs sm:text-base px-4 sm:px-8 py-4 sm:py-6 h-auto bg-transparent transition-all duration-200 hover:scale-105 active:scale-95"
+              onClick={() => navigate('/discs')}
+            >
+              {t('hero.exploreDiscs')}
+            </Button>
           </div>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/40">
+        <span className="font-display text-xs uppercase tracking-[0.3em]">{t('hero.scrollDown')}</span>
+        <ChevronDown
+          className="w-5 h-5 animate-bounce"
+        />
+      </div>
+
+      <style>{`
+        @keyframes badge-pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.04); }
+        }
+      `}</style>
     </section>
   );
 };

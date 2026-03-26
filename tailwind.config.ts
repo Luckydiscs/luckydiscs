@@ -21,6 +21,7 @@ export default {
 		extend: {
 			fontFamily: {
 				'heading': ['Bebas Neue', 'sans-serif'],
+				'display': ['Barlow Condensed', 'sans-serif'],
 				'playfair': ['Playfair Display', 'serif'],
 				'sans': ['Inter', 'sans-serif'],
 			},

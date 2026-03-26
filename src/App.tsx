@@ -21,6 +21,11 @@ const Team = lazy(() => import("./pages/Team"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const FAQ = lazy(() => import("./pages/FAQ"));
+const Shop = lazy(() => import("./pages/Shop"));
+const ProductPage = lazy(() => import("./pages/ProductPage"));
+const OrderConfirmation = lazy(() => import("./pages/OrderConfirmation"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const Hero3DDemo = lazy(() => import("./pages/Hero3DDemo"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -46,8 +51,12 @@ const App = () => (
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/terms" element={<Terms />} />
-                {/* SHOP ROUTES DISABLED - not ready for production */}
-                <Route path="/shop/*" element={<Navigate to="/" replace />} />
+                {/* Shop disabled - not public yet */}
+                <Route path="/shop" element={<Navigate to="/" replace />} />
+                <Route path="/shop/kassa" element={<Navigate to="/" replace />} />
+                <Route path="/shop/vahvistus" element={<Navigate to="/" replace />} />
+                <Route path="/shop/:slug" element={<Navigate to="/" replace />} />
+                <Route path="/3d-demo" element={<Hero3DDemo />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

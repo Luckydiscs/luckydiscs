@@ -1,89 +1,169 @@
-import { Button } from "@/components/ui/button";
+
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/useTranslation";
-import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
+
+interface DiscCard {
+  image: string;
+  name: string;
+  nameKey: string;
+  descKey: string;
+  type: string;
+  flightNumbers: { speed: number; glide: number; turn: number; fade: number };
+  accentColor: string;
+}
+
+const discs: DiscCard[] = [
+  {
+    image: "/images/brand/treasure-hunt-promo.png",
+    name: "Treasure Hunt",
+    nameKey: "discs.treasureHunt",
+    descKey: "discs.treasureHuntDesc",
+    type: "Distance Driver",
+    flightNumbers: { speed: 12, glide: 6, turn: -1, fade: 3 },
+    accentColor: "lucky-gold",
+  },
+  {
+    image: "/images/brand/kiekkoesittely-02.png",
+    name: "Bank Robber",
+    nameKey: "discs.bankRobber",
+    descKey: "discs.bankRobberDesc",
+    type: "Fairway Driver",
+    flightNumbers: { speed: 9, glide: 5, turn: -1, fade: 2 },
+    accentColor: "lucky-green",
+  },
+  {
+    image: "/images/brand/kiekkoesittely-03.png",
+    name: "Money Shot",
+    nameKey: "discs.moneyShot",
+    descKey: "discs.moneyShotDesc",
+    type: "Putter",
+    flightNumbers: { speed: 3, glide: 3, turn: 0, fade: 1 },
+    accentColor: "lucky-gold",
+  },
+];
+
+const FlightStat = ({ label, value }: { label: string; value: number }) => (
+  <div className="flex flex-col items-center">
+    <span className="text-xl font-heading text-white leading-none">{value}</span>
+    <span className="text-[10px] font-display uppercase tracking-widest text-white/40 mt-0.5">{label}</span>
+  </div>
+);
 
 const FeaturedDisc = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   return (
-    <section className="relative -mt-32 md:-mt-40 z-20">
+    <section className="bg-black py-10 md:py-16">
       <div className="container mx-auto px-4">
-        <div className="bg-gradient-to-r from-black/90 via-black/95 to-black/90 backdrop-blur-sm rounded-2xl border border-primary/20 overflow-hidden shadow-2xl">
-          <div className="flex flex-col lg:flex-row items-center">
-            {/* Image Section */}
-            <div className="lg:w-1/2 p-8 lg:p-16 flex justify-center relative">
-              <div className="relative group">
-                <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl scale-150 animate-pulse"></div>
-                <img
-                  src={treasureHuntDisc}
-                  alt="Treasure Hunt - Featured Disc"
-                  className="relative z-10 w-80 h-80 lg:w-96 lg:h-96 xl:w-[420px] xl:h-[420px] object-contain transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 drop-shadow-2xl"
-                  width={420}
-                  height={420}
-                />
-                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-3/4 h-10 bg-black/40 rounded-full blur-lg"></div>
-              </div>
-            </div>
-            
-            {/* Content Section */}
-            <div className="lg:w-1/2 p-8 lg:p-12 text-center lg:text-left">
-              <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
-                <Star className="w-5 h-5 text-accent fill-current" />
-                <span className="text-sm font-medium text-accent uppercase tracking-wide">
-                  {t('featured.featuredDisc')}
+        {/* Section header */}
+        <div className="text-center mb-8 md:mb-12">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-px w-16 bg-lucky-gold/50" />
+            <span className="font-display text-lucky-gold text-sm uppercase tracking-[0.35em]">
+              {t('featured.featuredDisc')}
+            </span>
+            <div className="h-px w-16 bg-lucky-gold/50" />
+          </div>
+          <h2 className="font-heading text-5xl md:text-6xl text-white tracking-wide mb-4">
+            {t('featured.title')}
+          </h2>
+          <p className="font-sans text-white/50 max-w-xl mx-auto text-base">
+            {t('featured.subtitle')}
+          </p>
+        </div>
+
+        {/* Three disc cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {discs.map((disc) => (
+            <div
+              key={disc.name}
+              className="group relative bg-gradient-to-b from-white/5 to-white/[0.02] border border-white/10 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:border-white/30 hover:-translate-y-1 hover:shadow-2xl"
+              onClick={() => window.open(`https://kesapelit.fi/?utm_source=luckydiscs&utm_medium=website&utm_campaign=featured&utm_content=${disc.name.toLowerCase().replace(' ', '-')}`, '_blank')}
+            >
+              {/* Hover glow */}
+              <div
+                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-b ${
+                  disc.accentColor === "lucky-gold"
+                    ? "from-lucky-gold/10 to-transparent"
+                    : "from-lucky-green/10 to-transparent"
+                }`}
+              />
+
+              {/* Disc type label */}
+              <div className="absolute top-4 left-4 z-10">
+                <span
+                  className={`font-display text-xs uppercase tracking-widest px-3 py-1 rounded-full border ${
+                    disc.accentColor === "lucky-gold"
+                      ? "border-lucky-gold/40 text-lucky-gold bg-lucky-gold/10"
+                      : "border-lucky-green/40 text-lucky-green bg-lucky-green/10"
+                  }`}
+                >
+                  {disc.type}
                 </span>
               </div>
-              
-              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-heading mb-4 text-primary">
-                {t('featured.treasureHunt')}
-              </h2>
-              
-              <p className="text-lg text-muted-foreground mb-6 max-w-md mx-auto lg:mx-0">
-                {t('featured.treasureHuntDescription')}
-              </p>
-              
-              {/* Flight Numbers */}
-              <div className="flex justify-center lg:justify-start gap-4 mb-6">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">12</div>
-                  <div className="text-xs text-muted-foreground uppercase">{t('featured.speed')}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">6</div>
-                  <div className="text-xs text-muted-foreground uppercase">{t('featured.glide')}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">-1</div>
-                  <div className="text-xs text-muted-foreground uppercase">{t('featured.turn')}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">3</div>
-                  <div className="text-xs text-muted-foreground uppercase">{t('featured.fade')}</div>
-                </div>
+
+              {/* Disc image */}
+              <div className="relative pt-12 pb-4 px-6 flex justify-center">
+                <div
+                  className={`absolute inset-0 opacity-20 blur-3xl transition-opacity duration-300 group-hover:opacity-40 ${
+                    disc.accentColor === "lucky-gold" ? "bg-lucky-gold" : "bg-lucky-green"
+                  } rounded-full scale-75`}
+                />
+                <img
+                  src={disc.image}
+                  alt={disc.name}
+                  className="relative z-10 w-56 h-56 md:w-48 md:h-48 lg:w-56 lg:h-56 object-contain transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 drop-shadow-2xl"
+                  loading="lazy"
+                />
               </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button 
-                  size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 px-8"
-                  onClick={() => window.open('https://kesapelit.fi/tuote/premium-treasure-hunt', '_blank')}
+
+              {/* Disc info */}
+              <div className="px-6 pb-6">
+                <h3 className="font-heading text-3xl text-white tracking-wide mb-1">
+                  {t(disc.nameKey)}
+                </h3>
+                <p className="font-sans text-white/50 text-sm mb-5 line-clamp-2">
+                  {t(disc.descKey)}
+                </p>
+
+                {/* Flight numbers */}
+                <div className="flex justify-between border-t border-white/10 pt-4 mb-6">
+                  <FlightStat label={t('featured.speed')} value={disc.flightNumbers.speed} />
+                  <FlightStat label={t('featured.glide')} value={disc.flightNumbers.glide} />
+                  <FlightStat label={t('featured.turn')} value={disc.flightNumbers.turn} />
+                  <FlightStat label={t('featured.fade')} value={disc.flightNumbers.fade} />
+                </div>
+
+                {/* CTA */}
+                <button
+                  className={`w-full flex items-center justify-center gap-2 font-display font-semibold uppercase tracking-widest text-sm py-3 rounded-xl transition-all duration-200 group-hover:gap-3 ${
+                    disc.accentColor === "lucky-gold"
+                      ? "bg-lucky-gold/15 hover:bg-lucky-gold/25 text-lucky-gold border border-lucky-gold/30"
+                      : "bg-lucky-green/15 hover:bg-lucky-green/25 text-lucky-green border border-lucky-green/30"
+                  }`}
                 >
-                  {t('featured.shopNow')} <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8"
-                  onClick={() => navigate('/wholesale')}
-                >
-                  {t('featured.wholesaleInquiry')}
-                </Button>
+                  {t('featured.shopNow')}
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </button>
               </div>
             </div>
-          </div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center">
+          <Button
+            size="lg"
+            variant="outline"
+            className="border-white/20 text-white hover:bg-white/10 hover:border-white/40 font-display font-semibold uppercase tracking-widest text-sm px-10 py-6 h-auto bg-transparent transition-all duration-200 hover:scale-105 active:scale-95"
+            onClick={() => navigate('/discs')}
+          >
+            {t('featured.viewAllDiscs')}
+            <ArrowRight className="ml-2 w-4 h-4" />
+          </Button>
         </div>
       </div>
     </section>

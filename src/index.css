@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -16,16 +16,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    --primary: 142 72% 38%;
+    --primary: 145 63% 32%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 16%;
     --secondary-foreground: 0 0% 98%;
 
     --muted: 0 0% 92%;
-    --muted-foreground: 0 0% 40%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 45 100% 50%;
+    --accent: 43 76% 52%;
     --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84% 60%;
@@ -33,15 +33,15 @@
 
     --border: 0 0% 88%;
     --input: 0 0% 88%;
-    --ring: 142 72% 38%;
+    --ring: 145 63% 32%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    /* Lucky Discs Brand Colors */
-    --lucky-green: 142 72% 38%;
-    --lucky-gold: 45 100% 50%;
-    --lucky-black: 0 0% 8%;
-    --lucky-white: 0 0% 98%;
+    /* Lucky Discs Brand Colors - softer, more premium */
+    --lucky-green: 145 63% 32%;
+    --lucky-gold: 43 76% 52%;
+    --lucky-black: 0 0% 6%;
+    --lucky-white: 0 0% 97%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -63,30 +63,30 @@
     --popover: 0 0% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 142 72% 38%;
+    --primary: 145 63% 32%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 16%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 45 100% 50%;
+    --accent: 43 76% 52%;
     --accent-foreground: 0 0% 0%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 142 72% 38%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 145 63% 32%;
 
-    /* Lucky Discs Brand Colors - Dark Mode */
-    --lucky-green: 142 72% 38%;
-    --lucky-gold: 45 100% 50%;
-    --lucky-black: 0 0% 8%;
-    --lucky-white: 0 0% 98%;
+    /* Lucky Discs Brand Colors - Dark Mode - softer premium */
+    --lucky-green: 145 63% 32%;
+    --lucky-gold: 43 76% 52%;
+    --lucky-black: 0 0% 6%;
+    --lucky-white: 0 0% 97%;
     
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;

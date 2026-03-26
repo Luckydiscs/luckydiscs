@@ -3,9 +3,9 @@ import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
 import FeaturedDisc from "@/components/FeaturedDisc";
-import ProductCard from "@/components/ProductCard";
+
 import SocialMediaShowcase from "@/components/SocialMediaShowcase";
-import performanceChart from "@/assets/performance-chart-simple.png";
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Disc, TruckIcon, Award, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -51,59 +51,19 @@ const Index = () => {
       {/* Hero Section */}
       <HeroSection />
       
-      {/* Featured Disc - Overlapping Hero */}
+      {/* Featured Disc - Premium promo images */}
       <FeaturedDisc />
       
-      {/* Featured Products */}
-      <section className="py-12 md:py-16 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-900/20 via-black to-black z-0"></div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-heading mb-4">{t('featured.title')}</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              {t('featured.subtitle')}
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {discs.map((product) => (
-              <ProductCard
-                key={product.id}
-                imageSrc={product.imageSrc}
-                name={product.name}
-                description={t(product.descriptionKey)}
-                speed={product.speed}
-                glide={product.glide}
-                turn={product.turn}
-                fade={product.fade}
-                isNewRelease={product.isNewRelease}
-              />
-            ))}
-          </div>
-          
-          <div className="text-center">
-            <Button 
-              onClick={() => navigate('/discs')}
-              className="bg-lucky-green text-white hover:bg-white hover:text-black transition-all text-lg px-8"
-            >
-              {t('featured.viewAllDiscs')} <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
-        </div>
-      </section>
-      
       {/* Action Shots */}
-      <section className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
-        {/* Background Pattern */}
+      <section className="py-10 md:py-16 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-lucky-green rounded-full blur-3xl"></div>
           <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-white rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-heading mb-6 text-white font-semibold">
+          <div className="text-center mb-6 md:mb-12">
+            <h2 className="text-3xl md:text-5xl font-heading mb-3 text-white font-semibold">
               {t('action.title')}
             </h2>
             <p className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed">
@@ -111,74 +71,74 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 mb-6">
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
               <img
-                src="/lovable-uploads/8ae2dde2-ac3a-4144-9b11-35d02bc07d57.webp"
-                alt="Professional disc golf tournament action shot showing perfect throwing form"
-                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                src="/images/brand/discs-yyteri-beach.jpg"
+                alt="Lucky Discs Money Shot kiekot Yyterin hiekkarannalla syksyllä"
+                className="w-full h-40 md:h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 width={400}
                 height={256}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-semibold mb-1">{t('action.tournamentPlay')}</h3>
-                <p className="text-sm text-gray-300">{t('action.professionalPrecision')}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 text-white md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
+                <h3 className="font-heading text-xs md:text-lg font-semibold">Yyteri Beach</h3>
+                <p className="text-[10px] md:text-sm text-gray-300 hidden md:block">Money Shot kiekot Suomen kauneimmalla rannalla</p>
               </div>
             </div>
-            
+
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
               <img
-                src="/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.webp"
-                alt="Professional female disc golf player demonstrating perfect throwing technique"
-                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                src="/images/brand/discs-spain-beach.jpg"
+                alt="Lucky Discs kiekkovalikoima Espanjan rannikolla vuoristomaisemassa"
+                className="w-full h-40 md:h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 width={400}
                 height={256}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-semibold mb-1">{t('action.elitePerformance')}</h3>
-                <p className="text-sm text-gray-300">{t('action.championshipLevel')}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 text-white md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
+                <h3 className="font-heading text-lg font-semibold mb-1">Costa del Disc Golf</h3>
+                <p className="text-sm text-gray-300">Suomalaiset kiekot kansainvälisillä kentillä</p>
               </div>
             </div>
-            
+
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
               <img
-                src="/lovable-uploads/770642ce-cd09-4bd5-ad75-cfdf0deeac1c.webp"
-                alt="PDGA Pro Worlds tournament coverage showcasing elite level disc golf competition"
-                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                src="/images/brand/disc-rainbow.jpg"
+                alt="Lucky Discs kiekko sateenkaaren edessä frisbeegolfkorissa"
+                className="w-full h-40 md:h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 width={400}
                 height={256}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-bold mb-1">{t('action.worldChampionship')}</h3>
-                <p className="text-sm text-gray-300">{t('action.globalCompetition')}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 text-white md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
+                <h3 className="font-heading text-lg font-bold mb-1">Lucky Throw</h3>
+                <p className="text-sm text-gray-300">Onni suosii rohkeaa</p>
               </div>
             </div>
-            
+
             <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
               <img
-                src="/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.webp"
-                alt="Top professional disc golf action shots from major tournaments"
-                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                src="/images/brand/disc-collection-rock.jpg"
+                alt="Lucky Discs täysi kiekkovalikoima kalliolla syksyisessä metsässä"
+                className="w-full h-40 md:h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 width={400}
                 height={256}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-bold mb-1">{t('action.professionalAction')}</h3>
-                <p className="text-sm text-gray-300">{t('action.tournamentHighlights')}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 text-white md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
+                <h3 className="font-heading text-lg font-bold mb-1">Full Collection</h3>
+                <p className="text-sm text-gray-300">Jokainen väri, jokainen tilanne</p>
               </div>
             </div>
           </div>
           
           {/* Performance Visualization */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-lucky-green/20 p-8 shadow-2xl">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-lucky-green/20 p-5 md:p-8 shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
             <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
               <div>
@@ -207,25 +167,68 @@ const Index = () => {
                 </div>
               </div>
               <div className="relative">
-                <img 
-                  src={performanceChart}
-                  alt="Performance improvement chart showing consistency gains with Lucky Discs"
-                  className="w-full rounded-xl shadow-2xl"
+                <img
+                  src="/images/brand/disc-collection-rock.jpg"
+                  alt="Lucky Discs kiekkovalikoima luonnossa"
+                  className="w-full rounded-xl shadow-2xl object-cover max-h-[500px]"
                   width={600}
                   height={400}
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-lucky-green/10 to-transparent rounded-xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
               </div>
             </div>
           </div>
         </div>
       </section>
       
-      {/* Features */}
-      <section className="py-20 relative overflow-hidden">
+      {/* "Ready for Jackpot?" banner */}
+      <section className="py-10 md:py-16 bg-gradient-to-b from-black via-gray-950 to-black relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="relative group overflow-hidden rounded-2xl shadow-2xl">
+              <img
+                src="/images/brand/ready-for-jackpot.jpg"
+                alt="Lucky Discs - Ready for Jackpot?"
+                className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                width={600}
+                height={600}
+                loading="lazy"
+              />
+            </div>
+            <div className="flex flex-col justify-center gap-6">
+              <div>
+                <p className="text-lucky-gold text-sm font-bold uppercase tracking-widest mb-2">Lucky Discs</p>
+                <h2 className="text-4xl md:text-5xl font-heading font-black text-white mb-4 leading-tight">
+                  Ready for Jackpot?
+                </h2>
+                <div className="w-16 h-1 bg-lucky-green mb-6 rounded-full" />
+              </div>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                Jokainen heitto on mahdollisuus. Lucky Discsin kiekot on suunniteltu pelaajille, jotka haluavat erottua kentällä — tyylillä ja suorituskyvyllä.
+              </p>
+              <div>
+                <a
+                  href="https://kesapelit.fi/?utm_source=luckydiscs&utm_medium=website&utm_campaign=jackpot&utm_content=banner"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    className="bg-lucky-green hover:bg-white text-black font-semibold transition-all duration-300"
+                  >
+                    Osta kiekot kesapelit.fi <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section className="py-10 md:py-16 relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-8 md:mb-12">
             <h2 className="text-4xl md:text-5xl font-heading mb-4">{t('features.title')}</h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
               {t('features.subtitle')}
@@ -233,7 +236,7 @@ const Index = () => {
           </div>
           
           <div 
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 transition-all duration-1000 ${
+            className={`grid grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
             }`}
           >
@@ -280,8 +283,49 @@ const Index = () => {
         </div>
       </section>
       
+      {/* Summer Sale / Kesätarjous */}
+      <section className="relative py-16 md:py-24 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/brand/discs-spain-beach.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-black/65" />
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <div className="inline-block bg-lucky-green text-black text-sm font-bold uppercase tracking-widest px-4 py-1 rounded-full mb-6">
+            Kesätarjous
+          </div>
+          <h2 className="text-4xl md:text-7xl font-heading font-black text-white mb-4 drop-shadow-lg">
+            SUPER STARTER PACK
+          </h2>
+          <div className="flex flex-col items-center gap-2 mb-6">
+            <p className="text-white/90 text-lg md:text-xl font-medium">
+              6 kiekkoa — kaikki mitä tarvitset kentälle
+            </p>
+            <span className="text-lucky-green text-5xl md:text-6xl font-black">59,90€</span>
+            <p className="text-white/70 text-base">
+              Yksittäiset kiekot alkaen 14,90€/kpl
+            </p>
+          </div>
+          <a
+            href="https://kesapelit.fi/?utm_source=luckydiscs&utm_medium=website&utm_campaign=summer2026&utm_content=starterpack"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button
+              size="lg"
+              className="bg-lucky-green hover:bg-white text-black font-bold text-xl px-12 py-6 shadow-2xl transition-all duration-300 mb-6"
+            >
+              Osta kesapelit.fi <ArrowRight className="ml-2 h-6 w-6" />
+            </Button>
+          </a>
+          <p className="text-white/60 text-sm uppercase tracking-widest">
+            Kesäale — rajoitettu erä
+          </p>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 bg-lucky-green text-white">
+      <section className="py-12 md:py-16 bg-lucky-green text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-heading mb-4">{t('cta.title')}</h2>
           <p className="text-white/80 max-w-2xl mx-auto mb-8 text-lg">
