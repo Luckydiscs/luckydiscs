@@ -53,7 +53,7 @@ const FlightStat = ({ label, value }: { label: string; value: number }) => (
 
 const FeaturedDisc = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
 
   return (
     <section className="bg-black py-10 md:py-16">
@@ -81,7 +81,10 @@ const FeaturedDisc = () => {
             <div
               key={disc.name}
               className="group relative bg-gradient-to-b from-white/5 to-white/[0.02] border border-white/10 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:border-white/30 hover:-translate-y-1 hover:shadow-2xl"
-              onClick={() => window.open(`https://kesapelit.fi/?utm_source=luckydiscs&utm_medium=website&utm_campaign=featured&utm_content=${disc.name.toLowerCase().replace(' ', '-')}`, '_blank')}
+              onClick={() => language === 'fi'
+                ? window.open(`https://kesapelit.fi/?utm_source=luckydiscs&utm_medium=website&utm_campaign=featured&utm_content=${disc.name.toLowerCase().replace(' ', '-')}`, '_blank')
+                : navigate('/wholesale')
+              }
             >
               {/* Hover glow */}
               <div
@@ -145,7 +148,7 @@ const FeaturedDisc = () => {
                       : "bg-lucky-green/15 hover:bg-lucky-green/25 text-lucky-green border border-lucky-green/30"
                   }`}
                 >
-                  {t('featured.shopNow')}
+                  {language === 'fi' ? t('featured.shopNow') : t('nav.getWholesaleAccess')}
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </button>
               </div>
