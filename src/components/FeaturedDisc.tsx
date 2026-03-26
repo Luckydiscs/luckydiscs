@@ -16,7 +16,7 @@ interface DiscCard {
 
 const discs: DiscCard[] = [
   {
-    image: "/images/brand/treasure-hunt-promo.png",
+    image: "/images/brand/treasure-hunt-promo.webp",
     name: "Treasure Hunt",
     nameKey: "discs.treasureHunt",
     descKey: "discs.treasureHuntDesc",

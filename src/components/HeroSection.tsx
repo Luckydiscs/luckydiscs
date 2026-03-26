@@ -105,7 +105,7 @@ const HeroSection = () => {
         {/* Desktop disc image - baked into background layer */}
         <div
           className="hidden lg:block flex-1 h-[500px] bg-contain bg-center bg-no-repeat"
-          style={{ backgroundImage: `url('/images/brand/treasure-hunt-promo.png')` }}
+          style={{ backgroundImage: `url('/images/brand/treasure-hunt-promo.webp')` }}
           role="img"
           aria-label="Lucky Discs Treasure Hunt"
         />

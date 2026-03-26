@@ -33,37 +33,26 @@ const CookieBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-50 bg-gray-900 border border-gray-700 rounded-lg shadow-2xl p-4">
-      <div className="flex items-start gap-3">
-        <div className="flex-1 min-w-0">
-          <p className="text-gray-300 text-sm leading-snug">
-            {t('cookie.description')}
-          </p>
-        </div>
-
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-md border-t border-white/10 px-4 py-3 md:py-4">
+      <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p className="text-gray-400 text-xs sm:text-sm leading-snug text-center sm:text-left">
+          {t('cookie.description')}
+        </p>
         <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={declineCookies}
-            className="text-sm text-white border border-gray-500 hover:border-white hover:bg-white/10 transition-colors px-3 py-1.5 rounded-md"
+            className="text-xs text-gray-400 hover:text-white transition-colors px-3 py-1.5 rounded-md"
           >
             {t('cookie.decline')}
           </button>
           <Button
             size="sm"
             onClick={acceptCookies}
-            className="bg-lucky-green text-white hover:bg-lucky-green/80 font-semibold text-sm px-4 py-1.5 border-0"
+            className="bg-lucky-green text-white hover:bg-lucky-green/80 font-semibold text-xs px-4 py-1.5 border-0 rounded-md"
           >
             {t('cookie.accept')}
           </Button>
         </div>
-
-        <button
-          onClick={declineCookies}
-          className="text-gray-500 hover:text-white transition-colors -mt-1 -mr-1"
-          aria-label="Sulje"
-        >
-          <X size={16} />
-        </button>
       </div>
     </div>
   );
