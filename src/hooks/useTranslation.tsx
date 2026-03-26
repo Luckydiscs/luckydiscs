@@ -45,9 +45,10 @@ const translations = {
     'hero.ourTeam': 'Our Team',
     'hero.ourStory': 'Our Story',
     'hero.contact': 'Contact',
-    'hero.shopDiscs': 'Osta kiekot',
-    'hero.exploreDiscs': 'Tutustu kiekkoihin',
-    'hero.summerSale': 'Kesän erikoistarjous',
+    'hero.premiumLabel': 'Premium Finnish Disc Golf',
+    'hero.shopDiscs': 'Shop Discs',
+    'hero.exploreDiscs': 'Explore Discs',
+    'hero.summerSale': 'Summer Sale',
     'hero.scrollDown': 'Scroll down',
 
     // Featured Disc
@@ -85,7 +86,29 @@ const translations = {
     'action.performanceDescription': 'When every throw matters, Lucky Discs deliver the consistency and reliability that professional players demand. From crucial putts to game-winning drives, our discs perform when it counts most.',
     'action.shopTournamentDiscs': 'Shop Tournament Discs',
     'action.meetOurTeam': 'Meet Our Team',
-    
+    'action.gallery1Title': 'Yyteri Beach',
+    'action.gallery1Desc': 'Money Shot discs on Finland\'s most beautiful beach',
+    'action.gallery2Title': 'Costa del Disc Golf',
+    'action.gallery2Desc': 'Finnish discs on international courses',
+    'action.gallery3Title': 'Lucky Throw',
+    'action.gallery3Desc': 'Fortune favors the bold',
+    'action.gallery4Title': 'Full Collection',
+    'action.gallery4Desc': 'Every color, every situation',
+
+    // Jackpot Section (FI only - keys provided for completeness)
+    'jackpot.title': 'Ready for Jackpot?',
+    'jackpot.description': 'Every throw is an opportunity. Lucky Discs are designed for players who want to stand out on the course — with style and performance.',
+    'jackpot.buyButton': 'Shop at kesapelit.fi',
+
+    // Summer Sale Section (FI only - keys provided for completeness)
+    'summerSale.badge': 'Summer Sale',
+    'summerSale.packTitle': 'SUPER STARTER PACK',
+    'summerSale.packContents': '6 discs — everything you need on the course',
+    'summerSale.packPrice': '59,90€',
+    'summerSale.singlePrice': 'Individual discs from 14,90€/pc',
+    'summerSale.buyButton': 'Shop at kesapelit.fi',
+    'summerSale.limitedStock': 'Summer Sale — limited stock',
+
     // Features
     'features.title': 'Why Choose Lucky Discs',
     'features.subtitle': "We're dedicated to creating premium disc golf equipment that performs as good as it looks.",
@@ -483,6 +506,7 @@ const translations = {
     'hero.ourTeam': 'Tiimimme',
     'hero.ourStory': 'Tarinämme',
     'hero.contact': 'Yhteystiedot',
+    'hero.premiumLabel': 'Premium suomalainen frisbeegolf',
     'hero.shopDiscs': 'Osta kiekot',
     'hero.exploreDiscs': 'Tutustu kiekkoihin',
     'hero.summerSale': 'Kesän erikoistarjous',
@@ -523,7 +547,29 @@ const translations = {
     'action.performanceDescription': 'Kun jokainen heitto merkitsee, Lucky Discs tarjoaa johdonmukaisuuden ja luotettavuuden, jota ammattilaispelaajat vaativat. Ratkaisevista puteista voittoisiin drivereihin — kiekkomme suoriutuvat, kun se on tärkeintä.',
     'action.shopTournamentDiscs': 'Osta turnauskiekkoja',
     'action.meetOurTeam': 'Tutustu tiimiimme',
-    
+    'action.gallery1Title': 'Yyteri Beach',
+    'action.gallery1Desc': 'Money Shot kiekot Suomen kauneimmalla rannalla',
+    'action.gallery2Title': 'Costa del Disc Golf',
+    'action.gallery2Desc': 'Suomalaiset kiekot kansainvälisillä kentillä',
+    'action.gallery3Title': 'Lucky Throw',
+    'action.gallery3Desc': 'Onni suosii rohkeaa',
+    'action.gallery4Title': 'Full Collection',
+    'action.gallery4Desc': 'Jokainen väri, jokainen tilanne',
+
+    // Jackpot Section
+    'jackpot.title': 'Valmis Jackpottiin?',
+    'jackpot.description': 'Jokainen heitto on mahdollisuus. Lucky Discsin kiekot on suunniteltu pelaajille, jotka haluavat erottua kentällä — tyylillä ja suorituskyvyllä.',
+    'jackpot.buyButton': 'Osta kiekot kesapelit.fi',
+
+    // Summer Sale Section
+    'summerSale.badge': 'Kesätarjous',
+    'summerSale.packTitle': 'SUPER STARTER PACK',
+    'summerSale.packContents': '6 kiekkoa — kaikki mitä tarvitset kentälle',
+    'summerSale.packPrice': '59,90€',
+    'summerSale.singlePrice': 'Yksittäiset kiekot alkaen 14,90€/kpl',
+    'summerSale.buyButton': 'Osta kesapelit.fi',
+    'summerSale.limitedStock': 'Kesäale — rajoitettu erä',
+
     // Features
     'features.title': 'Miksi valita Lucky Discs',
     'features.subtitle': 'Olemme omistautuneet valmistamaan premium-frisbeegolfvälineitä, jotka toimivat yhtä hyvin kuin näyttävät.',

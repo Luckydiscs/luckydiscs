@@ -6,7 +6,7 @@ import { ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
@@ -27,24 +27,27 @@ const HeroSection = () => {
 
       {/* Main content */}
       <div className="container mx-auto px-4 z-10 pt-20 pb-20 md:pt-28 md:pb-32">
-        <div className="max-w-3xl">
+        <div className="flex items-center gap-8">
+        <div className="flex-1 max-w-3xl">
           {/* Pre-heading label + summer sale badge */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
             <div className="flex items-center gap-3">
               <div className="h-px w-12 bg-lucky-gold" />
               <span className="font-display text-lucky-gold text-sm uppercase tracking-[0.3em]">
-                Premium Finnish Disc Golf
+                {t('hero.premiumLabel')}
               </span>
             </div>
-            <div className="relative inline-block self-start sm:self-auto">
-              <div className="absolute inset-0 rounded-full bg-lucky-gold/30 blur-md animate-pulse" />
-              <div
-                className="relative bg-lucky-gold text-black font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg border border-lucky-gold/50"
-                style={{ animation: "badge-pulse 3s ease-in-out infinite" }}
-              >
-                {t('hero.summerSale')}
+            {language === 'fi' && (
+              <div className="relative inline-block self-start sm:self-auto">
+                <div className="absolute inset-0 rounded-full bg-lucky-gold/30 blur-md animate-pulse" />
+                <div
+                  className="relative bg-lucky-gold text-black font-display font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg border border-lucky-gold/50"
+                  style={{ animation: "badge-pulse 3s ease-in-out infinite" }}
+                >
+                  {t('hero.summerSale')}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Main headline */}
@@ -87,6 +90,17 @@ const HeroSection = () => {
               {t('hero.exploreDiscs')}
             </Button>
           </div>
+        </div>
+
+        {/* Desktop disc image */}
+        <div className="hidden lg:flex flex-1 justify-center items-center">
+          <img
+            src="/images/brand/treasure-hunt-promo.png"
+            alt="Lucky Discs Treasure Hunt"
+            className="w-[420px] h-auto drop-shadow-2xl animate-float"
+            loading="eager"
+          />
+        </div>
         </div>
       </div>
 

@@ -16,7 +16,7 @@ import discs from "@/data/discs";
 
 const Index = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const [isVisible, setIsVisible] = useState(true);
 
   const structuredData = useMemo(() => ({
@@ -83,8 +83,8 @@ const Index = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 text-white md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-xs md:text-lg font-semibold">Yyteri Beach</h3>
-                <p className="text-[10px] md:text-sm text-gray-300 hidden md:block">Money Shot kiekot Suomen kauneimmalla rannalla</p>
+                <h3 className="font-heading text-xs md:text-lg font-semibold">{t('action.gallery1Title')}</h3>
+                <p className="text-[10px] md:text-sm text-gray-300 hidden md:block">{t('action.gallery1Desc')}</p>
               </div>
             </div>
 
@@ -99,8 +99,8 @@ const Index = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 text-white md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-semibold mb-1">Costa del Disc Golf</h3>
-                <p className="text-sm text-gray-300">Suomalaiset kiekot kansainvälisillä kentillä</p>
+                <h3 className="font-heading text-lg font-semibold mb-1">{t('action.gallery2Title')}</h3>
+                <p className="text-sm text-gray-300">{t('action.gallery2Desc')}</p>
               </div>
             </div>
 
@@ -115,8 +115,8 @@ const Index = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 text-white md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-bold mb-1">Lucky Throw</h3>
-                <p className="text-sm text-gray-300">Onni suosii rohkeaa</p>
+                <h3 className="font-heading text-lg font-bold mb-1">{t('action.gallery3Title')}</h3>
+                <p className="text-sm text-gray-300">{t('action.gallery3Desc')}</p>
               </div>
             </div>
 
@@ -131,8 +131,8 @@ const Index = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 text-white md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-bold mb-1">Full Collection</h3>
-                <p className="text-sm text-gray-300">Jokainen väri, jokainen tilanne</p>
+                <h3 className="font-heading text-lg font-bold mb-1">{t('action.gallery4Title')}</h3>
+                <p className="text-sm text-gray-300">{t('action.gallery4Desc')}</p>
               </div>
             </div>
           </div>
@@ -182,48 +182,50 @@ const Index = () => {
         </div>
       </section>
       
-      {/* "Ready for Jackpot?" banner */}
-      <section className="py-10 md:py-16 bg-gradient-to-b from-black via-gray-950 to-black relative overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="relative group overflow-hidden rounded-2xl shadow-2xl">
-              <img
-                src="/images/brand/ready-for-jackpot.jpg"
-                alt="Lucky Discs - Ready for Jackpot?"
-                className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                width={600}
-                height={600}
-                loading="lazy"
-              />
-            </div>
-            <div className="flex flex-col justify-center gap-6">
-              <div>
-                <p className="text-lucky-gold text-sm font-bold uppercase tracking-widest mb-2">Lucky Discs</p>
-                <h2 className="text-4xl md:text-5xl font-heading font-black text-white mb-4 leading-tight">
-                  Ready for Jackpot?
-                </h2>
-                <div className="w-16 h-1 bg-lucky-green mb-6 rounded-full" />
+      {/* "Ready for Jackpot?" banner - FI only */}
+      {language === 'fi' && (
+        <section className="py-10 md:py-16 bg-gradient-to-b from-black via-gray-950 to-black relative overflow-hidden">
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="relative group overflow-hidden rounded-2xl shadow-2xl">
+                <img
+                  src="/images/brand/ready-for-jackpot.jpg"
+                  alt="Lucky Discs - Ready for Jackpot?"
+                  className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  width={600}
+                  height={600}
+                  loading="lazy"
+                />
               </div>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                Jokainen heitto on mahdollisuus. Lucky Discsin kiekot on suunniteltu pelaajille, jotka haluavat erottua kentällä — tyylillä ja suorituskyvyllä.
-              </p>
-              <div>
-                <a
-                  href="https://kesapelit.fi/?utm_source=luckydiscs&utm_medium=website&utm_campaign=jackpot&utm_content=banner"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button
-                    className="bg-lucky-green hover:bg-white text-black font-semibold transition-all duration-300"
+              <div className="flex flex-col justify-center gap-6">
+                <div>
+                  <p className="text-lucky-gold text-sm font-bold uppercase tracking-widest mb-2">Lucky Discs</p>
+                  <h2 className="text-4xl md:text-5xl font-heading font-black text-white mb-4 leading-tight">
+                    {t('jackpot.title')}
+                  </h2>
+                  <div className="w-16 h-1 bg-lucky-green mb-6 rounded-full" />
+                </div>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  {t('jackpot.description')}
+                </p>
+                <div>
+                  <a
+                    href="https://kesapelit.fi/?utm_source=luckydiscs&utm_medium=website&utm_campaign=jackpot&utm_content=banner"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    Osta kiekot kesapelit.fi <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </a>
+                    <Button
+                      className="bg-lucky-green hover:bg-white text-black font-semibold transition-all duration-300"
+                    >
+                      {t('jackpot.buyButton')} <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Features */}
       <section className="py-10 md:py-16 relative overflow-hidden">
@@ -283,46 +285,48 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Summer Sale / Kesätarjous */}
-      <section className="relative py-16 md:py-24 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/brand/discs-spain-beach.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-black/65" />
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="inline-block bg-lucky-green text-black text-sm font-bold uppercase tracking-widest px-4 py-1 rounded-full mb-6">
-            Kesätarjous
-          </div>
-          <h2 className="text-4xl md:text-7xl font-heading font-black text-white mb-4 drop-shadow-lg">
-            SUPER STARTER PACK
-          </h2>
-          <div className="flex flex-col items-center gap-2 mb-6">
-            <p className="text-white/90 text-lg md:text-xl font-medium">
-              6 kiekkoa — kaikki mitä tarvitset kentälle
-            </p>
-            <span className="text-lucky-green text-5xl md:text-6xl font-black">59,90€</span>
-            <p className="text-white/70 text-base">
-              Yksittäiset kiekot alkaen 14,90€/kpl
-            </p>
-          </div>
-          <a
-            href="https://kesapelit.fi/?utm_source=luckydiscs&utm_medium=website&utm_campaign=summer2026&utm_content=starterpack"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button
-              size="lg"
-              className="bg-lucky-green hover:bg-white text-black font-bold text-xl px-12 py-6 shadow-2xl transition-all duration-300 mb-6"
+      {/* Summer Sale / Kesätarjous - FI only */}
+      {language === 'fi' && (
+        <section className="relative py-16 md:py-24 overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('/images/brand/discs-spain-beach.jpg')" }}
+          />
+          <div className="absolute inset-0 bg-black/65" />
+          <div className="relative z-10 container mx-auto px-4 text-center">
+            <div className="inline-block bg-lucky-green text-black text-sm font-bold uppercase tracking-widest px-4 py-1 rounded-full mb-6">
+              {t('summerSale.badge')}
+            </div>
+            <h2 className="text-4xl md:text-7xl font-heading font-black text-white mb-4 drop-shadow-lg">
+              {t('summerSale.packTitle')}
+            </h2>
+            <div className="flex flex-col items-center gap-2 mb-6">
+              <p className="text-white/90 text-lg md:text-xl font-medium">
+                {t('summerSale.packContents')}
+              </p>
+              <span className="text-lucky-green text-5xl md:text-6xl font-black">{t('summerSale.packPrice')}</span>
+              <p className="text-white/70 text-base">
+                {t('summerSale.singlePrice')}
+              </p>
+            </div>
+            <a
+              href="https://kesapelit.fi/?utm_source=luckydiscs&utm_medium=website&utm_campaign=summer2026&utm_content=starterpack"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Osta kesapelit.fi <ArrowRight className="ml-2 h-6 w-6" />
-            </Button>
-          </a>
-          <p className="text-white/60 text-sm uppercase tracking-widest">
-            Kesäale — rajoitettu erä
-          </p>
-        </div>
-      </section>
+              <Button
+                size="lg"
+                className="bg-lucky-green hover:bg-white text-black font-bold text-xl px-12 py-6 shadow-2xl transition-all duration-300 mb-6"
+              >
+                {t('summerSale.buyButton')} <ArrowRight className="ml-2 h-6 w-6" />
+              </Button>
+            </a>
+            <p className="text-white/60 text-sm uppercase tracking-widest">
+              {t('summerSale.limitedStock')}
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className="py-12 md:py-16 bg-lucky-green text-white">
