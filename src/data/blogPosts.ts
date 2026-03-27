@@ -28,7 +28,7 @@ export const blogPosts: BlogPost[] = [
     heroImage: "/images/brand/blog-disc-golf-winter.jpg",
     heroAlt: "Disc golf basket in Finnish winter landscape - growing market",
     midImage: "/images/brand/blog-disc-golf-forest.jpg",
-    midAlt: "Disc golf basket on a forest course in Finland",
+    midAlt: "Lucky Discs Treasure Hunt frisbeegolfkiekot eri väreissä",
   },
   {
     slug: "kuinka-valita-disc-golf-tavarantoimittaja",
@@ -41,8 +41,8 @@ export const blogPosts: BlogPost[] = [
     keywords: "disc golf tavarantoimittaja, frisbeegolf jälleenmyyjä, disc golf wholesale Suomi",
     readingTime: 7,
     heroImage: "/images/brand/blog-golf-course-green.jpg",
-    heroAlt: "Disc golf course - choosing the right supplier for retailers",
+    heroAlt: "Lucky Discs kiekkovalikoima - Treasure Hunt, Bank Robber ja Money Shot luonnossa",
     midImage: "/images/brand/blog-frisbee-sunset.jpg",
-    midAlt: "Disc golf player throwing at sunset - active sport growing in Finland",
+    midAlt: "Lucky Discs Treasure Hunt ja Bank Robber kiekot oranssina talvisessa luonnossa",
   },
 ];
