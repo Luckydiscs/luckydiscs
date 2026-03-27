@@ -307,7 +307,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 pt-6 mt-8 text-center text-gray-300">
-          <p className="mb-3 text-sm">Â© {new Date().getFullYear()} Lucky Discs. {t('footer.allRightsReserved')}</p>
+          <p className="mb-3 text-sm">{"\u00A9"} {new Date().getFullYear()} Lucky Discs. {t('footer.allRightsReserved')}</p>
           <div className="flex justify-center space-x-4 md:space-x-6 text-xs md:text-sm">
             <Link to="/privacy" className="hover:text-lucky-green hover:scale-110 transition-all duration-200">
               {t('footer.privacyPolicy')}
