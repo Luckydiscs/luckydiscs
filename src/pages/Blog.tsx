@@ -69,7 +69,14 @@ const Blog = () => {
                   to={`${basePath}/${post.slug}`}
                   className="block group"
                 >
-                  <article className="bg-gray-900/50 rounded-lg border border-gray-800 p-6 md:p-8 hover:border-lucky-green/50 transition-colors">
+                  <article className="bg-gray-900/50 rounded-lg border border-gray-800 overflow-hidden hover:border-lucky-green/50 transition-colors">
+                    <img
+                      src={post.heroImage}
+                      alt={post.heroAlt}
+                      className="w-full h-48 md:h-56 object-cover"
+                      loading="lazy"
+                    />
+                    <div className="p-6 md:p-8">
                     <div className="flex items-center gap-3 mb-4">
                       <Badge className="bg-lucky-green/20 text-lucky-green border-lucky-green text-xs">
                         {t(post.categoryKey)}
@@ -95,6 +102,7 @@ const Blog = () => {
                       {t("blog.readMore")}
                       <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </span>
+                    </div>
                   </article>
                 </Link>
               ))}

@@ -85,34 +85,75 @@ const BlogPost = () => {
           </div>
         </section>
 
+        {/* Hero Image */}
+        <section className="px-4 bg-black">
+          <div className="container mx-auto">
+            <div className="max-w-3xl mx-auto">
+              <img
+                src={post.heroImage}
+                alt={post.heroAlt}
+                className="w-full rounded-lg shadow-2xl object-cover max-h-[400px]"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </section>
+
         <section className="py-12 px-4 bg-black">
           <div className="container mx-auto">
             <article className="max-w-3xl mx-auto prose-invert">
               {paragraphs.map((paragraph, index) => {
+                const midImageIndex = Math.floor(paragraphs.length / 2);
+                const showMidImage = post.midImage && index === midImageIndex;
+
                 if (paragraph.startsWith("## ")) {
                   return (
-                    <h2
-                      key={index}
-                      className="text-2xl font-medium text-white mt-10 mb-4"
-                    >
-                      {paragraph.replace("## ", "")}
-                    </h2>
+                    <div key={index}>
+                      {showMidImage && (
+                        <img
+                          src={post.midImage}
+                          alt={post.midAlt || ""}
+                          className="w-full rounded-lg shadow-xl object-cover max-h-[350px] my-8"
+                          loading="lazy"
+                        />
+                      )}
+                      <h2 className="text-2xl font-medium text-white mt-10 mb-4">
+                        {paragraph.replace("## ", "")}
+                      </h2>
+                    </div>
                   );
                 }
                 if (paragraph.startsWith("### ")) {
                   return (
-                    <h3
-                      key={index}
-                      className="text-xl font-medium text-white mt-8 mb-3"
-                    >
-                      {paragraph.replace("### ", "")}
-                    </h3>
+                    <div key={index}>
+                      {showMidImage && (
+                        <img
+                          src={post.midImage}
+                          alt={post.midAlt || ""}
+                          className="w-full rounded-lg shadow-xl object-cover max-h-[350px] my-8"
+                          loading="lazy"
+                        />
+                      )}
+                      <h3 className="text-xl font-medium text-white mt-8 mb-3">
+                        {paragraph.replace("### ", "")}
+                      </h3>
+                    </div>
                   );
                 }
                 return (
-                  <p key={index} className="text-gray-300 leading-relaxed mb-4">
-                    {paragraph}
-                  </p>
+                  <div key={index}>
+                    {showMidImage && (
+                      <img
+                        src={post.midImage}
+                        alt={post.midAlt || ""}
+                        className="w-full rounded-lg shadow-xl object-cover max-h-[350px] my-8"
+                        loading="lazy"
+                      />
+                    )}
+                    <p className="text-gray-300 leading-relaxed mb-4">
+                      {paragraph}
+                    </p>
+                  </div>
                 );
               })}
 
