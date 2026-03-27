@@ -59,15 +59,15 @@ const Team = () => {
                 <Badge className="bg-lucky-green/20 text-lucky-green border-lucky-green mb-4">
                   {t('team.hallOfFame')}
                 </Badge>
-                <h2 className="text-4xl font-medium mb-4 text-white">{t('team.meetChampion')}</h2>
-                <p className="text-xl text-gray-300">{t('team.championSubtitle')}</p>
+                <h2 className="text-4xl font-medium mb-4 text-white">{t('team.achievementsTitle')}</h2>
+                <p className="text-xl text-gray-300">{t('team.achievementsSubtitle')}</p>
               </div>
 
               <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
                 <div className="relative">
                   <img 
                     src={danielVictoryImage} 
-                    alt="Daniel Davidsson - 2025 Finnish Champion with Lucky Discs"
+                    alt="Finnish National Championship 2025 - Won with Lucky Discs"
                     className="w-full rounded-lg shadow-2xl"
                     loading="lazy"
                     width={800}
@@ -82,7 +82,7 @@ const Team = () => {
                 
                 <div className="space-y-8">
                   <div>
-                    <h3 className="text-3xl font-medium mb-4 text-white">Daniel Davidsson</h3>
+                    <h3 className="text-3xl font-medium mb-4 text-white">{t('team.championship2025Title')}</h3>
                     <p className="text-lg text-lucky-green font-semibold mb-4">{t('team.danielTitle')}</p>
                     
                     <div className="bg-gradient-to-r from-lucky-green/10 to-transparent p-6 rounded-lg border-l-4 border-lucky-green mb-6">
@@ -91,13 +91,6 @@ const Team = () => {
                       </p>
                     </div>
                     
-                    <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700">
-                      <p className="text-gray-300 text-sm flex items-center gap-2">
-                        <span className="text-yellow-500">â ï¸</span>
-                        {t('team.contractEnded')}
-                      </p>
-                    </div>
-                  </div>
 
                   <div className="grid grid-cols-2 gap-6">
                     <div className="bg-gray-900/50 p-6 rounded-lg border border-gray-800">
