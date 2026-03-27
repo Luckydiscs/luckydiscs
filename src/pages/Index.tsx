@@ -37,9 +37,9 @@ const Index = () => {
   }), [t]);
 
   useSEO({
-    title: "Lucky Discs - Premium Disc Golf Equipment | Professional Tournament Discs from Finland",
-    description: "Lucky Discs - Premium Finnish disc golf equipment. Professional tournament-tested discs including Bank Robber, Treasure Hunt, Money Shot. Wholesale opportunities for retailers worldwide.",
-    keywords: "disc golf equipment, Finnish disc golf, Bank Robber disc, Treasure Hunt disc, Money Shot disc, professional disc golf, tournament discs, wholesale disc golf",
+    title: "Lucky Discs - Premium Frisbeegolfkiekot Suomesta | Disc Golf Equipment Finland",
+    description: "Lucky Discs - suomalaisia premium-frisbeegolfkiekkoja. Bank Robber, Treasure Hunt & Money Shot. Finnish disc golf discs for tournaments and recreation.",
+    keywords: "frisbeegolf kiekot, disc golf discs, Lucky Discs, suomalainen frisbeegolf, Finnish disc golf, Bank Robber, Treasure Hunt, Money Shot, tournament discs",
     canonicalPath: "",
     structuredData,
   });

@@ -21,13 +21,13 @@ const Brand = () => {
   const { t } = useTranslation();
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const pageDescription = "Lucky Discs brand story - Founded in 2022 in Finland. Premium disc golf manufacturer with casino-inspired designs, Finnish quality, and championship performance.";
+  const pageDescription = "Lucky Discs bränditarina - perustettu 2022 Nokialla. Suomalainen frisbeegolfkiekkovalmistaja. Finnish premium disc golf brand with casino-inspired designs.";
   const ogImage = "https://www.luckydiscs.fi/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.webp";
 
   useSEO({
-    title: "Lucky Discs Brand - Finnish Premium Disc Golf Manufacturer Story",
+    title: "Lucky Discs Brändi - Suomalainen Frisbeegolfkiekkovalmistaja | Brand Story",
     description: pageDescription,
-    keywords: "Lucky Discs brand, Finnish disc golf manufacturer, disc golf company, casino design discs, Nokia Finland, premium disc golf brand, disc golf innovation",
+    keywords: "Lucky Discs brändi, frisbeegolfkiekkovalmistaja, disc golf brand Finland, Nokia, suomalainen frisbeegolf, casino design kiekot, disc golf innovation",
     canonicalPath: "/brand",
     ogImage: ogImage,
     structuredData: {

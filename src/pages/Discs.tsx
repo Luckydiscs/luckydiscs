@@ -29,22 +29,42 @@ const Discs = () => {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Lucky Discs Collection",
-    "description": "Browse Lucky Discs complete collection of premium disc golf discs.",
+    "description": "Lucky Discs premium frisbeegolfkiekot - complete disc golf disc collection from Finland.",
+    "url": "https://www.luckydiscs.fi/discs",
+    "numberOfItems": allDiscs.length,
     "itemListElement": allDiscs.map((disc, index) => ({
-      "@type": "Product",
+      "@type": "ListItem",
       "position": index + 1,
-      "name": disc.name,
-      "description": t(disc.descriptionKey),
-      "image": `https://www.luckydiscs.fi${disc.imageSrc}`,
-      "brand": { "@type": "Brand", "name": "Lucky Discs" },
-      "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR" }
+      "item": {
+        "@type": "Product",
+        "name": disc.name,
+        "description": t(disc.descriptionKey),
+        "image": `https://www.luckydiscs.fi${disc.imageSrc}`,
+        "url": `https://www.luckydiscs.fi/discs`,
+        "brand": { "@type": "Brand", "name": "Lucky Discs" },
+        "manufacturer": { "@type": "Organization", "name": "Lucky Discs", "url": "https://www.luckydiscs.fi" },
+        "category": "Disc Golf Discs",
+        "additionalProperty": [
+          { "@type": "PropertyValue", "name": "Speed", "value": String(disc.speed) },
+          { "@type": "PropertyValue", "name": "Glide", "value": String(disc.glide) },
+          { "@type": "PropertyValue", "name": "Turn", "value": String(disc.turn) },
+          { "@type": "PropertyValue", "name": "Fade", "value": String(disc.fade) },
+          { "@type": "PropertyValue", "name": "Disc Type", "value": disc.type }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "availability": disc.name === "Jailbreak" ? "https://schema.org/PreOrder" : "https://schema.org/InStock",
+          "priceCurrency": "EUR",
+          "seller": { "@type": "Organization", "name": "Lucky Discs" }
+        }
+      }
     }))
   }), [t]);
 
   useSEO({
-    title: "Lucky Discs Collection - Premium Disc Golf Discs | Drivers, Fairways, Midranges & Putters",
-    description: "Browse Lucky Discs complete collection of premium disc golf discs. Professional drivers, fairway discs, midranges and putters including Bank Robber, Treasure Hunt, Money Shot and Jailbreak.",
-    keywords: "disc golf discs, drivers, fairway discs, mid-range discs, putters, Bank Robber, Treasure Hunt, Money Shot, Jailbreak, Lucky Discs collection",
+    title: "Lucky Discs Kiekot - Frisbeegolfkiekot | Disc Golf Discs Collection",
+    description: "Lucky Discs kiekkovalikoima: Bank Robber, Treasure Hunt, Money Shot & Jailbreak. Premium frisbeegolfkiekot Suomesta. Drivers, fairways & putters for all levels.",
+    keywords: "frisbeegolfkiekot, disc golf discs, drivers, fairway, putterit, Bank Robber, Treasure Hunt, Money Shot, Jailbreak, Lucky Discs",
     canonicalPath: "/discs",
     ogImage: "https://www.luckydiscs.fi/lovable-uploads/4c26d096-cfa9-4173-afe7-93b4f8b28426.webp",
     structuredData,

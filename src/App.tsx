@@ -25,6 +25,8 @@ const Shop = lazy(() => import("./pages/Shop"));
 const ProductPage = lazy(() => import("./pages/ProductPage"));
 const OrderConfirmation = lazy(() => import("./pages/OrderConfirmation"));
 const Checkout = lazy(() => import("./pages/Checkout"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -50,6 +52,10 @@ const App = () => (
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/terms" element={<Terms />} />
+                <Route path="/blogi" element={<Blog />} />
+                <Route path="/blogi/:slug" element={<BlogPost />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
                 {/* Shop disabled - not public yet */}
                 <Route path="/shop" element={<Navigate to="/" replace />} />
                 <Route path="/shop/kassa" element={<Navigate to="/" replace />} />

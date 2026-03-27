@@ -11,13 +11,13 @@ import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
 const Contact = () => {
   const { t } = useTranslation();
 
-  const pageTitle = "Contact Lucky Discs - Customer Service & Business Inquiries";
-  const pageDescription = "Contact Lucky Discs for customer support, wholesale inquiries, sponsorships, and partnerships. Email, phone, and social media support available. Based in Finland.";
+  const pageTitle = "Lucky Discs Yhteystiedot - Ota Yhteyttä | Contact Us";
+  const pageDescription = "Ota yhteyttä Lucky Discsiin: asiakaspalvelu, tukkumyynti ja sponsorointi. Contact Lucky Discs for support, wholesale and partnerships. Nokia, Finland.";
 
   useSEO({
     title: pageTitle,
     description: pageDescription,
-    keywords: "Lucky Discs contact, customer service, wholesale inquiry, business contact, disc golf support, Finland contact, sponsorship inquiry",
+    keywords: "Lucky Discs yhteystiedot, asiakaspalvelu, tukkumyynti, ota yhteyttä, contact disc golf, sponsorointi, frisbeegolf Finland",
     canonicalPath: "/contact",
     ogImage: "https://www.luckydiscs.fi/lucky-discs-logo.png",
     structuredData: {

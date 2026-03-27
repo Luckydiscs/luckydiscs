@@ -17,9 +17,9 @@ const Team = () => {
   const ogImage = "https://www.luckydiscs.fi/lovable-uploads/a0e4d1ed-42e7-46bc-bc28-313aebe1023a.webp";
 
   useSEO({
-    title: "Lucky Discs Team - 2025 Finnish Championship History | Join Our Team",
-    description: "Lucky Discs team history featuring our 2025 Finnish Championship success. Looking for new team players - apply now to join our growing disc golf team!",
-    keywords: "Lucky Discs team, disc golf team Finland, Finnish Championship 2025, join disc golf team, professional disc golf, disc golf sponsorship",
+    title: "Lucky Discs Tiimi - SM-kulta 2025 | Frisbeegolf Team Finland",
+    description: "Lucky Discs tiimi ja SM-kultamitalisti 2025. Haemme uusia pelaajia! Finnish Championship gold with Lucky Discs. Join our professional disc golf team.",
+    keywords: "Lucky Discs tiimi, frisbeegolf joukkue, SM-kilpailut 2025, disc golf team Finland, frisbeegolf sponsorointi, disc golf sponsorship",
     canonicalPath: "/team",
     ogImage: ogImage,
     structuredData: {
@@ -90,7 +90,7 @@ const Team = () => {
                         {t('team.danielAchievement')}
                       </p>
                     </div>
-                    
+                  </div>
 
                   <div className="grid grid-cols-2 gap-6">
                     <div className="bg-gray-900/50 p-6 rounded-lg border border-gray-800">

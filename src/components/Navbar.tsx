@@ -9,7 +9,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Navbar = () => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const { totalItems } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -73,6 +73,9 @@ const Navbar = () => {
           <Link to="/contact" className="hover:text-primary transition-all duration-300 font-semibold relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
             {t('nav.contact')}
           </Link>
+          <Link to={language === "fi" ? "/blogi" : "/blog"} className="hover:text-primary transition-all duration-300 font-semibold relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
+            {t('nav.blog')}
+          </Link>
           <Link to="/faq" className="hover:text-primary transition-all duration-300 font-semibold relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
             FAQ
           </Link>
@@ -132,6 +135,13 @@ const Navbar = () => {
               onClick={toggleMenu}
             >
               {t('nav.contact')}
+            </Link>
+            <Link
+              to={language === "fi" ? "/blogi" : "/blog"}
+              className="text-lg py-2 border-b border-gray-800 hover:text-lucky-green"
+              onClick={toggleMenu}
+            >
+              {t('nav.blog')}
             </Link>
             <Link
               to="/faq"

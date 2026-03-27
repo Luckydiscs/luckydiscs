@@ -16,8 +16,9 @@ const DiscGuide = () => {
   const moneyShotDisc = discs.find(d => d.name === "Money Shot")!;
 
   useSEO({
-    title: "Lucky Discs Guide - Complete Disc Golf Guide | Learn Basics",
-    description: "Lucky Discs guide for disc golf beginners. Complete Lucky Discs guide covering flight numbers, disc types, throwing techniques and course strategy.",
+    title: "Frisbeegolfopas - Disc Golf Guide for Beginners | Lucky Discs",
+    description: "Frisbeegolfopas aloittelijoille: kiekkotyypit, lentonumerot ja heittotekniikat. Complete disc golf guide covering flight numbers, disc types and throwing tips.",
+    keywords: "frisbeegolfopas, disc golf guide, aloittelijan opas, lentonumerot, heittotekniikka, kiekkotyypit, disc golf beginners, flight numbers",
     canonicalPath: "/disc-guide",
     structuredData: {
       "@context": "https://schema.org",

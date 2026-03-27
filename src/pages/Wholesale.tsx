@@ -15,9 +15,9 @@ const Wholesale = () => {
   }, []);
 
   useSEO({
-    title: "Lucky Discs Wholesale Program - Partner With Premium Finnish Disc Golf Brand",
-    description: "Join Lucky Discs wholesale program. Competitive margins, unique casino-themed designs, reliable shipping from Finland. Partner with the fastest-growing Finnish disc golf brand.",
-    keywords: "disc golf wholesale, retailer program, bulk disc orders, Lucky Discs wholesale, disc golf distributor, wholesale partnership, Finnish disc golf wholesale",
+    title: "Lucky Discs Tukkumyynti - Wholesale Disc Golf Program | Jälleenmyynti",
+    description: "Lucky Discs tukkumyynti ja jälleenmyyntiohjelma. Kilpailukykyiset katteet, uniikki design. Wholesale disc golf discs from Finland for retailers worldwide.",
+    keywords: "frisbeegolf tukkumyynti, disc golf wholesale, jälleenmyynti, Lucky Discs wholesale, disc golf distributor, tukkuhinnat, wholesale partnership",
     canonicalPath: "/wholesale",
     ogImage: "https://www.luckydiscs.fi/lucky-discs-logo.png",
     structuredData: {

@@ -46,8 +46,9 @@ const FAQ = () => {
   }), [t]);
 
   useSEO({
-    title: "Lucky Discs FAQ - Frequently Asked Questions | Customer Support",
-    description: "Lucky Discs FAQ with answers about shipping, products, wholesale, disc golf basics and Lucky Discs customer support. Get help with questions.",
+    title: "Lucky Discs UKK - Usein Kysytyt Kysymykset | FAQ & Customer Support",
+    description: "Lucky Discs UKK: vastauksia toimituksista, tuotteista ja tukkumyynnistä. FAQ about shipping, disc golf products, wholesale and customer support.",
+    keywords: "Lucky Discs FAQ, usein kysytyt kysymykset, frisbeegolf UKK, toimitus, tukkumyynti, disc golf questions, customer support",
     canonicalPath: "/faq",
     structuredData: structuredData
   });
