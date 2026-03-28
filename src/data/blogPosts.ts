@@ -25,9 +25,9 @@ export const blogPosts: BlogPost[] = [
     categoryKey: "blog.category.business",
     keywords: "disc golf jälleenmyyjä, frisbeegolf tukkumyynti, disc golf markkinan kasvu Suomi",
     readingTime: 5,
-    heroImage: "/images/brand/blog-disc-golf-winter.jpg",
+    heroImage: "/images/brand/blog-disc-golf-winter.webp",
     heroAlt: "Disc golf basket in Finnish winter landscape - growing market",
-    midImage: "/images/brand/blog-disc-golf-forest.jpg",
+    midImage: "/images/brand/blog-disc-golf-forest.webp",
     midAlt: "Lucky Discs Treasure Hunt frisbeegolfkiekot eri väreissä",
   },
   {
@@ -40,9 +40,9 @@ export const blogPosts: BlogPost[] = [
     categoryKey: "blog.category.guide",
     keywords: "disc golf tavarantoimittaja, frisbeegolf jälleenmyyjä, disc golf wholesale Suomi",
     readingTime: 7,
-    heroImage: "/images/brand/blog-golf-course-green.jpg",
+    heroImage: "/images/brand/blog-golf-course-green.webp",
     heroAlt: "Lucky Discs kiekkovalikoima - Treasure Hunt, Bank Robber ja Money Shot luonnossa",
-    midImage: "/images/brand/blog-frisbee-sunset.jpg",
+    midImage: "/images/brand/blog-frisbee-sunset.webp",
     midAlt: "Lucky Discs Treasure Hunt ja Bank Robber kiekot oranssina talvisessa luonnossa",
   },
 ];

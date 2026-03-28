@@ -25,7 +25,7 @@ const discs: DiscCard[] = [
     accentColor: "lucky-gold",
   },
   {
-    image: "/images/brand/kiekkoesittely-02.png",
+    image: "/images/brand/kiekkoesittely-02.webp",
     name: "Bank Robber",
     nameKey: "discs.bankRobber",
     descKey: "discs.bankRobberDesc",
@@ -34,7 +34,7 @@ const discs: DiscCard[] = [
     accentColor: "lucky-green",
   },
   {
-    image: "/images/brand/kiekkoesittely-03.png",
+    image: "/images/brand/kiekkoesittely-03.webp",
     name: "Money Shot",
     nameKey: "discs.moneyShot",
     descKey: "discs.moneyShotDesc",

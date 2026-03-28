@@ -76,7 +76,7 @@ const Index = () => {
             {/* Iso kuva 1 */}
             <div className="relative group overflow-hidden rounded-2xl">
               <img
-                src="/images/brand/discs-yyteri-beach.jpg"
+                src="/images/brand/discs-yyteri-beach.webp"
                 alt="Lucky Discs Money Shot kiekot Yyterin hiekkarannalla syksyllä"
                 className="w-full h-64 md:h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
                 width={800}
@@ -93,7 +93,7 @@ const Index = () => {
             {/* Iso kuva 2 */}
             <div className="relative group overflow-hidden rounded-2xl">
               <img
-                src="/images/brand/discs-spain-beach.jpg"
+                src="/images/brand/discs-spain-beach.webp"
                 alt="Lucky Discs kiekkovalikoima Espanjan rannikolla vuoristomaisemassa"
                 className="w-full h-64 md:h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
                 width={800}
@@ -110,7 +110,7 @@ const Index = () => {
             {/* Pieni kuva 1 */}
             <div className="relative group overflow-hidden rounded-2xl">
               <img
-                src="/images/brand/disc-rainbow.jpg"
+                src="/images/brand/disc-rainbow.webp"
                 alt="Lucky Discs kiekko sateenkaaren edessä frisbeegolfkorissa"
                 className="w-full h-56 md:h-72 object-cover transition-transform duration-700 group-hover:scale-105"
                 width={800}
@@ -127,7 +127,7 @@ const Index = () => {
             {/* Pieni kuva 2 */}
             <div className="relative group overflow-hidden rounded-2xl">
               <img
-                src="/images/brand/disc-collection-rock.jpg"
+                src="/images/brand/disc-collection-rock.webp"
                 alt="Lucky Discs täysi kiekkovalikoima kalliolla syksyisessä metsässä"
                 className="w-full h-56 md:h-72 object-cover transition-transform duration-700 group-hover:scale-105"
                 width={800}
@@ -172,7 +172,7 @@ const Index = () => {
               </div>
               <div className="relative min-h-[300px] md:min-h-[400px]">
                 <img
-                  src="/images/brand/disc-collection-vol2.jpg"
+                  src="/images/brand/disc-collection-vol2.webp"
                   alt="Lucky Discs kiekkovalikoima luonnossa"
                   className="absolute inset-0 w-full h-full object-cover"
                   width={600}
@@ -193,7 +193,7 @@ const Index = () => {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="relative group overflow-hidden rounded-2xl shadow-2xl">
                 <img
-                  src="/images/brand/ready-for-jackpot.jpg"
+                  src="/images/brand/ready-for-jackpot.webp"
                   alt="Lucky Discs - Ready for Jackpot?"
                   className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   width={600}
@@ -294,7 +294,7 @@ const Index = () => {
         <section className="relative py-16 md:py-24 overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/images/brand/discs-spain-beach.jpg')" }}
+            style={{ backgroundImage: "url('/images/brand/discs-spain-beach.webp')" }}
           />
           <div className="absolute inset-0 bg-black/65" />
           <div className="relative z-10 container mx-auto px-4 text-center">

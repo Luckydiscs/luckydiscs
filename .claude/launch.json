@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "luckydiscs-dev",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "--port", "5174"],
+      "port": 5174,
+      "cwd": "C:\\Users\\pesol\\projects\\laplandvibes\\luckydiscs"
+    }
+  ]
+}

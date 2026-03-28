@@ -14,7 +14,7 @@ const HeroSection = () => {
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/images/brand/finnish-sunset-course.jpg')`,
+          backgroundImage: `url('/images/brand/finnish-sunset-course.webp')`,
         }}
       />
 
