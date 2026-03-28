@@ -92,7 +92,7 @@ const BlogPost = () => {
               <img
                 src={post.heroImage}
                 alt={post.heroAlt}
-                className="w-full rounded-lg shadow-2xl object-cover aspect-[4/3]"
+                className="w-full rounded-lg shadow-2xl object-contain"
                 loading="eager"
               />
             </div>
@@ -113,7 +113,7 @@ const BlogPost = () => {
                         <img
                           src={post.midImage}
                           alt={post.midAlt || ""}
-                          className="w-full rounded-lg shadow-xl object-cover max-h-[350px] my-8"
+                          className="w-full rounded-lg shadow-xl object-contain my-8"
                           loading="lazy"
                         />
                       )}
@@ -130,7 +130,7 @@ const BlogPost = () => {
                         <img
                           src={post.midImage}
                           alt={post.midAlt || ""}
-                          className="w-full rounded-lg shadow-xl object-cover max-h-[350px] my-8"
+                          className="w-full rounded-lg shadow-xl object-contain my-8"
                           loading="lazy"
                         />
                       )}
@@ -146,7 +146,7 @@ const BlogPost = () => {
                       <img
                         src={post.midImage}
                         alt={post.midAlt || ""}
-                        className="w-full rounded-lg shadow-xl object-cover max-h-[350px] my-8"
+                        className="w-full rounded-lg shadow-xl object-contain my-8"
                         loading="lazy"
                       />
                     )}
