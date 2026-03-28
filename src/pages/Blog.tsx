@@ -73,7 +73,7 @@ const Blog = () => {
                     <img
                       src={post.heroImage}
                       alt={post.heroAlt}
-                      className="w-full h-56 md:h-72 object-cover"
+                      className="w-full aspect-[16/9] object-cover"
                       loading="lazy"
                     />
                     <div className="p-6 md:p-8">

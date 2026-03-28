@@ -92,7 +92,7 @@ const BlogPost = () => {
               <img
                 src={post.heroImage}
                 alt={post.heroAlt}
-                className="w-full rounded-lg shadow-2xl object-cover max-h-[400px]"
+                className="w-full rounded-lg shadow-2xl object-cover aspect-[16/9]"
                 loading="eager"
               />
             </div>
