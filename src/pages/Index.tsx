@@ -71,111 +71,115 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 mb-6">
-            <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+          {/* Bento grid: 2 isoa + 2 pientä */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 mb-8">
+            {/* Iso kuva 1 */}
+            <div className="relative group overflow-hidden rounded-2xl">
               <img
                 src="/images/brand/discs-yyteri-beach.jpg"
                 alt="Lucky Discs Money Shot kiekot Yyterin hiekkarannalla syksyllä"
-                className="w-full h-40 md:h-64 object-cover transition-transform duration-700 group-hover:scale-110"
-                width={400}
-                height={256}
+                className="w-full h-64 md:h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
+                width={800}
+                height={400}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 text-white md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-xs md:text-lg font-semibold">{t('action.gallery1Title')}</h3>
-                <p className="text-[10px] md:text-sm text-gray-300 hidden md:block">{t('action.gallery1Desc')}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h3 className="font-heading text-lg md:text-xl font-semibold">{t('action.gallery1Title')}</h3>
+                <p className="text-sm text-gray-300 mt-1">{t('action.gallery1Desc')}</p>
               </div>
             </div>
 
-            <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+            {/* Iso kuva 2 */}
+            <div className="relative group overflow-hidden rounded-2xl">
               <img
                 src="/images/brand/discs-spain-beach.jpg"
                 alt="Lucky Discs kiekkovalikoima Espanjan rannikolla vuoristomaisemassa"
-                className="w-full h-40 md:h-64 object-cover transition-transform duration-700 group-hover:scale-110"
-                width={400}
-                height={256}
+                className="w-full h-64 md:h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
+                width={800}
+                height={400}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 text-white md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-semibold mb-1">{t('action.gallery2Title')}</h3>
-                <p className="text-sm text-gray-300">{t('action.gallery2Desc')}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h3 className="font-heading text-lg md:text-xl font-semibold">{t('action.gallery2Title')}</h3>
+                <p className="text-sm text-gray-300 mt-1">{t('action.gallery2Desc')}</p>
               </div>
             </div>
 
-            <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+            {/* Pieni kuva 1 */}
+            <div className="relative group overflow-hidden rounded-2xl">
               <img
                 src="/images/brand/disc-rainbow.jpg"
                 alt="Lucky Discs kiekko sateenkaaren edessä frisbeegolfkorissa"
-                className="w-full h-40 md:h-64 object-cover transition-transform duration-700 group-hover:scale-110"
-                width={400}
-                height={256}
+                className="w-full h-56 md:h-72 object-cover transition-transform duration-700 group-hover:scale-105"
+                width={800}
+                height={288}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 text-white md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-bold mb-1">{t('action.gallery3Title')}</h3>
-                <p className="text-sm text-gray-300">{t('action.gallery3Desc')}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h3 className="font-heading text-lg md:text-xl font-semibold">{t('action.gallery3Title')}</h3>
+                <p className="text-sm text-gray-300 mt-1">{t('action.gallery3Desc')}</p>
               </div>
             </div>
 
-            <div className="relative group overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+            {/* Pieni kuva 2 */}
+            <div className="relative group overflow-hidden rounded-2xl">
               <img
                 src="/images/brand/disc-collection-rock.jpg"
                 alt="Lucky Discs täysi kiekkovalikoima kalliolla syksyisessä metsässä"
-                className="w-full h-40 md:h-64 object-cover transition-transform duration-700 group-hover:scale-110"
-                width={400}
-                height={256}
+                className="w-full h-56 md:h-72 object-cover transition-transform duration-700 group-hover:scale-105"
+                width={800}
+                height={288}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 text-white md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="font-heading text-lg font-bold mb-1">{t('action.gallery4Title')}</h3>
-                <p className="text-sm text-gray-300">{t('action.gallery4Desc')}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h3 className="font-heading text-lg md:text-xl font-semibold">{t('action.gallery4Title')}</h3>
+                <p className="text-sm text-gray-300 mt-1">{t('action.gallery4Desc')}</p>
               </div>
             </div>
           </div>
           
           {/* Performance Visualization */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-lucky-green/20 p-5 md:p-8 shadow-2xl">
-            <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
-            <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
-              <div>
-                <h3 className="text-3xl font-heading font-semibold text-white mb-4 drop-shadow-lg">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-lucky-green/20 shadow-2xl">
+            <div className="grid md:grid-cols-2 gap-0 items-stretch">
+              <div className="p-8 md:p-12 flex flex-col justify-center">
+                <h3 className="text-3xl md:text-4xl font-heading font-semibold text-white mb-4">
                   {t('action.performanceUnderPressure')}
                 </h3>
-                <p className="text-gray-100 mb-6 leading-relaxed text-base font-normal drop-shadow-md">
+                <p className="text-gray-300 mb-8 leading-relaxed text-base">
                   {t('action.performanceDescription')}
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
-                  <Button 
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button
                     size="lg"
-                    className="bg-lucky-green hover:bg-white text-black font-semibold transition-all duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto"
+                    className="bg-lucky-green hover:bg-lucky-green/90 text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
                     onClick={() => navigate('/discs')}
                   >
                     {t('action.shopTournamentDiscs')}
                   </Button>
-                  <Button 
+                  <Button
                     size="lg"
                     variant="outline"
-                    className="border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 shadow-lg w-full sm:w-auto"
+                    className="border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-300 bg-transparent"
                     onClick={() => navigate('/team')}
                   >
                     {t('action.meetOurTeam')}
                   </Button>
                 </div>
               </div>
-              <div className="relative">
+              <div className="relative min-h-[300px] md:min-h-[400px]">
                 <img
-                  src="/images/brand/disc-collection-rock.jpg"
+                  src="/images/brand/disc-collection-vol2.jpg"
                   alt="Lucky Discs kiekkovalikoima luonnossa"
-                  className="w-full rounded-xl shadow-2xl object-cover max-h-[500px]"
+                  className="absolute inset-0 w-full h-full object-cover"
                   width={600}
                   height={400}
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-transparent to-transparent md:block hidden"></div>
               </div>
             </div>
           </div>

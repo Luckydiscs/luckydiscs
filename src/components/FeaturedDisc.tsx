@@ -109,7 +109,7 @@ const FeaturedDisc = () => {
               </div>
 
               {/* Disc image */}
-              <div className="relative pt-12 pb-4 px-6 flex justify-center">
+              <div className="relative pt-14 pb-6 px-6 flex justify-center">
                 <div
                   className={`absolute inset-0 opacity-20 blur-3xl transition-opacity duration-300 group-hover:opacity-40 ${
                     disc.accentColor === "lucky-gold" ? "bg-lucky-gold" : "bg-lucky-green"
@@ -118,7 +118,7 @@ const FeaturedDisc = () => {
                 <img
                   src={disc.image}
                   alt={disc.name}
-                  className="relative z-10 w-56 h-56 md:w-48 md:h-48 lg:w-56 lg:h-56 object-contain transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 drop-shadow-2xl"
+                  className="relative z-10 w-52 h-52 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 drop-shadow-2xl"
                   loading="lazy"
                 />
               </div>
