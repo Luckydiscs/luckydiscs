@@ -28,7 +28,16 @@ const BlogPost = () => {
           "headline": t(post.titleKey),
           "description": t(post.descriptionKey),
           "datePublished": post.date,
-          "author": { "@type": "Organization", "name": post.author },
+          "author": {
+            "@type": "Person",
+            "name": "Vesa Pesola",
+            "url": "https://www.luckydiscs.fi",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Lucky Discs",
+              "url": "https://www.luckydiscs.fi"
+            }
+          },
           "publisher": {
             "@type": "Organization",
             "name": "Lucky Discs",
@@ -165,17 +174,4 @@ const BlogPost = () => {
                   className="bg-lucky-green text-white hover:bg-lucky-green/90"
                   asChild
                 >
-                  <Link to="/wholesale">{t("blog.ctaButton")}</Link>
-                </Button>
-              </div>
-            </article>
-          </div>
-        </section>
-      </main>
-
-      <Footer />
-    </div>
-  );
-};
-
-export default BlogPost;
+        

@@ -20,8 +20,8 @@ export const blogPosts: BlogPost[] = [
     titleKey: "blog.post1.title",
     descriptionKey: "blog.post1.description",
     contentKey: "blog.post1.content",
-    date: "2026-03-25",
-    author: "Lucky Discs",
+    date: "2026-04-16",
+    author: "Vesa Pesola, Lucky Discs",
     categoryKey: "blog.category.business",
     keywords: "disc golf jälleenmyyjä, frisbeegolf tukkumyynti, disc golf markkinan kasvu Suomi",
     readingTime: 5,
@@ -43,6 +43,4 @@ export const blogPosts: BlogPost[] = [
     heroImage: "/images/brand/blog-golf-course-green.webp",
     heroAlt: "Lucky Discs kiekkovalikoima - Treasure Hunt, Bank Robber ja Money Shot luonnossa",
     midImage: "/images/brand/blog-frisbee-sunset.webp",
-    midAlt: "Lucky Discs Treasure Hunt ja Bank Robber kiekot oranssina talvisessa luonnossa",
-  },
-];
+    midAlt: "Lucky Discs Treasure Hunt ja Bank Robber kiekot oranssina talvisessa luonnos
