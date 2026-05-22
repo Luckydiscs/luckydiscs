@@ -43,4 +43,6 @@ export const blogPosts: BlogPost[] = [
     heroImage: "/images/brand/blog-golf-course-green.webp",
     heroAlt: "Lucky Discs kiekkovalikoima - Treasure Hunt, Bank Robber ja Money Shot luonnossa",
     midImage: "/images/brand/blog-frisbee-sunset.webp",
-    midAlt: "Lucky Discs Treasure Hunt ja Bank Robber kiekot oranssina talvisessa luonnos
+    midAlt: "Lucky Discs Treasure Hunt ja Bank Robber kiekot oranssina talvisessa luonnossa",
+  },
+];

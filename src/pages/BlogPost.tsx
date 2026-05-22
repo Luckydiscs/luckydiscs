@@ -174,4 +174,17 @@ const BlogPost = () => {
                   className="bg-lucky-green text-white hover:bg-lucky-green/90"
                   asChild
                 >
-        
+                  <Link to="/wholesale">{t("blog.ctaButton")}</Link>
+                </Button>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default BlogPost;

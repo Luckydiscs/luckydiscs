@@ -986,4 +986,24 @@ export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
   useEffect(() => {
     localStorage.setItem('lucky-discs-language', language);
-    document.do
+    document.documentElement.lang = language;
+  }, [language]);
+
+  const t = (key: string): string => {
+    return translations[language][key as keyof typeof translations[typeof language]] || key;
+  };
+
+  return (
+    <TranslationContext.Provider value={{ language, setLanguage, t }}>
+      {children}
+    </TranslationContext.Provider>
+  );
+};
+
+export const useTranslation = () => {
+  const context = useContext(TranslationContext);
+  if (!context) {
+    throw new Error('useTranslation must be used within a TranslationProvider');
+  }
+  return context;
+};
