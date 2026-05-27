@@ -4,7 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { CartProvider } from "@/contexts/CartContext";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CookieBanner from "@/components/CookieBanner";
 import ScrollToTop from "@/components/ScrollToTop";
 import { TranslationProvider } from "@/hooks/useTranslation";
@@ -56,11 +56,11 @@ const App = () => (
                 <Route path="/blogi/:slug" element={<BlogPost />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
-                {/* Shop disabled - not public yet */}
-                <Route path="/shop" element={<Navigate to="/" replace />} />
-                <Route path="/shop/kassa" element={<Navigate to="/" replace />} />
-                <Route path="/shop/vahvistus" element={<Navigate to="/" replace />} />
-                <Route path="/shop/:slug" element={<Navigate to="/" replace />} />
+                {/* Shop ENABLED 2026-05-22 — Paytrail-integraatio valmis */}
+                <Route path="/shop" element={<Shop />} />
+                <Route path="/shop/kassa" element={<Checkout />} />
+                <Route path="/shop/vahvistus" element={<OrderConfirmation />} />
+                <Route path="/shop/:slug" element={<ProductPage />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

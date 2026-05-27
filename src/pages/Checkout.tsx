@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
+import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ArrowLeft, Package, CreditCard, Check } from "lucide-react";
+import { ArrowLeft, Package, CreditCard, Check, Loader2 } from "lucide-react";
 
 const SHIPPING_COST = 5.9;
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const { items, totalPrice, clearCart } = useCart();
+  const { items, totalPrice } = useCart();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -24,6 +25,8 @@ const Checkout = () => {
     city: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [paymentError, setPaymentError] = useState<string | null>(null);
 
   if (items.length === 0) {
     return (
@@ -65,15 +68,50 @@ const Checkout = () => {
     }
   };
 
-  const handlePlaceOrder = () => {
-    clearCart();
-    navigate("/shop/vahvistus", {
-      state: {
-        orderNumber: `LD-${Date.now().toString(36).toUpperCase()}`,
-        email: formData.email,
-        total: totalPrice + SHIPPING_COST,
-      },
-    });
+  const handlePlaceOrder = async () => {
+    setIsProcessing(true);
+    setPaymentError(null);
+
+    try {
+      const { data, error } = await supabase.functions.invoke("create-payment", {
+        body: {
+          items: items.map((i) => ({
+            id: i.id,
+            name: i.name,
+            plastic: i.plastic,
+            weight: i.weight,
+            color: i.color,
+            price: i.price,
+            quantity: i.quantity,
+          })),
+          customer: {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phone,
+            address: formData.address,
+            postalCode: formData.postalCode,
+            city: formData.city,
+            country: "FI",
+          },
+          shippingCents: Math.round(SHIPPING_COST * 100),
+        },
+      });
+
+      if (error) throw error;
+      if (!data?.href) throw new Error("Paytrail ei palauttanut maksu-URLia");
+
+      // Redirect Paytrailiin maksamaan
+      window.location.href = data.href;
+    } catch (err) {
+      console.error("Payment failed:", err);
+      setPaymentError(
+        err instanceof Error
+          ? err.message
+          : "Maksun käynnistys epäonnistui. Yritä uudelleen tai ota yhteyttä asiakaspalvelu@luckydiscs.fi",
+      );
+      setIsProcessing(false);
+    }
   };
 
   const orderTotal = totalPrice + SHIPPING_COST;
@@ -81,9 +119,13 @@ const Checkout = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
+      <div className="container mx-auto px-4 pt-32 md:pt-40 pb-12 max-w-4xl">
         {/* Back button */}
-        <button onClick={() => (step > 1 ? setStep(step - 1) : navigate("/shop"))} className="flex items-center gap-2 text-gray-400 hover:text-white mb-8 transition-colors">
+        <button
+          type="button"
+          onClick={() => (step > 1 ? setStep(step - 1) : navigate("/shop"))}
+          className="relative z-10 inline-flex items-center gap-2 px-4 py-2 -ml-4 mb-8 rounded-md text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+        >
           <ArrowLeft className="w-4 h-4" />
           {step > 1 ? "Takaisin" : "Takaisin kauppaan"}
         </button>
@@ -185,11 +227,38 @@ const Checkout = () => {
                 <h2 className="text-xl font-bold mb-6">Maksutapa</h2>
                 <div className="bg-gray-900 rounded-lg p-8 text-center">
                   <CreditCard className="w-12 h-12 mx-auto mb-4 text-[#FFD700]" />
-                  <p className="text-lg font-medium mb-2">Maksuintegraatio tulossa pian</p>
-                  <p className="text-gray-400 mb-6">Paytrail / Stripe -maksuintegraatio on kehityksessä. Voit nyt tehdä testitilauksen.</p>
-                  <Button onClick={handlePlaceOrder} className="bg-[#FFD700] text-black hover:bg-[#FFC000] font-bold text-lg px-8 py-3">
-                    Tee testitilaus — {orderTotal.toFixed(2)} €
+                  <p className="text-lg font-medium mb-2">Maksu Paytrailin kautta</p>
+                  <p className="text-gray-400 mb-6">
+                    Valitse seuraavalla sivulla pankki-, kortti- tai mobiilimaksu (MobilePay, Pivo).
+                    Maksunkäsittely on PCI-yhteensopiva ja turvallinen.
+                  </p>
+
+                  {paymentError && (
+                    <div className="bg-red-950/40 border border-red-800 rounded-md p-4 mb-6 text-sm text-red-300">
+                      {paymentError}
+                    </div>
+                  )}
+
+                  <Button
+                    onClick={handlePlaceOrder}
+                    disabled={isProcessing}
+                    className="bg-[#FFD700] text-black hover:bg-[#FFC000] font-bold text-lg px-8 py-3 disabled:opacity-50"
+                  >
+                    {isProcessing ? (
+                      <>
+                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                        Käynnistetään maksua…
+                      </>
+                    ) : (
+                      <>Siirry maksamaan — {orderTotal.toFixed(2)} €</>
+                    )}
                   </Button>
+
+                  <p className="text-xs text-gray-500 mt-6">
+                    Tilauksen tekemällä hyväksyt <a href="/terms" className="underline">käyttöehdot</a> ja{" "}
+                    <a href="/privacy" className="underline">tietosuojaselosteen</a>.
+                    Etämyynnin peruutusoikeus 14 päivää.
+                  </p>
                 </div>
               </div>
             )}
@@ -201,24 +270,24 @@ const Checkout = () => {
               <h3 className="font-bold text-lg mb-4">Tilaus</h3>
               <div className="space-y-2 text-sm">
                 {items.map((item, idx) => (
-                  <div key={idx} className="flex justify-between">
-                    <span className="text-gray-400">{item.name} x{item.quantity}</span>
-                    <span>{(item.price * item.quantity).toFixed(2)} €</span>
+                  <div key={idx} className="flex justify-between gap-3">
+                    <span className="text-gray-400 min-w-0 truncate">{item.name} x{item.quantity}</span>
+                    <span className="whitespace-nowrap flex-shrink-0">{(item.price * item.quantity).toFixed(2).replace(".", ",")} €</span>
                   </div>
                 ))}
               </div>
               <div className="border-t border-gray-700 mt-4 pt-4 space-y-2">
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between gap-3 text-sm">
                   <span className="text-gray-400">Välisumma</span>
-                  <span>{totalPrice.toFixed(2)} €</span>
+                  <span className="whitespace-nowrap">{totalPrice.toFixed(2).replace(".", ",")} €</span>
                 </div>
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between gap-3 text-sm">
                   <span className="text-gray-400">Toimitus</span>
-                  <span>{SHIPPING_COST.toFixed(2)} €</span>
+                  <span className="whitespace-nowrap">{SHIPPING_COST.toFixed(2).replace(".", ",")} €</span>
                 </div>
-                <div className="flex justify-between font-bold text-lg pt-2 border-t border-gray-700">
+                <div className="flex justify-between gap-3 font-bold text-lg pt-2 border-t border-gray-700">
                   <span>Yhteensä</span>
-                  <span className="text-[#FFD700]">{orderTotal.toFixed(2)} €</span>
+                  <span className="text-[#FFD700] whitespace-nowrap">{orderTotal.toFixed(2).replace(".", ",")} €</span>
                 </div>
               </div>
               {step < 3 && (
