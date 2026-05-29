@@ -15,10 +15,14 @@ import {
   Minus,
   X,
 } from "lucide-react";
-import moneyShotDisc from "@/assets/money-shot-disc.webp";
-import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
-import bankRobberDisc from "@/assets/bank-robber-disc.webp";
-import danielSignatureDisc from "@/assets/daniel-signature-disc.webp";
+// Real product photos from Lucky Discs Drive (2026-05-29)
+const BANK_ROBBER_PREMIUM = "/images/products/bank-robber-premium.jpg";
+const BANK_ROBBER_ULTRIUM = "/images/products/bank-robber-ultrium.jpg";
+const TREASURE_HUNT_PREMIUM = "/images/products/treasure-hunt-premium.jpg";
+const TREASURE_HUNT_ULTRIUM = "/images/products/treasure-hunt-ultrium.jpg";
+const MONEY_SHOT_ULTRIUM = "/images/products/money-shot-ultrium.png";
+const MONEY_SHOT_GROUP = "/images/products/moneyshots-all.jpg"; // 3 Money Shot variants together
+const DANIEL_JACKPOT = "/images/products/daniel-jackpot.png";
 
 const MARKER_IMG = "/images/brand/logo-primary.webp";
 const SUPER_PACK_IMG = "/images/brand/disc-collection-rock.webp";
@@ -65,7 +69,7 @@ const products: Product[] = [
     originalPrice: 24.9,
     description:
       "Signature-painos tournament-tason kiekosta. Rajoitettu erä, painettu erityisellä Jackpot-grafiikalla.",
-    image: danielSignatureDisc,
+    image: DANIEL_JACKPOT,
     flight: { speed: 9, glide: 5, turn: -1, fade: 2 },
     weight: "172-176g",
     color: "Keltainen",
@@ -84,7 +88,7 @@ const products: Product[] = [
     originalPrice: 19.9,
     description:
       "Luotettava fairway driver, joka hallitsee tuulen. Wild west -teemainen Premium-muovi.",
-    image: bankRobberDisc,
+    image: BANK_ROBBER_PREMIUM,
     flight: { speed: 8, glide: 5, turn: -1, fade: 2 },
     weight: "172-175g",
     color: "Sininen",
@@ -102,7 +106,7 @@ const products: Product[] = [
     originalPrice: 19.9,
     description:
       "Maksimaalinen pituus ja hallittavuus huippumuovissa. Aarteenmetsästäjän työkalu.",
-    image: treasureHuntDisc,
+    image: TREASURE_HUNT_ULTRIUM,
     flight: { speed: 12, glide: 6, turn: -1, fade: 3 },
     weight: "172-175g",
     color: "Oranssi",
@@ -120,7 +124,7 @@ const products: Product[] = [
     originalPrice: 19.9,
     description:
       "Distance driver Premium-muovissa. Loistava pelikiekko jokaiselle pelaajalle.",
-    image: treasureHuntDisc,
+    image: TREASURE_HUNT_PREMIUM,
     flight: { speed: 12, glide: 6, turn: -1, fade: 3 },
     weight: "170-174g",
     color: "Punainen",
@@ -137,7 +141,7 @@ const products: Product[] = [
     price: 12.9,
     description:
       "Äärimmäisen luotettava lähestymiskiekko. Kestää tuulen, paineen ja kovatkin vedot. Aloittelijan paras kaveri.",
-    image: moneyShotDisc,
+    image: MONEY_SHOT_GROUP,
     flight: { speed: 5, glide: 5, turn: -1, fade: 1 },
     weight: "169-172g",
     color: "Keltainen",
@@ -155,7 +159,7 @@ const products: Product[] = [
     originalPrice: 19.9,
     description:
       "Money Shot Premium-muovissa. Paras tuntuma ja kesto, sopii kaikille pelaajille.",
-    image: moneyShotDisc,
+    image: MONEY_SHOT_GROUP,
     flight: { speed: 5, glide: 5, turn: -1, fade: 1 },
     weight: "165-168g",
     color: "Keltainen",
@@ -173,7 +177,7 @@ const products: Product[] = [
     originalPrice: 17.9,
     description:
       "Money Shot huippumuovissa. Ultrium tarjoaa erinomaisen gripin ja pitkän käyttöiän.",
-    image: moneyShotDisc,
+    image: MONEY_SHOT_ULTRIUM,
     flight: { speed: 5, glide: 5, turn: -1, fade: 1 },
     weight: "169-172g",
     color: "Vihreä",
