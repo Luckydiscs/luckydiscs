@@ -27,8 +27,7 @@ const HeroSection = () => {
 
       {/* Main content */}
       <div className="container mx-auto px-4 z-10 pt-20 pb-20 md:pt-28 md:pb-32">
-        <div className="flex items-center gap-8">
-        <div className="flex-1 max-w-3xl">
+        <div className="max-w-3xl">
           {/* Pre-heading label + summer sale badge */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
             <div className="flex items-center gap-3">
@@ -100,15 +99,6 @@ const HeroSection = () => {
               {t('hero.exploreDiscs')}
             </Button>
           </div>
-        </div>
-
-        {/* Desktop disc image - baked into background layer */}
-        <div
-          className="hidden lg:block flex-1 h-[500px] bg-contain bg-center bg-no-repeat"
-          style={{ backgroundImage: `url('/images/brand/treasure-hunt-promo.webp')` }}
-          role="img"
-          aria-label="Lucky Discs Treasure Hunt"
-        />
         </div>
       </div>
 
