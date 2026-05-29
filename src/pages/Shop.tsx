@@ -15,17 +15,16 @@ import {
   Minus,
   X,
 } from "lucide-react";
-// Real product photos from Lucky Discs Drive (2026-05-29)
-const BANK_ROBBER_PREMIUM = "/images/products/bank-robber-premium.jpg";
-const BANK_ROBBER_ULTRIUM = "/images/products/bank-robber-ultrium.jpg";
-const TREASURE_HUNT_PREMIUM = "/images/products/treasure-hunt-premium.jpg";
-const TREASURE_HUNT_ULTRIUM = "/images/products/treasure-hunt-ultrium.jpg";
+// Oikeat tuotekuvat kesäpelit.fi WooCommerce-CDN:stä (2026-05-29)
+// Kiekot = läpinäkyvät studiokuvat (RGBA) → kelluvat tummalla kortilla, yhtenäinen kontrasti
+const BANK_ROBBER_PREMIUM = "/images/products/bank-robber-premium.png";
+const TREASURE_HUNT_PREMIUM = "/images/products/treasure-hunt-premium.png";
+const TREASURE_HUNT_ULTRIUM = "/images/products/treasure-hunt-ultrium.png";
+const MONEY_SHOT_BASIC = "/images/products/money-shot-basic.png";
 const MONEY_SHOT_ULTRIUM = "/images/products/money-shot-ultrium.png";
-const MONEY_SHOT_GROUP = "/images/products/moneyshots-all.jpg"; // 3 Money Shot variants together
-const DANIEL_JACKPOT = "/images/products/daniel-jackpot.png";
-
-const MARKER_IMG = "/images/brand/logo-primary.webp";
-const SUPER_PACK_IMG = "/images/brand/disc-collection-rock.webp";
+const DANIEL_JACKPOT = "/images/products/daniel-jackpot.jpg"; // signature-markkinointigrafiikka
+const MARKER_IMG = "/images/products/marker.png"; // oikea mini-markkeri
+const SUPER_PACK_IMG = "/images/products/super-pack.jpg"; // bundle-markkinointigrafiikka
 
 // ───────────────────────────────
 // PRODUCT CATALOG — sync kesäpelit.fi (variantit + stockit 2026-05-29)
@@ -174,7 +173,7 @@ const products: Product[] = [
     price: 12.9,
     description:
       "Äärimmäisen luotettava lähestymiskiekko. Kestää tuulen, paineen ja kovatkin vedot. Aloittelijan paras kaveri.",
-    image: MONEY_SHOT_GROUP,
+    image: MONEY_SHOT_BASIC,
     flight: { speed: 5, glide: 5, turn: -1, fade: 1 },
     inStock: true,
     variants: [
@@ -197,7 +196,7 @@ const products: Product[] = [
     originalPrice: 19.9,
     description:
       "Money Shot Premium-muovissa. Paras tuntuma ja kesto, sopii kaikille pelaajille.",
-    image: MONEY_SHOT_GROUP,
+    image: MONEY_SHOT_ULTRIUM,
     flight: { speed: 5, glide: 5, turn: -1, fade: 1 },
     inStock: true,
     variants: [
