@@ -102,12 +102,40 @@ const HeroSection = () => {
         </div>
       </div>
 
+      {/* Trust / stats strip — fills lower hero, builds credibility */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/10 bg-gradient-to-t from-black/80 to-transparent backdrop-blur-[2px]">
+        <div className="container mx-auto px-4 py-5 md:py-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-6">
+            {(language === "fi"
+              ? [
+                  { stat: "1000+", label: "Rataa Suomessa" },
+                  { stat: "263 000", label: "Aktiivista pelaajaa" },
+                  { stat: "100 %", label: "Suomalaista designia" },
+                  { stat: "1–3 pv", label: "Toimitusaika" },
+                ]
+              : [
+                  { stat: "1000+", label: "Courses in Finland" },
+                  { stat: "263 000", label: "Active players" },
+                  { stat: "100 %", label: "Finnish design" },
+                  { stat: "Worldwide", label: "Wholesale" },
+                ]
+            ).map((item) => (
+              <div key={item.label} className="flex flex-col items-center md:items-start text-center md:text-left">
+                <span className="font-heading text-2xl md:text-3xl text-lucky-gold leading-none">
+                  {item.stat}
+                </span>
+                <span className="font-display text-[11px] md:text-xs uppercase tracking-[0.15em] text-white/60 mt-1">
+                  {item.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/40">
-        <span className="font-display text-xs uppercase tracking-[0.3em]">{t('hero.scrollDown')}</span>
-        <ChevronDown
-          className="w-5 h-5 animate-bounce"
-        />
+      <div className="absolute bottom-28 md:bottom-32 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/40">
+        <ChevronDown className="w-5 h-5 animate-bounce" />
       </div>
 
       <style>{`

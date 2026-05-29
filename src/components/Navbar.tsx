@@ -60,9 +60,11 @@ const Navbar = () => {
           <Link to="/discs" className="hover:text-primary transition-all duration-300 font-semibold relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
             {t('nav.discs')}
           </Link>
-          <Link to="/shop" className="hover:text-primary transition-all duration-300 font-bold text-[#FFD700] relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-[#FFD700] after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
-            Shop
-          </Link>
+          {language === "fi" && (
+            <Link to="/shop" className="hover:text-primary transition-all duration-300 font-bold text-[#FFD700] relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-[#FFD700] after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
+              Shop
+            </Link>
+          )}
           <Link to="/wholesale" className="hover:text-primary transition-all duration-300 font-semibold relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
             {t('nav.wholesale')}
           </Link>
@@ -82,14 +84,16 @@ const Navbar = () => {
             FAQ
           </Link>
           <LanguageSwitcher />
-          <Link to="/shop/kassa" className="relative hover:text-[#FFD700] transition-colors" aria-label="Ostoskori">
-            <ShoppingCart size={22} />
-            {totalItems > 0 && (
-              <span className="absolute -top-2 -right-2 bg-[#FFD700] text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                {totalItems}
-              </span>
-            )}
-          </Link>
+          {language === "fi" && (
+            <Link to="/shop/kassa" className="relative hover:text-[#FFD700] transition-colors" aria-label="Ostoskori">
+              <ShoppingCart size={22} />
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-[#FFD700] text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -116,13 +120,15 @@ const Navbar = () => {
             >
               {t('nav.discs')}
             </Link>
-            <Link
-              to="/shop"
-              className="text-lg py-2 border-b border-gray-800 text-[#FFD700] font-bold"
-              onClick={toggleMenu}
-            >
-              Shop
-            </Link>
+            {language === "fi" && (
+              <Link
+                to="/shop"
+                className="text-lg py-2 border-b border-gray-800 text-[#FFD700] font-bold"
+                onClick={toggleMenu}
+              >
+                Shop
+              </Link>
+            )}
             <Link
               to="/wholesale"
               className="text-lg py-2 border-b border-gray-800 hover:text-lucky-green"
@@ -167,19 +173,21 @@ const Navbar = () => {
             </Link>
             <div className="flex justify-between items-center mt-4">
               <LanguageSwitcher />
-              <Link
-                to="/shop/kassa"
-                onClick={toggleMenu}
-                className="relative text-white hover:text-[#FFD700]"
-                aria-label="Ostoskori"
-              >
-                <ShoppingCart size={24} />
-                {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-[#FFD700] text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                    {totalItems}
-                  </span>
-                )}
-              </Link>
+              {language === "fi" && (
+                <Link
+                  to="/shop/kassa"
+                  onClick={toggleMenu}
+                  className="relative text-white hover:text-[#FFD700]"
+                  aria-label="Ostoskori"
+                >
+                  <ShoppingCart size={24} />
+                  {totalItems > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-[#FFD700] text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      {totalItems}
+                    </span>
+                  )}
+                </Link>
+              )}
             </div>
           </div>
         </div>
