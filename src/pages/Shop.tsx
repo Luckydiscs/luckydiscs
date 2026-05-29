@@ -28,7 +28,7 @@ const MARKER_IMG = "/images/brand/logo-primary.webp";
 const SUPER_PACK_IMG = "/images/brand/disc-collection-rock.webp";
 
 // ───────────────────────────────
-// PRODUCT CATALOG — sync kesäpelit.fi 2026-05-22
+// PRODUCT CATALOG — sync kesäpelit.fi (variantit + stockit 2026-05-29)
 // ───────────────────────────────
 type ProductCategory =
   | "midrange"
@@ -37,6 +37,28 @@ type ProductCategory =
   | "marker"
   | "bundle"
   | "signature";
+
+// Värinimet → hex (swatch-napit). Vain todelliset kesäpelit.fi-värit.
+const COLOR_HEX: Record<string, string> = {
+  keltainen: "#F5C518",
+  oranssi: "#FF7A1A",
+  punainen: "#E53935",
+  sininen: "#2563EB",
+  vaaleansininen: "#7DD3FC",
+  violetti: "#8B5CF6",
+  pinkki: "#EC4899",
+  vaaleanpunainen: "#F9A8D4",
+  vihrea: "#22C55E",
+  valkoinen: "#F1F1F1",
+};
+const colorLabel = (c: string) => c.charAt(0).toUpperCase() + c.slice(1).replace("vihrea", "vihreä").replace("Vihrea", "Vihreä");
+
+// Yksi ostettava variantti = väri + paino + varastosaldo (oikea WooCommerce-data)
+interface Variant {
+  color: string; // avain COLOR_HEX:iin
+  weight: string; // esim. "169-172g"
+  stock: number;
+}
 
 interface Product {
   id: string;
@@ -55,6 +77,8 @@ interface Product {
   inStock: boolean;
   stockCount?: number;
   badge?: string;
+  /** Ostettavat variantit (väri × paino × stock). Jos puuttuu → yksinkertainen tuote. */
+  variants?: Variant[];
 }
 
 const products: Product[] = [
@@ -71,11 +95,11 @@ const products: Product[] = [
       "Signature-painos tournament-tason kiekosta. Rajoitettu erä, painettu erityisellä Jackpot-grafiikalla.",
     image: DANIEL_JACKPOT,
     flight: { speed: 9, glide: 5, turn: -1, fade: 2 },
-    weight: "172-176g",
-    color: "Keltainen",
     inStock: true,
-    stockCount: 8,
     badge: "LIMITED",
+    variants: [
+      { color: "oranssi", weight: "169-172g", stock: 44 },
+    ],
   },
   {
     id: "premium-bank-robber",
@@ -90,10 +114,14 @@ const products: Product[] = [
       "Luotettava fairway driver, joka hallitsee tuulen. Wild west -teemainen Premium-muovi.",
     image: BANK_ROBBER_PREMIUM,
     flight: { speed: 8, glide: 5, turn: -1, fade: 2 },
-    weight: "172-175g",
-    color: "Sininen",
     inStock: true,
-    stockCount: 12,
+    variants: [
+      { color: "vaaleanpunainen", weight: "169-172g", stock: 24 },
+      { color: "oranssi", weight: "169-172g", stock: 6 },
+      { color: "keltainen", weight: "169-172g", stock: 2 },
+      { color: "pinkki", weight: "169-172g", stock: 14 },
+      { color: "punainen", weight: "173-176g", stock: 1 },
+    ],
   },
   {
     id: "ultrium-treasure-hunt",
@@ -108,10 +136,13 @@ const products: Product[] = [
       "Maksimaalinen pituus ja hallittavuus huippumuovissa. Aarteenmetsästäjän työkalu.",
     image: TREASURE_HUNT_ULTRIUM,
     flight: { speed: 12, glide: 6, turn: -1, fade: 3 },
-    weight: "172-175g",
-    color: "Oranssi",
     inStock: true,
-    stockCount: 6,
+    variants: [
+      { color: "vaaleansininen", weight: "169-172g", stock: 3 },
+      { color: "vaaleansininen", weight: "173-176g", stock: 10 },
+      { color: "violetti", weight: "169-172g", stock: 4 },
+      { color: "sininen", weight: "173-176g", stock: 1 },
+    ],
   },
   {
     id: "premium-treasure-hunt",
@@ -126,10 +157,12 @@ const products: Product[] = [
       "Distance driver Premium-muovissa. Loistava pelikiekko jokaiselle pelaajalle.",
     image: TREASURE_HUNT_PREMIUM,
     flight: { speed: 12, glide: 6, turn: -1, fade: 3 },
-    weight: "170-174g",
-    color: "Punainen",
     inStock: true,
-    stockCount: 9,
+    variants: [
+      { color: "oranssi", weight: "169-172g", stock: 13 },
+      { color: "oranssi", weight: "173-176g", stock: 57 },
+      { color: "vihrea", weight: "173-176g", stock: 20 },
+    ],
   },
   {
     id: "basic-money-shot",
@@ -143,10 +176,15 @@ const products: Product[] = [
       "Äärimmäisen luotettava lähestymiskiekko. Kestää tuulen, paineen ja kovatkin vedot. Aloittelijan paras kaveri.",
     image: MONEY_SHOT_GROUP,
     flight: { speed: 5, glide: 5, turn: -1, fade: 1 },
-    weight: "169-172g",
-    color: "Keltainen",
     inStock: true,
-    stockCount: 20,
+    variants: [
+      { color: "oranssi", weight: "173-176g", stock: 20 },
+      { color: "keltainen", weight: "169-172g", stock: 1 },
+      { color: "keltainen", weight: "173-176g", stock: 18 },
+      { color: "sininen", weight: "173-176g", stock: 24 },
+      { color: "valkoinen", weight: "169-172g", stock: 12 },
+      { color: "valkoinen", weight: "173-176g", stock: 1 },
+    ],
   },
   {
     id: "premium-money-shot",
@@ -161,10 +199,14 @@ const products: Product[] = [
       "Money Shot Premium-muovissa. Paras tuntuma ja kesto, sopii kaikille pelaajille.",
     image: MONEY_SHOT_GROUP,
     flight: { speed: 5, glide: 5, turn: -1, fade: 1 },
-    weight: "165-168g",
-    color: "Keltainen",
     inStock: true,
-    stockCount: 15,
+    variants: [
+      { color: "keltainen", weight: "169-172g", stock: 42 },
+      { color: "keltainen", weight: "173-176g", stock: 19 },
+      { color: "pinkki", weight: "169-172g", stock: 7 },
+      { color: "pinkki", weight: "173-176g", stock: 16 },
+      { color: "vaaleanpunainen", weight: "169-172g", stock: 14 },
+    ],
   },
   {
     id: "ultrium-money-shot",
@@ -179,10 +221,16 @@ const products: Product[] = [
       "Money Shot huippumuovissa. Ultrium tarjoaa erinomaisen gripin ja pitkän käyttöiän.",
     image: MONEY_SHOT_ULTRIUM,
     flight: { speed: 5, glide: 5, turn: -1, fade: 1 },
-    weight: "169-172g",
-    color: "Vihreä",
     inStock: true,
-    stockCount: 11,
+    variants: [
+      { color: "vaaleansininen", weight: "169-172g", stock: 85 },
+      { color: "vaaleansininen", weight: "173-176g", stock: 36 },
+      { color: "keltainen", weight: "173-176g", stock: 46 },
+      { color: "oranssi", weight: "173-176g", stock: 72 },
+      { color: "punainen", weight: "173-176g", stock: 9 },
+      { color: "pinkki", weight: "169-172g", stock: 5 },
+      { color: "pinkki", weight: "173-176g", stock: 5 },
+    ],
   },
   {
     id: "lucky-discs-marker",
@@ -249,20 +297,21 @@ const Shop = () => {
     setTimeout(() => setToast(null), 2200);
   };
 
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart = (product: Product, sel?: { color: string; weight: string }) => {
     addItem({
       id: product.id,
       name: product.variant ? `${product.name} ${product.variant}` : product.name,
       price: product.price,
       originalPrice: product.originalPrice,
       plastic: product.plastic,
-      weight: product.weight,
-      color: product.color,
+      weight: sel?.weight ?? product.weight,
+      color: sel ? colorLabel(sel.color) : product.color,
       image: product.image,
       flightNumbers: product.flight,
     });
+    const variantTxt = sel ? ` — ${colorLabel(sel.color)} ${sel.weight}` : "";
     showToast(
-      `Lisätty: ${product.name}${product.variant ? ` ${product.variant}` : ""}`,
+      `Lisätty: ${product.name}${product.variant ? ` ${product.variant}` : ""}${variantTxt}`,
     );
   };
 
@@ -548,13 +597,71 @@ const ProductCard = ({
   onAdd,
 }: {
   product: Product;
-  onAdd: (p: Product) => void;
+  onAdd: (p: Product, sel?: { color: string; weight: string }) => void;
 }) => {
   const discount = product.originalPrice
     ? Math.round(
         ((product.originalPrice - product.price) / product.originalPrice) * 100,
       )
     : 0;
+
+  const hasVariants = !!product.variants?.length;
+
+  // Uniikit värit ja painot varianteista
+  const colors = useMemo(
+    () => (hasVariants ? Array.from(new Set(product.variants!.map((v) => v.color))) : []),
+    [product.variants, hasVariants],
+  );
+
+  const [selColor, setSelColor] = useState<string | null>(
+    colors.length === 1 ? colors[0] : null,
+  );
+  const [selWeight, setSelWeight] = useState<string | null>(null);
+
+  // Painot jotka ovat saatavilla valitulle värille
+  const weightsForColor = useMemo(() => {
+    if (!hasVariants || !selColor) return [];
+    return product
+      .variants!.filter((v) => v.color === selColor && v.stock > 0)
+      .map((v) => v.weight);
+  }, [product.variants, hasVariants, selColor]);
+
+  // Auto-valitse paino jos vain yksi
+  const effectiveWeight =
+    selWeight && weightsForColor.includes(selWeight)
+      ? selWeight
+      : weightsForColor.length === 1
+        ? weightsForColor[0]
+        : null;
+
+  const selectedVariant = useMemo(() => {
+    if (!hasVariants || !selColor || !effectiveWeight) return null;
+    return product.variants!.find(
+      (v) => v.color === selColor && v.weight === effectiveWeight,
+    );
+  }, [product.variants, hasVariants, selColor, effectiveWeight]);
+
+  // Onko väri kokonaan loppu (kaikki painot stock 0)?
+  const colorInStock = (c: string) =>
+    product.variants!.some((v) => v.color === c && v.stock > 0);
+
+  const totalStock = hasVariants
+    ? product.variants!.reduce((s, v) => s + v.stock, 0)
+    : (product.stockCount ?? 0);
+
+  const canAdd = hasVariants ? !!selectedVariant : product.inStock;
+
+  const handleClick = () => {
+    if (hasVariants) {
+      if (selColor && effectiveWeight) {
+        onAdd(product, { color: selColor, weight: effectiveWeight });
+        // nollaa paino jotta seuraava valinta on tietoinen
+        setSelWeight(null);
+      }
+    } else {
+      onAdd(product);
+    }
+  };
 
   return (
     <article className="group relative bg-gradient-to-b from-white/5 to-white/[0.02] border border-white/10 hover:border-emerald-500/30 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10 flex flex-col">
@@ -583,13 +690,11 @@ const ProductCard = ({
           loading="lazy"
           className="w-full h-full object-contain p-6 transition-transform duration-700 group-hover:scale-105"
         />
-        {product.stockCount !== undefined &&
-          product.stockCount <= 10 &&
-          product.stockCount > 0 && (
-            <div className="absolute bottom-3 left-3 text-[10px] uppercase tracking-wider font-bold text-orange-300 bg-orange-950/60 backdrop-blur px-2 py-1 rounded border border-orange-500/30">
-              Vain {product.stockCount} jäljellä
-            </div>
-          )}
+        {totalStock > 0 && totalStock <= 10 && (
+          <div className="absolute bottom-3 left-3 text-[10px] uppercase tracking-wider font-bold text-orange-300 bg-orange-950/60 backdrop-blur px-2 py-1 rounded border border-orange-500/30">
+            Vain {totalStock} jäljellä
+          </div>
+        )}
       </div>
 
       <div className="p-5 flex flex-col flex-1">
@@ -622,7 +727,92 @@ const ProductCard = ({
           </div>
         )}
 
-        {(product.weight || product.color) && (
+        {/* VARIANTTI-VALITSIN — väri-swatchit + paino-chipit (oikea WooCommerce-data) */}
+        {hasVariants && (
+          <div className="mb-4 space-y-3">
+            {/* Värit */}
+            <div>
+              <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
+                Väri{selColor ? `: ${colorLabel(selColor)}` : ""}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {colors.map((c) => {
+                  const inStock = colorInStock(c);
+                  const active = selColor === c;
+                  return (
+                    <button
+                      key={c}
+                      type="button"
+                      disabled={!inStock}
+                      onClick={() => {
+                        setSelColor(c);
+                        setSelWeight(null);
+                      }}
+                      title={`${colorLabel(c)}${inStock ? "" : " (loppu)"}`}
+                      aria-label={colorLabel(c)}
+                      className={`relative w-7 h-7 rounded-full border-2 transition-all ${
+                        active
+                          ? "border-emerald-400 scale-110 ring-2 ring-emerald-400/30"
+                          : "border-white/20 hover:border-white/50"
+                      } ${!inStock ? "opacity-30 cursor-not-allowed" : ""}`}
+                      style={{ backgroundColor: COLOR_HEX[c] ?? "#888" }}
+                    >
+                      {!inStock && (
+                        <span className="absolute inset-0 flex items-center justify-center text-white text-xs">
+                          ✕
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Painot — näkyy kun väri valittu */}
+            {selColor && weightsForColor.length > 0 && (
+              <div>
+                <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
+                  Paino
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {weightsForColor.map((w) => {
+                    const active = effectiveWeight === w;
+                    return (
+                      <button
+                        key={w}
+                        type="button"
+                        onClick={() => setSelWeight(w)}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+                          active
+                            ? "bg-emerald-500 text-black border-emerald-500"
+                            : "bg-white/5 text-gray-300 border-white/10 hover:border-white/30"
+                        }`}
+                      >
+                        {w}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Stock valitulle variantille */}
+            {selectedVariant && (
+              <div className="text-[11px] text-gray-400">
+                {selectedVariant.stock <= 5 ? (
+                  <span className="text-orange-300 font-medium">
+                    Vain {selectedVariant.stock} kpl jäljellä
+                  </span>
+                ) : (
+                  <span className="text-emerald-400">Varastossa ({selectedVariant.stock} kpl)</span>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Yksinkertaisten tuotteiden paino/väri-info */}
+        {!hasVariants && (product.weight || product.color) && (
           <div className="text-[11px] text-gray-500 mb-4">
             {product.weight}
             {product.weight && product.color && " · "}
@@ -644,11 +834,16 @@ const ProductCard = ({
             </div>
           </div>
           <Button
-            onClick={() => onAdd(product)}
-            disabled={!product.inStock}
-            className="bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-full px-5 disabled:opacity-50"
+            onClick={handleClick}
+            disabled={!canAdd}
+            className="bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-full px-5 disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            <Plus className="w-4 h-4 mr-1" /> Koriin
+            <Plus className="w-4 h-4 mr-1" />
+            {hasVariants && !selColor
+              ? "Valitse väri"
+              : hasVariants && !effectiveWeight
+                ? "Valitse paino"
+                : "Koriin"}
           </Button>
         </div>
       </div>
