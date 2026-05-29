@@ -98,12 +98,14 @@ const BlogPost = () => {
         <section className="px-4 bg-black">
           <div className="container mx-auto">
             <div className="max-w-3xl mx-auto">
-              <img
-                src={post.heroImage}
-                alt={post.heroAlt}
-                className="w-full rounded-lg shadow-2xl object-contain"
-                loading="eager"
-              />
+              <div className="relative w-full aspect-[16/9] rounded-lg shadow-2xl overflow-hidden bg-black">
+                <img
+                  src={post.heroImage}
+                  alt={post.heroAlt}
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -119,12 +121,14 @@ const BlogPost = () => {
                   return (
                     <div key={index}>
                       {showMidImage && (
-                        <img
-                          src={post.midImage}
-                          alt={post.midAlt || ""}
-                          className="w-full rounded-lg shadow-xl object-contain my-8"
-                          loading="lazy"
-                        />
+                        <div className="relative w-full aspect-[16/9] rounded-lg shadow-xl overflow-hidden bg-black my-8">
+                          <img
+                            src={post.midImage}
+                            alt={post.midAlt || ""}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        </div>
                       )}
                       <h2 className="text-2xl font-medium text-white mt-10 mb-4">
                         {paragraph.replace("## ", "")}
@@ -136,12 +140,14 @@ const BlogPost = () => {
                   return (
                     <div key={index}>
                       {showMidImage && (
-                        <img
-                          src={post.midImage}
-                          alt={post.midAlt || ""}
-                          className="w-full rounded-lg shadow-xl object-contain my-8"
-                          loading="lazy"
-                        />
+                        <div className="relative w-full aspect-[16/9] rounded-lg shadow-xl overflow-hidden bg-black my-8">
+                          <img
+                            src={post.midImage}
+                            alt={post.midAlt || ""}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        </div>
                       )}
                       <h3 className="text-xl font-medium text-white mt-8 mb-3">
                         {paragraph.replace("### ", "")}

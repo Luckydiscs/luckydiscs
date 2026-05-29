@@ -70,12 +70,14 @@ const Blog = () => {
                   className="block group"
                 >
                   <article className="bg-gray-900/50 rounded-lg border border-gray-800 overflow-hidden hover:border-lucky-green/50 transition-colors">
-                    <img
-                      src={post.heroImage}
-                      alt={post.heroAlt}
-                      className="w-full object-contain"
-                      loading="lazy"
-                    />
+                    <div className="relative w-full aspect-[16/9] bg-black overflow-hidden">
+                      <img
+                        src={post.heroImage}
+                        alt={post.heroAlt}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
                     <div className="p-6 md:p-8">
                     <div className="flex items-center gap-3 mb-4">
                       <Badge className="bg-lucky-green/20 text-lucky-green border-lucky-green text-xs">
