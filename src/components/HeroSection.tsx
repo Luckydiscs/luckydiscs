@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Truck, ShieldCheck, RotateCcw, MapPin } from "lucide-react";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -102,30 +102,28 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Trust / stats strip — fills lower hero, builds credibility */}
+      {/* Trust strip — only verifiable operational facts (no invented statistics) */}
       <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/10 bg-gradient-to-t from-black/80 to-transparent backdrop-blur-[2px]">
-        <div className="container mx-auto px-4 py-5 md:py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-6">
+        <div className="container mx-auto px-4 py-4 md:py-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-3 gap-x-6">
             {(language === "fi"
               ? [
-                  { stat: "1000+", label: "Rataa Suomessa" },
-                  { stat: "263 000", label: "Aktiivista pelaajaa" },
-                  { stat: "100 %", label: "Suomalaista designia" },
-                  { stat: "1–3 pv", label: "Toimitusaika" },
+                  { icon: Truck, label: "Toimitus 1–3 arkipäivää" },
+                  { icon: ShieldCheck, label: "Turvallinen Paytrail-maksu" },
+                  { icon: RotateCcw, label: "14 pv palautusoikeus" },
+                  { icon: MapPin, label: "Suunniteltu Suomessa" },
                 ]
               : [
-                  { stat: "1000+", label: "Courses in Finland" },
-                  { stat: "263 000", label: "Active players" },
-                  { stat: "100 %", label: "Finnish design" },
-                  { stat: "Worldwide", label: "Wholesale" },
+                  { icon: Truck, label: "Finnish premium discs" },
+                  { icon: ShieldCheck, label: "Tournament-tested" },
+                  { icon: RotateCcw, label: "Worldwide wholesale" },
+                  { icon: MapPin, label: "Designed in Finland" },
                 ]
-            ).map((item) => (
-              <div key={item.label} className="flex flex-col items-center md:items-start text-center md:text-left">
-                <span className="font-heading text-2xl md:text-3xl text-lucky-gold leading-none">
-                  {item.stat}
-                </span>
-                <span className="font-display text-[11px] md:text-xs uppercase tracking-[0.15em] text-white/60 mt-1">
-                  {item.label}
+            ).map(({ icon: Icon, label }) => (
+              <div key={label} className="flex items-center gap-2.5 justify-center md:justify-start">
+                <Icon className="w-4 h-4 text-lucky-gold flex-shrink-0" />
+                <span className="font-display text-[11px] md:text-xs uppercase tracking-[0.12em] text-white/70 leading-tight">
+                  {label}
                 </span>
               </div>
             ))}
@@ -134,7 +132,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-28 md:bottom-32 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/40">
+      <div className="absolute bottom-24 md:bottom-28 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/40">
         <ChevronDown className="w-5 h-5 animate-bounce" />
       </div>
 
