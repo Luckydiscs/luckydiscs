@@ -5,29 +5,19 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  ShoppingBag,
-  Truck,
-  Shield,
-  RotateCcw,
-  Check,
-  Plus,
-  Minus,
-  X,
-} from "lucide-react";
-// Oikeat tuotekuvat kesäpelit.fi WooCommerce-CDN:stä (2026-05-29)
-// Kiekot = läpinäkyvät studiokuvat (RGBA) → kelluvat tummalla kortilla, yhtenäinen kontrasti
+import { Truck, ShieldCheck, RotateCcw, Plus, Minus, ShoppingBag } from "lucide-react";
+
+// Oikeat tuotekuvat kesäpelit.fi WooCommerce-CDN:stä (läpinäkyvät studiokuvat)
 const BANK_ROBBER_PREMIUM = "/images/products/bank-robber-premium.png";
 const TREASURE_HUNT_PREMIUM = "/images/products/treasure-hunt-premium.png";
 const TREASURE_HUNT_ULTRIUM = "/images/products/treasure-hunt-ultrium.png";
 const MONEY_SHOT_BASIC = "/images/products/money-shot-basic.png";
+const MONEY_SHOT_PREMIUM = "/images/products/money-shot-premium.png";
 const MONEY_SHOT_ULTRIUM = "/images/products/money-shot-ultrium.png";
-const DANIEL_JACKPOT = "/images/products/daniel-jackpot.jpg"; // signature-markkinointigrafiikka
-const MARKER_IMG = "/images/products/marker.png"; // oikea mini-markkeri
-const SUPER_PACK_IMG = "/images/products/super-pack.jpg"; // bundle-markkinointigrafiikka
+const DANIEL_JACKPOT = "/images/products/daniel-jackpot.jpg";
+const MARKER_IMG = "/images/products/marker.png";
+const SUPER_PACK_IMG = "/images/products/super-pack.jpg";
 
-// ───────────────────────────────
-// PRODUCT CATALOG — sync kesäpelit.fi (variantit + stockit 2026-05-29)
 // ───────────────────────────────
 type ProductCategory =
   | "midrange"
@@ -37,7 +27,6 @@ type ProductCategory =
   | "bundle"
   | "signature";
 
-// Värinimet → hex (swatch-napit). Vain todelliset kesäpelit.fi-värit.
 const COLOR_HEX: Record<string, string> = {
   keltainen: "#F5C518",
   oranssi: "#FF7A1A",
@@ -50,13 +39,16 @@ const COLOR_HEX: Record<string, string> = {
   vihrea: "#22C55E",
   valkoinen: "#F1F1F1",
 };
-const colorLabel = (c: string) => c.charAt(0).toUpperCase() + c.slice(1).replace("vihrea", "vihreä").replace("Vihrea", "Vihreä");
+const colorLabel = (c: string) => {
+  const map: Record<string, string> = { vihrea: "Vihreä" };
+  if (map[c]) return map[c];
+  return c.charAt(0).toUpperCase() + c.slice(1);
+};
 
-// Yksi ostettava variantti = väri + paino + varastosaldo (oikea WooCommerce-data)
 interface Variant {
-  color: string; // avain COLOR_HEX:iin
-  weight: string; // esim. "169-172g"
-  stock: number;
+  color: string;
+  weight: string;
+  stock: number; // backend-tieto, EI näytetä asiakkaalle
 }
 
 interface Product {
@@ -74,9 +66,7 @@ interface Product {
   weight?: string;
   color?: string;
   inStock: boolean;
-  stockCount?: number;
   badge?: string;
-  /** Ostettavat variantit (väri × paino × stock). Jos puuttuu → yksinkertainen tuote. */
   variants?: Variant[];
 }
 
@@ -96,9 +86,7 @@ const products: Product[] = [
     flight: { speed: 9, glide: 5, turn: -1, fade: 2 },
     inStock: true,
     badge: "LIMITED",
-    variants: [
-      { color: "oranssi", weight: "169-172g", stock: 44 },
-    ],
+    variants: [{ color: "oranssi", weight: "169-172g", stock: 44 }],
   },
   {
     id: "premium-bank-robber",
@@ -196,7 +184,7 @@ const products: Product[] = [
     originalPrice: 19.9,
     description:
       "Money Shot Premium-muovissa. Paras tuntuma ja kesto, sopii kaikille pelaajille.",
-    image: MONEY_SHOT_ULTRIUM,
+    image: MONEY_SHOT_PREMIUM,
     flight: { speed: 5, glide: 5, turn: -1, fade: 1 },
     inStock: true,
     variants: [
@@ -240,9 +228,7 @@ const products: Product[] = [
     description: "Virallinen Lucky Discs -markkeri pelikiekkojen merkkaamiseen.",
     image: MARKER_IMG,
     weight: "Yksi koko",
-    color: "Vakio",
     inStock: true,
-    stockCount: 50,
   },
   {
     id: "super-starter-pack",
@@ -253,10 +239,9 @@ const products: Product[] = [
     price: 59.0,
     originalPrice: 87.45,
     description:
-      "Säästä 28 €! Kuusi kiekkoa täydellisenä aloituspakkauksena: driver, midrange, putteri — kaikki, mitä radalle tarvitset.",
+      "Kuusi kiekkoa täydellisenä aloituspakkauksena: driver, midrange, putteri — kaikki, mitä radalle tarvitset.",
     image: SUPER_PACK_IMG,
     inStock: true,
-    stockCount: 4,
     badge: "SÄÄSTÄ -32%",
   },
 ];
@@ -274,14 +259,7 @@ const FILTERS: { key: ProductCategory | "all"; label: string }[] = [
 // ───────────────────────────────
 const Shop = () => {
   const navigate = useNavigate();
-  const {
-    addItem,
-    items,
-    totalItems,
-    totalPrice,
-    removeItem,
-    updateQuantity,
-  } = useCart();
+  const { addItem, totalItems, totalPrice } = useCart();
   const [activeFilter, setActiveFilter] = useState<ProductCategory | "all">("all");
   const [toast, setToast] = useState<string | null>(null);
 
@@ -319,8 +297,8 @@ const Shop = () => {
   };
 
   const shippingThreshold = 50;
-  const remainsToFreeShipping = Math.max(0, shippingThreshold - totalPrice);
-  const orderTotal = totalPrice + (remainsToFreeShipping > 0 ? 5.9 : 0);
+  const remainsToFree = Math.max(0, shippingThreshold - totalPrice);
+  const orderTotal = totalPrice + (remainsToFree > 0 && totalPrice > 0 ? 5.9 : 0);
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
@@ -333,7 +311,7 @@ const Shop = () => {
             <Truck className="w-3.5 h-3.5" /> Toimitus 5,90 € · ilmainen yli 50 €
           </span>
           <span className="hidden sm:flex items-center gap-1.5">
-            <Shield className="w-3.5 h-3.5" /> Suomalainen verkkokauppa
+            <ShieldCheck className="w-3.5 h-3.5" /> Suomalainen verkkokauppa
           </span>
           <span className="hidden md:flex items-center gap-1.5">
             <RotateCcw className="w-3.5 h-3.5" /> 14 pv palautusoikeus
@@ -343,234 +321,91 @@ const Shop = () => {
 
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-white/5">
-        {/* Hero-taustakuva (Picsart-generoitu premium disc-banneri) */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/brand/disc-collection-rock.webp')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-[#0a0a0a]" />
         <div className="absolute inset-0 opacity-30 pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl" />
         </div>
-        <div className="relative container mx-auto px-4 min-h-[420px] md:min-h-[520px] flex flex-col items-center justify-center py-20 md:py-28 text-center">
-          <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-4" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+        <div className="relative container mx-auto px-4 min-h-[380px] md:min-h-[460px] flex flex-col items-center justify-center py-16 md:py-24 text-center">
+          <h1
+            className="text-6xl md:text-8xl font-bold tracking-tight mb-4"
+            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          >
             Lucky Discs <span className="text-emerald-400">Shop</span>
           </h1>
-          <p className="text-gray-300 text-base md:text-lg max-w-xl mx-auto mb-6">
-            Premium-frisbeegolfkiekkoja suoraan valmistajalta. Suunniteltu ja
-            testattu Suomessa.
+          <p className="text-gray-200 text-base md:text-lg max-w-xl mx-auto mb-6">
+            Premium-frisbeegolfkiekkoja suoraan valmistajalta. Suunniteltu ja testattu Suomessa.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-400">
+          <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-300">
             <span>{products.length} tuotetta</span>
-            <span className="w-1 h-1 rounded-full bg-gray-600" />
+            <span className="w-1 h-1 rounded-full bg-gray-500" />
             <span>1–3 päivän toimitus</span>
-            <span className="w-1 h-1 rounded-full bg-gray-600" />
+            <span className="w-1 h-1 rounded-full bg-gray-500" />
             <span>Paytrail-maksu</span>
           </div>
         </div>
       </section>
 
-      {/* MAIN GRID */}
-      <div className="container mx-auto px-4 py-10 md:py-14">
-        <div className={`grid grid-cols-1 gap-8 ${items.length > 0 ? "lg:grid-cols-[1fr_360px]" : ""}`}>
-          <div>
-            <div className="flex flex-wrap gap-2 mb-8 sticky top-16 z-30 bg-[#0a0a0a]/95 backdrop-blur py-3 -mx-4 px-4 border-b border-white/5">
-              {FILTERS.map((f) => {
-                const count =
-                  f.key === "all"
-                    ? products.length
-                    : products.filter((p) => p.category === f.key).length;
-                if (count === 0) return null;
-                const active = activeFilter === f.key;
-                return (
-                  <button
-                    key={f.key}
-                    onClick={() => setActiveFilter(f.key as ProductCategory | "all")}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                      active
-                        ? "bg-emerald-500 text-black shadow-lg shadow-emerald-500/30"
-                        : "bg-white/5 text-gray-300 hover:bg-white/10 border border-white/5"
-                    }`}
-                  >
-                    {f.label}{" "}
-                    <span className="opacity-60 ml-1">{count}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-              {filtered.map((p) => (
-                <ProductCard key={p.id} product={p} onAdd={handleAddToCart} />
-              ))}
-            </div>
-
-            {filtered.length === 0 && (
-              <div className="text-center py-20 text-gray-500">
-                Ei tuotteita tässä kategoriassa.
-              </div>
-            )}
-          </div>
-
-          {/* CART SIDEBAR (desktop) — näkyy vain kun korissa tuotteita */}
-          {items.length > 0 && (
-          <aside className="hidden lg:block">
-            <div className="sticky top-24 bg-gradient-to-b from-white/5 to-transparent border border-white/10 rounded-2xl p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-bold flex items-center gap-2">
-                  <ShoppingBag className="w-5 h-5 text-emerald-400" />
-                  Ostoskori
-                </h3>
-                <span className="text-xs text-gray-400">
-                  {totalItems} tuote{totalItems > 1 ? "tta" : ""}
-                </span>
-              </div>
-
-                <>
-                  <div className="mb-5">
-                    {remainsToFreeShipping > 0 ? (
-                      <div className="text-xs text-gray-400 mb-2">
-                        Lisää{" "}
-                        <span className="text-emerald-400 font-bold">
-                          {remainsToFreeShipping.toFixed(2)} €
-                        </span>{" "}
-                        ja saat ilmaisen toimituksen
-                      </div>
-                    ) : (
-                      <div className="text-xs text-emerald-400 mb-2 font-medium flex items-center gap-1.5">
-                        <Check className="w-3.5 h-3.5" /> Ilmainen toimitus aktivoitu
-                      </div>
-                    )}
-                    <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-500"
-                        style={{
-                          width: `${Math.min(100, (totalPrice / shippingThreshold) * 100)}%`,
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-3 max-h-80 overflow-y-auto -mr-2 pr-2 mb-5">
-                    {items.map((item, idx) => (
-                      <div key={`${item.id}-${idx}`} className="flex gap-3">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="w-14 h-14 rounded-lg object-cover bg-white/5 flex-shrink-0"
-                        />
-                        <div className="flex-1 min-w-0">
-                          <div className="text-sm font-medium truncate">
-                            {item.name}
-                          </div>
-                          {item.plastic && (
-                            <div className="text-xs text-gray-500">
-                              {item.plastic}
-                            </div>
-                          )}
-                          <div className="flex items-center gap-2 mt-1">
-                            <button
-                              onClick={() =>
-                                updateQuantity(
-                                  item.id,
-                                  item.quantity - 1,
-                                  item.weight,
-                                  item.color,
-                                )
-                              }
-                              className="w-6 h-6 rounded-md bg-white/5 hover:bg-white/10 flex items-center justify-center"
-                              aria-label="Vähennä"
-                            >
-                              <Minus className="w-3 h-3" />
-                            </button>
-                            <span className="text-sm w-6 text-center">
-                              {item.quantity}
-                            </span>
-                            <button
-                              onClick={() =>
-                                updateQuantity(
-                                  item.id,
-                                  item.quantity + 1,
-                                  item.weight,
-                                  item.color,
-                                )
-                              }
-                              className="w-6 h-6 rounded-md bg-white/5 hover:bg-white/10 flex items-center justify-center"
-                              aria-label="Lisää"
-                            >
-                              <Plus className="w-3 h-3" />
-                            </button>
-                            <button
-                              onClick={() =>
-                                removeItem(item.id, item.weight, item.color)
-                              }
-                              className="ml-auto text-gray-500 hover:text-red-400 transition-colors"
-                              aria-label="Poista"
-                            >
-                              <X className="w-4 h-4" />
-                            </button>
-                          </div>
-                        </div>
-                        <div className="text-sm font-bold text-emerald-400 whitespace-nowrap">
-                          {(item.price * item.quantity).toFixed(2)} €
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="border-t border-white/10 pt-4 space-y-1.5 text-sm">
-                    <div className="flex justify-between text-gray-400">
-                      <span>Välisumma</span>
-                      <span>{totalPrice.toFixed(2)} €</span>
-                    </div>
-                    <div className="flex justify-between text-gray-400">
-                      <span>Toimitus</span>
-                      <span>
-                        {remainsToFreeShipping > 0 ? "5,90 €" : "Ilmainen"}
-                      </span>
-                    </div>
-                    <div className="flex justify-between text-lg font-bold pt-2">
-                      <span>Yhteensä</span>
-                      <span className="text-emerald-400">
-                        {orderTotal.toFixed(2)} €
-                      </span>
-                    </div>
-                  </div>
-
-                  <Button
-                    onClick={() => navigate("/shop/kassa")}
-                    className="w-full mt-5 bg-emerald-500 hover:bg-emerald-400 text-black font-bold h-12 text-base"
-                  >
-                    Kassalle →
-                  </Button>
-                  <p className="text-[10px] text-center text-gray-500 mt-3">
-                    Maksu Paytrailin kautta · Kortit, pankit, MobilePay
-                  </p>
-                </>
-            </div>
-          </aside>
-          )}
+      {/* FILTERS */}
+      <div className="container mx-auto px-4">
+        <div className="flex flex-wrap gap-2 py-5 sticky top-16 z-30 bg-[#0a0a0a]/95 backdrop-blur border-b border-white/5">
+          {FILTERS.map((f) => {
+            const count =
+              f.key === "all"
+                ? products.length
+                : products.filter((p) => p.category === f.key).length;
+            if (count === 0) return null;
+            const active = activeFilter === f.key;
+            return (
+              <button
+                key={f.key}
+                onClick={() => setActiveFilter(f.key as ProductCategory | "all")}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  active
+                    ? "bg-emerald-500 text-black shadow-lg shadow-emerald-500/30"
+                    : "bg-white/5 text-gray-300 hover:bg-white/10 border border-white/5"
+                }`}
+              >
+                {f.label} <span className="opacity-60 ml-1">{count}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      {/* MOBILE FLOATING CART BUTTON */}
+      {/* PRODUCT GRID — full width, centered (aligns with navbar) */}
+      <div className="container mx-auto px-4 py-10 md:py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {filtered.map((p) => (
+            <ProductCard key={p.id} product={p} onAdd={handleAddToCart} />
+          ))}
+        </div>
+        {filtered.length === 0 && (
+          <div className="text-center py-20 text-gray-500">Ei tuotteita tässä kategoriassa.</div>
+        )}
+      </div>
+
+      {/* FLOATING CART BUTTON (when items) */}
       {totalItems > 0 && (
         <button
           onClick={() => navigate("/shop/kassa")}
-          className="lg:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-40 bg-emerald-500 hover:bg-emerald-400 text-black font-bold px-6 py-3.5 rounded-full shadow-2xl shadow-emerald-500/40 flex items-center gap-3"
+          className="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 bg-emerald-500 hover:bg-emerald-400 text-black font-bold px-6 py-3.5 rounded-full shadow-2xl shadow-emerald-500/40 flex items-center gap-3"
         >
           <ShoppingBag className="w-5 h-5" />
           Kassalle ({totalItems})
-          <span className="font-mono">{orderTotal.toFixed(2)} €</span>
+          <span className="font-mono">{orderTotal.toFixed(2).replace(".", ",")} €</span>
         </button>
       )}
 
       {/* TOAST */}
       {toast && (
-        <div className="fixed top-20 right-5 z-50 bg-emerald-500 text-black px-4 py-3 rounded-lg shadow-2xl shadow-emerald-500/30 flex items-center gap-2 font-medium">
-          <Check className="w-5 h-5" />
-          {toast}
+        <div className="fixed top-24 right-5 z-50 bg-emerald-500 text-black px-4 py-3 rounded-lg shadow-2xl shadow-emerald-500/30 flex items-center gap-2 font-medium max-w-xs">
+          <ShoppingBag className="w-5 h-5 flex-shrink-0" />
+          <span className="text-sm">{toast}</span>
         </div>
       )}
 
@@ -579,6 +414,7 @@ const Shop = () => {
   );
 };
 
+// ────────────────────────────────
 const ProductCard = ({
   product,
   onAdd,
@@ -587,14 +423,11 @@ const ProductCard = ({
   onAdd: (p: Product, sel?: { color: string; weight: string }, qty?: number) => void;
 }) => {
   const discount = product.originalPrice
-    ? Math.round(
-        ((product.originalPrice - product.price) / product.originalPrice) * 100,
-      )
+    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
     : 0;
 
   const hasVariants = !!product.variants?.length;
 
-  // Uniikit värit ja painot varianteista
   const colors = useMemo(
     () => (hasVariants ? Array.from(new Set(product.variants!.map((v) => v.color))) : []),
     [product.variants, hasVariants],
@@ -606,7 +439,6 @@ const ProductCard = ({
   const [selWeight, setSelWeight] = useState<string | null>(null);
   const [qty, setQty] = useState(1);
 
-  // Painot jotka ovat saatavilla valitulle värille
   const weightsForColor = useMemo(() => {
     if (!hasVariants || !selColor) return [];
     return product
@@ -614,7 +446,6 @@ const ProductCard = ({
       .map((v) => v.weight);
   }, [product.variants, hasVariants, selColor]);
 
-  // Auto-valitse paino jos vain yksi
   const effectiveWeight =
     selWeight && weightsForColor.includes(selWeight)
       ? selWeight
@@ -629,13 +460,8 @@ const ProductCard = ({
     );
   }, [product.variants, hasVariants, selColor, effectiveWeight]);
 
-  // Onko väri kokonaan loppu (kaikki painot stock 0)?
   const colorInStock = (c: string) =>
     product.variants!.some((v) => v.color === c && v.stock > 0);
-
-  const totalStock = hasVariants
-    ? product.variants!.reduce((s, v) => s + v.stock, 0)
-    : (product.stockCount ?? 0);
 
   const canAdd = hasVariants ? !!selectedVariant : product.inStock;
 
@@ -653,7 +479,8 @@ const ProductCard = ({
   };
 
   return (
-    <article className="group relative bg-gradient-to-b from-white/5 to-white/[0.02] border border-white/10 hover:border-emerald-500/30 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10 flex flex-col">
+    <article className="group relative h-full bg-gradient-to-b from-white/5 to-white/[0.02] border border-white/10 hover:border-emerald-500/30 rounded-2xl overflow-hidden transition-colors duration-300 flex flex-col">
+      {/* Badges */}
       <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5">
         {product.badge && (
           <Badge className="bg-yellow-500 text-black hover:bg-yellow-400 font-bold tracking-wider text-[10px]">
@@ -672,27 +499,28 @@ const ProductCard = ({
         </span>
       </div>
 
+      {/* Image */}
       <div className="relative aspect-square bg-gradient-to-br from-emerald-950/40 to-black overflow-hidden">
         <img
           src={product.image}
           alt={product.name}
           loading="lazy"
-          className="w-full h-full object-contain p-6 transition-transform duration-700 group-hover:scale-105"
+          className="w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-105"
         />
       </div>
 
+      {/* Body */}
       <div className="p-5 flex flex-col flex-1">
-        <div className="mb-3">
+        <div className="mb-2">
           <h3 className="text-lg font-bold leading-tight">{product.name}</h3>
           {product.variant && (
             <p className="text-sm text-gray-400 mt-0.5">{product.variant}</p>
           )}
         </div>
 
-        <p className="text-xs text-gray-500 line-clamp-2 mb-4 flex-1">
-          {product.description}
-        </p>
+        <p className="text-xs text-gray-500 line-clamp-2 mb-4">{product.description}</p>
 
+        {/* Flight numbers */}
         {product.flight && (
           <div className="grid grid-cols-4 gap-1 mb-4 bg-black/30 rounded-lg p-2 border border-white/5">
             {[
@@ -711,10 +539,9 @@ const ProductCard = ({
           </div>
         )}
 
-        {/* VARIANTTI-VALITSIN — väri-swatchit + paino-chipit (oikea WooCommerce-data) */}
+        {/* Variant selector */}
         {hasVariants && (
-          <div className="mb-4 space-y-3">
-            {/* Värit */}
+          <div className="space-y-3 mb-4">
             <div>
               <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
                 Väri{selColor ? `: ${colorLabel(selColor)}` : ""}
@@ -732,40 +559,38 @@ const ProductCard = ({
                         setSelColor(c);
                         setSelWeight(null);
                       }}
-                      title={`${colorLabel(c)}${inStock ? "" : " (loppu)"}`}
+                      title={colorLabel(c)}
                       aria-label={colorLabel(c)}
                       className={`relative w-7 h-7 rounded-full border-2 transition-all ${
                         active
                           ? "border-emerald-400 scale-110 ring-2 ring-emerald-400/30"
                           : "border-white/20 hover:border-white/50"
-                      } ${!inStock ? "opacity-30 cursor-not-allowed" : ""}`}
+                      } ${!inStock ? "opacity-25 cursor-not-allowed" : ""}`}
                       style={{ backgroundColor: COLOR_HEX[c] ?? "#888" }}
-                    >
-                      {!inStock && (
-                        <span className="absolute inset-0 flex items-center justify-center text-white text-xs">
-                          ✕
-                        </span>
-                      )}
-                    </button>
+                    />
                   );
                 })}
               </div>
             </div>
 
-            {/* Paino — vetolaatikko, näkyy kun väri valittu */}
+            {/* Weight dropdown */}
             {selColor && weightsForColor.length > 0 && (
               <div>
-                <label className="block text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
+                <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
                   Paino
-                </label>
+                </div>
                 <select
                   value={effectiveWeight ?? ""}
                   onChange={(e) => setSelWeight(e.target.value)}
-                  className="w-full bg-white/5 border border-white/15 rounded-lg px-3 py-2 text-sm text-white focus:border-emerald-500 focus:outline-none cursor-pointer [&>option]:bg-[#1a1a1a]"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:border-emerald-400 focus:outline-none"
                 >
-                  {weightsForColor.length > 1 && <option value="">Valitse paino…</option>}
+                  {weightsForColor.length > 1 && (
+                    <option value="" className="bg-gray-900">
+                      Valitse paino…
+                    </option>
+                  )}
                   {weightsForColor.map((w) => (
-                    <option key={w} value={w}>
+                    <option key={w} value={w} className="bg-gray-900">
                       {w}
                     </option>
                   ))}
@@ -773,57 +598,78 @@ const ProductCard = ({
               </div>
             )}
 
-            {/* Määrä — vetolaatikko, näkyy kun variantti valittu */}
-            {selectedVariant && (
-              <div>
-                <label className="block text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
-                  Määrä
-                </label>
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setQty((q) => Math.max(1, q - 1))}
-                    className="w-9 h-9 rounded-lg bg-white/5 border border-white/15 hover:border-white/40 flex items-center justify-center"
-                    aria-label="Vähennä"
-                  >
-                    <Minus className="w-4 h-4" />
-                  </button>
-                  <span className="w-10 text-center text-sm font-medium">{qty}</span>
-                  <button
-                    type="button"
-                    onClick={() => setQty((q) => q + 1)}
-                    className="w-9 h-9 rounded-lg bg-white/5 border border-white/15 hover:border-white/40 flex items-center justify-center"
-                    aria-label="Lisää"
-                  >
-                    <Plus className="w-4 h-4" />
-                  </button>
-                </div>
+            {/* Quantity stepper */}
+            <div>
+              <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
+                Määrä
               </div>
-            )}
-          </div>
-        )}
-
-        {/* Yksinkertaisten tuotteiden paino/väri-info */}
-        {!hasVariants && (product.weight || product.color) && (
-          <div className="text-[11px] text-gray-500 mb-4">
-            {product.weight}
-            {product.weight && product.color && " · "}
-            {product.color}
-          </div>
-        )}
-
-        <div className="flex items-end justify-between gap-3 mt-auto">
-          <div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold text-emerald-400">
-                {product.price.toFixed(2).replace(".", ",")} €
-              </span>
-              {product.originalPrice && (
-                <span className="text-sm text-gray-500 line-through">
-                  {product.originalPrice.toFixed(2).replace(".", ",")} €
-                </span>
-              )}
+              <div className="inline-flex items-center border border-white/10 rounded-lg overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => setQty((q) => Math.max(1, q - 1))}
+                  className="w-9 h-9 flex items-center justify-center bg-white/5 hover:bg-white/10"
+                  aria-label="Vähennä"
+                >
+                  <Minus className="w-3.5 h-3.5" />
+                </button>
+                <span className="w-10 text-center text-sm font-medium">{qty}</span>
+                <button
+                  type="button"
+                  onClick={() => setQty((q) => q + 1)}
+                  className="w-9 h-9 flex items-center justify-center bg-white/5 hover:bg-white/10"
+                  aria-label="Lisää"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                </button>
+              </div>
             </div>
+          </div>
+        )}
+
+        {/* Simple product weight/qty */}
+        {!hasVariants && (
+          <div className="space-y-3 mb-4">
+            {product.weight && (
+              <div className="text-[11px] text-gray-500">{product.weight}</div>
+            )}
+            <div>
+              <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
+                Määrä
+              </div>
+              <div className="inline-flex items-center border border-white/10 rounded-lg overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => setQty((q) => Math.max(1, q - 1))}
+                  className="w-9 h-9 flex items-center justify-center bg-white/5 hover:bg-white/10"
+                  aria-label="Vähennä"
+                >
+                  <Minus className="w-3.5 h-3.5" />
+                </button>
+                <span className="w-10 text-center text-sm font-medium">{qty}</span>
+                <button
+                  type="button"
+                  onClick={() => setQty((q) => q + 1)}
+                  className="w-9 h-9 flex items-center justify-center bg-white/5 hover:bg-white/10"
+                  aria-label="Lisää"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Price + button pinned to bottom */}
+        <div className="flex items-end justify-between gap-3 mt-auto pt-2">
+          <div className="flex items-baseline gap-2">
+            <span className="text-2xl font-bold text-emerald-400">
+              {product.price.toFixed(2).replace(".", ",")} €
+            </span>
+            {product.originalPrice && (
+              <span className="text-sm text-gray-500 line-through">
+                {product.originalPrice.toFixed(2).replace(".", ",")} €
+              </span>
+            )}
           </div>
           <Button
             onClick={handleClick}
