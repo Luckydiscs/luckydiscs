@@ -326,8 +326,8 @@ const Shop = () => {
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       <Navbar />
 
-      {/* TOP TRUST BAR */}
-      <div className="bg-gradient-to-r from-emerald-900/40 via-emerald-800/30 to-emerald-900/40 border-b border-emerald-800/30">
+      {/* TOP TRUST BAR — pt clears the fixed navbar */}
+      <div className="pt-20 md:pt-24 bg-gradient-to-r from-emerald-900/40 via-emerald-800/30 to-emerald-900/40 border-b border-emerald-800/30">
         <div className="container mx-auto px-4 py-2.5 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-xs sm:text-sm text-emerald-100">
           <span className="flex items-center gap-1.5">
             <Truck className="w-3.5 h-3.5" /> Toimitus 5,90 € · ilmainen yli 50 €
@@ -353,8 +353,8 @@ const Shop = () => {
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl" />
         </div>
-        <div className="relative container mx-auto px-4 py-16 md:py-24 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+        <div className="relative container mx-auto px-4 min-h-[420px] md:min-h-[520px] flex flex-col items-center justify-center py-20 md:py-28 text-center">
+          <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-4" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
             Lucky Discs <span className="text-emerald-400">Shop</span>
           </h1>
           <p className="text-gray-300 text-base md:text-lg max-w-xl mx-auto mb-6">
