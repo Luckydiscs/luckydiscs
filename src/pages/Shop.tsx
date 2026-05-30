@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import Navbar from "@/components/Navbar";
@@ -281,7 +281,6 @@ const Shop = () => {
     totalPrice,
     removeItem,
     updateQuantity,
-    isOpen,
   } = useCart();
   const [activeFilter, setActiveFilter] = useState<ProductCategory | "all">("all");
   const [toast, setToast] = useState<string | null>(null);
@@ -296,8 +295,12 @@ const Shop = () => {
     setTimeout(() => setToast(null), 2200);
   };
 
-  const handleAddToCart = (product: Product, sel?: { color: string; weight: string }) => {
-    addItem({
+  const handleAddToCart = (
+    product: Product,
+    sel?: { color: string; weight: string },
+    qty: number = 1,
+  ) => {
+    const item = {
       id: product.id,
       name: product.variant ? `${product.name} ${product.variant}` : product.name,
       price: product.price,
@@ -307,20 +310,13 @@ const Shop = () => {
       color: sel ? colorLabel(sel.color) : product.color,
       image: product.image,
       flightNumbers: product.flight,
-    });
+    };
+    for (let i = 0; i < qty; i++) addItem(item);
     const variantTxt = sel ? ` — ${colorLabel(sel.color)} ${sel.weight}` : "";
     showToast(
-      `Lisätty: ${product.name}${product.variant ? ` ${product.variant}` : ""}${variantTxt}`,
+      `Lisätty${qty > 1 ? ` ${qty} kpl` : ""}: ${product.name}${product.variant ? ` ${product.variant}` : ""}${variantTxt}`,
     );
   };
-
-  useEffect(() => {
-    if (isOpen) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
 
   const shippingThreshold = 50;
   const remainsToFreeShipping = Math.max(0, shippingThreshold - totalPrice);
@@ -347,28 +343,29 @@ const Shop = () => {
 
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-white/5">
-        <div className="absolute inset-0 bg-gradient-to-b from-emerald-900/20 via-transparent to-black pointer-events-none" />
+        {/* Hero-taustakuva (Picsart-generoitu premium disc-banneri) */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/brand/shop-hero-2026.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-[#0a0a0a]" />
         <div className="absolute inset-0 opacity-30 pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl" />
         </div>
-        <div className="relative container mx-auto px-4 py-14 md:py-20 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 mb-5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-medium tracking-wider uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Varastontyhjennys käynnissä
-          </div>
+        <div className="relative container mx-auto px-4 py-16 md:py-24 text-center">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
             Lucky Discs <span className="text-emerald-400">Shop</span>
           </h1>
-          <p className="text-gray-400 text-base md:text-lg max-w-xl mx-auto mb-6">
+          <p className="text-gray-300 text-base md:text-lg max-w-xl mx-auto mb-6">
             Premium-frisbeegolfkiekkoja suoraan valmistajalta. Suunniteltu ja
             testattu Suomessa.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-500">
-            <span>{products.filter((p) => p.inStock).length} tuotetta varastossa</span>
-            <span className="w-1 h-1 rounded-full bg-gray-700" />
+          <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-400">
+            <span>{products.length} tuotetta</span>
+            <span className="w-1 h-1 rounded-full bg-gray-600" />
             <span>1–3 päivän toimitus</span>
-            <span className="w-1 h-1 rounded-full bg-gray-700" />
+            <span className="w-1 h-1 rounded-full bg-gray-600" />
             <span>Paytrail-maksu</span>
           </div>
         </div>
@@ -376,7 +373,7 @@ const Shop = () => {
 
       {/* MAIN GRID */}
       <div className="container mx-auto px-4 py-10 md:py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8">
+        <div className={`grid grid-cols-1 gap-8 ${items.length > 0 ? "lg:grid-cols-[1fr_360px]" : ""}`}>
           <div>
             <div className="flex flex-wrap gap-2 mb-8 sticky top-16 z-30 bg-[#0a0a0a]/95 backdrop-blur py-3 -mx-4 px-4 border-b border-white/5">
               {FILTERS.map((f) => {
@@ -416,7 +413,8 @@ const Shop = () => {
             )}
           </div>
 
-          {/* CART SIDEBAR (desktop) */}
+          {/* CART SIDEBAR (desktop) — näkyy vain kun korissa tuotteita */}
+          {items.length > 0 && (
           <aside className="hidden lg:block">
             <div className="sticky top-24 bg-gradient-to-b from-white/5 to-transparent border border-white/10 rounded-2xl p-6">
               <div className="flex items-center justify-between mb-4">
@@ -424,21 +422,11 @@ const Shop = () => {
                   <ShoppingBag className="w-5 h-5 text-emerald-400" />
                   Ostoskori
                 </h3>
-                {totalItems > 0 && (
-                  <span className="text-xs text-gray-400">
-                    {totalItems} tuote{totalItems > 1 ? "tta" : ""}
-                  </span>
-                )}
+                <span className="text-xs text-gray-400">
+                  {totalItems} tuote{totalItems > 1 ? "tta" : ""}
+                </span>
               </div>
 
-              {items.length === 0 ? (
-                <div className="text-center py-12 text-gray-500 text-sm">
-                  <ShoppingBag className="w-10 h-10 mx-auto mb-3 opacity-30" />
-                  Ostoskorisi on tyhjä.
-                  <br />
-                  Tutustu kiekkoihin →
-                </div>
-              ) : (
                 <>
                   <div className="mb-5">
                     {remainsToFreeShipping > 0 ? (
@@ -560,9 +548,9 @@ const Shop = () => {
                     Maksu Paytrailin kautta · Kortit, pankit, MobilePay
                   </p>
                 </>
-              )}
             </div>
           </aside>
+          )}
         </div>
       </div>
 
@@ -596,7 +584,7 @@ const ProductCard = ({
   onAdd,
 }: {
   product: Product;
-  onAdd: (p: Product, sel?: { color: string; weight: string }) => void;
+  onAdd: (p: Product, sel?: { color: string; weight: string }, qty?: number) => void;
 }) => {
   const discount = product.originalPrice
     ? Math.round(
@@ -616,6 +604,7 @@ const ProductCard = ({
     colors.length === 1 ? colors[0] : null,
   );
   const [selWeight, setSelWeight] = useState<string | null>(null);
+  const [qty, setQty] = useState(1);
 
   // Painot jotka ovat saatavilla valitulle värille
   const weightsForColor = useMemo(() => {
@@ -653,12 +642,13 @@ const ProductCard = ({
   const handleClick = () => {
     if (hasVariants) {
       if (selColor && effectiveWeight) {
-        onAdd(product, { color: selColor, weight: effectiveWeight });
-        // nollaa paino jotta seuraava valinta on tietoinen
+        onAdd(product, { color: selColor, weight: effectiveWeight }, qty);
         setSelWeight(null);
+        setQty(1);
       }
     } else {
-      onAdd(product);
+      onAdd(product, undefined, qty);
+      setQty(1);
     }
   };
 
@@ -689,11 +679,6 @@ const ProductCard = ({
           loading="lazy"
           className="w-full h-full object-contain p-6 transition-transform duration-700 group-hover:scale-105"
         />
-        {totalStock > 0 && totalStock <= 10 && (
-          <div className="absolute bottom-3 left-3 text-[10px] uppercase tracking-wider font-bold text-orange-300 bg-orange-950/60 backdrop-blur px-2 py-1 rounded border border-orange-500/30">
-            Vain {totalStock} jäljellä
-          </div>
-        )}
       </div>
 
       <div className="p-5 flex flex-col flex-1">
@@ -767,44 +752,52 @@ const ProductCard = ({
               </div>
             </div>
 
-            {/* Painot — näkyy kun väri valittu */}
+            {/* Paino — vetolaatikko, näkyy kun väri valittu */}
             {selColor && weightsForColor.length > 0 && (
               <div>
-                <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
+                <label className="block text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
                   Paino
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {weightsForColor.map((w) => {
-                    const active = effectiveWeight === w;
-                    return (
-                      <button
-                        key={w}
-                        type="button"
-                        onClick={() => setSelWeight(w)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
-                          active
-                            ? "bg-emerald-500 text-black border-emerald-500"
-                            : "bg-white/5 text-gray-300 border-white/10 hover:border-white/30"
-                        }`}
-                      >
-                        {w}
-                      </button>
-                    );
-                  })}
-                </div>
+                </label>
+                <select
+                  value={effectiveWeight ?? ""}
+                  onChange={(e) => setSelWeight(e.target.value)}
+                  className="w-full bg-white/5 border border-white/15 rounded-lg px-3 py-2 text-sm text-white focus:border-emerald-500 focus:outline-none cursor-pointer [&>option]:bg-[#1a1a1a]"
+                >
+                  {weightsForColor.length > 1 && <option value="">Valitse paino…</option>}
+                  {weightsForColor.map((w) => (
+                    <option key={w} value={w}>
+                      {w}
+                    </option>
+                  ))}
+                </select>
               </div>
             )}
 
-            {/* Stock valitulle variantille */}
+            {/* Määrä — vetolaatikko, näkyy kun variantti valittu */}
             {selectedVariant && (
-              <div className="text-[11px] text-gray-400">
-                {selectedVariant.stock <= 5 ? (
-                  <span className="text-orange-300 font-medium">
-                    Vain {selectedVariant.stock} kpl jäljellä
-                  </span>
-                ) : (
-                  <span className="text-emerald-400">Varastossa ({selectedVariant.stock} kpl)</span>
-                )}
+              <div>
+                <label className="block text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
+                  Määrä
+                </label>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setQty((q) => Math.max(1, q - 1))}
+                    className="w-9 h-9 rounded-lg bg-white/5 border border-white/15 hover:border-white/40 flex items-center justify-center"
+                    aria-label="Vähennä"
+                  >
+                    <Minus className="w-4 h-4" />
+                  </button>
+                  <span className="w-10 text-center text-sm font-medium">{qty}</span>
+                  <button
+                    type="button"
+                    onClick={() => setQty((q) => q + 1)}
+                    className="w-9 h-9 rounded-lg bg-white/5 border border-white/15 hover:border-white/40 flex items-center justify-center"
+                    aria-label="Lisää"
+                  >
+                    <Plus className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             )}
           </div>
