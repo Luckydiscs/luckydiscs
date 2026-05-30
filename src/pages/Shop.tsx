@@ -346,7 +346,7 @@ const Shop = () => {
         {/* Hero-taustakuva (Picsart-generoitu premium disc-banneri) */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/brand/shop-hero-2026.jpg')" }}
+          style={{ backgroundImage: "url('/images/brand/disc-collection-rock.webp')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-[#0a0a0a]" />
         <div className="absolute inset-0 opacity-30 pointer-events-none">
