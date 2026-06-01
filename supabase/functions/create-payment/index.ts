@@ -160,7 +160,6 @@ const handler = async (req: Request): Promise<Response> => {
       product_id: i.id,
       product_name: i.name,
       variant: i.variant ?? null,
-      plastic: i.plastic ?? null,
       weight: i.weight ?? null,
       color: i.color ?? null,
       unit_price_cents: Math.round(i.price * 100),
