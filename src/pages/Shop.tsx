@@ -1,31 +1,16 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
+import { useShopProducts, type ShopProduct, type ShopVariant } from "@/hooks/useShopProducts";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Truck, ShieldCheck, RotateCcw, Plus, Minus, ShoppingBag } from "lucide-react";
+import { Truck, ShieldCheck, RotateCcw, Plus, Minus, ShoppingBag, Loader2 } from "lucide-react";
 
-// Oikeat tuotekuvat kesäpelit.fi WooCommerce-CDN:stä (läpinäkyvät studiokuvat)
-const BANK_ROBBER_PREMIUM = "/images/products/bank-robber-premium.png";
-const TREASURE_HUNT_PREMIUM = "/images/products/treasure-hunt-premium.png";
-const TREASURE_HUNT_ULTRIUM = "/images/products/treasure-hunt-ultrium.png";
-const MONEY_SHOT_BASIC = "/images/products/money-shot-basic.png";
-const MONEY_SHOT_PREMIUM = "/images/products/money-shot-premium.png";
-const MONEY_SHOT_ULTRIUM = "/images/products/money-shot-ultrium.png";
-const DANIEL_JACKPOT = "/images/products/daniel-jackpot.jpg";
-const MARKER_IMG = "/images/products/marker.png";
-const SUPER_PACK_IMG = "/images/products/super-pack.jpg";
-
-// ───────────────────────────────
-type ProductCategory =
-  | "midrange"
-  | "fairway-driver"
-  | "distance-driver"
-  | "marker"
-  | "bundle"
-  | "signature";
+// Tuotteet + variantit + stock luetaan Supabase-kannasta (useShopProducts).
+type Product = ShopProduct;
+type Variant = ShopVariant;
 
 const COLOR_HEX: Record<string, string> = {
   keltainen: "#F5C518",
@@ -45,208 +30,8 @@ const colorLabel = (c: string) => {
   return c.charAt(0).toUpperCase() + c.slice(1);
 };
 
-interface Variant {
-  color: string;
-  weight: string;
-  stock: number; // backend-tieto, EI näytetä asiakkaalle
-}
 
-interface Product {
-  id: string;
-  name: string;
-  variant?: string;
-  plastic?: string;
-  category: ProductCategory;
-  categoryLabel: string;
-  price: number;
-  originalPrice?: number;
-  description: string;
-  image: string;
-  flight?: { speed: number; glide: number; turn: number; fade: number };
-  weight?: string;
-  color?: string;
-  inStock: boolean;
-  badge?: string;
-  variants?: Variant[];
-}
-
-const products: Product[] = [
-  {
-    id: "daniel-jackpot",
-    name: "Daniel Davidsson – Jackpot",
-    variant: "Tournament Edition",
-    plastic: "Premium",
-    category: "signature",
-    categoryLabel: "Signature",
-    price: 14.9,
-    originalPrice: 24.9,
-    description:
-      "Signature-painos tournament-tason kiekosta. Rajoitettu erä, painettu erityisellä Jackpot-grafiikalla.",
-    image: DANIEL_JACKPOT,
-    flight: { speed: 9, glide: 5, turn: -1, fade: 2 },
-    inStock: true,
-    badge: "LIMITED",
-    variants: [{ color: "oranssi", weight: "169-172g", stock: 44 }],
-  },
-  {
-    id: "premium-bank-robber",
-    name: "Bank Robber",
-    variant: "Premium",
-    plastic: "Premium",
-    category: "fairway-driver",
-    categoryLabel: "Fairway Driver",
-    price: 14.9,
-    originalPrice: 19.9,
-    description:
-      "Luotettava fairway driver, joka hallitsee tuulen. Wild west -teemainen Premium-muovi.",
-    image: BANK_ROBBER_PREMIUM,
-    flight: { speed: 8, glide: 5, turn: -1, fade: 2 },
-    inStock: true,
-    variants: [
-      { color: "vaaleanpunainen", weight: "169-172g", stock: 24 },
-      { color: "oranssi", weight: "169-172g", stock: 6 },
-      { color: "keltainen", weight: "169-172g", stock: 2 },
-      { color: "pinkki", weight: "169-172g", stock: 14 },
-      { color: "punainen", weight: "173-176g", stock: 1 },
-    ],
-  },
-  {
-    id: "ultrium-treasure-hunt",
-    name: "Treasure Hunt",
-    variant: "Ultrium",
-    plastic: "Ultrium",
-    category: "distance-driver",
-    categoryLabel: "Distance Driver",
-    price: 14.9,
-    originalPrice: 19.9,
-    description:
-      "Maksimaalinen pituus ja hallittavuus huippumuovissa. Aarteenmetsästäjän työkalu.",
-    image: TREASURE_HUNT_ULTRIUM,
-    flight: { speed: 12, glide: 6, turn: -1, fade: 3 },
-    inStock: true,
-    variants: [
-      { color: "vaaleansininen", weight: "169-172g", stock: 3 },
-      { color: "vaaleansininen", weight: "173-176g", stock: 10 },
-      { color: "violetti", weight: "169-172g", stock: 4 },
-      { color: "sininen", weight: "173-176g", stock: 1 },
-    ],
-  },
-  {
-    id: "premium-treasure-hunt",
-    name: "Treasure Hunt",
-    variant: "Premium",
-    plastic: "Premium",
-    category: "distance-driver",
-    categoryLabel: "Distance Driver",
-    price: 14.9,
-    originalPrice: 19.9,
-    description:
-      "Distance driver Premium-muovissa. Loistava pelikiekko jokaiselle pelaajalle.",
-    image: TREASURE_HUNT_PREMIUM,
-    flight: { speed: 12, glide: 6, turn: -1, fade: 3 },
-    inStock: true,
-    variants: [
-      { color: "oranssi", weight: "169-172g", stock: 13 },
-      { color: "oranssi", weight: "173-176g", stock: 57 },
-      { color: "vihrea", weight: "173-176g", stock: 20 },
-    ],
-  },
-  {
-    id: "basic-money-shot",
-    name: "Money Shot",
-    variant: "Basic",
-    plastic: "Basic",
-    category: "midrange",
-    categoryLabel: "Midrange",
-    price: 12.9,
-    description:
-      "Äärimmäisen luotettava lähestymiskiekko. Kestää tuulen, paineen ja kovatkin vedot. Aloittelijan paras kaveri.",
-    image: MONEY_SHOT_BASIC,
-    flight: { speed: 5, glide: 5, turn: -1, fade: 1 },
-    inStock: true,
-    variants: [
-      { color: "oranssi", weight: "173-176g", stock: 20 },
-      { color: "keltainen", weight: "169-172g", stock: 1 },
-      { color: "keltainen", weight: "173-176g", stock: 18 },
-      { color: "sininen", weight: "173-176g", stock: 24 },
-      { color: "valkoinen", weight: "169-172g", stock: 12 },
-      { color: "valkoinen", weight: "173-176g", stock: 1 },
-    ],
-  },
-  {
-    id: "premium-money-shot",
-    name: "Money Shot",
-    variant: "Premium",
-    plastic: "Premium",
-    category: "midrange",
-    categoryLabel: "Midrange",
-    price: 14.9,
-    originalPrice: 19.9,
-    description:
-      "Money Shot Premium-muovissa. Paras tuntuma ja kesto, sopii kaikille pelaajille.",
-    image: MONEY_SHOT_PREMIUM,
-    flight: { speed: 5, glide: 5, turn: -1, fade: 1 },
-    inStock: true,
-    variants: [
-      { color: "keltainen", weight: "169-172g", stock: 42 },
-      { color: "keltainen", weight: "173-176g", stock: 19 },
-      { color: "pinkki", weight: "169-172g", stock: 7 },
-      { color: "pinkki", weight: "173-176g", stock: 16 },
-      { color: "vaaleanpunainen", weight: "169-172g", stock: 14 },
-    ],
-  },
-  {
-    id: "ultrium-money-shot",
-    name: "Money Shot",
-    variant: "Ultrium",
-    plastic: "Ultrium",
-    category: "midrange",
-    categoryLabel: "Midrange",
-    price: 14.9,
-    originalPrice: 17.9,
-    description:
-      "Money Shot huippumuovissa. Ultrium tarjoaa erinomaisen gripin ja pitkän käyttöiän.",
-    image: MONEY_SHOT_ULTRIUM,
-    flight: { speed: 5, glide: 5, turn: -1, fade: 1 },
-    inStock: true,
-    variants: [
-      { color: "vaaleansininen", weight: "169-172g", stock: 85 },
-      { color: "vaaleansininen", weight: "173-176g", stock: 36 },
-      { color: "keltainen", weight: "173-176g", stock: 46 },
-      { color: "oranssi", weight: "173-176g", stock: 72 },
-      { color: "punainen", weight: "173-176g", stock: 9 },
-      { color: "pinkki", weight: "169-172g", stock: 5 },
-      { color: "pinkki", weight: "173-176g", stock: 5 },
-    ],
-  },
-  {
-    id: "lucky-discs-marker",
-    name: "Lucky Discs Markkeri",
-    category: "marker",
-    categoryLabel: "Marker",
-    price: 6.9,
-    description: "Virallinen Lucky Discs -markkeri pelikiekkojen merkkaamiseen.",
-    image: MARKER_IMG,
-    weight: "Yksi koko",
-    inStock: true,
-  },
-  {
-    id: "super-starter-pack",
-    name: "Super Starter Pack",
-    variant: "6 kiekkoa",
-    category: "bundle",
-    categoryLabel: "Bundle",
-    price: 59.0,
-    originalPrice: 87.45,
-    description:
-      "Kuusi kiekkoa täydellisenä aloituspakkauksena: driver, midrange, putteri — kaikki, mitä radalle tarvitset.",
-    image: SUPER_PACK_IMG,
-    inStock: true,
-    badge: "SÄÄSTÄ -32%",
-  },
-];
-
-const FILTERS: { key: ProductCategory | "all"; label: string }[] = [
+const FILTERS: { key: string; label: string }[] = [
   { key: "all", label: "Kaikki" },
   { key: "signature", label: "Signature" },
   { key: "distance-driver", label: "Distance Driver" },
@@ -260,13 +45,14 @@ const FILTERS: { key: ProductCategory | "all"; label: string }[] = [
 const Shop = () => {
   const navigate = useNavigate();
   const { addItem, totalItems, totalPrice } = useCart();
-  const [activeFilter, setActiveFilter] = useState<ProductCategory | "all">("all");
+  const { products, loading, error } = useShopProducts();
+  const [activeFilter, setActiveFilter] = useState<string>("all");
   const [toast, setToast] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
     if (activeFilter === "all") return products;
     return products.filter((p) => p.category === activeFilter);
-  }, [activeFilter]);
+  }, [activeFilter, products]);
 
   const showToast = (msg: string) => {
     setToast(msg);
@@ -285,7 +71,7 @@ const Shop = () => {
       originalPrice: product.originalPrice,
       plastic: product.plastic,
       weight: sel?.weight ?? product.weight,
-      color: sel ? colorLabel(sel.color) : product.color,
+      color: sel ? colorLabel(sel.color) : undefined,
       image: product.image,
       flightNumbers: product.flight,
     };
@@ -363,7 +149,7 @@ const Shop = () => {
             return (
               <button
                 key={f.key}
-                onClick={() => setActiveFilter(f.key as ProductCategory | "all")}
+                onClick={() => setActiveFilter(f.key)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   active
                     ? "bg-emerald-500 text-black shadow-lg shadow-emerald-500/30"
@@ -379,13 +165,26 @@ const Shop = () => {
 
       {/* PRODUCT GRID — full width, centered (aligns with navbar) */}
       <div className="container mx-auto px-4 py-10 md:py-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filtered.map((p) => (
-            <ProductCard key={p.id} product={p} onAdd={handleAddToCart} />
-          ))}
-        </div>
-        {filtered.length === 0 && (
-          <div className="text-center py-20 text-gray-500">Ei tuotteita tässä kategoriassa.</div>
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-24 text-gray-400">
+            <Loader2 className="w-8 h-8 animate-spin text-emerald-400 mb-3" />
+            Ladataan tuotteita…
+          </div>
+        ) : error ? (
+          <div className="text-center py-20 text-red-400">
+            Tuotteiden lataus epäonnistui. Päivitä sivu tai yritä myöhemmin.
+          </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filtered.map((p) => (
+                <ProductCard key={p.id} product={p} onAdd={handleAddToCart} />
+              ))}
+            </div>
+            {filtered.length === 0 && (
+              <div className="text-center py-20 text-gray-500">Ei tuotteita tässä kategoriassa.</div>
+            )}
+          </>
         )}
       </div>
 
@@ -463,7 +262,7 @@ const ProductCard = ({
   const colorInStock = (c: string) =>
     product.variants!.some((v) => v.color === c && v.stock > 0);
 
-  const canAdd = hasVariants ? !!selectedVariant : product.inStock;
+  const canAdd = hasVariants ? !!selectedVariant : true;
 
   const handleClick = () => {
     if (hasVariants) {
