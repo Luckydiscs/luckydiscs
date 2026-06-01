@@ -27,6 +27,7 @@ const OrderConfirmation = lazy(() => import("./pages/OrderConfirmation"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const Admin = lazy(() => import("./pages/Admin"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -61,6 +62,8 @@ const App = () => (
                 <Route path="/shop/kassa" element={<Checkout />} />
                 <Route path="/shop/vahvistus" element={<OrderConfirmation />} />
                 <Route path="/shop/:slug" element={<ProductPage />} />
+                {/* Admin-paneeli (salasanasuojattu admin-api edge functionin kautta) */}
+                <Route path="/admin" element={<Admin />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

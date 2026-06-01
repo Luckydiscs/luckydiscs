@@ -225,19 +225,20 @@ const handler = async (req: Request): Promise<Response> => {
         return new Response("Already processed", { status: 200 });
       }
 
+      // mark_order_paid: merkitsee maksetuksi + vähentää varastosaldon atomisesti
       const { data: updated, error: updErr } = await supabase
-        .from("orders")
-        .update({
-          status: "paid",
-          paid_at: new Date().toISOString(),
-          paytrail_transaction_id: transactionId,
-          paytrail_provider: provider,
+        .rpc("mark_order_paid", {
+          p_reference: reference,
+          p_transaction_id: transactionId,
+          p_provider: provider,
         })
-        .eq("id", order.id)
-        .select()
         .single();
 
       if (updErr) throw updErr;
+      if (!updated) {
+        // ei pending-tilassa (race) — ei lähetetä mailia uudestaan
+        return new Response("Not pending", { status: 200 });
+      }
 
       const { data: items } = await supabase
         .from("order_items")
