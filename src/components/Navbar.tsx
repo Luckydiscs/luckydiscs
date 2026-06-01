@@ -1,13 +1,30 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import logo from "@/assets/lucky-discs-transparent-logo.png";
 import { useTranslation } from "@/hooks/useTranslation";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
-const linkClass =
-  "hover:text-primary transition-colors duration-200 font-semibold relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left whitespace-nowrap";
+// Aktiivinen sivu korostuu vihreällä + alleviivauksella
+const navClass = ({ isActive }: { isActive: boolean }) =>
+  `font-semibold transition-colors duration-200 whitespace-nowrap relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-lucky-green after:transition-all after:duration-300 ${
+    isActive
+      ? "text-lucky-green after:w-full"
+      : "text-white hover:text-lucky-green after:w-0 hover:after:w-full"
+  }`;
+
+const shopClass = ({ isActive }: { isActive: boolean }) =>
+  `font-bold transition-colors duration-200 whitespace-nowrap relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-[#FFD700] after:transition-all after:duration-300 ${
+    isActive
+      ? "text-[#FFE55C] after:w-full"
+      : "text-[#FFD700] hover:text-[#FFE55C] after:w-0 hover:after:w-full"
+  }`;
+
+const mobileClass = ({ isActive }: { isActive: boolean }) =>
+  `text-lg py-2 border-b border-gray-800 transition-colors ${
+    isActive ? "text-lucky-green" : "text-white hover:text-lucky-green"
+  }`;
 
 const Navbar = () => {
   const { t, language } = useTranslation();
@@ -22,7 +39,6 @@ const Navbar = () => {
   }, []);
 
   const toggleMenu = () => setIsMenuOpen((o) => !o);
-
   const blogPath = language === "fi" ? "/blogi" : "/blog";
 
   return (
@@ -38,31 +54,26 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Lucky Discs - Premium Disc Golf Equipment"
-              className="h-12 md:h-14 lg:h-16 w-auto transition-transform duration-300 group-hover:scale-105"
-              width={128}
-              height={128}
+              className="h-16 md:h-20 lg:h-24 w-auto transition-transform duration-300 group-hover:scale-105"
+              width={160}
+              height={160}
             />
           </Link>
         </div>
 
         {/* CENTER: nav links */}
         <div className="hidden md:flex items-center justify-center gap-5 lg:gap-7">
-          <Link to="/" className={linkClass}>{t("nav.home")}</Link>
-          <Link to="/discs" className={linkClass}>{t("nav.discs")}</Link>
+          <NavLink to="/" end className={navClass}>{t("nav.home")}</NavLink>
+          <NavLink to="/discs" className={navClass}>{t("nav.discs")}</NavLink>
           {language === "fi" && (
-            <Link
-              to="/shop"
-              className="font-bold text-[#FFD700] hover:text-[#FFE55C] transition-colors whitespace-nowrap"
-            >
-              Shop
-            </Link>
+            <NavLink to="/shop" className={shopClass}>Shop</NavLink>
           )}
-          <Link to="/wholesale" className={linkClass}>{t("nav.wholesale")}</Link>
-          <Link to="/brand" className={linkClass}>{t("nav.brand")}</Link>
-          <Link to="/team" className={linkClass}>{t("nav.team")}</Link>
-          <Link to="/contact" className={linkClass}>{t("nav.contact")}</Link>
-          <Link to={blogPath} className={linkClass}>{t("nav.blog")}</Link>
-          <Link to="/faq" className={linkClass}>FAQ</Link>
+          <NavLink to="/wholesale" className={navClass}>{t("nav.wholesale")}</NavLink>
+          <NavLink to="/brand" className={navClass}>{t("nav.brand")}</NavLink>
+          <NavLink to="/team" className={navClass}>{t("nav.team")}</NavLink>
+          <NavLink to="/contact" className={navClass}>{t("nav.contact")}</NavLink>
+          <NavLink to={blogPath} className={navClass}>{t("nav.blog")}</NavLink>
+          <NavLink to="/faq" className={navClass}>FAQ</NavLink>
         </div>
 
         {/* RIGHT: language + cart */}
@@ -94,17 +105,17 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-black/95 absolute top-full left-0 w-full">
           <div className="container px-4 py-6 flex flex-col space-y-4">
-            <Link to="/" className="text-lg py-2 border-b border-gray-800 hover:text-lucky-green" onClick={toggleMenu}>{t("nav.home")}</Link>
-            <Link to="/discs" className="text-lg py-2 border-b border-gray-800 hover:text-lucky-green" onClick={toggleMenu}>{t("nav.discs")}</Link>
+            <NavLink to="/" end className={mobileClass} onClick={toggleMenu}>{t("nav.home")}</NavLink>
+            <NavLink to="/discs" className={mobileClass} onClick={toggleMenu}>{t("nav.discs")}</NavLink>
             {language === "fi" && (
-              <Link to="/shop" className="text-lg py-2 border-b border-gray-800 text-[#FFD700] font-bold" onClick={toggleMenu}>Shop</Link>
+              <NavLink to="/shop" className={({ isActive }) => `text-lg py-2 border-b border-gray-800 font-bold ${isActive ? "text-[#FFE55C]" : "text-[#FFD700]"}`} onClick={toggleMenu}>Shop</NavLink>
             )}
-            <Link to="/wholesale" className="text-lg py-2 border-b border-gray-800 hover:text-lucky-green" onClick={toggleMenu}>{t("nav.wholesale")}</Link>
-            <Link to="/brand" className="text-lg py-2 border-b border-gray-800 hover:text-lucky-green" onClick={toggleMenu}>{t("nav.brand")}</Link>
-            <Link to="/team" className="text-lg py-2 border-b border-gray-800 hover:text-lucky-green" onClick={toggleMenu}>{t("nav.team")}</Link>
-            <Link to="/contact" className="text-lg py-2 border-b border-gray-800 hover:text-lucky-green" onClick={toggleMenu}>{t("nav.contact")}</Link>
-            <Link to={blogPath} className="text-lg py-2 border-b border-gray-800 hover:text-lucky-green" onClick={toggleMenu}>{t("nav.blog")}</Link>
-            <Link to="/faq" className="text-lg py-2 border-b border-gray-800 hover:text-lucky-green" onClick={toggleMenu}>FAQ</Link>
+            <NavLink to="/wholesale" className={mobileClass} onClick={toggleMenu}>{t("nav.wholesale")}</NavLink>
+            <NavLink to="/brand" className={mobileClass} onClick={toggleMenu}>{t("nav.brand")}</NavLink>
+            <NavLink to="/team" className={mobileClass} onClick={toggleMenu}>{t("nav.team")}</NavLink>
+            <NavLink to="/contact" className={mobileClass} onClick={toggleMenu}>{t("nav.contact")}</NavLink>
+            <NavLink to={blogPath} className={mobileClass} onClick={toggleMenu}>{t("nav.blog")}</NavLink>
+            <NavLink to="/faq" className={mobileClass} onClick={toggleMenu}>FAQ</NavLink>
             <div className="flex justify-between items-center mt-4">
               <LanguageSwitcher />
               {language === "fi" && (
