@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import { useShopProducts, type ShopProduct, type ShopVariant } from "@/hooks/useShopProducts";
 import Navbar from "@/components/Navbar";
@@ -298,26 +298,29 @@ const ProductCard = ({
         </span>
       </div>
 
-      {/* Image */}
-      <div className="relative aspect-square bg-gradient-to-br from-emerald-950/40 to-black overflow-hidden">
+      {/* Image — linkki tuotesivulle */}
+      <Link to={`/shop/${product.id}`} className="relative aspect-square bg-gradient-to-br from-emerald-950/40 to-black overflow-hidden block">
         <img
           src={product.image}
           alt={product.name}
           loading="lazy"
           className="w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-105"
         />
-      </div>
+      </Link>
 
       {/* Body */}
       <div className="p-5 flex flex-col flex-1">
-        <div className="mb-2">
+        <Link to={`/shop/${product.id}`} className="mb-2 block hover:text-emerald-400 transition-colors">
           <h3 className="text-lg font-bold leading-tight">{product.name}</h3>
           {product.variant && (
             <p className="text-sm text-gray-400 mt-0.5">{product.variant}</p>
           )}
-        </div>
+        </Link>
 
-        <p className="text-xs text-gray-500 line-clamp-2 mb-4">{product.description}</p>
+        <p className="text-xs text-gray-500 line-clamp-2 mb-1">{product.description}</p>
+        <Link to={`/shop/${product.id}`} className="text-xs text-emerald-400 hover:text-emerald-300 mb-3 inline-block">
+          Lue lisää →
+        </Link>
 
         {/* Flight numbers */}
         {product.flight && (

@@ -1,332 +1,223 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState, useMemo } from "react";
 import { useCart } from "@/contexts/CartContext";
+import { useShopProducts } from "@/hooks/useShopProducts";
+import useSEO from "@/hooks/useSEO";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ShoppingCart, ChevronRight } from "lucide-react";
-import discs from "@/data/discs";
+import {
+  ArrowLeft, ShoppingCart, Plus, Minus, Truck, ShieldCheck, RotateCcw, Loader2, Check,
+} from "lucide-react";
 
-const shopProducts = [
-  {
-    slug: "treasure-hunt",
-    discId: 2,
-    name: "Treasure Hunt",
-    tagline: "Voimakas distance driver pitkiin heittöihin",
-    price: 9.9,
-    originalPrice: 24.9,
-    inStock: true,
-    plastics: ["Premium"],
-    weights: ["173-175g"],
-    colors: ["Punainen", "Sininen", "Valkoinen", "Keltainen"],
-    description: "Treasure Hunt on suunniteltu pelaajille, jotka etsivät maksimaalista etäisyyttä. Tämä nopea distance driver tarjoaa vakaan lennon ja luotettavan feidin.",
-    features: ["Erinomainen pitävyys kaikissa olosuhteissa", "Vakaa lentorata tuulessa", "Premium-muovi kestää kulutusta"],
-  },
-  {
-    slug: "money-shot",
-    discId: 3,
-    name: "Money Shot",
-    tagline: "Tarkka midrange lähestymisheittöihin",
-    price: 9.9,
-    originalPrice: 24.9,
-    inStock: true,
-    plastics: ["Premium"],
-    weights: ["177-179g"],
-    colors: ["Vihreä", "Oranssi", "Pinkki", "Sininen"],
-    description: "Money Shot on luotettava midrange-kiekko, joka lentää sinne minne tähtäät. Suora lentorata pienellä feidillä tekee siitä täydellisen lähestymiskiekon.",
-    features: ["Suora ja ennakoitava lentorata", "Loistava sekä reppäri- että hyzer-heittoihin", "Helppo hallita kaikilla voimatasoilla"],
-  },
-  {
-    slug: "money-shot-basic",
-    discId: 3,
-    name: "Money Shot Basic",
-    tagline: "Edullinen aloituskiekko",
-    price: 4.9,
-    originalPrice: null,
-    inStock: true,
-    plastics: ["Basic"],
-    weights: ["175-177g"],
-    colors: ["Valkoinen", "Keltainen"],
-    description: "Money Shot Basic tarjoaa saman erinomaisen lentoradan edullisemmassa perusmuovissa. Täydellinen harjoittelukiekko tai lahja aloittevalle frisbeegolfarille.",
-    features: ["Sama vakaa lentorata kuin Premium-versiossa", "Edullinen hinta", "Hyvä grip perusmuovissa"],
-  },
-  {
-    slug: "treasure-hunt-basic",
-    discId: 2,
-    name: "Treasure Hunt Basic",
-    tagline: "Pitkän matkan driver perusmuovissa",
-    price: 4.9,
-    originalPrice: null,
-    inStock: true,
-    plastics: ["Basic"],
-    weights: ["170-172g"],
-    colors: ["Valkoinen", "Oranssi"],
-    description: "Treasure Hunt Basic tarjoaa saman voimakkaan lentoradan edullisemmassa muovissa.",
-    features: ["Sama lentorata kuin Premium-versiossa", "Edullinen hinta", "Hyvä aloituskiekko distance-heittoihin"],
-  },
-  {
-    slug: "jailbreak",
-    discId: 4,
-    name: "Jailbreak",
-    tagline: "Tulossa pian — monipuolinen fairway driver",
-    price: null,
-    originalPrice: null,
-    inStock: false,
-    plastics: ["Premium"],
-    weights: ["TBA"],
-    colors: ["TBA"],
-    description: "Jailbreak on tulossa oleva fairway driver, joka yhdistää hallinnan ja etäisyyden.",
-    features: ["Tulossa pian"],
-  },
-  {
-    slug: "bank-robber",
-    discId: 1,
-    name: "Bank Robber",
-    tagline: "Tulossa pian — vakaa fairway driver",
-    price: null,
-    originalPrice: null,
-    inStock: false,
-    plastics: ["Premium"],
-    weights: ["TBA"],
-    colors: ["TBA"],
-    description: "Bank Robber on tulossa oleva fairway driver, joka tarjoaa vakaan ja ennustettavan lennon.",
-    features: ["Tulossa pian"],
-  },
-];
+const COLOR_HEX: Record<string, string> = {
+  keltainen: "#F5C518", oranssi: "#FF7A1A", punainen: "#E53935", sininen: "#2563EB",
+  vaaleansininen: "#7DD3FC", violetti: "#8B5CF6", pinkki: "#EC4899",
+  vaaleanpunainen: "#F9A8D4", vihrea: "#22C55E", valkoinen: "#F1F1F1",
+};
+const colorLabel = (c: string) => (c === "vihrea" ? "Vihreä" : c.charAt(0).toUpperCase() + c.slice(1));
 
 const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const { addItem, setIsOpen } = useCart();
-  const [selectedColor, setSelectedColor] = useState("");
-  const [selectedWeight, setSelectedWeight] = useState("");
+  const { addItem } = useCart();
+  const { products, loading } = useShopProducts();
 
-  const product = shopProducts.find((p) => p.slug === slug);
-  const discData = product ? discs.find((d) => d.id === product.discId) : null;
+  const product = products.find((p) => p.id === slug);
+  const hasVariants = !!product?.variants?.length;
 
-  useEffect(() => {
-    if (product) {
-      setSelectedColor(product.colors[0] || "");
-      setSelectedWeight(product.weights[0] || "");
-      document.title = `${product.name} — Lucky Discs`;
-    }
-  }, [product]);
+  const colors = useMemo(
+    () => (hasVariants ? Array.from(new Set(product!.variants!.map((v) => v.color))) : []),
+    [product, hasVariants],
+  );
+  const [selColor, setSelColor] = useState<string | null>(null);
+  const [selWeight, setSelWeight] = useState<string | null>(null);
+  const [qty, setQty] = useState(1);
+  const [added, setAdded] = useState(false);
 
-  if (!product || !discData) {
+  const effColor = selColor ?? (colors.length === 1 ? colors[0] : null);
+  const weights = useMemo(() => {
+    if (!hasVariants || !effColor) return [];
+    return product!.variants!.filter((v) => v.color === effColor && v.stock > 0).map((v) => v.weight);
+  }, [product, hasVariants, effColor]);
+  const effWeight = selWeight && weights.includes(selWeight) ? selWeight : weights.length === 1 ? weights[0] : null;
+  const colorInStock = (c: string) => product!.variants!.some((v) => v.color === c && v.stock > 0);
+
+  useSEO({
+    title: product ? `${product.name}${product.variant ? ` ${product.variant}` : ""} | Lucky Discs` : "Lucky Discs",
+    description: product?.description ?? "",
+    canonicalPath: `/shop/${slug}`,
+    structuredData: product
+      ? {
+          "@context": "https://schema.org", "@type": "Product",
+          name: `${product.name}${product.variant ? ` ${product.variant}` : ""}`,
+          description: product.description, image: `https://www.luckydiscs.fi${product.image}`,
+          brand: { "@type": "Brand", name: "Lucky Discs" },
+          offers: {
+            "@type": "Offer", price: product.price.toFixed(2), priceCurrency: "EUR",
+            availability: "https://schema.org/InStock",
+            url: `https://www.luckydiscs.fi/shop/${slug}`,
+          },
+        }
+      : undefined,
+  });
+
+  if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen flex flex-col bg-[#0a0a0a] text-white">
         <Navbar />
-        <div className="container mx-auto px-4 py-20 text-center">
+        <main className="flex-1 flex items-center justify-center pt-32"><Loader2 className="w-8 h-8 animate-spin text-emerald-400" /></main>
+        <Footer />
+      </div>
+    );
+  }
+  if (!product) {
+    return (
+      <div className="min-h-screen flex flex-col bg-[#0a0a0a] text-white">
+        <Navbar />
+        <main className="flex-1 flex flex-col items-center justify-center pt-32 text-center px-4">
           <h1 className="text-2xl font-bold mb-4">Tuotetta ei löytynyt</h1>
-          <Button onClick={() => navigate("/shop")} className="bg-[#FFD700] text-black hover:bg-[#FFC000]">
-            Takaisin kauppaan
-          </Button>
-        </div>
+          <Button asChild className="bg-emerald-500 text-black hover:bg-emerald-400 font-bold"><Link to="/shop">Takaisin kauppaan</Link></Button>
+        </main>
         <Footer />
       </div>
     );
   }
 
-  const handleAddToCart = () => {
-    if (!product.inStock || !product.price) return;
-    addItem({
-      id: product.slug,
-      name: product.name,
-      plastic: product.plastics[0],
-      price: product.price,
-      originalPrice: product.originalPrice || undefined,
-      weight: selectedWeight,
-      color: selectedColor,
-      image: discData.imageSrc,
-      flightNumbers: {
-        speed: Number(discData.speed),
-        glide: Number(discData.glide),
-        turn: Number(discData.turn),
-        fade: Number(discData.fade),
-      },
-    });
-    setIsOpen(true);
+  const discount = product.originalPrice
+    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
+  const canAdd = hasVariants ? !!(effColor && effWeight) : true;
+
+  const handleAdd = () => {
+    const item = {
+      id: product.id,
+      name: product.variant ? `${product.name} ${product.variant}` : product.name,
+      price: product.price, originalPrice: product.originalPrice, plastic: product.plastic,
+      weight: effWeight ?? product.weight, color: effColor ? colorLabel(effColor) : undefined,
+      image: product.image, flightNumbers: product.flight,
+    };
+    for (let i = 0; i < qty; i++) addItem(item);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
   };
 
-  const relatedProducts = shopProducts.filter(
-    (p) => p.slug !== slug && p.inStock
-  ).slice(0, 3);
-
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen flex flex-col bg-[#0a0a0a] text-white">
       <Navbar />
+      <main className="flex-1 pt-24 md:pt-28 pb-16">
+        <div className="container mx-auto px-4">
+          <button onClick={() => navigate("/shop")} className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white mb-6 transition-colors">
+            <ArrowLeft className="w-4 h-4" /> Takaisin kauppaan
+          </button>
 
-      {/* Breadcrumbs */}
-      <div className="container mx-auto px-4 pt-6">
-        <nav className="flex items-center gap-2 text-sm text-gray-400">
-          <Link to="/" className="hover:text-white transition-colors">Etusivu</Link>
-          <ChevronRight className="w-3 h-3" />
-          <Link to="/shop" className="hover:text-white transition-colors">Kauppa</Link>
-          <ChevronRight className="w-3 h-3" />
-          <span className="text-white">{product.name}</span>
-        </nav>
-      </div>
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+            {/* KUVA */}
+            <div className="relative">
+              <div className="sticky top-28 aspect-square bg-gradient-to-br from-emerald-950/40 to-black rounded-2xl border border-white/10 overflow-hidden flex items-center justify-center">
+                <div className="absolute top-4 left-4 z-10 flex flex-col items-start gap-1.5">
+                  {product.badge && <span className="bg-yellow-500 text-black font-bold tracking-wider text-xs px-2.5 py-1 rounded-md shadow">{product.badge}</span>}
+                  {discount > 0 && <span className="bg-red-500 text-white font-bold tracking-wider text-xs px-2.5 py-1 rounded-md shadow">-{discount}%</span>}
+                </div>
+                <img src={product.image} alt={product.name} className="w-full h-full object-contain p-8" />
+              </div>
+            </div>
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {/* Product image */}
-          <div className="flex items-center justify-center bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 min-h-[400px]">
-            <img src={discData.imageSrc} alt={product.name} className="w-full max-w-md object-contain drop-shadow-2xl" />
-          </div>
-
-          {/* Product info */}
-          <div className="space-y-6">
+            {/* TIEDOT */}
             <div>
-              <p className="text-[#FFD700] text-sm font-medium uppercase tracking-wide mb-1">
-                {discData.type === "driver" ? "Distance Driver" : discData.type === "fairway" ? "Fairway Driver" : discData.type === "midrange" ? "Midrange" : "Putter"}
-              </p>
-              <h1 className="text-3xl md:text-4xl font-bold mb-2">{product.name}</h1>
-              <p className="text-gray-400">{product.tagline}</p>
-            </div>
+              <div className="text-xs uppercase tracking-wider text-emerald-400 font-bold mb-2">{product.categoryLabel}</div>
+              <h1 className="text-3xl md:text-4xl font-bold mb-1" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                {product.name}
+              </h1>
+              {product.variant && <p className="text-lg text-gray-400 mb-4">{product.variant}{product.plastic ? ` · ${product.plastic}-muovi` : ""}</p>}
 
-            {/* Flight numbers */}
-            <div className="flex gap-4">
-              {[
-                { label: "Speed", value: discData.speed },
-                { label: "Glide", value: discData.glide },
-                { label: "Turn", value: discData.turn },
-                { label: "Fade", value: discData.fade },
-              ].map(({ label, value }) => (
-                <div key={label} className="text-center bg-gray-900 rounded-lg p-3 flex-1">
-                  <div className="text-xl font-bold text-[#FFD700]">{value}</div>
-                  <div className="text-xs text-gray-400">{label}</div>
+              {/* Hinta */}
+              <div className="flex items-baseline gap-3 mb-6">
+                <span className="text-3xl font-bold text-emerald-400 whitespace-nowrap">{(product.price * qty).toFixed(2).replace(".", ",")}&nbsp;€</span>
+                {product.originalPrice && <span className="text-lg text-gray-500 line-through whitespace-nowrap">{(product.originalPrice * qty).toFixed(2).replace(".", ",")}&nbsp;€</span>}
+                {qty > 1 && <span className="text-sm text-gray-500">({qty} kpl)</span>}
+              </div>
+
+              {/* KOKO kuvaus */}
+              <p className="text-gray-300 leading-relaxed mb-6">{product.description}</p>
+
+              {/* Lentonumerot isona */}
+              {product.flight && (
+                <div className="grid grid-cols-4 gap-2 mb-6 bg-black/30 rounded-xl p-4 border border-white/5">
+                  {[
+                    { label: "Speed", value: product.flight.speed }, { label: "Glide", value: product.flight.glide },
+                    { label: "Turn", value: product.flight.turn }, { label: "Fade", value: product.flight.fade },
+                  ].map((s) => (
+                    <div key={s.label} className="text-center">
+                      <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1">{s.label}</div>
+                      <div className="text-2xl font-bold text-white">{s.value}</div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-
-            {/* Price */}
-            <div className="flex items-baseline gap-3">
-              {product.price ? (
-                <>
-                  <span className="text-3xl font-bold text-[#FFD700]">{product.price.toFixed(2)} €</span>
-                  {product.originalPrice && (
-                    <span className="text-lg text-gray-500 line-through">{product.originalPrice.toFixed(2)} €</span>
-                  )}
-                </>
-              ) : (
-                <span className="text-xl text-gray-400">Tulossa pian</span>
               )}
-            </div>
 
-            {/* Color selector */}
-            {product.inStock && product.colors[0] !== "TBA" && (
-              <div>
-                <label className="text-sm text-gray-400 block mb-2">Väri</label>
-                <div className="flex flex-wrap gap-2">
-                  {product.colors.map((color) => (
-                    <button key={color} onClick={() => setSelectedColor(color)}
-                      className={`px-4 py-2 rounded-lg border text-sm transition-colors ${
-                        selectedColor === color
-                          ? "border-[#FFD700] bg-[#FFD700]/10 text-white"
-                          : "border-gray-700 text-gray-400 hover:border-gray-500"
-                      }`}>{color}</button>
-                  ))}
+              {/* Variantit */}
+              {hasVariants && (
+                <div className="space-y-4 mb-6">
+                  <div>
+                    <div className="text-xs uppercase tracking-wider text-gray-500 mb-2">Väri{effColor ? `: ${colorLabel(effColor)}` : ""}</div>
+                    <div className="flex flex-wrap gap-2.5">
+                      {colors.map((c) => {
+                        const inStock = colorInStock(c);
+                        const active = effColor === c;
+                        return (
+                          <button key={c} type="button" disabled={!inStock}
+                            onClick={() => { setSelColor(c); setSelWeight(null); }}
+                            title={colorLabel(c)} aria-label={colorLabel(c)}
+                            className={`w-9 h-9 rounded-full border-2 transition-all ${active ? "border-emerald-400 scale-110 ring-2 ring-emerald-400/30" : "border-white/20 hover:border-white/50"} ${!inStock ? "opacity-25 cursor-not-allowed" : ""}`}
+                            style={{ backgroundColor: COLOR_HEX[c] ?? "#888" }} />
+                        );
+                      })}
+                    </div>
+                  </div>
+                  {effColor && weights.length > 0 && (
+                    <div>
+                      <div className="text-xs uppercase tracking-wider text-gray-500 mb-2">Paino</div>
+                      <select value={effWeight ?? ""} onChange={(e) => setSelWeight(e.target.value)}
+                        className="bg-gray-900 border border-gray-700 rounded-lg px-3 py-2.5 text-white focus:border-emerald-400 focus:outline-none min-w-[160px]">
+                        {weights.length > 1 && <option value="">Valitse paino…</option>}
+                        {weights.map((w) => <option key={w} value={w} className="bg-gray-900">{w}</option>)}
+                      </select>
+                    </div>
+                  )}
                 </div>
-              </div>
-            )}
+              )}
+              {!hasVariants && product.weight && (
+                <div className="text-sm text-gray-400 mb-6">{product.weight}</div>
+              )}
 
-            {/* Weight selector */}
-            {product.inStock && product.weights[0] !== "TBA" && (
-              <div>
-                <label className="text-sm text-gray-400 block mb-2">Paino</label>
-                <div className="flex flex-wrap gap-2">
-                  {product.weights.map((weight) => (
-                    <button key={weight} onClick={() => setSelectedWeight(weight)}
-                      className={`px-4 py-2 rounded-lg border text-sm transition-colors ${
-                        selectedWeight === weight
-                          ? "border-[#FFD700] bg-[#FFD700]/10 text-white"
-                          : "border-gray-700 text-gray-400 hover:border-gray-500"
-                      }`}>{weight}</button>
-                  ))}
+              {/* Määrä + koriin */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="inline-flex items-center border border-white/15 rounded-lg overflow-hidden">
+                  <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="w-11 h-11 flex items-center justify-center bg-white/5 hover:bg-white/10" aria-label="Vähennä"><Minus className="w-4 h-4" /></button>
+                  <span className="w-12 text-center font-medium">{qty}</span>
+                  <button onClick={() => setQty((q) => q + 1)} className="w-11 h-11 flex items-center justify-center bg-white/5 hover:bg-white/10" aria-label="Lisää"><Plus className="w-4 h-4" /></button>
                 </div>
+                <Button onClick={handleAdd} disabled={!canAdd}
+                  className="flex-1 h-12 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-base rounded-full disabled:opacity-40 disabled:cursor-not-allowed">
+                  {added ? <><Check className="w-5 h-5 mr-2" /> Lisätty koriin</> : hasVariants && !effColor ? "Valitse väri" : hasVariants && !effWeight ? "Valitse paino" : <><ShoppingCart className="w-5 h-5 mr-2" /> Lisää koriin</>}
+                </Button>
               </div>
-            )}
+              {added && (
+                <Button onClick={() => navigate("/shop/kassa")} variant="outline" className="w-full mb-6 border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10">
+                  Siirry kassalle →
+                </Button>
+              )}
 
-            {/* Add to cart */}
-            {product.inStock ? (
-              <Button onClick={handleAddToCart} className="w-full bg-[#FFD700] text-black hover:bg-[#FFC000] font-bold text-lg py-6">
-                <ShoppingCart className="w-5 h-5 mr-2" />
-                Lisää ostoskoriin — {product.price?.toFixed(2)} €
-              </Button>
-            ) : (
-              <Button disabled className="w-full bg-gray-700 text-gray-400 font-bold text-lg py-6">
-                Tulossa pian
-              </Button>
-            )}
-
-            {/* Description */}
-            <div className="border-t border-gray-800 pt-6">
-              <h2 className="font-bold text-lg mb-3">Kuvaus</h2>
-              <p className="text-gray-300 leading-relaxed">{product.description}</p>
+              {/* Trust */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-6 border-t border-white/10 text-sm text-gray-400">
+                <div className="flex items-center gap-2"><Truck className="w-4 h-4 text-emerald-400" /> Toimitus 1–3 pv</div>
+                <div className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-emerald-400" /> Paytrail-maksu</div>
+                <div className="flex items-center gap-2"><RotateCcw className="w-4 h-4 text-emerald-400" /> 14 pv palautus</div>
+              </div>
             </div>
-
-            {/* Features */}
-            {product.features.length > 0 && product.features[0] !== "Tulossa pian" && (
-              <div>
-                <h3 className="font-bold mb-2">Ominaisuudet</h3>
-                <ul className="space-y-1">
-                  {product.features.map((f, i) => (
-                    <li key={i} className="text-gray-300 flex items-start gap-2">
-                      <span className="text-[#FFD700] mt-1">•</span> {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </div>
         </div>
-
-        {/* Related products */}
-        {relatedProducts.length > 0 && (
-          <div className="mt-16 max-w-5xl mx-auto">
-            <h2 className="text-2xl font-bold mb-8">Muut tuotteet</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {relatedProducts.map((rp) => {
-                const rd = discs.find((d) => d.id === rp.discId);
-                return (
-                  <Link key={rp.slug} to={`/shop/${rp.slug}`} className="bg-gray-900 rounded-xl p-4 hover:bg-gray-800 transition-colors group">
-                    <div className="aspect-square flex items-center justify-center mb-3">
-                      <img src={rd?.imageSrc} alt={rp.name} className="w-32 h-32 object-contain group-hover:scale-105 transition-transform" />
-                    </div>
-                    <h3 className="font-bold">{rp.name}</h3>
-                    <p className="text-[#FFD700] font-bold">{rp.price?.toFixed(2)} €</p>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Product Schema JSON-LD */}
-      {product.inStock && product.price && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Product",
-              name: product.name,
-              description: product.description,
-              image: discData.imageSrc,
-              brand: { "@type": "Brand", name: "Lucky Discs" },
-              offers: {
-                "@type": "Offer",
-                price: product.price,
-                priceCurrency: "EUR",
-                availability: "https://schema.org/InStock",
-                url: `https://www.luckydiscs.fi/shop/${product.slug}`,
-              },
-            }),
-          }}
-        />
-      )}
-
+      </main>
       <Footer />
     </div>
   );
