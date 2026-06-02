@@ -459,28 +459,31 @@ const ProductCard = ({
         )}
 
         {/* Price + button pinned to bottom */}
-        <div className="flex items-end justify-between gap-3 mt-auto pt-2">
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-emerald-400">
-              {product.price.toFixed(2).replace(".", ",")} €
+        <div className="mt-auto pt-2">
+          <div className="flex items-baseline gap-2 mb-3">
+            <span className="text-2xl font-bold text-emerald-400 whitespace-nowrap">
+              {(product.price * qty).toFixed(2).replace(".", ",")}&nbsp;€
             </span>
             {product.originalPrice && (
-              <span className="text-sm text-gray-500 line-through">
-                {product.originalPrice.toFixed(2).replace(".", ",")} €
+              <span className="text-sm text-gray-500 line-through whitespace-nowrap">
+                {(product.originalPrice * qty).toFixed(2).replace(".", ",")}&nbsp;€
               </span>
+            )}
+            {qty > 1 && (
+              <span className="text-xs text-gray-500">({qty} kpl)</span>
             )}
           </div>
           <Button
             onClick={handleClick}
             disabled={!canAdd}
-            className="bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-full px-5 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-full disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <Plus className="w-4 h-4 mr-1" />
             {hasVariants && !selColor
               ? "Valitse väri"
               : hasVariants && !effectiveWeight
                 ? "Valitse paino"
-                : "Koriin"}
+                : "Lisää koriin"}
           </Button>
         </div>
       </div>
