@@ -268,7 +268,7 @@ const ProductCard = ({
     if (hasVariants) {
       if (selColor && effectiveWeight) {
         onAdd(product, { color: selColor, weight: effectiveWeight }, qty);
-        setSelWeight(null);
+        // Valinta säilyy → voit lisätä toisen värin vaihtamalla swatchia (ei tarvitse aloittaa alusta)
         setQty(1);
       }
     } else {
@@ -279,17 +279,17 @@ const ProductCard = ({
 
   return (
     <article className="group relative h-full bg-gradient-to-b from-white/5 to-white/[0.02] border border-white/10 hover:border-emerald-500/30 rounded-2xl overflow-hidden transition-colors duration-300 flex flex-col">
-      {/* Badges */}
-      <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5">
+      {/* Badges — pinottu pystyyn, kumpikin oma leveys */}
+      <div className="absolute top-3 left-3 z-10 flex flex-col items-start gap-1.5">
         {product.badge && (
-          <Badge className="bg-yellow-500 text-black hover:bg-yellow-400 font-bold tracking-wider text-[10px]">
+          <span className="bg-yellow-500 text-black font-bold tracking-wider text-[10px] px-2 py-0.5 rounded-md shadow">
             {product.badge}
-          </Badge>
+          </span>
         )}
         {discount > 0 && (
-          <Badge className="bg-red-500 text-white hover:bg-red-400 font-bold tracking-wider text-[10px]">
+          <span className="bg-red-500 text-white font-bold tracking-wider text-[10px] px-2 py-0.5 rounded-md shadow">
             -{discount}%
-          </Badge>
+          </span>
         )}
       </div>
       <div className="absolute top-3 right-3 z-10">
