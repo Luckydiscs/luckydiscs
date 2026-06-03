@@ -267,57 +267,57 @@ const Checkout = () => {
 
           {/* Order summary sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-gray-900 rounded-lg p-6 sticky top-24">
-              <h3 className="font-bold text-lg mb-4">Tilaus</h3>
-              <div className="space-y-3 text-sm">
+            <div className="bg-white text-gray-900 rounded-xl p-6 sticky top-24 shadow-2xl">
+              <h3 className="font-bold text-lg mb-4 text-gray-900">Tilaus</h3>
+              <div className="space-y-4 text-sm">
                 {items.length === 0 && (
                   <p className="text-gray-500">Ostoskori on tyhjä.</p>
                 )}
                 {items.map((item) => (
                   <div key={`${item.id}-${item.weight || ""}-${item.color || ""}`} className="flex gap-3 items-start">
-                    <img src={item.image} alt={item.name} className="w-12 h-12 rounded object-contain bg-black/30 flex-shrink-0" />
+                    <img src={item.image} alt={item.name} className="w-14 h-14 rounded-lg object-contain bg-gray-100 border border-gray-200 flex-shrink-0" />
                     <div className="min-w-0 flex-1">
-                      <div className="text-white truncate">{item.name}</div>
+                      <div className="text-gray-900 font-medium truncate">{item.name}</div>
                       {(item.color || item.weight) && (
                         <div className="text-xs text-gray-500">
                           {item.color || ""}{item.color && item.weight ? " · " : ""}{item.weight || ""}
                         </div>
                       )}
                       <div className="flex items-center gap-2 mt-1.5">
-                        <div className="inline-flex items-center border border-white/15 rounded">
-                          <button type="button" onClick={() => updateQuantity(item.id, item.quantity - 1, item.weight, item.color)} className="w-7 h-7 flex items-center justify-center hover:bg-white/10" aria-label="Vähennä">
+                        <div className="inline-flex items-center border border-gray-300 rounded">
+                          <button type="button" onClick={() => updateQuantity(item.id, item.quantity - 1, item.weight, item.color)} className="w-7 h-7 flex items-center justify-center text-gray-600 hover:bg-gray-100" aria-label="Vähennä">
                             <Minus className="w-3 h-3" />
                           </button>
-                          <span className="w-7 text-center">{item.quantity}</span>
-                          <button type="button" onClick={() => updateQuantity(item.id, item.quantity + 1, item.weight, item.color)} className="w-7 h-7 flex items-center justify-center hover:bg-white/10" aria-label="Lisää">
+                          <span className="w-7 text-center text-gray-900">{item.quantity}</span>
+                          <button type="button" onClick={() => updateQuantity(item.id, item.quantity + 1, item.weight, item.color)} className="w-7 h-7 flex items-center justify-center text-gray-600 hover:bg-gray-100" aria-label="Lisää">
                             <Plus className="w-3 h-3" />
                           </button>
                         </div>
-                        <button type="button" onClick={() => removeItem(item.id, item.weight, item.color)} className="text-gray-500 hover:text-red-400 transition-colors" aria-label="Poista tuote">
+                        <button type="button" onClick={() => removeItem(item.id, item.weight, item.color)} className="text-gray-400 hover:text-red-600 transition-colors" aria-label="Poista tuote">
                           <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </div>
-                    <span className="whitespace-nowrap flex-shrink-0 text-white">{(item.price * item.quantity).toFixed(2).replace(".", ",")} €</span>
+                    <span className="whitespace-nowrap flex-shrink-0 text-gray-900 font-medium">{(item.price * item.quantity).toFixed(2).replace(".", ",")} €</span>
                   </div>
                 ))}
               </div>
-              <div className="border-t border-gray-700 mt-4 pt-4 space-y-2">
+              <div className="border-t border-gray-200 mt-4 pt-4 space-y-2">
                 <div className="flex justify-between gap-3 text-sm">
-                  <span className="text-gray-400">Välisumma</span>
-                  <span className="whitespace-nowrap">{totalPrice.toFixed(2).replace(".", ",")} €</span>
+                  <span className="text-gray-600">Välisumma</span>
+                  <span className="whitespace-nowrap text-gray-900">{totalPrice.toFixed(2).replace(".", ",")} €</span>
                 </div>
                 <div className="flex justify-between gap-3 text-sm">
-                  <span className="text-gray-400">Toimitus</span>
-                  <span className="whitespace-nowrap">{SHIPPING_COST.toFixed(2).replace(".", ",")} €</span>
+                  <span className="text-gray-600">Toimitus</span>
+                  <span className="whitespace-nowrap text-gray-900">{SHIPPING_COST === 0 ? "Ilmainen" : `${SHIPPING_COST.toFixed(2).replace(".", ",")} €`}</span>
                 </div>
-                <div className="flex justify-between gap-3 font-bold text-lg pt-2 border-t border-gray-700">
-                  <span>Yhteensä</span>
-                  <span className="text-[#FFD700] whitespace-nowrap">{orderTotal.toFixed(2).replace(".", ",")} €</span>
+                <div className="flex justify-between gap-3 font-bold text-xl pt-3 border-t border-gray-200">
+                  <span className="text-gray-900">Yhteensä</span>
+                  <span className="text-emerald-600 whitespace-nowrap">{orderTotal.toFixed(2).replace(".", ",")} €</span>
                 </div>
               </div>
               {step < 3 && (
-                <Button onClick={handleSubmit} className="w-full mt-6 bg-[#FFD700] text-black hover:bg-[#FFC000] font-bold">
+                <Button onClick={handleSubmit} className="w-full mt-6 bg-emerald-500 text-black hover:bg-emerald-400 font-bold rounded-full h-11">
                   {step === 1 ? "Jatka yhteenvetoon" : "Siirry maksamaan"}
                 </Button>
               )}

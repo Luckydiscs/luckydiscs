@@ -1,4 +1,5 @@
 import { useTranslation, Language } from '@/hooks/useTranslation';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Globe } from 'lucide-react';
 import {
@@ -10,13 +11,22 @@ import {
 
 const LanguageSwitcher = () => {
   const { language, setLanguage } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const languages: { code: Language; name: string; flag: string }[] = [
     { code: 'en', name: 'English', flag: '🇺🇸' },
     { code: 'fi', name: 'Suomi', flag: '🇫🇮' },
   ];
 
-  const currentLanguage = languages.find(lang => lang.code === language);
+  // Verkkokauppa on vain suomeksi. Jos vaihtaa englanniksi shop-sivulla,
+  // ohjaa englannin etusivulle (muuten jäisi sivulle jota ei ole EN:ksi).
+  const handleSelect = (code: Language) => {
+    setLanguage(code);
+    if (code === 'en' && location.pathname.startsWith('/shop')) {
+      navigate('/');
+    }
+  };
 
   return (
     <DropdownMenu>
@@ -33,7 +43,7 @@ const LanguageSwitcher = () => {
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            onClick={() => setLanguage(lang.code)}
+            onClick={() => handleSelect(lang.code)}
             className={`cursor-pointer hover:bg-gray-800 ${
               language === lang.code ? 'bg-gray-800' : ''
             }`}
