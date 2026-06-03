@@ -7,14 +7,14 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ArrowLeft, Package, CreditCard, Check, Loader2 } from "lucide-react";
+import { ArrowLeft, Package, CreditCard, Check, Loader2, Trash2, Plus, Minus } from "lucide-react";
 
 // TEMP TESTI 2026-06-02: toimitusmaksu pois testiostosta varten. PALAUTA arvoon 5.9.
 const SHIPPING_COST = 0;
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const { items, totalPrice } = useCart();
+  const { items, totalPrice, removeItem, updateQuantity } = useCart();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -269,11 +269,36 @@ const Checkout = () => {
           <div className="lg:col-span-1">
             <div className="bg-gray-900 rounded-lg p-6 sticky top-24">
               <h3 className="font-bold text-lg mb-4">Tilaus</h3>
-              <div className="space-y-2 text-sm">
-                {items.map((item, idx) => (
-                  <div key={idx} className="flex justify-between gap-3">
-                    <span className="text-gray-400 min-w-0 truncate">{item.name} x{item.quantity}</span>
-                    <span className="whitespace-nowrap flex-shrink-0">{(item.price * item.quantity).toFixed(2).replace(".", ",")} €</span>
+              <div className="space-y-3 text-sm">
+                {items.length === 0 && (
+                  <p className="text-gray-500">Ostoskori on tyhjä.</p>
+                )}
+                {items.map((item) => (
+                  <div key={`${item.id}-${item.weight || ""}-${item.color || ""}`} className="flex gap-3 items-start">
+                    <img src={item.image} alt={item.name} className="w-12 h-12 rounded object-contain bg-black/30 flex-shrink-0" />
+                    <div className="min-w-0 flex-1">
+                      <div className="text-white truncate">{item.name}</div>
+                      {(item.color || item.weight) && (
+                        <div className="text-xs text-gray-500">
+                          {item.color || ""}{item.color && item.weight ? " · " : ""}{item.weight || ""}
+                        </div>
+                      )}
+                      <div className="flex items-center gap-2 mt-1.5">
+                        <div className="inline-flex items-center border border-white/15 rounded">
+                          <button type="button" onClick={() => updateQuantity(item.id, item.quantity - 1, item.weight, item.color)} className="w-7 h-7 flex items-center justify-center hover:bg-white/10" aria-label="Vähennä">
+                            <Minus className="w-3 h-3" />
+                          </button>
+                          <span className="w-7 text-center">{item.quantity}</span>
+                          <button type="button" onClick={() => updateQuantity(item.id, item.quantity + 1, item.weight, item.color)} className="w-7 h-7 flex items-center justify-center hover:bg-white/10" aria-label="Lisää">
+                            <Plus className="w-3 h-3" />
+                          </button>
+                        </div>
+                        <button type="button" onClick={() => removeItem(item.id, item.weight, item.color)} className="text-gray-500 hover:text-red-400 transition-colors" aria-label="Poista tuote">
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                    <span className="whitespace-nowrap flex-shrink-0 text-white">{(item.price * item.quantity).toFixed(2).replace(".", ",")} €</span>
                   </div>
                 ))}
               </div>

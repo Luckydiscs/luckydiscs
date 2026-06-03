@@ -262,6 +262,7 @@ const ProductCard = ({
   const colorInStock = (c: string) =>
     product.variants!.some((v) => v.color === c && v.stock > 0);
 
+  const soldOut = hasVariants && !product.variants!.some((v) => v.stock > 0);
   const canAdd = hasVariants ? !!selectedVariant : true;
 
   const handleClick = () => {
@@ -286,9 +287,14 @@ const ProductCard = ({
             {product.badge}
           </span>
         )}
-        {discount > 0 && (
+        {discount > 0 && !soldOut && (
           <span className="bg-red-500 text-white font-bold tracking-wider text-[10px] px-2 py-0.5 rounded-md shadow">
             -{discount}%
+          </span>
+        )}
+        {soldOut && (
+          <span className="bg-gray-700 text-gray-200 font-bold tracking-wider text-[10px] px-2 py-0.5 rounded-md shadow">
+            LOPPUUNMYYTY
           </span>
         )}
       </div>
@@ -342,7 +348,7 @@ const ProductCard = ({
         )}
 
         {/* Variant selector */}
-        {hasVariants && (
+        {hasVariants && !soldOut && (
           <div className="space-y-3 mb-4">
             <div>
               <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
@@ -476,18 +482,27 @@ const ProductCard = ({
               <span className="text-xs text-gray-500">({qty} kpl)</span>
             )}
           </div>
-          <Button
-            onClick={handleClick}
-            disabled={!canAdd}
-            className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-full disabled:opacity-40 disabled:cursor-not-allowed"
-          >
-            <Plus className="w-4 h-4 mr-1" />
-            {hasVariants && !selColor
-              ? "Valitse väri"
-              : hasVariants && !effectiveWeight
-                ? "Valitse paino"
-                : "Lisää koriin"}
-          </Button>
+          {soldOut ? (
+            <Button
+              disabled
+              className="w-full bg-gray-700 text-gray-300 font-bold rounded-full cursor-not-allowed opacity-70"
+            >
+              Loppuunmyyty
+            </Button>
+          ) : (
+            <Button
+              onClick={handleClick}
+              disabled={!canAdd}
+              className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-full disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              <Plus className="w-4 h-4 mr-1" />
+              {hasVariants && !selColor
+                ? "Valitse väri"
+                : hasVariants && !effectiveWeight
+                  ? "Valitse paino"
+                  : "Lisää koriin"}
+            </Button>
+          )}
         </div>
       </div>
     </article>

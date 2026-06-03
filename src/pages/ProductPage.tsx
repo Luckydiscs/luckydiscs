@@ -86,6 +86,7 @@ const ProductPage = () => {
 
   const discount = product.originalPrice
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
+  const soldOut = hasVariants && !product.variants!.some((v) => v.stock > 0);
   const canAdd = hasVariants ? !!(effColor && effWeight) : true;
 
   const handleAdd = () => {
@@ -116,7 +117,8 @@ const ProductPage = () => {
               <div className="sticky top-28 aspect-square bg-gradient-to-br from-emerald-950/40 to-black rounded-2xl border border-white/10 overflow-hidden flex items-center justify-center">
                 <div className="absolute top-4 left-4 z-10 flex flex-col items-start gap-1.5">
                   {product.badge && <span className="bg-yellow-500 text-black font-bold tracking-wider text-xs px-2.5 py-1 rounded-md shadow">{product.badge}</span>}
-                  {discount > 0 && <span className="bg-red-500 text-white font-bold tracking-wider text-xs px-2.5 py-1 rounded-md shadow">-{discount}%</span>}
+                  {discount > 0 && !soldOut && <span className="bg-red-500 text-white font-bold tracking-wider text-xs px-2.5 py-1 rounded-md shadow">-{discount}%</span>}
+                  {soldOut && <span className="bg-gray-700 text-gray-200 font-bold tracking-wider text-xs px-2.5 py-1 rounded-md shadow">LOPPUUNMYYTY</span>}
                 </div>
                 <img src={product.image} alt={product.name} className="w-full h-full object-contain p-8" />
               </div>
@@ -156,7 +158,7 @@ const ProductPage = () => {
               )}
 
               {/* Variantit */}
-              {hasVariants && (
+              {hasVariants && !soldOut && (
                 <div className="space-y-4 mb-6">
                   <div>
                     <div className="text-xs uppercase tracking-wider text-gray-500 mb-2">Väri{effColor ? `: ${colorLabel(effColor)}` : ""}</div>
@@ -191,17 +193,28 @@ const ProductPage = () => {
               )}
 
               {/* Määrä + koriin */}
-              <div className="flex items-center gap-4 mb-6">
-                <div className="inline-flex items-center border border-white/15 rounded-lg overflow-hidden">
-                  <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="w-11 h-11 flex items-center justify-center bg-white/5 hover:bg-white/10" aria-label="Vähennä"><Minus className="w-4 h-4" /></button>
-                  <span className="w-12 text-center font-medium">{qty}</span>
-                  <button onClick={() => setQty((q) => q + 1)} className="w-11 h-11 flex items-center justify-center bg-white/5 hover:bg-white/10" aria-label="Lisää"><Plus className="w-4 h-4" /></button>
+              {soldOut ? (
+                <div className="mb-6">
+                  <Button disabled className="w-full h-12 bg-gray-700 text-gray-300 font-bold text-base rounded-full cursor-not-allowed opacity-70">
+                    Loppuunmyyty
+                  </Button>
+                  <p className="text-sm text-gray-500 mt-2">Tämä kiekko on tilapäisesti loppu. Tulossa pian takaisin varastoon.</p>
                 </div>
-                <Button onClick={handleAdd} disabled={!canAdd}
-                  className="flex-1 h-12 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-base rounded-full disabled:opacity-40 disabled:cursor-not-allowed">
-                  {added ? <><Check className="w-5 h-5 mr-2" /> Lisätty koriin</> : hasVariants && !effColor ? "Valitse väri" : hasVariants && !effWeight ? "Valitse paino" : <><ShoppingCart className="w-5 h-5 mr-2" /> Lisää koriin</>}
-                </Button>
-              </div>
+              ) : (
+                <>
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="inline-flex items-center border border-white/15 rounded-lg overflow-hidden">
+                      <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="w-11 h-11 flex items-center justify-center bg-white/5 hover:bg-white/10" aria-label="Vähennä"><Minus className="w-4 h-4" /></button>
+                      <span className="w-12 text-center font-medium">{qty}</span>
+                      <button onClick={() => setQty((q) => q + 1)} className="w-11 h-11 flex items-center justify-center bg-white/5 hover:bg-white/10" aria-label="Lisää"><Plus className="w-4 h-4" /></button>
+                    </div>
+                    <Button onClick={handleAdd} disabled={!canAdd}
+                      className="flex-1 h-12 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-base rounded-full disabled:opacity-40 disabled:cursor-not-allowed">
+                      {added ? <><Check className="w-5 h-5 mr-2" /> Lisätty koriin</> : hasVariants && !effColor ? "Valitse väri" : hasVariants && !effWeight ? "Valitse paino" : <><ShoppingCart className="w-5 h-5 mr-2" /> Lisää koriin</>}
+                    </Button>
+                  </div>
+                </>
+              )}
               {added && (
                 <Button onClick={() => navigate("/shop/kassa")} variant="outline" className="w-full mb-6 border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10">
                   Siirry kassalle →
