@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
 import useSEO from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
+import { HelpCircle, Truck, Package, Mail } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -62,7 +63,7 @@ const FAQ = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
         <div className="container mx-auto px-4 relative z-10 max-w-3xl text-center">
           <h1 className="text-4xl md:text-6xl font-semibold mb-6 bg-gradient-to-r from-gray-100 via-lucky-green to-gray-100 bg-clip-text text-transparent">
-            Lucky Discs FAQ
+            Usein kysytyt kysymykset
           </h1>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto">
             {t('faq.subtitle')}
@@ -75,11 +76,12 @@ const FAQ = () => {
 
           <section className="space-y-8">
             <div>
-              <h2 className="text-3xl md:text-4xl font-heading mb-6 text-gray-200">
+              <h2 className="text-3xl md:text-4xl font-heading mb-6 text-gray-200 flex items-center gap-3">
+                <HelpCircle className="h-8 w-8 text-lucky-green shrink-0" aria-hidden="true" />
                 {t('faq.general.title')}
               </h2>
               <Accordion type="single" collapsible className="space-y-4">
-                <AccordionItem value="what-is-disc-golf" className="bg-white/5 border border-white/10 rounded-lg px-6">
+                <AccordionItem value="what-is-disc-golf" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
                   <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
                     {t('faq.whatIsDiscGolf.question')}
                   </AccordionTrigger>
@@ -88,7 +90,7 @@ const FAQ = () => {
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="disc-choice" className="bg-white/5 border border-white/10 rounded-lg px-6">
+                <AccordionItem value="disc-choice" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
                   <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
                     {t('faq.discChoice.question')}
                   </AccordionTrigger>
@@ -97,7 +99,7 @@ const FAQ = () => {
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="flight-numbers" className="bg-white/5 border border-white/10 rounded-lg px-6">
+                <AccordionItem value="flight-numbers" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
                   <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
                     {t('faq.flightNumbers.question')}
                   </AccordionTrigger>
@@ -106,7 +108,7 @@ const FAQ = () => {
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="disc-stability" className="bg-white/5 border border-white/10 rounded-lg px-6">
+                <AccordionItem value="disc-stability" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
                   <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
                     {t('faq.discStability.question')}
                   </AccordionTrigger>
@@ -118,11 +120,12 @@ const FAQ = () => {
             </div>
 
             <div>
-              <h2 className="text-3xl md:text-4xl font-heading mb-6 text-gray-200">
+              <h2 className="text-3xl md:text-4xl font-heading mb-6 text-gray-200 flex items-center gap-3">
+                <Truck className="h-8 w-8 text-lucky-green shrink-0" aria-hidden="true" />
                 {t('faq.ordering.title')}
               </h2>
               <Accordion type="single" collapsible className="space-y-4">
-                <AccordionItem value="shipping" className="bg-white/5 border border-white/10 rounded-lg px-6">
+                <AccordionItem value="shipping" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
                   <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
                     {t('faq.shipping.question')}
                   </AccordionTrigger>
@@ -131,7 +134,7 @@ const FAQ = () => {
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="payment" className="bg-white/5 border border-white/10 rounded-lg px-6">
+                <AccordionItem value="payment" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
                   <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
                     {t('faq.payment.question')}
                   </AccordionTrigger>
@@ -140,7 +143,7 @@ const FAQ = () => {
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="returns" className="bg-white/5 border border-white/10 rounded-lg px-6">
+                <AccordionItem value="returns" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
                   <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
                     {t('faq.returns.question')}
                   </AccordionTrigger>
@@ -149,7 +152,7 @@ const FAQ = () => {
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="wholesale" className="bg-white/5 border border-white/10 rounded-lg px-6">
+                <AccordionItem value="wholesale" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
                   <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
                     {t('faq.wholesale.question')}
                   </AccordionTrigger>
@@ -161,11 +164,12 @@ const FAQ = () => {
             </div>
 
             <div>
-              <h2 className="text-3xl md:text-4xl font-heading mb-6 text-gray-200">
+              <h2 className="text-3xl md:text-4xl font-heading mb-6 text-gray-200 flex items-center gap-3">
+                <Package className="h-8 w-8 text-lucky-green shrink-0" aria-hidden="true" />
                 {t('faq.products.title')}
               </h2>
               <Accordion type="single" collapsible className="space-y-4">
-                <AccordionItem value="daniel-collaboration" className="bg-white/5 border border-white/10 rounded-lg px-6">
+                <AccordionItem value="daniel-collaboration" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
                   <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
                     {t('faq.danielCollaboration.question')}
                   </AccordionTrigger>
@@ -174,7 +178,7 @@ const FAQ = () => {
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="disc-durability" className="bg-white/5 border border-white/10 rounded-lg px-6">
+                <AccordionItem value="disc-durability" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
                   <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
                     {t('faq.discDurability.question')}
                   </AccordionTrigger>
@@ -187,22 +191,31 @@ const FAQ = () => {
             </div>
           </section>
 
-          <section className="mt-12 p-8 bg-white/5 border border-white/10 rounded-lg text-center">
-            <h2 className="text-3xl md:text-4xl font-heading mb-4 text-gray-200">
+          <section className="mt-12 p-8 bg-gradient-to-br from-lucky-green/15 via-lucky-green/5 to-transparent border border-lucky-green/40 rounded-2xl text-center shadow-lg shadow-lucky-green/5">
+            <h2 className="text-3xl md:text-4xl font-heading mb-4 text-gray-100">
               {t('faq.contactUs.title')}
             </h2>
             <p className="text-gray-200 mb-6">
               {t('faq.contactUs.subtitle')}
             </p>
-            <Button 
-              asChild 
-              size="lg" 
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
-            >
-              <a href="/contact">
-                {t('faq.contactUs.button')}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button
+                asChild
+                size="lg"
+                className="bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                <a href="/contact">
+                  {t('faq.contactUs.button')}
+                </a>
+              </Button>
+              <a
+                href="mailto:asiakaspalvelu@luckydiscs.fi"
+                className="inline-flex items-center gap-2 text-lucky-green hover:text-lucky-green/80 font-medium transition-colors"
+              >
+                <Mail className="h-5 w-5" aria-hidden="true" />
+                asiakaspalvelu@luckydiscs.fi
               </a>
-            </Button>
+            </div>
           </section>
         </div>
       </main>

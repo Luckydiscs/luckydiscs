@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles, Award, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import useSEO from "@/hooks/useSEO";
@@ -208,7 +208,7 @@ const Brand = () => {
             >
               <div className="bg-gradient-to-b from-lucky-green/10 to-black/30 p-8 rounded-xl border border-lucky-green/20 text-center hover:transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-white font-bold text-2xl">P</span>
+                  <Sparkles className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-heading mb-4 text-white">{t('brand.boldInnovation')}</h3>
                 <p className="text-gray-300 mb-4">
@@ -219,7 +219,7 @@ const Brand = () => {
               
               <div className="bg-gradient-to-b from-lucky-green/10 to-black/30 p-8 rounded-xl border border-lucky-green/20 text-center hover:transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-white font-bold text-2xl">E</span>
+                  <Award className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-heading mb-4 text-white">{t('brand.qualityFirst')}</h3>
                 <p className="text-gray-300 mb-4">
@@ -230,7 +230,7 @@ const Brand = () => {
               
               <div className="bg-gradient-to-b from-lucky-green/10 to-black/30 p-8 rounded-xl border border-lucky-green/20 text-center hover:transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-white font-bold text-2xl">S</span>
+                  <Users className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-heading mb-4 text-white">{t('brand.communityGrowth')}</h3>
                 <p className="text-gray-300 mb-4">

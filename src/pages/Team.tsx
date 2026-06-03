@@ -114,37 +114,36 @@ const Team = () => {
         <section className="py-16 px-4 bg-gradient-to-br from-gray-900/50 to-black">
           <div className="container mx-auto">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl font-semibold mb-8 text-white">Championship Mindset</h2>
+              <h2 className="text-3xl font-semibold mb-8 text-white">{t('team.championshipMindset')}</h2>
               <p className="text-lg text-gray-300 mb-8">
-                "Lucky isn't just our name - it's our philosophy. We believe that preparation meets opportunity on every throw, 
-                and our discs are designed to help players create their own luck on the course."
+                {t('team.philosophyQuote')}
               </p>
               <div className="grid md:grid-cols-3 gap-8 mt-12">
                 <div className="text-center">
                   <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Trophy className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-medium mb-2 text-white">Excellence</h3>
+                  <h3 className="text-xl font-medium mb-2 text-white">{t('team.excellence')}</h3>
                   <p className="text-sm text-gray-300">
-                    Championship-level performance in every disc we create.
+                    {t('team.excellenceDesc')}
                   </p>
                 </div>
                 <div className="text-center">
                   <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Users className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-medium mb-2 text-white">Team Spirit</h3>
+                  <h3 className="text-xl font-medium mb-2 text-white">{t('team.teamSpirit')}</h3>
                   <p className="text-sm text-gray-300">
-                    Building success through collaboration and shared vision.
+                    {t('team.teamSpiritDesc')}
                   </p>
                 </div>
                 <div className="text-center">
                   <div className="w-16 h-16 bg-lucky-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Disc className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-medium mb-2 text-white">Innovation</h3>
+                  <h3 className="text-xl font-medium mb-2 text-white">{t('team.innovation')}</h3>
                   <p className="text-sm text-gray-300">
-                    Constantly pushing the boundaries of disc golf performance.
+                    {t('team.innovationDesc')}
                   </p>
                 </div>
               </div>
