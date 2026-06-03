@@ -11,6 +11,8 @@ import { ArrowLeft, Package, CreditCard, Check, Loader2, Trash2, Plus, Minus } f
 
 // TEMP TESTI 2026-06-02: toimitusmaksu pois testiostosta varten. PALAUTA arvoon 5.9.
 const SHIPPING_COST = 0;
+const VAT_RATE = 0.255; // FI ALV 25,5 % (2026). Hinnat sisältävät ALV:n.
+const fmt = (n: number) => n.toFixed(2).replace(".", ",");
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -116,6 +118,9 @@ const Checkout = () => {
   };
 
   const orderTotal = totalPrice + SHIPPING_COST;
+  // ALV sisältyy hintaan: ALV-osuus = summa × rate/(1+rate)
+  const vatAmount = (orderTotal * VAT_RATE) / (1 + VAT_RATE);
+  const netAmount = orderTotal - vatAmount;
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -208,17 +213,43 @@ const Checkout = () => {
                 <div className="space-y-4">
                   {items.map((item, idx) => (
                     <div key={idx} className="flex items-center gap-4 bg-gray-900 rounded-lg p-3">
-                      <img src={item.image} alt={item.name} className="w-16 h-16 object-contain rounded" />
-                      <div className="flex-1">
+                      <img src={item.image} alt={item.name} className="w-16 h-16 object-contain rounded bg-black/30" />
+                      <div className="flex-1 min-w-0">
                         <p className="font-medium">{item.name}</p>
-                        <p className="text-sm text-gray-400">{item.plastic} · {item.weight} · {item.color}</p>
+                        {[item.plastic, item.weight, item.color].filter(Boolean).length > 0 && (
+                          <p className="text-sm text-gray-400">{[item.plastic, item.weight, item.color].filter(Boolean).join(" · ")}</p>
+                        )}
                       </div>
                       <div className="text-right">
                         <p className="text-sm text-gray-400">{item.quantity} kpl</p>
-                        <p className="font-bold">{(item.price * item.quantity).toFixed(2)} €</p>
+                        <p className="font-bold">{fmt(item.price * item.quantity)} €</p>
                       </div>
                     </div>
                   ))}
+                </div>
+
+                {/* Hintaerittely ALV:n kanssa */}
+                <div className="bg-gray-900 rounded-lg p-4 space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Veroton hinta (ALV 0 %)</span>
+                    <span>{fmt(netAmount)} €</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">ALV 25,5 %</span>
+                    <span>{fmt(vatAmount)} €</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Välisumma (sis. ALV)</span>
+                    <span>{fmt(totalPrice)} €</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Toimitus</span>
+                    <span>{SHIPPING_COST === 0 ? "Ilmainen" : `${fmt(SHIPPING_COST)} €`}</span>
+                  </div>
+                  <div className="flex justify-between font-bold text-base pt-2 mt-1 border-t border-gray-700">
+                    <span>Yhteensä</span>
+                    <span className="text-[#FFD700]">{fmt(orderTotal)} €</span>
+                  </div>
                 </div>
               </div>
             )}
@@ -251,7 +282,7 @@ const Checkout = () => {
                         Käynnistetään maksua…
                       </>
                     ) : (
-                      <>Siirry maksamaan — {orderTotal.toFixed(2)} €</>
+                      <>Siirry maksamaan — {fmt(orderTotal)} €</>
                     )}
                   </Button>
 
@@ -309,11 +340,15 @@ const Checkout = () => {
                 </div>
                 <div className="flex justify-between gap-3 text-sm">
                   <span className="text-gray-600">Toimitus</span>
-                  <span className="whitespace-nowrap text-gray-900">{SHIPPING_COST === 0 ? "Ilmainen" : `${SHIPPING_COST.toFixed(2).replace(".", ",")} €`}</span>
+                  <span className="whitespace-nowrap text-gray-900">{SHIPPING_COST === 0 ? "Ilmainen" : `${fmt(SHIPPING_COST)} €`}</span>
+                </div>
+                <div className="flex justify-between gap-3 text-xs text-gray-500">
+                  <span>sis. ALV 25,5 %</span>
+                  <span className="whitespace-nowrap">{fmt(vatAmount)} €</span>
                 </div>
                 <div className="flex justify-between gap-3 font-bold text-xl pt-3 border-t border-gray-200">
                   <span className="text-gray-900">Yhteensä</span>
-                  <span className="text-emerald-600 whitespace-nowrap">{orderTotal.toFixed(2).replace(".", ",")} €</span>
+                  <span className="text-emerald-600 whitespace-nowrap">{fmt(orderTotal)} €</span>
                 </div>
               </div>
               {step < 3 && (
