@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Truck, ShieldCheck, RotateCcw, Plus, Minus, ShoppingBag, Loader2 } from "lucide-react";
+import { Truck, ShieldCheck, RotateCcw, Plus, Minus, ShoppingBag, Loader2, Mail } from "lucide-react";
 
 // Tuotteet + variantit + stock luetaan Supabase-kannasta (useShopProducts).
 type Product = ShopProduct;
@@ -182,6 +182,27 @@ const Shop = () => {
           </>
         )}
       </div>
+
+      {/* JÄLLEENMYYJÄT & SUURTILAUKSET */}
+      <section className="border-t border-white/5 bg-gradient-to-b from-[#0a0a0a] to-black">
+        <div className="container mx-auto px-4 py-12 md:py-16">
+          <div className="max-w-3xl mx-auto text-center rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-950/40 to-black p-8 md:p-10">
+            <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+              Jälleenmyyjä tai suurtilaus?
+            </h2>
+            <p className="text-gray-300 mb-6 leading-relaxed">
+              Oletko jälleenmyyjä — tai haluatko yhdistyksenä, kouluna tai seurana tilata isomman erän kiekkoja?
+              Ota yhteyttä asiakaspalveluumme, niin räätälöimme teille tarjouksen.
+            </p>
+            <a
+              href="mailto:asiakaspalvelu@luckydiscs.fi"
+              className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-full px-6 py-3 transition-colors"
+            >
+              <Mail className="w-4 h-4" /> asiakaspalvelu@luckydiscs.fi
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* FLOATING CART BUTTON (when items) */}
       {totalItems > 0 && (

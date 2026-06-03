@@ -75,7 +75,7 @@ const Team = () => {
                   />
                   <div className="absolute top-4 right-4">
                     <Badge className="bg-yellow-500/90 text-black font-bold">
-                      ð 2025
+                      🏆 2025
                     </Badge>
                   </div>
                 </div>
@@ -94,7 +94,7 @@ const Team = () => {
 
                   <div className="grid grid-cols-2 gap-6">
                     <div className="bg-gray-900/50 p-6 rounded-lg border border-gray-800">
-                      <div className="text-2xl font-bold text-lucky-green mb-2">ð¥</div>
+                      <div className="text-2xl font-bold text-lucky-green mb-2">🥇</div>
                       <p className="text-white font-medium">{t('team.finnishChampion')}</p>
                       <p className="text-gray-300 text-sm">{t('team.openDivisionGold')}</p>
                     </div>
@@ -175,10 +175,10 @@ const Team = () => {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="text-gray-300 space-y-3">
-                    <p>â {t('team.offer1')}</p>
-                    <p>â {t('team.offer2')}</p>
-                    <p>â {t('team.offer3')}</p>
-                    <p>â {t('team.offer4')}</p>
+                    <p>✓ {t('team.offer1')}</p>
+                    <p>✓ {t('team.offer2')}</p>
+                    <p>✓ {t('team.offer3')}</p>
+                    <p>✓ {t('team.offer4')}</p>
                   </CardContent>
                 </Card>
 
@@ -190,10 +190,10 @@ const Team = () => {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="text-gray-300 space-y-3">
-                    <p>â {t('team.looking1')}</p>
-                    <p>â {t('team.looking2')}</p>
-                    <p>â {t('team.looking3')}</p>
-                    <p>â {t('team.looking4')}</p>
+                    <p>✓ {t('team.looking1')}</p>
+                    <p>✓ {t('team.looking2')}</p>
+                    <p>✓ {t('team.looking3')}</p>
+                    <p>✓ {t('team.looking4')}</p>
                   </CardContent>
                 </Card>
               </div>
@@ -223,7 +223,7 @@ const Team = () => {
             <h2 className="text-3xl font-semibold text-center mb-12 text-white">{t('team.championshipResults')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 p-8 rounded-lg border border-gray-700 text-center">
-                <div className="text-4xl font-bold text-lucky-green mb-2">ð¥</div>
+                <div className="text-4xl font-bold text-lucky-green mb-2">🥇</div>
                 <p className="text-lg font-semibold text-white">{t('team.finnishNational')}</p>
                 <p className="text-sm text-gray-300">{t('team.championshipGold')}</p>
               </div>

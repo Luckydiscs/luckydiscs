@@ -13,6 +13,7 @@ import {
 import { useTranslation } from "@/hooks/useTranslation";
 import useSEO from "@/hooks/useSEO";
 import allDiscs from "@/data/discs";
+import { Rocket, Send, Target, CircleDot, Gauge, Wind, RotateCw, CornerDownLeft, Truck, RotateCcw, Mail } from "lucide-react";
 
 const tabValues = ["all", "driver", "fairway", "midrange", "putter"] as const;
 
@@ -193,34 +194,29 @@ const Discs = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
-              <h3 className="text-xl font-heading mb-3 text-lucky-green">{t('discs.drivers')}</h3>
-              <p className="text-gray-300 text-sm" style={{ whiteSpace: 'pre-line' }}>
-                {t('discs.driversDesc')}
-              </p>
-            </div>
-
-            <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
-              <h3 className="text-xl font-heading mb-3 text-lucky-green">{t('discs.fairway')} Drivers</h3>
-              <p className="text-gray-300 text-sm" style={{ whiteSpace: 'pre-line' }}>
-                {t('discs.fairwayDesc')}
-              </p>
-            </div>
-
-            <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
-              <h3 className="text-xl font-heading mb-3 text-lucky-green">{t('discs.midRange')}</h3>
-              <p className="text-gray-300 text-sm" style={{ whiteSpace: 'pre-line' }}>
-                {t('discs.midRangeDesc')}
-              </p>
-            </div>
-
-            <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-center">
-              <h3 className="text-xl font-heading mb-3 text-lucky-green">{t('discs.putters')}</h3>
-              <p className="text-gray-300 text-sm" style={{ whiteSpace: 'pre-line' }}>
-                {t('discs.puttersDesc')}
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              { Icon: Rocket, title: t('discs.drivers'), desc: t('discs.driversDesc'), speed: '9–14' },
+              { Icon: Send, title: `${t('discs.fairway')} Drivers`, desc: t('discs.fairwayDesc'), speed: '6–8' },
+              { Icon: Target, title: t('discs.midRange'), desc: t('discs.midRangeDesc'), speed: '4–5' },
+              { Icon: CircleDot, title: t('discs.putters'), desc: t('discs.puttersDesc'), speed: '1–4' },
+            ].map(({ Icon, title, desc, speed }) => (
+              <div
+                key={title}
+                className="group relative bg-gradient-to-b from-white/[0.07] to-white/[0.02] rounded-2xl p-6 border border-white/10 hover:border-lucky-green/50 hover:-translate-y-1 transition-all duration-300 text-center"
+              >
+                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-lucky-green/15 border border-lucky-green/30 flex items-center justify-center text-lucky-green group-hover:bg-lucky-green group-hover:text-black transition-colors">
+                  <Icon className="w-7 h-7" />
+                </div>
+                <h3 className="text-xl font-heading mb-2 text-white">{title}</h3>
+                <span className="inline-block mb-3 text-[11px] uppercase tracking-wider font-bold text-lucky-green bg-lucky-green/10 border border-lucky-green/20 rounded-full px-3 py-0.5">
+                  Speed {speed}
+                </span>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {desc.split('\n')[0]}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -233,27 +229,37 @@ const Discs = () => {
               {t('discs.flightNumbersTitle')}
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white/5 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-heading mb-4 text-lucky-green">{t('discs.speedGlide')}</h3>
-                <p className="mb-4 text-gray-300">
-                  <strong>Speed (1-14):</strong> {t('discs.speedDesc')}
-                </p>
-                <p className="text-gray-300">
-                  <strong>Glide (1-7):</strong> {t('discs.glideDesc')}
-                </p>
-              </div>
-
-              <div className="bg-white/5 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-heading mb-4 text-lucky-green">{t('discs.turnFade')}</h3>
-                <p className="mb-4 text-gray-300">
-                  <strong>Turn (-5 to 1):</strong> {t('discs.turnDesc')}
-                </p>
-                <p className="text-gray-300">
-                  <strong>Fade (0-5):</strong> {t('discs.fadeDesc')}
-                </p>
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {[
+                { Icon: Gauge, label: 'Speed', range: '1–14', desc: t('discs.speedDesc') },
+                { Icon: Wind, label: 'Glide', range: '1–7', desc: t('discs.glideDesc') },
+                { Icon: RotateCw, label: 'Turn', range: '–5…1', desc: t('discs.turnDesc') },
+                { Icon: CornerDownLeft, label: 'Fade', range: '0–5', desc: t('discs.fadeDesc') },
+              ].map(({ Icon, label, range, desc }) => (
+                <div key={label} className="group bg-gradient-to-b from-white/[0.07] to-white/[0.02] rounded-2xl p-5 border border-white/10 hover:border-lucky-green/50 transition-all duration-300">
+                  <div className="flex items-center gap-2.5 mb-3">
+                    <span className="w-9 h-9 rounded-lg bg-lucky-green/15 border border-lucky-green/30 flex items-center justify-center text-lucky-green group-hover:bg-lucky-green group-hover:text-black transition-colors">
+                      <Icon className="w-5 h-5" />
+                    </span>
+                    <div>
+                      <div className="font-heading text-white leading-none">{label}</div>
+                      <div className="text-[11px] text-lucky-green font-bold tracking-wide">{range}</div>
+                    </div>
+                  </div>
+                  <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
+                </div>
+              ))}
             </div>
+
+            {/* Toimitus + jälleenmyyjä/suurtilaus -info */}
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-400">
+              <span className="flex items-center gap-1.5"><Truck className="w-4 h-4 text-lucky-green" /> Toimitus 5,90 € · ilmainen yli 50 €</span>
+              <span className="flex items-center gap-1.5"><RotateCcw className="w-4 h-4 text-lucky-green" /> 14 pv palautusoikeus</span>
+            </div>
+            <p className="mt-3 text-center text-sm text-gray-400">
+              <Mail className="inline w-4 h-4 text-lucky-green mr-1" />
+              Yhdistys, koulu tai seura? Kysy suurtilauksista: <a href="mailto:asiakaspalvelu@luckydiscs.fi" className="text-lucky-green hover:underline">asiakaspalvelu@luckydiscs.fi</a>
+            </p>
 
             <div className="mt-8 text-center">
               <p className="text-gray-300">

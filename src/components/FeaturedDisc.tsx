@@ -30,7 +30,7 @@ const discs: DiscCard[] = [
     nameKey: "discs.bankRobber",
     descKey: "discs.bankRobberDesc",
     type: "Fairway Driver",
-    flightNumbers: { speed: 9, glide: 5, turn: -1, fade: 2 },
+    flightNumbers: { speed: 8, glide: 5, turn: -1, fade: 2 },
     accentColor: "lucky-green",
   },
   {
@@ -39,7 +39,7 @@ const discs: DiscCard[] = [
     nameKey: "discs.moneyShot",
     descKey: "discs.moneyShotDesc",
     type: "Putter",
-    flightNumbers: { speed: 3, glide: 3, turn: 0, fade: 1 },
+    flightNumbers: { speed: 4, glide: 3, turn: 1, fade: 3 },
     accentColor: "lucky-gold",
   },
 ];

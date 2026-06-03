@@ -141,7 +141,7 @@ const Brand = () => {
                 </p>
                 
                 <div className="bg-gradient-to-r from-lucky-green/20 to-transparent p-6 rounded-lg border-l-4 border-lucky-green mb-4">
-                  <h4 className="text-white font-bold text-lg mb-2">ð«ð® {t('brand.madeInFinland')}</h4>
+                  <h4 className="text-white font-bold text-lg mb-2">🇫🇮 {t('brand.madeInFinland')}</h4>
                   <p className="text-gray-300">
                     {t('brand.madeInFinlandDesc')}
                   </p>
