@@ -9,8 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, Package, CreditCard, Check, Loader2, Trash2, Plus, Minus } from "lucide-react";
 
-// TEMP TESTI 2026-06-02: toimitusmaksu pois testiostosta varten. PALAUTA arvoon 5.9.
-const SHIPPING_COST = 0;
+const SHIPPING_COST = 5.9;
 const VAT_RATE = 0.255; // FI ALV 25,5 % (2026). Hinnat sisältävät ALV:n.
 const fmt = (n: number) => n.toFixed(2).replace(".", ",");
 
