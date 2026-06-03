@@ -61,20 +61,42 @@ async function calculateHmac(
     .join("");
 }
 
-const formatCents = (cents: number) => (cents / 100).toFixed(2);
+// ── Brändi ───────────────────────────────────────────────
+const GREEN = "#1E8549"; // lucky-green (emerald)
+const GOLD = "#E2AD28"; // lucky-gold
+const DARK = "#0a0a0a";
+const eur = (cents: number) => (cents / 100).toFixed(2).replace(".", ",");
+const VAT_RATE = 0.255; // FI ALV 25,5 % (hinnat sisältävät ALV:n)
+const vatOf = (cents: number) => Math.round((cents * VAT_RATE) / (1 + VAT_RATE));
+const shippingLabel = (cents: number) => (cents === 0 ? "Ilmainen" : `${eur(cents)} €`);
+
+function brandHeader() {
+  return `
+    <div style="background:${GREEN};padding:28px 24px;text-align:center;">
+      <div style="font-size:26px;font-weight:800;letter-spacing:2px;color:#ffffff;">🍀 LUCKY DISCS</div>
+      <div style="font-size:11px;letter-spacing:3px;color:#d1fae5;text-transform:uppercase;margin-top:4px;">Premium Disc Golf</div>
+    </div>`;
+}
+
+function brandFooter() {
+  return `
+    <div style="background:${DARK};padding:20px 24px;text-align:center;">
+      <div style="color:#ffffff;font-weight:700;letter-spacing:1px;margin-bottom:6px;">🍀 LUCKY DISCS</div>
+      <div style="color:#9ca3af;font-size:12px;line-height:1.7;">
+        VESITIIVIS Oy (Y-tunnus 3368925-4)<br>
+        <a href="${SITE_URL}" style="color:${GOLD};text-decoration:none;">${SITE_URL.replace("https://", "")}</a>
+      </div>
+    </div>`;
+}
 
 async function sendCustomerEmail(order: any, items: any[]) {
   const itemsHtml = items
     .map(
       (i) =>
         `<tr>
-          <td style="padding:8px;border-bottom:1px solid #eee;">${
-          i.variant ? `${i.variant} ` : ""
-        }${i.product_name}</td>
-          <td style="padding:8px;border-bottom:1px solid #eee;text-align:center;">${i.quantity} kpl</td>
-          <td style="padding:8px;border-bottom:1px solid #eee;text-align:right;">${
-          formatCents(i.line_total_cents)
-        } €</td>
+          <td style="padding:10px 0;border-bottom:1px solid #eee;color:#1a1a1a;">${i.variant ? `${i.variant} ` : ""}${i.product_name}</td>
+          <td style="padding:10px 0;border-bottom:1px solid #eee;text-align:center;color:#666;">${i.quantity} kpl</td>
+          <td style="padding:10px 0;border-bottom:1px solid #eee;text-align:right;color:#1a1a1a;">${eur(i.line_total_cents)} €</td>
         </tr>`,
     )
     .join("");
@@ -84,47 +106,43 @@ async function sendCustomerEmail(order: any, items: any[]) {
     to: order.customer_email,
     subject: `Kiitos tilauksestasi! ${order.order_number}`,
     html: `
-      <div style="font-family:Inter,sans-serif;max-width:600px;margin:0 auto;color:#222;">
-        <div style="background:#000;color:#FFD700;padding:24px;text-align:center;">
-          <h1 style="margin:0;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;">LUCKY DISCS</h1>
-        </div>
-        <div style="padding:24px;">
-          <h2>Kiitos tilauksestasi, ${order.customer_first_name}!</h2>
-          <p>Maksu on vastaanotettu ja tilauksesi käsittelyyn. Lähetämme paketin 1–3 työpäivän kuluessa.</p>
+      <div style="margin:0;padding:24px 0;background:#f4f4f5;">
+        <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;font-family:Helvetica,Arial,sans-serif;">
+          ${brandHeader()}
+          <div style="padding:28px 24px;color:#1a1a1a;">
+            <h2 style="margin:0 0 8px;font-size:20px;">Kiitos tilauksestasi, ${order.customer_first_name}!</h2>
+            <p style="margin:0 0 20px;color:#444;line-height:1.6;">Maksu on vastaanotettu ja tilauksesi on käsittelyssä. Lähetämme paketin 1–3 työpäivän kuluessa.</p>
 
-          <h3>Tilaus ${order.order_number}</h3>
-          <table style="width:100%;border-collapse:collapse;margin:16px 0;">
-            ${itemsHtml}
-            <tr>
-              <td colspan="2" style="padding:8px;text-align:right;color:#666;">Toimitus:</td>
-              <td style="padding:8px;text-align:right;">${
-      formatCents(order.shipping_cents)
-    } €</td>
-            </tr>
-            <tr>
-              <td colspan="2" style="padding:8px;text-align:right;font-weight:bold;">Yhteensä:</td>
-              <td style="padding:8px;text-align:right;font-weight:bold;color:#22c55e;">${
-      formatCents(order.total_cents)
-    } €</td>
-            </tr>
-          </table>
+            <div style="background:#f4f4f5;border-radius:10px;padding:14px 16px;margin-bottom:20px;">
+              <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:2px;">Tilausnumero</div>
+              <div style="font-size:16px;font-weight:700;color:${GREEN};">${order.order_number}</div>
+            </div>
 
-          <h3>Toimitusosoite</h3>
-          <p>
-            ${order.customer_first_name} ${order.customer_last_name}<br>
-            ${order.shipping_address}<br>
-            ${order.shipping_postal_code} ${order.shipping_city}<br>
-            ${order.shipping_country}
-          </p>
+            <table style="width:100%;border-collapse:collapse;margin-bottom:4px;">
+              <tr>
+                <th align="left" style="font-size:11px;text-transform:uppercase;color:#888;padding:6px 0;border-bottom:2px solid ${GREEN};">Tuote</th>
+                <th align="center" style="font-size:11px;text-transform:uppercase;color:#888;padding:6px 0;border-bottom:2px solid ${GREEN};">Määrä</th>
+                <th align="right" style="font-size:11px;text-transform:uppercase;color:#888;padding:6px 0;border-bottom:2px solid ${GREEN};">Hinta</th>
+              </tr>
+              ${itemsHtml}
+            </table>
+            <table style="width:100%;border-collapse:collapse;margin-top:6px;">
+              <tr><td style="padding:5px 0;color:#666;font-size:14px;">Toimitus</td><td align="right" style="padding:5px 0;font-size:14px;">${shippingLabel(order.shipping_cents)}</td></tr>
+              <tr><td style="padding:5px 0;color:#999;font-size:12px;">sis. ALV 25,5 %</td><td align="right" style="padding:5px 0;color:#999;font-size:12px;">${eur(vatOf(order.total_cents))} €</td></tr>
+              <tr><td style="padding:12px 0 0;font-weight:800;font-size:18px;border-top:2px solid #eee;">Yhteensä</td><td align="right" style="padding:12px 0 0;font-weight:800;font-size:18px;color:${GREEN};border-top:2px solid #eee;">${eur(order.total_cents)} €</td></tr>
+            </table>
 
-          <p style="margin-top:24px;">
-            Jos sinulla on kysyttävää, ota yhteyttä: <a href="mailto:asiakaspalvelu@luckydiscs.fi">asiakaspalvelu@luckydiscs.fi</a>
-          </p>
+            <h3 style="margin:24px 0 8px;font-size:15px;">Toimitusosoite</h3>
+            <p style="margin:0;color:#444;line-height:1.6;">
+              ${order.customer_first_name} ${order.customer_last_name}<br>
+              ${order.shipping_address}<br>
+              ${order.shipping_postal_code} ${order.shipping_city}<br>
+              ${order.shipping_country}
+            </p>
 
-          <p style="font-size:12px;color:#888;margin-top:32px;border-top:1px solid #eee;padding-top:16px;">
-            Lucky Discs &mdash; VESITIIVIS Oy (Y-tunnus 3368925-4)<br>
-            <a href="${SITE_URL}">${SITE_URL}</a>
-          </p>
+            <p style="margin:24px 0 0;color:#444;">Kysyttävää? <a href="mailto:asiakaspalvelu@luckydiscs.fi" style="color:${GREEN};">asiakaspalvelu@luckydiscs.fi</a></p>
+          </div>
+          ${brandFooter()}
         </div>
       </div>
     `,
@@ -132,43 +150,56 @@ async function sendCustomerEmail(order: any, items: any[]) {
 }
 
 async function sendAdminEmail(order: any, items: any[]) {
-  const itemsList = items
-    .map((i) =>
-      `- ${i.variant ? `${i.variant} ` : ""}${i.product_name} × ${i.quantity} (${
-        formatCents(i.unit_price_cents)
-      } €)`
+  const itemsHtml = items
+    .map(
+      (i) =>
+        `<tr>
+          <td style="padding:8px 0;border-bottom:1px solid #eee;">${i.variant ? `${i.variant} ` : ""}${i.product_name}</td>
+          <td style="padding:8px 0;border-bottom:1px solid #eee;text-align:center;color:#666;">${i.quantity} kpl</td>
+          <td style="padding:8px 0;border-bottom:1px solid #eee;text-align:right;">${eur(i.line_total_cents)} €</td>
+        </tr>`,
     )
-    .join("\n");
+    .join("");
 
   await resend.emails.send({
-    from: "Lucky Discs Order <tilaukset@luckydiscs.fi>",
+    from: "Lucky Discs <tilaukset@luckydiscs.fi>",
     to: ADMIN_EMAIL,
-    subject: `🎉 Uusi tilaus ${order.order_number} — ${
-      formatCents(order.total_cents)
-    } €`,
-    text: `Uusi tilaus maksettu Paytrailin kautta.
+    subject: `📦 Toimita tilaus ${order.order_number} — ${eur(order.total_cents)} €`,
+    html: `
+      <div style="margin:0;padding:24px 0;background:#f4f4f5;">
+        <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;font-family:Helvetica,Arial,sans-serif;color:#1a1a1a;">
+          ${brandHeader()}
+          <div style="padding:28px 24px;">
+            <div style="background:${GREEN};color:#fff;border-radius:10px;padding:14px 16px;margin-bottom:20px;text-align:center;">
+              <div style="font-size:18px;font-weight:800;">📦 Uusi maksettu tilaus — toimita asiakkaalle</div>
+              <div style="font-size:13px;color:#d1fae5;margin-top:2px;">Lähetä paketti 1–3 työpäivän sisällä</div>
+            </div>
 
-Tilausnumero: ${order.order_number}
-Asiakas: ${order.customer_first_name} ${order.customer_last_name}
-Email: ${order.customer_email}
-Puh: ${order.customer_phone}
+            <h3 style="margin:0 0 6px;font-size:15px;color:${GREEN};">Toimitusosoite</h3>
+            <p style="margin:0 0 20px;line-height:1.7;font-size:15px;">
+              <strong>${order.customer_first_name} ${order.customer_last_name}</strong><br>
+              ${order.shipping_address}<br>
+              ${order.shipping_postal_code} ${order.shipping_city}<br>
+              ${order.shipping_country}<br>
+              <span style="color:#666;">${order.customer_email} · ${order.customer_phone}</span>
+            </p>
 
-Toimitusosoite:
-${order.shipping_address}
-${order.shipping_postal_code} ${order.shipping_city}
-${order.shipping_country}
+            <h3 style="margin:0 0 6px;font-size:15px;color:${GREEN};">Tilaus ${order.order_number}</h3>
+            <table style="width:100%;border-collapse:collapse;">
+              ${itemsHtml}
+              <tr><td colspan="2" style="padding:8px 0;text-align:right;color:#666;">Toimitus</td><td style="padding:8px 0;text-align:right;">${shippingLabel(order.shipping_cents)}</td></tr>
+              <tr><td colspan="2" style="padding:8px 0;text-align:right;font-weight:800;">Yhteensä</td><td style="padding:8px 0;text-align:right;font-weight:800;color:${GREEN};">${eur(order.total_cents)} €</td></tr>
+            </table>
 
-Tuotteet:
-${itemsList}
-
-Toimitus: ${formatCents(order.shipping_cents)} €
-YHTEENSÄ: ${formatCents(order.total_cents)} €
-
-Paytrail transaction: ${order.paytrail_transaction_id}
-Provider: ${order.paytrail_provider}
-
-Lähetä paketti 1-3 työpäivän sisällä.
-`,
+            <p style="margin:20px 0 0;font-size:12px;color:#888;">
+              Maksu: ${order.paytrail_provider ?? "Paytrail"} · Transaktio: ${order.paytrail_transaction_id ?? "-"}<br>
+              Hallinnoi tilausta: <a href="${SITE_URL}/admin" style="color:${GREEN};">${SITE_URL.replace("https://", "")}/admin</a>
+            </p>
+          </div>
+          ${brandFooter()}
+        </div>
+      </div>
+    `,
   });
 }
 
