@@ -9,7 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, Package, CreditCard, Check, Loader2 } from "lucide-react";
 
-const SHIPPING_COST = 5.9;
+// TEMP TESTI 2026-06-02: toimitusmaksu pois testiostosta varten. PALAUTA arvoon 5.9.
+const SHIPPING_COST = 0;
 
 const Checkout = () => {
   const navigate = useNavigate();
