@@ -9,13 +9,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, Package, CreditCard, Check, Loader2, Trash2, Plus, Minus } from "lucide-react";
 
-const SHIPPING_COST = 5.9;
+const BASE_SHIPPING = 5.9;
+const FREE_SHIPPING_THRESHOLD = 50; // ilmainen toimitus yli 50 € tilauksiin
 const VAT_RATE = 0.255; // FI ALV 25,5 % (2026). Hinnat sisältävät ALV:n.
 const fmt = (n: number) => n.toFixed(2).replace(".", ",");
 
 const Checkout = () => {
   const navigate = useNavigate();
   const { items, totalPrice, removeItem, updateQuantity } = useCart();
+  // Toimitus ilmainen yli 50 € — muuten 5,90 €
+  const SHIPPING_COST = totalPrice >= FREE_SHIPPING_THRESHOLD ? 0 : BASE_SHIPPING;
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     firstName: "",
