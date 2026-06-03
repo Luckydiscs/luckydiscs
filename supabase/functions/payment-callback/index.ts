@@ -122,8 +122,7 @@ async function sendCustomerEmail(order: any, items: any[]) {
           </p>
 
           <p style="font-size:12px;color:#888;margin-top:32px;border-top:1px solid #eee;padding-top:16px;">
-            Lucky Discs / Zatap Oy<br>
-            Nokia, Finland<br>
+            Lucky Discs &mdash; VESITIIVIS Oy (Y-tunnus 3368925-4)<br>
             <a href="${SITE_URL}">${SITE_URL}</a>
           </p>
         </div>
