@@ -60,7 +60,7 @@ const OrderConfirmation = () => {
     return (
       <div className="min-h-screen bg-black text-white">
         <Navbar />
-        <div className="container mx-auto px-4 py-20 text-center">
+        <div className="container mx-auto px-4 pt-32 md:pt-40 pb-20 text-center">
           <Loader2 className="w-16 h-16 mx-auto mb-4 text-[#FFD700] animate-spin" />
           <p className="text-gray-400">Vahvistetaan maksua…</p>
         </div>
@@ -74,7 +74,7 @@ const OrderConfirmation = () => {
     return (
       <div className="min-h-screen bg-black text-white">
         <Navbar />
-        <div className="container mx-auto px-4 py-20 text-center">
+        <div className="container mx-auto px-4 pt-32 md:pt-40 pb-20 text-center">
           <p className="text-gray-400 mb-4">Ei tilaustietoja.</p>
           <Button onClick={() => navigate("/shop")} className="bg-[#FFD700] text-black hover:bg-[#FFC000]">
             Siirry kauppaan
@@ -90,7 +90,7 @@ const OrderConfirmation = () => {
     return (
       <div className="min-h-screen bg-black text-white">
         <Navbar />
-        <div className="container mx-auto px-4 py-16 max-w-2xl text-center">
+        <div className="container mx-auto px-4 pt-32 md:pt-40 pb-16 max-w-2xl text-center">
           <div className="bg-gradient-to-b from-gray-900 to-black rounded-2xl p-8 md:p-12 border border-gray-800">
             <XCircle className="w-20 h-20 mx-auto mb-6 text-red-400" />
             <h1 className="text-3xl font-bold mb-2">Maksu epäonnistui</h1>
@@ -101,7 +101,7 @@ const OrderConfirmation = () => {
               <Button onClick={() => navigate("/shop/kassa")} className="bg-[#FFD700] text-black hover:bg-[#FFC000] font-bold">
                 Yritä uudelleen
               </Button>
-              <Button onClick={() => navigate("/shop")} variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
+              <Button onClick={() => navigate("/shop")} variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 hover:text-white rounded-full">
                 Takaisin kauppaan
               </Button>
             </div>
@@ -117,7 +117,7 @@ const OrderConfirmation = () => {
     return (
       <div className="min-h-screen bg-black text-white">
         <Navbar />
-        <div className="container mx-auto px-4 py-16 max-w-2xl text-center">
+        <div className="container mx-auto px-4 pt-32 md:pt-40 pb-16 max-w-2xl text-center">
           <div className="bg-gradient-to-b from-gray-900 to-black rounded-2xl p-8 md:p-12 border border-gray-800">
             <XCircle className="w-20 h-20 mx-auto mb-6 text-gray-400" />
             <h1 className="text-3xl font-bold mb-2">Maksu peruutettu</h1>
@@ -128,7 +128,7 @@ const OrderConfirmation = () => {
               <Button onClick={() => navigate("/shop/kassa")} className="bg-[#FFD700] text-black hover:bg-[#FFC000] font-bold">
                 Jatka kassalla
               </Button>
-              <Button onClick={() => navigate("/shop")} variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
+              <Button onClick={() => navigate("/shop")} variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 hover:text-white rounded-full">
                 Takaisin kauppaan
               </Button>
             </div>
@@ -161,7 +161,7 @@ const OrderConfirmation = () => {
             {total !== undefined && (
               <div className="flex justify-between">
                 <span className="text-gray-400">Summa</span>
-                <span className="font-bold">{total.toFixed(2)} €</span>
+                <span className="font-bold">{total.toFixed(2).replace(".", ",")} €</span>
               </div>
             )}
             <div className="flex justify-between">
@@ -176,10 +176,10 @@ const OrderConfirmation = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button onClick={() => navigate("/shop")} className="bg-[#FFD700] text-black hover:bg-[#FFC000] font-bold">
+            <Button onClick={() => navigate("/shop")} className="bg-emerald-500 text-black hover:bg-emerald-400 font-bold rounded-full">
               Jatka ostoksia <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
-            <Button onClick={() => navigate("/")} variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
+            <Button onClick={() => navigate("/")} variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 hover:text-white rounded-full">
               Etusivulle
             </Button>
           </div>
