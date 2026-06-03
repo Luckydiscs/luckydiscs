@@ -105,18 +105,16 @@ const Shop = () => {
         </div>
       </div>
 
-      {/* HERO — täysileveä kansibanneri, sulautuu samaan tummaan */}
+      {/* HERO — täysileveä kansibanneri, koko kuva näkyvissä */}
       <section className="relative bg-[#0a0a0a] border-b border-white/5">
         <h1 className="sr-only">Lucky Discs Shop — premium frisbeegolfkiekot</h1>
         <img
           src="/images/brand/shop-hero.webp"
           alt="Lucky Discs Shop"
-          className="w-full h-[180px] sm:h-[280px] md:h-[400px] lg:h-[460px] object-cover object-center"
+          className="block w-full h-auto"
           width={1600}
           height={675}
         />
-        {/* pohjan häivytys sulauttaa kuvan sivuun pehmeästi */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
         <div className="container mx-auto px-4 text-center pt-5 pb-8">
           <p className="text-gray-200 text-base md:text-lg max-w-xl mx-auto mb-4">
             Premium-frisbeegolfkiekkoja suoraan valmistajalta. Suunniteltu ja testattu Suomessa.
@@ -128,6 +126,9 @@ const Shop = () => {
             <span className="w-1 h-1 rounded-full bg-gray-500" />
             <span>Paytrail-maksu</span>
           </div>
+          <p className="mt-4 text-sm text-amber-300/90 max-w-xl mx-auto">
+            Toimitamme tällä hetkellä vain Suomeen. Asutko muualla? Pyydä paikallista urheiluliikettäsi ottamaan Lucky Discs valikoimaansa.
+          </p>
         </div>
       </section>
 
