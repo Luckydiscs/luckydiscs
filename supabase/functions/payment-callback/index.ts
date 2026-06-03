@@ -25,7 +25,7 @@ const supabase = createClient(
 const SECRET_KEY = Deno.env.get("PAYTRAIL_SECRET_KEY") ?? "SAIPPUAKAUPPIAS";
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 const ADMIN_EMAIL = Deno.env.get("ADMIN_NOTIFICATION_EMAIL") ??
-  "sales@luckydiscs.fi";
+  "asiakaspalvelu@luckydiscs.fi";
 const SITE_URL = Deno.env.get("PUBLIC_SITE_URL") ?? "https://www.luckydiscs.fi";
 
 const corsHeaders = {
