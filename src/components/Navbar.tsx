@@ -14,13 +14,6 @@ const navClass = ({ isActive }: { isActive: boolean }) =>
       : "text-white hover:text-lucky-green after:w-0 hover:after:w-full"
   }`;
 
-const shopClass = ({ isActive }: { isActive: boolean }) =>
-  `font-bold transition-colors duration-200 whitespace-nowrap relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-[#FFD700] after:transition-all after:duration-300 ${
-    isActive
-      ? "text-[#FFE55C] after:w-full"
-      : "text-[#FFD700] hover:text-[#FFE55C] after:w-0 hover:after:w-full"
-  }`;
-
 const mobileClass = ({ isActive }: { isActive: boolean }) =>
   `text-lg py-2 border-b border-gray-800 transition-colors ${
     isActive ? "text-lucky-green" : "text-white hover:text-lucky-green"
@@ -65,9 +58,6 @@ const Navbar = () => {
         <div className="hidden md:flex items-center justify-center gap-5 lg:gap-7">
           <NavLink to="/" end className={navClass}>{t("nav.home")}</NavLink>
           <NavLink to="/discs" className={navClass}>{t("nav.discs")}</NavLink>
-          {language === "fi" && (
-            <NavLink to="/shop" className={shopClass}>Shop</NavLink>
-          )}
           <NavLink to="/wholesale" className={navClass}>{t("nav.wholesale")}</NavLink>
           <NavLink to="/brand" className={navClass}>{t("nav.brand")}</NavLink>
           <NavLink to="/team" className={navClass}>{t("nav.team")}</NavLink>
@@ -76,13 +66,27 @@ const Navbar = () => {
           <NavLink to="/faq" className={navClass}>FAQ</NavLink>
         </div>
 
-        {/* RIGHT: language + cart */}
+        {/* RIGHT: language + shop + cart */}
         <div className="flex-1 hidden md:flex items-center justify-end gap-4">
           <LanguageSwitcher />
           {language === "fi" && (
+            <NavLink
+              to="/shop"
+              className={({ isActive }) =>
+                `font-bold whitespace-nowrap rounded-full px-4 py-1.5 transition-colors duration-200 ${
+                  isActive
+                    ? "bg-lucky-green text-black"
+                    : "bg-lucky-green/90 text-black hover:bg-lucky-green"
+                }`
+              }
+            >
+              Shop
+            </NavLink>
+          )}
+          {language === "fi" && (
             <Link
               to="/shop/kassa"
-              className="relative hover:text-[#FFD700] transition-colors"
+              className="relative text-white hover:text-lucky-green transition-colors"
               aria-label="Ostoskori"
             >
               <ShoppingCart size={22} />
@@ -108,7 +112,7 @@ const Navbar = () => {
             <NavLink to="/" end className={mobileClass} onClick={toggleMenu}>{t("nav.home")}</NavLink>
             <NavLink to="/discs" className={mobileClass} onClick={toggleMenu}>{t("nav.discs")}</NavLink>
             {language === "fi" && (
-              <NavLink to="/shop" className={({ isActive }) => `text-lg py-2 border-b border-gray-800 font-bold ${isActive ? "text-[#FFE55C]" : "text-[#FFD700]"}`} onClick={toggleMenu}>Shop</NavLink>
+              <NavLink to="/shop" className={({ isActive }) => `text-lg py-2 font-bold rounded-full text-center transition-colors ${isActive ? "bg-lucky-green text-black" : "bg-lucky-green/90 text-black hover:bg-lucky-green"}`} onClick={toggleMenu}>Shop</NavLink>
             )}
             <NavLink to="/wholesale" className={mobileClass} onClick={toggleMenu}>{t("nav.wholesale")}</NavLink>
             <NavLink to="/brand" className={mobileClass} onClick={toggleMenu}>{t("nav.brand")}</NavLink>
