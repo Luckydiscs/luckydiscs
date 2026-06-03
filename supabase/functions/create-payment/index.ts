@@ -5,7 +5,7 @@
 // Paytrail docs: https://docs.paytrail.com/#/?id=create
 //
 // Ympäristömuuttujat:
-//   PAYTRAIL_MERCHANT_ID   - tuotannossa Zatap Oy:n merchant
+//   PAYTRAIL_MERCHANT_ID   - VESITIIVIS Oy:n merchant (Lucky Discs)
 //   PAYTRAIL_SECRET_KEY    - SECRET, älä paljasta frontille
 //   PUBLIC_SITE_URL        - https://www.luckydiscs.fi
 //   SUPABASE_URL
