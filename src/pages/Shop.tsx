@@ -90,37 +90,35 @@ const Shop = () => {
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       <Navbar />
 
-      {/* TOP TRUST BAR — pt clears the fixed navbar */}
-      <div className="pt-20 md:pt-24 bg-gradient-to-r from-emerald-900/40 via-emerald-800/30 to-emerald-900/40 border-b border-emerald-800/30">
-        <div className="container mx-auto px-4 py-2.5 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-xs sm:text-sm text-emerald-100">
+      {/* TOP TRUST BAR — sama tumma sävy kuin navbar & hero (yhtenäinen luksusyläosa) */}
+      <div className="pt-20 md:pt-24 bg-[#0a0a0a] border-b border-white/5">
+        <div className="container mx-auto px-4 py-2.5 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-xs sm:text-sm text-gray-300">
           <span className="flex items-center gap-1.5">
-            <Truck className="w-3.5 h-3.5" /> Toimitus 5,90 € · ilmainen yli 50 €
+            <Truck className="w-3.5 h-3.5 text-emerald-400" /> Toimitus 5,90 € · ilmainen yli 50 €
           </span>
           <span className="hidden sm:flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5" /> Suomalainen verkkokauppa
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> Suomalainen verkkokauppa
           </span>
           <span className="hidden md:flex items-center gap-1.5">
-            <RotateCcw className="w-3.5 h-3.5" /> 14 pv palautusoikeus
+            <RotateCcw className="w-3.5 h-3.5 text-emerald-400" /> 14 pv palautusoikeus
           </span>
         </div>
       </div>
 
-      {/* HERO — kansibanneri */}
-      <section className="relative overflow-hidden border-b border-white/5 bg-gradient-to-b from-black to-[#0a0a0a]">
-        <div className="absolute inset-0 opacity-30 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl" />
-        </div>
-        <div className="relative container mx-auto px-4 py-8 md:py-12 text-center">
-          <h1 className="sr-only">Lucky Discs Shop — premium frisbeegolfkiekot</h1>
-          <img
-            src="/images/brand/shop-hero.webp"
-            alt="Lucky Discs Shop"
-            className="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl border border-white/5"
-            width={1600}
-            height={675}
-          />
-          <p className="text-gray-200 text-base md:text-lg max-w-xl mx-auto mt-6 mb-4">
+      {/* HERO — täysileveä kansibanneri, sulautuu samaan tummaan */}
+      <section className="relative bg-[#0a0a0a] border-b border-white/5">
+        <h1 className="sr-only">Lucky Discs Shop — premium frisbeegolfkiekot</h1>
+        <img
+          src="/images/brand/shop-hero.webp"
+          alt="Lucky Discs Shop"
+          className="w-full h-[180px] sm:h-[280px] md:h-[400px] lg:h-[460px] object-cover object-center"
+          width={1600}
+          height={675}
+        />
+        {/* pohjan häivytys sulauttaa kuvan sivuun pehmeästi */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
+        <div className="container mx-auto px-4 text-center pt-5 pb-8">
+          <p className="text-gray-200 text-base md:text-lg max-w-xl mx-auto mb-4">
             Premium-frisbeegolfkiekkoja suoraan valmistajalta. Suunniteltu ja testattu Suomessa.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-300">
