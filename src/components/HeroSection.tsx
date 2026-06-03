@@ -66,21 +66,16 @@ const HeroSection = () => {
             {t('hero.subtitle')}
           </p>
 
-          {/* CTAs - FI: kesapelit.fi shop, EN: wholesale inquiry */}
+          {/* CTAs - FI: oma verkkokauppa, EN: wholesale inquiry */}
           <div className="flex flex-row gap-3 sm:gap-4">
             {language === 'fi' ? (
-              <a
-                href="https://kesapelit.fi/?utm_source=luckydiscs&utm_medium=website&utm_campaign=hero&utm_content=osta"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Button
+                size="lg"
+                className="bg-lucky-green hover:bg-lucky-green/90 text-white font-display font-semibold uppercase tracking-wider text-xs sm:text-base px-4 sm:px-8 py-4 sm:py-6 h-auto transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg shadow-lucky-green/30"
+                onClick={() => navigate('/shop')}
               >
-                <Button
-                  size="lg"
-                  className="bg-lucky-green hover:bg-lucky-green/90 text-white font-display font-semibold uppercase tracking-wider text-xs sm:text-base px-4 sm:px-8 py-4 sm:py-6 h-auto transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg shadow-lucky-green/30"
-                >
-                  {t('hero.shopDiscs')}
-                </Button>
-              </a>
+                {t('hero.shopDiscs')}
+              </Button>
             ) : (
               <Button
                 size="lg"

@@ -81,10 +81,7 @@ const FeaturedDisc = () => {
             <div
               key={disc.name}
               className="group relative bg-gradient-to-b from-white/5 to-white/[0.02] border border-white/10 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:border-white/30 hover:-translate-y-1 hover:shadow-2xl"
-              onClick={() => language === 'fi'
-                ? window.open(`https://kesapelit.fi/?utm_source=luckydiscs&utm_medium=website&utm_campaign=featured&utm_content=${disc.name.toLowerCase().replace(' ', '-')}`, '_blank')
-                : navigate('/wholesale')
-              }
+              onClick={() => language === 'fi' ? navigate('/shop') : navigate('/wholesale')}
             >
               {/* Hover glow */}
               <div

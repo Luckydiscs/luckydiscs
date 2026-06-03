@@ -250,7 +250,7 @@ const Team = () => {
                 discName="moneyShot"
                 discImage={moneyShotDisc}
                 flightNumbers={{ speed: 4, glide: 3, turn: 1, fade: 3 }}
-                buyUrl="https://kesapelit.fi/tuote/premium-money-shot"
+                buyUrl="/shop/premium-money-shot"
                 variant="inline"
               />
             </div>

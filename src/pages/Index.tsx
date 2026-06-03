@@ -50,7 +50,24 @@ const Index = () => {
       
       {/* Hero Section */}
       <HeroSection />
-      
+
+      {/* NYT AVATTU — oma verkkokauppa (FI) */}
+      {language === 'fi' && (
+        <section className="bg-gradient-to-r from-lucky-green via-emerald-500 to-lucky-green text-black">
+          <div className="container mx-auto px-4 py-4 md:py-5 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-center">
+            <p className="font-heading text-lg md:text-2xl font-bold tracking-wide">
+              🎉 Nyt avattu — Lucky Discs oma verkkokauppa!
+            </p>
+            <Button
+              className="bg-black text-white hover:bg-gray-900 font-bold rounded-full px-6 shrink-0"
+              onClick={() => navigate('/shop')}
+            >
+              Siirry kauppaan <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </section>
+      )}
+
       {/* Featured Disc - Premium promo images */}
       <FeaturedDisc />
       
@@ -155,17 +172,12 @@ const Index = () => {
                   {t('jackpot.description')}
                 </p>
                 <div>
-                  <a
-                    href="https://kesapelit.fi/?utm_source=luckydiscs&utm_medium=website&utm_campaign=jackpot&utm_content=banner"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Button
+                    className="bg-lucky-green hover:bg-white text-black font-semibold transition-all duration-300"
+                    onClick={() => navigate('/shop')}
                   >
-                    <Button
-                      className="bg-lucky-green hover:bg-white text-black font-semibold transition-all duration-300"
-                    >
-                      {t('jackpot.buyButton')} <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </a>
+                    {t('jackpot.buyButton')} <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
                 </div>
               </div>
             </div>
@@ -255,18 +267,13 @@ const Index = () => {
                 {t('summerSale.singlePrice')}
               </p>
             </div>
-            <a
-              href="https://kesapelit.fi/?utm_source=luckydiscs&utm_medium=website&utm_campaign=summer2026&utm_content=starterpack"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Button
+              size="lg"
+              className="bg-lucky-green hover:bg-white text-black font-bold text-xl px-12 py-6 shadow-2xl transition-all duration-300 mb-6"
+              onClick={() => navigate('/shop')}
             >
-              <Button
-                size="lg"
-                className="bg-lucky-green hover:bg-white text-black font-bold text-xl px-12 py-6 shadow-2xl transition-all duration-300 mb-6"
-              >
-                {t('summerSale.buyButton')} <ArrowRight className="ml-2 h-6 w-6" />
-              </Button>
-            </a>
+              {t('summerSale.buyButton')} <ArrowRight className="ml-2 h-6 w-6" />
+            </Button>
             <p className="text-white/60 text-sm uppercase tracking-widest">
               {t('summerSale.limitedStock')}
             </p>

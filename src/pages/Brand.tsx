@@ -353,7 +353,7 @@ const Brand = () => {
               discName="bankRobber"
               discImage={bankRobberDisc}
               flightNumbers={{ speed: 8, glide: 5, turn: -1, fade: 2 }}
-              buyUrl="https://kesapelit.fi/tuote/premium-bank-robber"
+              buyUrl="/shop/premium-bank-robber"
               variant="inline"
               lightBackground={true}
             />

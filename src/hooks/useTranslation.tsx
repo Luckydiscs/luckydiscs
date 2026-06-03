@@ -99,15 +99,15 @@ const translations = {
     // Jackpot Section (FI only - keys provided for completeness)
     'jackpot.title': 'Ready for Jackpot?',
     'jackpot.description': 'Every throw is an opportunity. Lucky Discs are designed for players who want to stand out on the course — with style and performance.',
-    'jackpot.buyButton': 'Shop at kesapelit.fi',
+    'jackpot.buyButton': 'Shop now',
 
     // Summer Sale Section (FI only - keys provided for completeness)
     'summerSale.badge': 'Summer Sale',
     'summerSale.packTitle': 'SUPER STARTER PACK',
-    'summerSale.packContents': '6 discs — everything you need on the course',
-    'summerSale.packPrice': '59,90€',
+    'summerSale.packContents': '7 discs — everything you need on the course',
+    'summerSale.packPrice': '85,00€',
     'summerSale.singlePrice': 'Individual discs from 14,90€/pc',
-    'summerSale.buyButton': 'Shop at kesapelit.fi',
+    'summerSale.buyButton': 'Shop now',
     'summerSale.limitedStock': 'Summer Sale — limited stock',
 
     // Features
@@ -461,7 +461,7 @@ const translations = {
     'faq.discStability.answer': 'Stability refers to a disc\'s flight characteristics. Overstable discs fight wind and fade left reliably. Understable discs turn right more easily and are good for beginners. Stable discs fly straight with minimal turn or fade.',
     'faq.ordering.title': 'Ordering & Shipping',
     'faq.shipping.question': 'Where can I buy Lucky Discs?',
-    'faq.shipping.answer': 'In Finland, Lucky Discs are available at kesapelit.fi. International customers can ask their local disc golf retailer about stocking Lucky Discs products.',
+    'faq.shipping.answer': 'In Finland, buy Lucky Discs directly from our webshop at luckydiscs.fi. International customers can ask their local disc golf retailer about stocking Lucky Discs products.',
     'faq.payment.question': 'How does becoming a retailer work?',
     'faq.payment.answer': 'Visit our Wholesale page and fill out the application form. We process applications within 2 business days and will contact you with details.',
     'faq.returns.question': 'What is the return policy?',
@@ -581,15 +581,15 @@ const translations = {
     // Jackpot Section
     'jackpot.title': 'Valmis Jackpottiin?',
     'jackpot.description': 'Jokainen heitto on mahdollisuus. Lucky Discsin kiekot on suunniteltu pelaajille, jotka haluavat erottua kentällä — tyylillä ja suorituskyvyllä.',
-    'jackpot.buyButton': 'Osta kiekot kesapelit.fi',
+    'jackpot.buyButton': 'Osta verkkokaupasta',
 
     // Summer Sale Section
     'summerSale.badge': 'Kesätarjous',
     'summerSale.packTitle': 'SUPER STARTER PACK',
-    'summerSale.packContents': '6 kiekkoa — kaikki mitä tarvitset kentälle',
-    'summerSale.packPrice': '59,90€',
+    'summerSale.packContents': '7 kiekkoa — kaikki mitä tarvitset kentälle',
+    'summerSale.packPrice': '85,00€',
     'summerSale.singlePrice': 'Yksittäiset kiekot alkaen 14,90€/kpl',
-    'summerSale.buyButton': 'Osta kesapelit.fi',
+    'summerSale.buyButton': 'Osta verkkokaupasta',
     'summerSale.limitedStock': 'Kesäale — rajoitettu erä',
 
     // Features
@@ -943,7 +943,7 @@ const translations = {
     'faq.discStability.answer': 'Vakaus viittaa kiekon lento-ominaisuuksiin. Ylivakaat kiekot vastustavat tuulta ja kääntyvät vasemmalle luotettavasti. Alivakaat kiekot kääntyvät oikealle helpommin ja sopivat aloittelijoille. Vakaat kiekot lentävät suoraan.',
     'faq.ordering.title': 'Tilaaminen ja toimitus',
     'faq.shipping.question': 'Mistä voin ostaa Lucky Discs -kiekkoja?',
-    'faq.shipping.answer': 'Suomessa Lucky Discs -kiekkoja myy kesapelit.fi. Ulkomaiset asiakkaat voivat kysyä paikalliselta frisbeegolf-kauppiaalta, ottaisiko hän Lucky Discs -kiekot myyntiin.',
+    'faq.shipping.answer': 'Suomessa Lucky Discs -kiekot ostat suoraan verkkokaupastamme osoitteessa luckydiscs.fi. Ulkomaiset asiakkaat voivat kysyä paikalliselta frisbeegolf-kauppiaalta, ottaisiko hän Lucky Discs -kiekot myyntiin.',
     'faq.payment.question': 'Miten jälleenmyyjäksi ryhtyminen toimii?',
     'faq.payment.answer': 'Käy Jälleenmyynti-sivullamme ja täytä hakulomake. Käsittelemme hakemukset 2 arkipäivässä ja otamme yhteyttä tarkemmilla tiedoilla.',
     'faq.returns.question': 'Mikä on palautuskäytäntö?',

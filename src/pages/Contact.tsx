@@ -171,7 +171,7 @@ const Contact = () => {
               discName="treasureHunt"
               discImage={treasureHuntDisc}
               flightNumbers={{ speed: 12, glide: 6, turn: -1, fade: 3 }}
-              buyUrl="https://kesapelit.fi/tuote/premium-treasure-hunt"
+              buyUrl="/shop/premium-treasure-hunt"
               variant="compact"
               showFlightNumbers={true}
             />

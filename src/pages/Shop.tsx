@@ -105,25 +105,22 @@ const Shop = () => {
         </div>
       </div>
 
-      {/* HERO */}
-      <section className="relative overflow-hidden border-b border-white/5">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/brand/disc-collection-rock.webp')" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-[#0a0a0a]" />
+      {/* HERO — kansibanneri */}
+      <section className="relative overflow-hidden border-b border-white/5 bg-gradient-to-b from-black to-[#0a0a0a]">
         <div className="absolute inset-0 opacity-30 pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl" />
         </div>
-        <div className="relative container mx-auto px-4 min-h-[380px] md:min-h-[460px] flex flex-col items-center justify-center py-16 md:py-24 text-center">
-          <h1
-            className="text-6xl md:text-8xl font-bold tracking-tight mb-4"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-          >
-            Lucky Discs <span className="text-emerald-400">Shop</span>
-          </h1>
-          <p className="text-gray-200 text-base md:text-lg max-w-xl mx-auto mb-6">
+        <div className="relative container mx-auto px-4 py-8 md:py-12 text-center">
+          <h1 className="sr-only">Lucky Discs Shop — premium frisbeegolfkiekot</h1>
+          <img
+            src="/images/brand/shop-hero.webp"
+            alt="Lucky Discs Shop"
+            className="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl border border-white/5"
+            width={1600}
+            height={675}
+          />
+          <p className="text-gray-200 text-base md:text-lg max-w-xl mx-auto mt-6 mb-4">
             Premium-frisbeegolfkiekkoja suoraan valmistajalta. Suunniteltu ja testattu Suomessa.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-300">
