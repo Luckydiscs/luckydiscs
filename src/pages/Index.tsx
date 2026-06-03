@@ -71,115 +71,57 @@ const Index = () => {
             </p>
           </div>
           
-          {/* Bento grid: 2 isoa + 2 pientä */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 mb-8">
-            {/* Iso kuva 1 */}
-            <div className="relative group overflow-hidden rounded-2xl">
-              <img
-                src="/images/brand/discs-yyteri-beach.webp"
-                alt="Lucky Discs Money Shot kiekot Yyterin hiekkarannalla syksyllä"
-                className="w-full h-64 md:h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
-                width={800}
-                height={400}
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h3 className="font-heading text-lg md:text-xl font-semibold">{t('action.gallery1Title')}</h3>
-                <p className="text-sm text-gray-300 mt-1">{t('action.gallery1Desc')}</p>
-              </div>
-            </div>
-
-            {/* Iso kuva 2 */}
-            <div className="relative group overflow-hidden rounded-2xl">
-              <img
-                src="/images/brand/discs-spain-beach.webp"
-                alt="Lucky Discs kiekkovalikoima Espanjan rannikolla vuoristomaisemassa"
-                className="w-full h-64 md:h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
-                width={800}
-                height={400}
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h3 className="font-heading text-lg md:text-xl font-semibold">{t('action.gallery2Title')}</h3>
-                <p className="text-sm text-gray-300 mt-1">{t('action.gallery2Desc')}</p>
-              </div>
-            </div>
-
-            {/* Pieni kuva 1 */}
-            <div className="relative group overflow-hidden rounded-2xl">
-              <img
-                src="/images/brand/disc-rainbow.webp"
-                alt="Lucky Discs kiekko sateenkaaren edessä frisbeegolfkorissa"
-                className="w-full h-56 md:h-72 object-cover transition-transform duration-700 group-hover:scale-105"
-                width={800}
-                height={288}
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h3 className="font-heading text-lg md:text-xl font-semibold">{t('action.gallery3Title')}</h3>
-                <p className="text-sm text-gray-300 mt-1">{t('action.gallery3Desc')}</p>
-              </div>
-            </div>
-
-            {/* Pieni kuva 2 */}
-            <div className="relative group overflow-hidden rounded-2xl">
-              <img
-                src="/images/brand/disc-collection-rock.webp"
-                alt="Lucky Discs täysi kiekkovalikoima kalliolla syksyisessä metsässä"
-                className="w-full h-56 md:h-72 object-cover transition-transform duration-700 group-hover:scale-105"
-                width={800}
-                height={288}
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h3 className="font-heading text-lg md:text-xl font-semibold">{t('action.gallery4Title')}</h3>
-                <p className="text-sm text-gray-300 mt-1">{t('action.gallery4Desc')}</p>
-              </div>
-            </div>
-          </div>
-          
-          {/* Performance Visualization */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-lucky-green/20 shadow-2xl">
-            <div className="grid md:grid-cols-2 gap-0 items-stretch">
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                <h3 className="text-3xl md:text-4xl font-heading font-semibold text-white mb-4">
+          {/* Premium product band — floating studio discs */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-900 via-black to-gray-900 border border-lucky-green/20 shadow-2xl">
+            <div className="grid md:grid-cols-2 gap-0 items-center">
+              <div className="p-8 md:p-14 flex flex-col justify-center">
+                <span className="text-lucky-gold text-xs font-bold uppercase tracking-[0.3em] mb-4">Lucky Discs</span>
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold text-white mb-5 leading-tight">
                   {t('action.performanceUnderPressure')}
                 </h3>
-                <p className="text-gray-300 mb-8 leading-relaxed text-base">
+                <p className="text-gray-300 mb-8 leading-relaxed text-base md:text-lg">
                   {t('action.performanceDescription')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button
                     size="lg"
-                    className="bg-lucky-green hover:bg-lucky-green/90 text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-                    onClick={() => navigate('/discs')}
+                    className="bg-lucky-green hover:bg-lucky-green/90 text-white font-semibold rounded-full px-8 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    onClick={() => navigate(language === 'fi' ? '/shop' : '/wholesale')}
                   >
-                    {t('action.shopTournamentDiscs')}
+                    {t('action.shopTournamentDiscs')} <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-300 bg-transparent"
+                    className="border-2 border-white/30 text-white hover:bg-white/10 rounded-full px-8 transition-all duration-300 bg-transparent"
                     onClick={() => navigate('/team')}
                   >
                     {t('action.meetOurTeam')}
                   </Button>
                 </div>
               </div>
-              <div className="relative min-h-[300px] md:min-h-[400px]">
+
+              {/* Floating transparent studio discs on emerald glow */}
+              <div className="relative min-h-[320px] md:min-h-[460px] flex items-center justify-center p-6">
+                <div className="absolute w-60 h-60 md:w-80 md:h-80 bg-lucky-green/25 rounded-full blur-3xl" />
                 <img
-                  src="/images/brand/disc-collection-vol2.webp"
-                  alt="Lucky Discs kiekkovalikoima luonnossa"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  width={600}
-                  height={400}
+                  src="/images/products/treasure-hunt-ultrium.png"
+                  alt="Lucky Discs Treasure Hunt"
+                  className="absolute w-36 md:w-48 drop-shadow-2xl -rotate-[14deg] -translate-x-[4.5rem] md:-translate-x-28 translate-y-6"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-transparent to-transparent md:block hidden"></div>
+                <img
+                  src="/images/products/jailbreak.png"
+                  alt="Lucky Discs Jailbreak"
+                  className="absolute w-36 md:w-48 drop-shadow-2xl rotate-[14deg] translate-x-[4.5rem] md:translate-x-28 translate-y-6"
+                  loading="lazy"
+                />
+                <img
+                  src="/images/products/money-shot-premium.png"
+                  alt="Lucky Discs Money Shot"
+                  className="relative z-10 w-44 md:w-60 drop-shadow-2xl -translate-y-2"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
