@@ -5,6 +5,8 @@ export interface ShopVariant {
   color: string;
   weight: string;
   stock: number;
+  soldOut?: boolean;
+  incoming?: string;
 }
 
 export interface ShopProduct {
@@ -22,6 +24,8 @@ export interface ShopProduct {
   weight?: string;
   badge?: string;
   variants?: ShopVariant[];
+  /** Distinct "tulossa"-merkinnät varianteista (näytetään kun tuote on loppuunmyyty) */
+  incomingNotes?: string[];
 }
 
 interface ProductRow {
@@ -48,6 +52,8 @@ interface VariantRow {
   color: string;
   weight: string;
   stock: number;
+  sold_out?: boolean;
+  incoming_note?: string | null;
 }
 
 export function useShopProducts() {
@@ -73,7 +79,10 @@ export function useShopProducts() {
           (variantsByProduct[v.product_id] ??= []).push({
             color: v.color,
             weight: v.weight,
-            stock: v.stock,
+            // "loppuunmyyty" -lippu nollaa saatavuuden (kaikki stock>0 -tarkistukset toimivat)
+            stock: v.sold_out ? 0 : v.stock,
+            soldOut: !!v.sold_out,
+            incoming: v.incoming_note ?? undefined,
           });
         });
 
@@ -99,6 +108,13 @@ export function useShopProducts() {
               : undefined,
           badge: p.badge ?? undefined,
           variants: variantsByProduct[p.id]?.length ? variantsByProduct[p.id] : undefined,
+          incomingNotes: Array.from(
+            new Set(
+              (variantsByProduct[p.id] ?? [])
+                .map((v) => v.incoming?.trim())
+                .filter((n): n is string => !!n)
+            )
+          ),
         }));
 
         setProducts(mapped);

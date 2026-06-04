@@ -88,6 +88,29 @@ serve(async (req) => {
         return json({ ok: true });
       }
 
+      case "update_order": {
+        const { orderId, patch } = body;
+        const allowed = [
+          "customer_first_name", "customer_last_name", "customer_email", "customer_phone",
+          "shipping_address", "shipping_postal_code", "shipping_city", "shipping_country",
+          "status", "tracking_number",
+        ];
+        const clean: Record<string, unknown> = {};
+        for (const k of allowed) if (patch && k in patch) clean[k] = patch[k];
+        if (clean.status === "shipped") clean.shipped_at = new Date().toISOString();
+        const { error } = await supabase.from("orders").update(clean).eq("id", orderId);
+        if (error) throw error;
+        return json({ ok: true });
+      }
+
+      case "delete_order": {
+        const { orderId } = body;
+        // order_items poistuu cascade-säännöllä
+        const { error } = await supabase.from("orders").delete().eq("id", orderId);
+        if (error) throw error;
+        return json({ ok: true });
+      }
+
       // ── VARASTO ──
       case "list_products": {
         const { data: products, error: pe } = await supabase
@@ -109,6 +132,17 @@ serve(async (req) => {
           .from("product_variants")
           .update({ stock: Math.max(0, parseInt(stock, 10) || 0) })
           .eq("id", variantId);
+        if (error) throw error;
+        return json({ ok: true });
+      }
+
+      case "update_variant": {
+        const { variantId, stock, sold_out, incoming_note } = body;
+        const patch: Record<string, unknown> = {};
+        if (stock !== undefined) patch.stock = Math.max(0, parseInt(stock, 10) || 0);
+        if (sold_out !== undefined) patch.sold_out = !!sold_out;
+        if (incoming_note !== undefined) patch.incoming_note = incoming_note || null;
+        const { error } = await supabase.from("product_variants").update(patch).eq("id", variantId);
         if (error) throw error;
         return json({ ok: true });
       }
@@ -144,6 +178,21 @@ serve(async (req) => {
         const { error } = await supabase.from("blog_posts").delete().eq("slug", slug);
         if (error) throw error;
         return json({ ok: true });
+      }
+
+      // ── KUVANLATAUS (blog-images bucket) ──
+      case "upload_image": {
+        const { filename, dataBase64, contentType } = body;
+        if (!dataBase64) throw new Error("Ei kuvadataa");
+        const bytes = Uint8Array.from(atob(dataBase64), (c) => c.charCodeAt(0));
+        const safe = String(filename || "image").replace(/[^a-zA-Z0-9._-]/g, "_").slice(-60);
+        const path = `articles/${crypto.randomUUID()}-${safe}`;
+        const { error: upErr } = await supabase.storage
+          .from("blog-images")
+          .upload(path, bytes, { contentType: contentType || "image/jpeg", upsert: true });
+        if (upErr) throw upErr;
+        const { data: pub } = supabase.storage.from("blog-images").getPublicUrl(path);
+        return json({ url: pub.publicUrl });
       }
 
       default:

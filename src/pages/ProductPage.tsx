@@ -199,7 +199,11 @@ const ProductPage = () => {
                   <Button disabled className="w-full h-12 bg-gray-700 text-gray-300 font-bold text-base rounded-full cursor-not-allowed opacity-70">
                     Loppuunmyyty
                   </Button>
-                  <p className="text-sm text-gray-500 mt-2">Tämä kiekko on tilapäisesti loppu. Tulossa pian takaisin varastoon.</p>
+                  {product.incomingNotes && product.incomingNotes.length > 0 ? (
+                    <p className="text-sm text-lucky-green mt-2">📦 {product.incomingNotes.join(" · ")}</p>
+                  ) : (
+                    <p className="text-sm text-gray-500 mt-2">Tämä kiekko on tilapäisesti loppu. Tulossa pian takaisin varastoon.</p>
+                  )}
                 </div>
               ) : (
                 <>

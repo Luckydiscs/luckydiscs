@@ -147,6 +147,19 @@ const BlogPost = () => {
                     </h3>
                   );
                 }
+                // Kuva: ![alt](url) omalla rivillään
+                const img = paragraph.trim().match(/^!\[(.*?)\]\((.*?)\)$/);
+                if (img) {
+                  return (
+                    <img
+                      key={index}
+                      src={img[2]}
+                      alt={img[1]}
+                      loading="lazy"
+                      className="w-full rounded-xl my-8 border border-white/10"
+                    />
+                  );
+                }
                 return (
                   <p key={index} className="text-gray-300 leading-relaxed mb-4">
                     {paragraph}

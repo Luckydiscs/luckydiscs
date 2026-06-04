@@ -501,12 +501,17 @@ const ProductCard = ({
             )}
           </div>
           {soldOut ? (
-            <Button
-              disabled
-              className="w-full bg-gray-700 text-gray-300 font-bold rounded-full cursor-not-allowed opacity-70"
-            >
-              Loppuunmyyty
-            </Button>
+            <>
+              <Button
+                disabled
+                className="w-full bg-gray-700 text-gray-300 font-bold rounded-full cursor-not-allowed opacity-70"
+              >
+                Loppuunmyyty
+              </Button>
+              {product.incomingNotes && product.incomingNotes.length > 0 && (
+                <p className="text-xs text-lucky-green mt-2 text-center">📦 {product.incomingNotes.join(" · ")}</p>
+              )}
+            </>
           ) : (
             <Button
               onClick={handleClick}
