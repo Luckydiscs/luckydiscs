@@ -389,8 +389,8 @@ const translations = {
     'social.youtubeDesc': 'Watch action videos, tutorials, and behind-the-scenes content from our team.',
     'social.followUs': 'Follow Us',
     'social.videoHighlight': 'Featured Videos',
-    'social.videoDesc': 'Check out our latest disc golf action videos and tutorials on YouTube.',
-    'social.watchVideos': 'Watch Videos',
+    'social.videoDesc': 'Watch our latest disc golf action videos and tutorials.',
+    'social.watchVideos': 'More videos on YouTube',
     
     // 404 Page
     'notFound.title': 'Page Not Found',
@@ -871,8 +871,8 @@ const translations = {
     'social.youtubeDesc': 'Katso toimintavideoita, oppaita ja kulissien takaiset sisällöt tiimiltämme.',
     'social.followUs': 'Seuraa meitä',
     'social.videoHighlight': 'Esitellyt videot',
-    'social.videoDesc': 'Tutustu uusimpiin frisbeegolftoimintavideoihimme ja oppaisiin YouTubessa.',
-    'social.watchVideos': 'Katso videot',
+    'social.videoDesc': 'Katso uusimmat frisbeegolfvideomme ja vinkit.',
+    'social.watchVideos': 'Lisää videoita YouTubessa',
     
     // 404 Page
     'notFound.title': 'Sivu ei löytynyt',
