@@ -13,6 +13,7 @@ type Product = ShopProduct;
 type Variant = ShopVariant;
 
 const COLOR_HEX: Record<string, string> = {
+  hiekka: "#CFA15A",
   keltainen: "#F5C518",
   oranssi: "#FF7A1A",
   punainen: "#E53935",
@@ -369,7 +370,7 @@ const ProductCard = ({
           <div className="space-y-3 mb-4">
             <div>
               <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
-                Väri{selColor ? `: ${colorLabel(selColor)}` : ""}
+                Väri
               </div>
               <div className="flex flex-wrap gap-2">
                 {colors.map((c) => {

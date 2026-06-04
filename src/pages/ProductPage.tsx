@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 const COLOR_HEX: Record<string, string> = {
+  hiekka: "#CFA15A",
   keltainen: "#F5C518", oranssi: "#FF7A1A", punainen: "#E53935", sininen: "#2563EB",
   vaaleansininen: "#7DD3FC", violetti: "#8B5CF6", pinkki: "#EC4899",
   vaaleanpunainen: "#F9A8D4", vihrea: "#22C55E", valkoinen: "#F1F1F1",
@@ -161,7 +162,7 @@ const ProductPage = () => {
               {hasVariants && !soldOut && (
                 <div className="space-y-4 mb-6">
                   <div>
-                    <div className="text-xs uppercase tracking-wider text-gray-500 mb-2">Väri{effColor ? `: ${colorLabel(effColor)}` : ""}</div>
+                    <div className="text-xs uppercase tracking-wider text-gray-500 mb-2">Väri</div>
                     <div className="flex flex-wrap gap-2.5">
                       {colors.map((c) => {
                         const inStock = colorInStock(c);
