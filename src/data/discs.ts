@@ -1,7 +1,8 @@
 import bankRobberDisc from "@/assets/bank-robber-disc.webp";
 import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
 import moneyShotDisc from "@/assets/money-shot-disc.webp";
-import jailbreakDisc from "@/assets/jailbreak-disc.png";
+// Oikea Jailbreak-kiekkokuva (vanha jailbreak-disc.png oli väärä AI-vankilakuva)
+const jailbreakDisc = "/images/products/jailbreak.png";
 
 export type DiscType = "driver" | "fairway" | "midrange" | "putter";
 
