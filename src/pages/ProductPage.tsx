@@ -116,7 +116,7 @@ const ProductPage = () => {
             {/* KUVA */}
             <div className="relative">
               <div className="sticky top-28 aspect-square bg-gradient-to-br from-emerald-950/40 to-black rounded-2xl border border-white/10 overflow-hidden flex items-center justify-center">
-                <div className="absolute top-4 left-4 z-10 flex flex-col items-start gap-1.5">
+                <div className="absolute top-4 left-4 z-10 flex flex-row flex-wrap items-center gap-1.5">
                   {product.badge && <span className="bg-yellow-500 text-black font-bold tracking-wider text-xs px-2.5 py-1 rounded-md shadow">{product.badge}</span>}
                   {discount > 0 && !soldOut && <span className="bg-red-500 text-white font-bold tracking-wider text-xs px-2.5 py-1 rounded-md shadow">-{discount}%</span>}
                   {soldOut && <span className="bg-gray-700 text-gray-200 font-bold tracking-wider text-xs px-2.5 py-1 rounded-md shadow">LOPPUUNMYYTY</span>}

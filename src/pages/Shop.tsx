@@ -299,7 +299,7 @@ const ProductCard = ({
   return (
     <article className="group relative h-full bg-gradient-to-b from-white/5 to-white/[0.02] border border-white/10 hover:border-emerald-500/30 rounded-2xl overflow-hidden transition-colors duration-300 flex flex-col">
       {/* Badges — pinottu pystyyn, kumpikin oma leveys */}
-      <div className="absolute top-3 left-3 z-10 flex flex-col items-start gap-1.5">
+      <div className="absolute top-3 left-3 z-10 flex flex-row flex-wrap items-center gap-1.5">
         {product.badge && (
           <span className="bg-yellow-500 text-black font-bold tracking-wider text-[10px] px-2 py-0.5 rounded-md shadow">
             {product.badge}
