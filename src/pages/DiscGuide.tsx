@@ -291,7 +291,7 @@ const DiscGuide = () => {
               <Card className="bg-white/5 border-white/10">
                 <CardHeader>
                   <CardTitle className="text-lucky-green">Rystyheitto</CardTitle>
-                  <Badge variant="outline">Yleisin</Badge>
+                  <Badge variant="outline" className="w-fit border-lucky-green/40 bg-lucky-green/10 text-lucky-green">Yleisin</Badge>
                 </CardHeader>
                 <CardContent className="text-gray-300">
                   <p className="mb-4">Frisbeegolfin perusheitto, samaan tapaan kuin frisbeetä heitettäessä.</p>
@@ -307,7 +307,7 @@ const DiscGuide = () => {
               <Card className="bg-white/5 border-white/10">
                 <CardHeader>
                   <CardTitle className="text-lucky-green">Kämmenheitto</CardTitle>
-                  <Badge variant="outline">Edistynyt</Badge>
+                  <Badge variant="outline" className="w-fit border-lucky-green/40 bg-lucky-green/10 text-lucky-green">Edistynyt</Badge>
                 </CardHeader>
                 <CardContent className="text-gray-300">
                   <p className="mb-4">Tunnetaan myös sivuheittona; heitetään vartalon sivulta.</p>
@@ -323,7 +323,7 @@ const DiscGuide = () => {
               <Card className="bg-white/5 border-white/10">
                 <CardHeader>
                   <CardTitle className="text-lucky-green">Yläkautta-heitot</CardTitle>
-                  <Badge variant="outline">Erikoisheitto</Badge>
+                  <Badge variant="outline" className="w-fit border-lucky-green/40 bg-lucky-green/10 text-lucky-green">Erikoisheitto</Badge>
                 </CardHeader>
                 <CardContent className="text-gray-300">
                   <p className="mb-4">Heitetään pään yli omalaatuisia lentoratoja ja esteiden ylitystä varten.</p>

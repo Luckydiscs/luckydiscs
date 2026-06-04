@@ -13,7 +13,7 @@ import {
 import { useTranslation } from "@/hooks/useTranslation";
 import useSEO from "@/hooks/useSEO";
 import allDiscs from "@/data/discs";
-import { Rocket, Send, Target, CircleDot, Gauge, Wind, RotateCw, CornerDownLeft, Truck, RotateCcw, Mail } from "lucide-react";
+import { Rocket, Send, Target, CircleDot, Gauge, Wind, CornerUpRight, CornerUpLeft, Truck, RotateCcw, Mail } from "lucide-react";
 
 const tabValues = ["all", "driver", "fairway", "midrange", "putter"] as const;
 
@@ -233,8 +233,8 @@ const Discs = () => {
               {[
                 { Icon: Gauge, label: 'Speed', range: '1–14', desc: t('discs.speedDesc') },
                 { Icon: Wind, label: 'Glide', range: '1–7', desc: t('discs.glideDesc') },
-                { Icon: RotateCw, label: 'Turn', range: '–5…1', desc: t('discs.turnDesc') },
-                { Icon: CornerDownLeft, label: 'Fade', range: '0–5', desc: t('discs.fadeDesc') },
+                { Icon: CornerUpRight, label: 'Turn', range: '–5…1', desc: t('discs.turnDesc') },
+                { Icon: CornerUpLeft, label: 'Fade', range: '0–5', desc: t('discs.fadeDesc') },
               ].map(({ Icon, label, range, desc }) => (
                 <div key={label} className="group bg-gradient-to-b from-white/[0.07] to-white/[0.02] rounded-2xl p-5 border border-white/10 hover:border-lucky-green/50 transition-all duration-300">
                   <div className="flex items-center gap-2.5 mb-3">
