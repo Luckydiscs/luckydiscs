@@ -1,10 +1,11 @@
 import { useMemo } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useTranslation } from "@/hooks/useTranslation";
 import useSEO from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
-import { HelpCircle, Truck, Package, Mail } from "lucide-react";
+import { HelpCircle, Truck, Package, Mail, ArrowRight, ExternalLink } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -12,8 +13,111 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+type FaqLink = { to?: string; hrefKey?: string; label: string; external?: boolean };
+type FaqItem = { value: string; q: string; a: string; links?: FaqLink[] };
+type FaqSection = { title: string; Icon: typeof HelpCircle; items: FaqItem[] };
+
 const FAQ = () => {
   const { t } = useTranslation();
+
+  const sections: FaqSection[] = [
+    {
+      title: "faq.general.title",
+      Icon: HelpCircle,
+      items: [
+        {
+          value: "what-is-disc-golf",
+          q: "faq.whatIsDiscGolf.question",
+          a: "faq.whatIsDiscGolf.answer",
+          links: [
+            { to: "/disc-guide", label: "faq.link.guide" },
+            { hrefKey: "faq.link.federationUrl", label: "faq.link.federation", external: true },
+          ],
+        },
+        {
+          value: "disc-choice",
+          q: "faq.discChoice.question",
+          a: "faq.discChoice.answer",
+          links: [
+            { to: "/disc-guide", label: "faq.link.guide" },
+            { to: "/shop", label: "faq.link.shop" },
+          ],
+        },
+        {
+          value: "flight-numbers",
+          q: "faq.flightNumbers.question",
+          a: "faq.flightNumbers.answer",
+          links: [
+            { to: "/disc-guide", label: "faq.link.guide" },
+            { to: "/discs", label: "faq.link.discs" },
+          ],
+        },
+        {
+          value: "disc-stability",
+          q: "faq.discStability.question",
+          a: "faq.discStability.answer",
+          links: [{ to: "/disc-guide", label: "faq.link.guide" }],
+        },
+      ],
+    },
+    {
+      title: "faq.ordering.title",
+      Icon: Truck,
+      items: [
+        {
+          value: "shipping",
+          q: "faq.shipping.question",
+          a: "faq.shipping.answer",
+          links: [{ to: "/shop", label: "faq.link.shop" }],
+        },
+        {
+          value: "payment",
+          q: "faq.payment.question",
+          a: "faq.payment.answer",
+          links: [
+            { to: "/wholesale", label: "faq.link.wholesale" },
+            { to: "/contact", label: "faq.link.contact" },
+          ],
+        },
+        {
+          value: "returns",
+          q: "faq.returns.question",
+          a: "faq.returns.answer",
+          links: [{ to: "/contact", label: "faq.link.contact" }],
+        },
+        {
+          value: "wholesale",
+          q: "faq.wholesale.question",
+          a: "faq.wholesale.answer",
+          links: [
+            { to: "/team", label: "faq.link.team" },
+            { to: "/contact", label: "faq.link.contact" },
+          ],
+        },
+      ],
+    },
+    {
+      title: "faq.products.title",
+      Icon: Package,
+      items: [
+        {
+          value: "daniel-collaboration",
+          q: "faq.danielCollaboration.question",
+          a: "faq.danielCollaboration.answer",
+          links: [{ to: "/team", label: "faq.link.team" }],
+        },
+        {
+          value: "disc-durability",
+          q: "faq.discDurability.question",
+          a: "faq.discDurability.answer",
+          links: [
+            { to: "/discs", label: "faq.link.discs" },
+            { to: "/shop", label: "faq.link.shop" },
+          ],
+        },
+      ],
+    },
+  ];
 
   const structuredData = useMemo(() => ({
     "@context": "https://schema.org",
@@ -22,26 +126,17 @@ const FAQ = () => {
       {
         "@type": "Question",
         "name": t('faq.shipping.question'),
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": t('faq.shipping.answer')
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": t('faq.shipping.answer') }
       },
       {
         "@type": "Question",
         "name": t('faq.discChoice.question'),
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": t('faq.discChoice.answer')
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": t('faq.discChoice.answer') }
       },
       {
         "@type": "Question",
         "name": t('faq.flightNumbers.question'),
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": t('faq.flightNumbers.answer')
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": t('faq.flightNumbers.answer') }
       }
     ]
   }), [t]);
@@ -54,10 +149,13 @@ const FAQ = () => {
     structuredData: structuredData
   });
 
+  const chipClass =
+    "inline-flex items-center gap-1.5 text-sm font-medium text-lucky-green border border-lucky-green/30 bg-lucky-green/10 hover:bg-lucky-green/20 hover:text-white rounded-full px-3 py-1.5 transition-colors";
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
-      
+
       {/* Hero section */}
       <section className="pt-20 sm:pt-24 md:pt-32 lg:pt-40 pb-16 bg-gradient-to-br from-black via-gray-900/50 to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-lucky-green/5 to-transparent"></div>
@@ -75,120 +173,53 @@ const FAQ = () => {
         <div className="max-w-4xl mx-auto">
 
           <section className="space-y-8">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-heading mb-6 text-gray-200 flex items-center gap-3">
-                <HelpCircle className="h-8 w-8 text-lucky-green shrink-0" aria-hidden="true" />
-                {t('faq.general.title')}
-              </h2>
-              <Accordion type="single" collapsible className="space-y-4">
-                <AccordionItem value="what-is-disc-golf" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
-                  <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
-                    {t('faq.whatIsDiscGolf.question')}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-300 pt-3 text-lg md:text-xl leading-relaxed">
-                    {t('faq.whatIsDiscGolf.answer')}
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="disc-choice" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
-                  <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
-                    {t('faq.discChoice.question')}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-300 pt-3 text-lg md:text-xl leading-relaxed">
-                    {t('faq.discChoice.answer')}
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="flight-numbers" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
-                  <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
-                    {t('faq.flightNumbers.question')}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-300 pt-3 text-lg md:text-xl leading-relaxed">
-                    {t('faq.flightNumbers.answer')}
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="disc-stability" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
-                  <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
-                    {t('faq.discStability.question')}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-300 pt-3 text-lg md:text-xl leading-relaxed">
-                    {t('faq.discStability.answer')}
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </div>
-
-            <div>
-              <h2 className="text-3xl md:text-4xl font-heading mb-6 text-gray-200 flex items-center gap-3">
-                <Truck className="h-8 w-8 text-lucky-green shrink-0" aria-hidden="true" />
-                {t('faq.ordering.title')}
-              </h2>
-              <Accordion type="single" collapsible className="space-y-4">
-                <AccordionItem value="shipping" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
-                  <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
-                    {t('faq.shipping.question')}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-300 pt-3 text-lg md:text-xl leading-relaxed">
-                    {t('faq.shipping.answer')}
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="payment" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
-                  <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
-                    {t('faq.payment.question')}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-300 pt-3 text-lg md:text-xl leading-relaxed">
-                    {t('faq.payment.answer')}
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="returns" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
-                  <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
-                    {t('faq.returns.question')}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-300 pt-3 text-lg md:text-xl leading-relaxed">
-                    {t('faq.returns.answer')}
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="wholesale" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
-                  <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
-                    {t('faq.wholesale.question')}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-300 pt-3 text-lg md:text-xl leading-relaxed">
-                    {t('faq.wholesale.answer')}
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </div>
-
-            <div>
-              <h2 className="text-3xl md:text-4xl font-heading mb-6 text-gray-200 flex items-center gap-3">
-                <Package className="h-8 w-8 text-lucky-green shrink-0" aria-hidden="true" />
-                {t('faq.products.title')}
-              </h2>
-              <Accordion type="single" collapsible className="space-y-4">
-                <AccordionItem value="daniel-collaboration" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
-                  <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
-                    {t('faq.danielCollaboration.question')}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-300 pt-3 text-lg md:text-xl leading-relaxed">
-                    {t('faq.danielCollaboration.answer')}
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="disc-durability" className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5">
-                  <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
-                    {t('faq.discDurability.question')}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-300 pt-3 text-lg md:text-xl leading-relaxed">
-                    {t('faq.discDurability.answer')}
-                  </AccordionContent>
-                </AccordionItem>
-
-              </Accordion>
-            </div>
+            {sections.map(({ title, Icon, items }) => (
+              <div key={title}>
+                <h2 className="text-3xl md:text-4xl font-heading mb-6 text-gray-200 flex items-center gap-3">
+                  <Icon className="h-8 w-8 text-lucky-green shrink-0" aria-hidden="true" />
+                  {t(title)}
+                </h2>
+                <Accordion type="single" collapsible className="space-y-4">
+                  {items.map((item) => (
+                    <AccordionItem
+                      key={item.value}
+                      value={item.value}
+                      className="bg-white/5 border border-white/10 rounded-lg px-6 transition-colors duration-200 hover:border-lucky-green/40 data-[state=open]:border-lucky-green/40 data-[state=open]:bg-lucky-green/5"
+                    >
+                      <AccordionTrigger className="text-left font-medium text-gray-200 text-lg md:text-xl hover:text-lucky-green">
+                        {t(item.q)}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-300 pt-3 text-lg md:text-xl leading-relaxed">
+                        <p>{t(item.a)}</p>
+                        {item.links && item.links.length > 0 && (
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {item.links.map((l) =>
+                              l.external ? (
+                                <a
+                                  key={l.label}
+                                  href={t(l.hrefKey as string)}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className={chipClass}
+                                >
+                                  {t(l.label)}
+                                  <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                                </a>
+                              ) : (
+                                <Link key={l.label} to={l.to as string} className={chipClass}>
+                                  {t(l.label)}
+                                  <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                                </Link>
+                              )
+                            )}
+                          </div>
+                        )}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            ))}
           </section>
 
           <section className="mt-12 p-8 bg-gradient-to-br from-lucky-green/15 via-lucky-green/5 to-transparent border border-lucky-green/40 rounded-2xl text-center shadow-lg shadow-lucky-green/5">
@@ -204,9 +235,9 @@ const FAQ = () => {
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90"
               >
-                <a href="/contact">
+                <Link to="/contact">
                   {t('faq.contactUs.button')}
-                </a>
+                </Link>
               </Button>
               <a
                 href="mailto:asiakaspalvelu@luckydiscs.fi"
