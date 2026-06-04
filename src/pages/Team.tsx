@@ -65,19 +65,14 @@ const Team = () => {
 
               <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
                 <div className="relative">
-                  <img 
-                    src={danielVictoryImage} 
+                  <img
+                    src={danielVictoryImage}
                     alt="Finnish National Championship 2025 - Won with Lucky Discs"
                     className="w-full rounded-lg shadow-2xl"
                     loading="lazy"
                     width={800}
                     height={1007}
                   />
-                  <div className="absolute top-4 right-4">
-                    <Badge className="bg-yellow-500/90 text-black font-bold">
-                      🏆 2025
-                    </Badge>
-                  </div>
                 </div>
                 
                 <div className="space-y-8">
