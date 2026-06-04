@@ -1,8 +1,8 @@
-import bankRobberDisc from "@/assets/bank-robber-disc.webp";
-import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
-import moneyShotDisc from "@/assets/money-shot-disc.webp";
-// Oikea Jailbreak-kiekkokuva (vanha jailbreak-disc.png oli väärä AI-vankilakuva)
-const jailbreakDisc = "/images/products/jailbreak.png";
+// /discs-sivu käyttää samoja täysiä promo-kuvia kuin etusivun kiekkoesittely (FeaturedDisc)
+const bankRobberDisc = "/images/brand/kiekkoesittely-02.webp";
+const treasureHuntDisc = "/images/brand/treasure-hunt-promo.webp";
+const moneyShotDisc = "/images/brand/kiekkoesittely-03.webp";
+const jailbreakDisc = "/images/brand/kiekkoesittely-04.webp";
 
 export type DiscType = "driver" | "fairway" | "midrange" | "putter";
 

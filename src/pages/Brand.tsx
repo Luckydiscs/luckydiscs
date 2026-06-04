@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Award, Users } from "lucide-react";
+import { ArrowRight, Sparkles, Award, Users, Instagram, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "@/hooks/useTranslation";
 import useSEO from "@/hooks/useSEO";
@@ -155,21 +155,23 @@ const Brand = () => {
                         {t('brand.shopDiscs')}
                       </Button>
                     </Link>
-                    <a 
-                      href="https://www.instagram.com/luckydiscsofficial" 
-                      target="_blank" 
+                    <a
+                      href="https://www.instagram.com/luckydiscsofficial"
+                      target="_blank"
                       rel="noopener noreferrer"
-                      className="text-lucky-green hover:text-white transition-colors font-semibold"
+                      aria-label="Instagram"
+                      className="inline-flex items-center gap-2 text-lucky-green hover:text-white transition-colors font-semibold"
                     >
-                      {t('brand.followInstagram')}
+                      <Instagram className="w-5 h-5" /> {t('brand.followInstagram')}
                     </a>
-                    <a 
-                      href="https://www.facebook.com/LuckyDiscs" 
-                      target="_blank" 
+                    <a
+                      href="https://www.facebook.com/LuckyDiscs"
+                      target="_blank"
                       rel="noopener noreferrer"
-                      className="text-lucky-green hover:text-white transition-colors font-semibold"
+                      aria-label="Facebook"
+                      className="inline-flex items-center gap-2 text-lucky-green hover:text-white transition-colors font-semibold"
                     >
-                      {t('brand.likeOnFacebook')}
+                      <Facebook className="w-5 h-5" /> {t('brand.likeOnFacebook')}
                     </a>
                   </div>
                 </div>
@@ -348,14 +350,14 @@ const Brand = () => {
       <section className="py-16 bg-lucky-green text-white">
         <div className="container mx-auto px-4">
           {/* Bank Robber Disc Promotion */}
-          <div className="mb-12">
-            <DiscPromotion 
+          <div className="mb-12 max-w-4xl mx-auto rounded-2xl overflow-hidden bg-gray-900 border border-white/10 shadow-2xl">
+            <DiscPromotion
               discName="bankRobber"
               discImage={bankRobberDisc}
               flightNumbers={{ speed: 8, glide: 5, turn: -1, fade: 2 }}
               buyUrl="/shop/premium-bank-robber"
               variant="inline"
-              lightBackground={true}
+              lightBackground={false}
             />
           </div>
           
@@ -375,7 +377,7 @@ const Brand = () => {
             </Link>
             
             <Link to="/wholesale">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black">
+              <Button variant="outline" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black">
                 {t('brand.becomeRetailer')}
               </Button>
             </Link>
