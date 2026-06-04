@@ -505,7 +505,7 @@ const translations = {
 
     // Blog
     'blog.title': 'Blog',
-    'blog.subtitle': 'Disc golf industry insights, wholesale guides and market analysis for retailers.',
+    'blog.subtitle': 'Disc golf guides, disc tips and insights — for players and retailers alike.',
     'blog.minRead': 'min read',
     'blog.readMore': 'Read more',
     'blog.backToBlog': 'Back to blog',
