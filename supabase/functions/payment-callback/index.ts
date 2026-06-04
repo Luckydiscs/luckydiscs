@@ -89,12 +89,21 @@ function brandFooter() {
     </div>`;
 }
 
+// Tuoterivin nimi + valittu väri ja paino omalla pikku rivillään
+const itemLabel = (i: any) => {
+  const head = `${i.variant ? `${i.variant} ` : ""}${i.product_name}`;
+  const sub = [i.color, i.weight].filter(Boolean).join(" · ");
+  return sub
+    ? `${head}<div style="font-size:12px;color:#888;margin-top:2px;">${sub}</div>`
+    : head;
+};
+
 async function sendCustomerEmail(order: any, items: any[]) {
   const itemsHtml = items
     .map(
       (i) =>
         `<tr>
-          <td style="padding:10px 0;border-bottom:1px solid #eee;color:#1a1a1a;">${i.variant ? `${i.variant} ` : ""}${i.product_name}</td>
+          <td style="padding:10px 0;border-bottom:1px solid #eee;color:#1a1a1a;">${itemLabel(i)}</td>
           <td style="padding:10px 0;border-bottom:1px solid #eee;text-align:center;color:#666;">${i.quantity} kpl</td>
           <td style="padding:10px 0;border-bottom:1px solid #eee;text-align:right;color:#1a1a1a;">${eur(i.line_total_cents)} €</td>
         </tr>`,
@@ -154,7 +163,7 @@ async function sendAdminEmail(order: any, items: any[]) {
     .map(
       (i) =>
         `<tr>
-          <td style="padding:8px 0;border-bottom:1px solid #eee;">${i.variant ? `${i.variant} ` : ""}${i.product_name}</td>
+          <td style="padding:8px 0;border-bottom:1px solid #eee;">${itemLabel(i)}</td>
           <td style="padding:8px 0;border-bottom:1px solid #eee;text-align:center;color:#666;">${i.quantity} kpl</td>
           <td style="padding:8px 0;border-bottom:1px solid #eee;text-align:right;">${eur(i.line_total_cents)} €</td>
         </tr>`,
@@ -181,7 +190,8 @@ async function sendAdminEmail(order: any, items: any[]) {
               ${order.shipping_address}<br>
               ${order.shipping_postal_code} ${order.shipping_city}<br>
               ${order.shipping_country}<br>
-              <span style="color:#666;">${order.customer_email} · ${order.customer_phone}</span>
+              <span style="color:#666;">${order.customer_email}</span><br>
+              <span style="color:#666;">${order.customer_phone}</span>
             </p>
 
             <h3 style="margin:0 0 6px;font-size:15px;color:${GREEN};">Tilaus ${order.order_number}</h3>
