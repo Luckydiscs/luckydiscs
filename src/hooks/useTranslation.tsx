@@ -53,7 +53,7 @@ const translations = {
     'hero.scrollDown': 'Scroll down',
 
     // Featured Disc
-    'featured.featuredDisc': 'Featured Disc',
+    'featured.featuredDisc': 'Our Range',
     'featured.treasureHunt': 'Treasure Hunt',
     'featured.treasureHuntDescription': 'Our signature mid-range disc with exceptional glide and reliable fade. Perfect for controlled shots and consistent performance on every throw.',
     'featured.shopNow': 'Shop Now',
@@ -62,15 +62,15 @@ const translations = {
     'featured.glide': 'Glide',
     'featured.turn': 'Turn',
     'featured.fade': 'Fade',
-    'featured.title': 'Featured Discs',
-    'featured.subtitle': 'Discover our most popular disc models, each crafted with premium materials and distinctive designs that set you apart on the course.',
+    'featured.title': 'Our Discs',
+    'featured.subtitle': 'Explore our full lineup — every disc crafted with premium materials and distinctive designs that set you apart on the course.',
     'featured.viewAllDiscs': 'View All Discs',
     
     // Disc descriptions
     'disc.bankRobber.description': 'Versatile fairway driver perfect for controlled throws with reliable flight path and consistent performance.',
     'disc.treasureHunt.description': 'Distance driver designed for maximum distance. High-speed disc with reliable fade for long throws.',
     'disc.moneyShot.description': 'Our signature putter with incredible grip and accuracy.',
-    'disc.jailbreak.description': 'Break free from conventional throws with this revolutionary disc. Flight numbers classified.',
+    'disc.jailbreak.description': 'A straight-flying midrange that goes as far as your arm can throw. A gentle, dependable fade adds control without overstability.',
     
     // Action Section
     'action.title': 'Lucky Discs in Action',
@@ -535,7 +535,7 @@ const translations = {
     'hero.scrollDown': 'Vieritä alas',
 
     // Featured Disc
-    'featured.featuredDisc': 'Suosittu kiekko',
+    'featured.featuredDisc': 'Mallisto',
     'featured.treasureHunt': 'Treasure Hunt',
     'featured.treasureHuntDescription': 'Keskietäisyyskiekkomme poikkeuksellisella liidolla ja luotettavalla fadella. Täydellinen hallittuihin heittoihin ja tasaiseen suoritukseen jokaisessa heitossa.',
     'featured.shopNow': 'Osta nyt',
@@ -544,15 +544,15 @@ const translations = {
     'featured.glide': 'Liito',
     'featured.turn': 'Vakaus',
     'featured.fade': 'Fade',
-    'featured.title': 'Suositut kiekot',
-    'featured.subtitle': 'Tutustu suosituimpiin kiekkomalleihimme, joista jokainen on valmistettu premium-materiaaleista ja erottuvilla design-ratkaisuilla.',
+    'featured.title': 'Kiekkomallisto',
+    'featured.subtitle': 'Tutustu koko mallistoomme — jokainen kiekko valmistettu premium-materiaaleista ja erottuvilla design-ratkaisuilla.',
     'featured.viewAllDiscs': 'Katso kaikki kiekot',
     
     // Disc descriptions  
     'disc.bankRobber.description': 'Luotettava fairway-driver kontrolloiduille heitoille. Täydellinen tasapaino nopeuden ja hallinnan välillä.',
     'disc.treasureHunt.description': 'Distance driver maksimimatkalle. Nopea kiekko luotettavalla fadella pitkiä heittoja varten.',
     'disc.moneyShot.description': 'Erikoisputter uskomattomalla otteella ja tarkkuudella.',
-    'disc.jailbreak.description': 'Vapaudu perinteisistä heitoista tällä vallankumouksellisella kiekolla. Lentoluvut salaiset.',
+    'disc.jailbreak.description': 'Suoraan menevä midrange, joka lentää niin pitkälle kuin käsi riittää. Keskiloiva feidi tuo varmuutta ilman ylivakautta.',
     
     // Action Section
     'action.title': 'Lucky Discs toiminnassa',

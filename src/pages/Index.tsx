@@ -245,38 +245,41 @@ const Index = () => {
       
       {/* Summer Sale / Kesätarjous - FI only */}
       {language === 'fi' && (
-        <section className="relative py-16 md:py-24 overflow-hidden">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/images/brand/discs-spain-beach.webp')" }}
-          />
-          <div className="absolute inset-0 bg-black/65" />
-          <div className="relative z-10 container mx-auto px-4 text-center">
-            <div className="inline-block bg-lucky-green text-black text-sm font-bold uppercase tracking-widest px-4 py-1 rounded-full mb-6">
-              {t('summerSale.badge')}
+        <section className="py-16 md:py-24 bg-gradient-to-br from-black via-emerald-950/30 to-black">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center rounded-3xl border border-lucky-green/20 bg-gradient-to-br from-gray-900/60 to-black p-6 md:p-10 shadow-2xl">
+              <img
+                src="/images/products/super-starter-pack.webp"
+                alt="Lucky Discs Super Starter Pack — 7 kiekkoa"
+                className="w-full max-w-md mx-auto rounded-2xl"
+                loading="lazy"
+              />
+              <div className="text-center md:text-left">
+                <div className="inline-block bg-lucky-green text-black text-sm font-bold uppercase tracking-widest px-4 py-1 rounded-full mb-4">
+                  {t('summerSale.badge')}
+                </div>
+                <h2 className="text-4xl md:text-5xl font-heading font-black text-white mb-3">
+                  {t('summerSale.packTitle')}
+                </h2>
+                <p className="text-white/90 text-lg font-medium mb-1">
+                  {t('summerSale.packContents')}
+                </p>
+                <div className="text-lucky-green text-5xl md:text-6xl font-black mb-1">{t('summerSale.packPrice')}</div>
+                <p className="text-white/70 text-base mb-6">
+                  {t('summerSale.singlePrice')}
+                </p>
+                <Button
+                  size="lg"
+                  className="bg-lucky-green hover:bg-white text-black font-bold text-xl px-10 py-6 rounded-full shadow-2xl transition-all duration-300"
+                  onClick={() => navigate('/shop/super-starter-pack')}
+                >
+                  {t('summerSale.buyButton')} <ArrowRight className="ml-2 h-6 w-6" />
+                </Button>
+                <p className="text-white/50 text-sm uppercase tracking-widest mt-4">
+                  {t('summerSale.limitedStock')}
+                </p>
+              </div>
             </div>
-            <h2 className="text-4xl md:text-7xl font-heading font-black text-white mb-4 drop-shadow-lg">
-              {t('summerSale.packTitle')}
-            </h2>
-            <div className="flex flex-col items-center gap-2 mb-6">
-              <p className="text-white/90 text-lg md:text-xl font-medium">
-                {t('summerSale.packContents')}
-              </p>
-              <span className="text-lucky-green text-5xl md:text-6xl font-black">{t('summerSale.packPrice')}</span>
-              <p className="text-white/70 text-base">
-                {t('summerSale.singlePrice')}
-              </p>
-            </div>
-            <Button
-              size="lg"
-              className="bg-lucky-green hover:bg-white text-black font-bold text-xl px-12 py-6 shadow-2xl transition-all duration-300 mb-6"
-              onClick={() => navigate('/shop')}
-            >
-              {t('summerSale.buyButton')} <ArrowRight className="ml-2 h-6 w-6" />
-            </Button>
-            <p className="text-white/60 text-sm uppercase tracking-widest">
-              {t('summerSale.limitedStock')}
-            </p>
           </div>
         </section>
       )}
