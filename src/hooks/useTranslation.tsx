@@ -116,11 +116,11 @@ const translations = {
     'features.premiumMaterials': 'Premium Materials',
     'features.premiumMaterialsDesc': 'All our discs are made with high-quality polymers for superior durability and consistent flight.',
     'features.fastShipping': 'Fast Shipping',
-    'features.fastShippingDesc': 'We ship worldwide with reliable tracking and secure packaging for your discs.',
-    'features.tournamentTested': 'Tournament Tested',
-    'features.tournamentTestedDesc': 'Our discs are tournament-approved and used by professional players worldwide.',
+    'features.fastShippingDesc': 'We ship across Finland in 1–3 business days via Posti — free over €50.',
+    'features.tournamentTested': 'Tournament Grade',
+    'features.tournamentTestedDesc': 'Our discs are PDGA-approved and built to handle competitive play.',
     'features.communitySupport': 'Community Support',
-    'features.communitySupportDesc': 'We actively sponsor events and players to grow the sport of disc golf globally.',
+    'features.communitySupportDesc': 'We proudly support the Finnish disc golf community — players, clubs and events.',
     
     // Wholesale Page
     'wholesale.title': 'Lucky Discs Wholesale',
@@ -598,11 +598,11 @@ const translations = {
     'features.premiumMaterials': 'Premium materiaalit',
     'features.premiumMaterialsDesc': 'Kaikki kiekkomme on valmistettu korkealaatuisista polymeereistä paremman kestävyyden ja johdonmukaisen lennon varmistamiseksi.',
     'features.fastShipping': 'Nopea toimitus',
-    'features.fastShippingDesc': 'Toimitamme maailmanlaajuisesti luotettavalla seurannalla ja turvallisella pakkauksella kiekoillesi.',
-    'features.tournamentTested': 'Turnaustestattua',
-    'features.tournamentTestedDesc': 'Kiekkomme on turnaushyväksyttyjä ja ammattilaispelaajat käyttävät niitä maailmanlaajuisesti.',
+    'features.fastShippingDesc': 'Toimitus Suomeen 1–3 arkipäivässä Postilla — ja ilmainen yli 50 € tilauksiin.',
+    'features.tournamentTested': 'Turnaustaso',
+    'features.tournamentTestedDesc': 'Kiekkomme ovat PDGA-hyväksyttyjä ja suunniteltu kestämään kilpapelin vaatimukset.',
     'features.communitySupport': 'Yhteisön tuki',
-    'features.communitySupportDesc': 'Sponsoroimme aktiivisesti tapahtumia ja pelaajia kasvattaaksemme frisbeegolfia maailmanlaajuisesti.',
+    'features.communitySupportDesc': 'Tuemme suomalaista frisbeegolfyhteisöä — pelaajia, seuroja ja tapahtumia.',
     
     // Wholesale Page
     'wholesale.title': 'Lucky Discs Jälleenmyynti',
