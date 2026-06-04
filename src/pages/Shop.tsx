@@ -96,10 +96,10 @@ const Shop = () => {
           <span className="flex items-center gap-1.5">
             <Truck className="w-3.5 h-3.5 text-emerald-400" /> Toimitus 5,90 € · ilmainen yli 50 €
           </span>
-          <span className="hidden sm:flex items-center gap-1.5">
+          <span className="flex items-center gap-1.5">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> Suomalainen verkkokauppa
           </span>
-          <span className="hidden md:flex items-center gap-1.5">
+          <span className="flex items-center gap-1.5">
             <RotateCcw className="w-3.5 h-3.5 text-emerald-400" /> 14 pv palautusoikeus
           </span>
         </div>
@@ -111,13 +111,13 @@ const Shop = () => {
         <img
           src="/images/brand/shop-hero.webp"
           alt="Lucky Discs Shop"
-          className="block w-full h-auto"
+          className="block w-full max-h-[190px] sm:max-h-[320px] md:max-h-[440px] object-contain mx-auto"
           width={1600}
           height={675}
         />
         <div className="container mx-auto px-4 text-center pt-5 pb-8">
           <p className="text-gray-200 text-base md:text-lg max-w-xl mx-auto mb-4">
-            Premium-frisbeegolfkiekkoja suoraan valmistajalta. Suunniteltu ja testattu Suomessa.
+            Premium-frisbeegolfkiekkoja suoraan valmistajalta. Suunniteltu, valmistettu ja testattu Suomessa.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-300">
             <span>{products.length} tuotetta</span>

@@ -106,13 +106,13 @@ const HeroSection = () => {
                   { icon: Truck, label: "Toimitus 1–3 arkipäivää" },
                   { icon: ShieldCheck, label: "Turvallinen Paytrail-maksu" },
                   { icon: RotateCcw, label: "14 pv palautusoikeus" },
-                  { icon: MapPin, label: "Suunniteltu Suomessa" },
+                  { icon: MapPin, label: "Valmistettu Suomessa" },
                 ]
               : [
                   { icon: Truck, label: "Finnish premium discs" },
                   { icon: ShieldCheck, label: "Tournament-tested" },
                   { icon: RotateCcw, label: "Worldwide wholesale" },
-                  { icon: MapPin, label: "Designed in Finland" },
+                  { icon: MapPin, label: "Made in Finland" },
                 ]
             ).map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-2.5 justify-center md:justify-start">
