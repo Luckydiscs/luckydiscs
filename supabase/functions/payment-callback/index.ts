@@ -89,13 +89,21 @@ function brandFooter() {
     </div>`;
 }
 
-// Tuoterivin nimi + valittu väri ja paino omalla pikku rivillään
+// Tuoterivi: kuva + nimi + valittu väri ja paino
+const absImg = (raw: string) => {
+  if (!raw) return "";
+  if (raw.startsWith("http")) return raw;
+  return `${SITE_URL}${raw.startsWith("/") ? "" : "/"}${raw}`;
+};
 const itemLabel = (i: any) => {
   const head = `${i.variant ? `${i.variant} ` : ""}${i.product_name}`;
   const sub = [i.color, i.weight].filter(Boolean).join(" · ");
-  return sub
-    ? `${head}<div style="font-size:12px;color:#888;margin-top:2px;">${sub}</div>`
-    : head;
+  const img = absImg(i.image_url || "");
+  const imgCell = img
+    ? `<td style="padding-right:12px;width:52px;" valign="middle"><img src="${img}" width="52" height="52" alt="" style="display:block;border-radius:8px;background:#f4f4f5;border:1px solid #eee;"></td>`
+    : "";
+  const text = `${head}${sub ? `<div style="font-size:12px;color:#888;margin-top:2px;">${sub}</div>` : ""}`;
+  return `<table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>${imgCell}<td valign="middle" style="color:#1a1a1a;">${text}</td></tr></table>`;
 };
 
 async function sendCustomerEmail(order: any, items: any[]) {
@@ -285,10 +293,23 @@ const handler = async (req: Request): Promise<Response> => {
         .select("*")
         .eq("order_id", order.id);
 
+      // Liitä tuotekuvat (products.image_url) riveille sähköpostia varten
+      const itemList = items ?? [];
+      const productIds = [...new Set(itemList.map((i: any) => i.product_id))];
+      if (productIds.length) {
+        const { data: prods } = await supabase
+          .from("products")
+          .select("id,image_url")
+          .in("id", productIds);
+        const imgById: Record<string, string> = {};
+        (prods ?? []).forEach((p: any) => { imgById[p.id] = p.image_url ?? ""; });
+        itemList.forEach((i: any) => { i.image_url = imgById[i.product_id] ?? ""; });
+      }
+
       // ── lähetä mailit ─────────
       try {
-        await sendCustomerEmail(updated, items ?? []);
-        await sendAdminEmail(updated, items ?? []);
+        await sendCustomerEmail(updated, itemList);
+        await sendAdminEmail(updated, itemList);
       } catch (mailErr) {
         console.error("Email send failed (order still marked paid):", mailErr);
       }
