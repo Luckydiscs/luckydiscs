@@ -26,10 +26,10 @@ const HeroSection = () => {
       <div className="absolute bottom-0 left-0 w-1/2 h-1/3 z-0 bg-lucky-green/10 blur-3xl rounded-full" />
 
       {/* Main content */}
-      <div className="container mx-auto px-4 z-10 pt-20 pb-20 md:pt-28 md:pb-32">
-        <div className="max-w-3xl">
+      <div className="container mx-auto px-5 sm:px-6 z-10 pt-24 pb-28 md:pt-28 md:pb-32">
+        <div className="max-w-3xl mx-auto md:mx-0 text-center md:text-left">
           {/* Pre-heading label + summer sale badge */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row items-center md:items-start sm:items-center gap-3 mb-5 md:mb-6 justify-center md:justify-start">
             <div className="flex items-center gap-3">
               <div className="h-px w-12 bg-lucky-gold" />
               <span className="font-display text-lucky-gold text-sm uppercase tracking-[0.3em]">
@@ -50,24 +50,24 @@ const HeroSection = () => {
           </div>
 
           {/* Main headline */}
-          <h1 className="font-heading text-[clamp(4rem,12vw,9rem)] leading-none tracking-wide text-white mb-2">
+          <h1 className="font-heading text-[clamp(2.75rem,13vw,9rem)] leading-none tracking-wide text-white mb-2">
             LUCKY DISC
             <span className="text-lucky-gold">$</span>
           </h1>
 
           {/* Secondary headline in Barlow Condensed */}
-          <p className="font-display text-[clamp(1.25rem,3vw,2rem)] font-semibold uppercase tracking-[0.2em] text-white/60 mb-8">
+          <p className="font-display text-[clamp(1.05rem,3vw,2rem)] font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/60 mb-6 md:mb-8">
             {t('hero.modernDiscs')} &nbsp;
             <span className="text-lucky-green">{t('hero.wildStyle')}</span>
           </p>
 
           {/* Body copy */}
-          <p className="font-sans text-lg text-white/75 max-w-xl mb-10 leading-relaxed">
+          <p className="font-sans text-base sm:text-lg text-white/75 max-w-xl mx-auto md:mx-0 mb-8 md:mb-10 leading-relaxed">
             {t('hero.subtitle')}
           </p>
 
           {/* CTAs - FI: oma verkkokauppa, EN: wholesale inquiry */}
-          <div className="flex flex-row gap-3 sm:gap-4">
+          <div className="flex flex-row flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
             {language === 'fi' ? (
               <Button
                 size="lg"

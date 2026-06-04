@@ -134,7 +134,7 @@ const Discs = () => {
       <div className="py-8 bg-black/50">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="all" className="w-full">
-            <TabsList className="grid grid-cols-5 mb-8 bg-black/30">
+            <TabsList className="grid grid-cols-3 sm:grid-cols-5 h-auto gap-1 mb-8 bg-black/30 p-1">
               <TabsTrigger
                 value="all"
                 onClick={() => setSelectedType("all")}
