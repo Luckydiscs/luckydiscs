@@ -67,9 +67,9 @@ const translations = {
     'featured.viewAllDiscs': 'View All Discs',
     
     // Disc descriptions
-    'disc.bankRobber.description': 'Versatile fairway driver perfect for controlled throws with reliable flight path and consistent performance.',
-    'disc.treasureHunt.description': 'Distance driver designed for maximum distance. High-speed disc with reliable fade for long throws.',
-    'disc.moneyShot.description': 'Our signature putter with incredible grip and accuracy.',
+    'disc.bankRobber.description': 'A dependable fairway driver that delivers controlled distance without punishing overstability. Speed 8 makes it easier to control than fast drivers, and a slight turn (-1) helps with hyzer flips and gentle right-curving lines. A moderate fade (2) gives a predictable, controlled finish. Ideal for controlled drives and players of all levels who value accuracy.',
+    'disc.treasureHunt.description': 'A long-range distance driver built for maximum flight. Speed 12 demands plenty of arm speed, and high glide (6) keeps it airborne longer. A slight turn (-1) adds forgiveness and helps hyzer flips, while a stronger fade (3) finishes the flight reliably to the left. Best for experienced, powerful throwers on long fairways.',
+    'disc.moneyShot.description': 'Our signature putter and approach disc with excellent grip and accuracy. A low speed (4) and controlled flight make it predictable for putting and the short game, and a dependable fade (3) adds confidence even in wind. It also shines on controlled approach shots — great for players of all levels in situations that demand precision.',
     'disc.jailbreak.description': 'A straight-flying midrange that goes as far as your arm can throw. A gentle, dependable fade adds control without overstability.',
     
     // Action Section
@@ -549,9 +549,9 @@ const translations = {
     'featured.viewAllDiscs': 'Katso kaikki kiekot',
     
     // Disc descriptions  
-    'disc.bankRobber.description': 'Luotettava fairway-driver kontrolloiduille heitoille. Täydellinen tasapaino nopeuden ja hallinnan välillä.',
-    'disc.treasureHunt.description': 'Distance driver maksimimatkalle. Nopea kiekko luotettavalla fadella pitkiä heittoja varten.',
-    'disc.moneyShot.description': 'Erikoisputter uskomattomalla otteella ja tarkkuudella.',
+    'disc.bankRobber.description': 'Luotettava fairway-driver, joka antaa hallittua matkaa ilman jyräävää ylivakautta. Speed 8 tekee siitä helpomman hallita kuin nopeat draiverit, ja lievä turn (-1) auttaa hyzer-flippeihin ja loiviin oikeakaarteisiin. Maltillinen fade (2) tuo ennustettavan, hallitun lopun. Sopii kontrolloituihin draiveihin ja kaiken tasoisille pelaajille tarkkuutta vaativille väylille.',
+    'disc.treasureHunt.description': 'Pitkän matkan distance-driver maksimaaliseen lentoon. Speed 12 vaatii reilusti heittovoimaa, ja korkea liito (6) pitää kiekon ilmassa pitkään. Lievä turn (-1) tuo anteeksiantavuutta ja auttaa hyzer-flippeihin, kun taas vahvempi fade (3) viimeistelee lennon hallitusti. Paras valinta kokeneille, voimakkaasti heittäville pelaajille pitkille väylille.',
+    'disc.moneyShot.description': 'Allekirjoitettu putteri ja approach-kiekko, jossa erinomainen ote ja tarkkuus. Matala speed (4) ja hallittu lento tekevät siitä ennustettavan puttaamiseen ja lähipeliin, ja luotettava fade (3) tuo varmuutta tuulisellakin kelillä. Toimii loistavasti myös hallittuihin approach-heittoihin — sopii kaiken tasoisille pelaajille tarkkuutta vaativiin tilanteisiin.',
     'disc.jailbreak.description': 'Suoraan menevä midrange, joka lentää niin pitkälle kuin käsi riittää. Keskiloiva feidi tuo varmuutta ilman ylivakautta.',
     
     // Action Section
