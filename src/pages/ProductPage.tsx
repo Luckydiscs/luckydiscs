@@ -177,12 +177,18 @@ const ProductPage = () => {
                       })}
                     </div>
                   </div>
-                  {effColor && weights.length > 0 && (
+                  {effColor && weights.length === 1 && (
+                    <div>
+                      <div className="text-xs uppercase tracking-wider text-gray-500 mb-2">Paino</div>
+                      <div className="text-white">{weights[0]}</div>
+                    </div>
+                  )}
+                  {effColor && weights.length > 1 && (
                     <div>
                       <div className="text-xs uppercase tracking-wider text-gray-500 mb-2">Paino</div>
                       <select value={effWeight ?? ""} onChange={(e) => setSelWeight(e.target.value)}
                         className="bg-gray-900 border border-gray-700 rounded-lg px-3 py-2.5 text-white focus:border-emerald-400 focus:outline-none min-w-[160px]">
-                        {weights.length > 1 && <option value="">Valitse paino…</option>}
+                        <option value="">Valitse paino…</option>
                         {weights.map((w) => <option key={w} value={w} className="bg-gray-900">{w}</option>)}
                       </select>
                     </div>

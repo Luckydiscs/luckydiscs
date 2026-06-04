@@ -399,8 +399,16 @@ const ProductCard = ({
               </div>
             </div>
 
-            {/* Weight dropdown */}
-            {selColor && weightsForColor.length > 0 && (
+            {/* Paino: yksi paino -> teksti (esim. n. 180 g), useampi -> valinta */}
+            {selColor && weightsForColor.length === 1 && (
+              <div>
+                <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
+                  Paino
+                </div>
+                <div className="text-sm text-white">{weightsForColor[0]}</div>
+              </div>
+            )}
+            {selColor && weightsForColor.length > 1 && (
               <div>
                 <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">
                   Paino
@@ -410,11 +418,9 @@ const ProductCard = ({
                   onChange={(e) => setSelWeight(e.target.value)}
                   className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:border-emerald-400 focus:outline-none"
                 >
-                  {weightsForColor.length > 1 && (
-                    <option value="" className="bg-gray-900">
-                      Valitse paino…
-                    </option>
-                  )}
+                  <option value="" className="bg-gray-900">
+                    Valitse paino…
+                  </option>
                   {weightsForColor.map((w) => (
                     <option key={w} value={w} className="bg-gray-900">
                       {w}
