@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import {
   Loader2, Package, Boxes, FileText, LogOut, Save, Trash2,
   Minus, Plus, Pencil, Upload, CheckCircle2, Clock, XCircle, Truck,
+  LayoutDashboard, Mail, AlertTriangle, TrendingUp,
 } from "lucide-react";
 
 const PW_KEY = "luckydiscs-admin-pw";
@@ -34,14 +35,14 @@ async function uploadImage(password: string, file: File): Promise<string> {
 
 const fmt = (cents: number) => (cents / 100).toFixed(2).replace(".", ",") + " €";
 
-type Tab = "orders" | "inventory" | "blog";
+type Tab = "dashboard" | "orders" | "inventory" | "blog";
 
 const Admin = () => {
   const [password, setPassword] = useState<string>(() => localStorage.getItem(PW_KEY) ?? "");
   const [authed, setAuthed] = useState(false);
   const [loginPw, setLoginPw] = useState("");
   const [loginErr, setLoginErr] = useState("");
-  const [tab, setTab] = useState<Tab>("orders");
+  const [tab, setTab] = useState<Tab>("dashboard");
 
   const login = async () => {
     setLoginErr("");
@@ -102,6 +103,7 @@ const Admin = () => {
         </div>
         <div className="container mx-auto px-4 flex gap-1">
           {([
+            ["dashboard", "Konehuone", LayoutDashboard],
             ["orders", "Tilaukset", Package],
             ["inventory", "Varasto", Boxes],
             ["blog", "Blogi", FileText],
@@ -120,10 +122,108 @@ const Admin = () => {
       </header>
 
       <main className="container mx-auto px-4 py-8">
+        {tab === "dashboard" && <DashboardTab password={password} />}
         {tab === "orders" && <OrdersTab password={password} />}
         {tab === "inventory" && <InventoryTab password={password} />}
         {tab === "blog" && <BlogTab password={password} />}
       </main>
+    </div>
+  );
+};
+
+// ════════════════════════════ KONEHUONE ════════════════════════════
+const DashboardTab = ({ password }: { password: string }) => {
+  const [data, setData] = useState<any | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    adminCall(password, "dashboard")
+      .then((d) => { setData(d); setLoading(false); })
+      .catch(() => setLoading(false));
+  }, [password]);
+
+  if (loading) return <Loader2 className="w-6 h-6 animate-spin text-emerald-400" />;
+  if (!data) return <p className="text-gray-500">Tietoja ei voitu ladata. (Vaatii admin-api deployn.)</p>;
+
+  const o = data.orders ?? {};
+  const stat = (label: string, value: string, sub?: string, accent?: string) => (
+    <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+      <div className="text-xs text-gray-400 mb-1">{label}</div>
+      <div className={`text-2xl font-bold ${accent ?? "text-white"}`}>{value}</div>
+      {sub && <div className="text-xs text-gray-500 mt-1">{sub}</div>}
+    </div>
+  );
+  const top = data.topProducts ?? [];
+  const maxQty = Math.max(1, ...top.map((p: any) => p.qty));
+
+  return (
+    <div className="space-y-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+        {stat("Liikevaihto (maksetut)", fmt(o.revenueCents || 0), `${(o.paid || 0) + (o.shipped || 0)} tilausta`, "text-emerald-400")}
+        {stat("Tilauksia yhteensä", String(o.total || 0))}
+        {stat("Maksettu", String(o.paid || 0), undefined, "text-emerald-400")}
+        {stat("Odottaa maksua", String(o.pending || 0), "ei toimiteta", "text-yellow-400")}
+        {stat("Uutiskirje", String(data.newsletter?.count || 0), "tilaajaa", "text-lucky-green")}
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-6">
+        <div className="bg-white/5 border border-white/10 rounded-xl p-5">
+          <h3 className="font-bold mb-4 flex items-center gap-2"><TrendingUp className="w-4 h-4 text-emerald-400" /> Myydyimmät kiekot</h3>
+          {top.length === 0 ? (
+            <p className="text-sm text-gray-500">Ei vielä maksettuja tilauksia.</p>
+          ) : (
+            <div className="space-y-2.5">
+              {top.map((p: any) => (
+                <div key={p.name}>
+                  <div className="flex items-center justify-between text-sm mb-1">
+                    <span className="truncate pr-2">{p.name}</span>
+                    <span className="text-gray-400 shrink-0">{p.qty} kpl</span>
+                  </div>
+                  <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-full bg-emerald-500" style={{ width: `${(p.qty / maxQty) * 100}%` }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="bg-white/5 border border-white/10 rounded-xl p-5">
+          <h3 className="font-bold mb-4 flex items-center gap-2"><AlertTriangle className="w-4 h-4 text-yellow-400" /> Vähissä / loppu (≤ 5 kpl)</h3>
+          {(data.lowStock ?? []).length === 0 ? (
+            <p className="text-sm text-gray-500">Kaikkia värejä on varastossa hyvin 👍</p>
+          ) : (
+            <div className="space-y-1.5 max-h-80 overflow-y-auto pr-1">
+              {data.lowStock.map((v: any, i: number) => (
+                <div key={i} className="flex items-center justify-between text-sm bg-black/30 rounded px-3 py-1.5">
+                  <span className="truncate pr-2">{v.product} · {v.color} · {v.weight}</span>
+                  {v.sold_out ? (
+                    <span className="text-red-400 text-xs font-medium shrink-0">LOPPUUNMYYTY</span>
+                  ) : (
+                    <span className={`text-xs font-medium shrink-0 ${v.stock === 0 ? "text-red-400" : "text-yellow-400"}`}>{v.stock} kpl</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="bg-white/5 border border-white/10 rounded-xl p-5">
+        <h3 className="font-bold mb-4 flex items-center gap-2"><Mail className="w-4 h-4 text-lucky-green" /> Uutiskirjeen tilaajat ({data.newsletter?.count || 0})</h3>
+        {(data.newsletter?.recent ?? []).length === 0 ? (
+          <p className="text-sm text-gray-500">Ei tilaajia vielä.</p>
+        ) : (
+          <div className="grid sm:grid-cols-2 gap-x-6 max-h-72 overflow-y-auto pr-1">
+            {data.newsletter.recent.map((s: any) => (
+              <div key={s.email} className="flex items-center justify-between text-sm border-b border-white/5 py-1.5">
+                <span className="truncate pr-2">{s.email}</span>
+                <span className="text-gray-500 text-xs shrink-0">{(s.subscribed_at || "").slice(0, 10)}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -195,6 +195,85 @@ serve(async (req) => {
         return json({ url: pub.publicUrl });
       }
 
+      // ── KONEHUONE / DASHBOARD ──
+      case "dashboard": {
+        // Tilaukset + liikevaihto
+        const { data: allOrders } = await supabase
+          .from("orders")
+          .select("id,status,total_cents,created_at")
+          .order("created_at", { ascending: false })
+          .limit(2000);
+        const ordersArr = allOrders ?? [];
+        const byStatus: Record<string, number> = {};
+        let revenueCents = 0;
+        const paidIds: string[] = [];
+        for (const o of ordersArr) {
+          byStatus[o.status] = (byStatus[o.status] || 0) + 1;
+          if (o.status === "paid" || o.status === "shipped") {
+            revenueCents += o.total_cents || 0;
+            paidIds.push(o.id);
+          }
+        }
+
+        // Myydyimmät kiekot (vain maksetut/lähetetyt tilaukset)
+        let topProducts: { name: string; qty: number }[] = [];
+        if (paidIds.length) {
+          const { data: items } = await supabase
+            .from("order_items")
+            .select("product_name,variant,color,quantity,order_id")
+            .in("order_id", paidIds);
+          const map: Record<string, { name: string; qty: number }> = {};
+          for (const it of items ?? []) {
+            const key = `${it.product_name}${it.variant ? " " + it.variant : ""}`;
+            (map[key] ??= { name: key, qty: 0 }).qty += it.quantity || 0;
+          }
+          topProducts = Object.values(map).sort((a, b) => b.qty - a.qty).slice(0, 12);
+        }
+
+        // Vähissä / loppu olevat variantit
+        const { data: variants } = await supabase
+          .from("product_variants")
+          .select("product_id,color,weight,stock,sold_out");
+        const { data: products } = await supabase.from("products").select("id,name,variant");
+        const nameById: Record<string, string> = {};
+        (products ?? []).forEach((p) => {
+          nameById[p.id] = `${p.name}${p.variant ? " " + p.variant : ""}`;
+        });
+        const lowStock = (variants ?? [])
+          .filter((v) => v.sold_out || (v.stock ?? 0) <= 5)
+          .map((v) => ({
+            product: nameById[v.product_id] ?? v.product_id,
+            color: v.color,
+            weight: v.weight,
+            stock: v.stock ?? 0,
+            sold_out: !!v.sold_out,
+          }))
+          .sort((a, b) => (a.sold_out === b.sold_out ? a.stock - b.stock : a.sold_out ? -1 : 1))
+          .slice(0, 50);
+
+        // Uutiskirjeen tilaajat
+        const { data: subs, count } = await supabase
+          .from("newsletter_subscriptions")
+          .select("email,subscribed_at", { count: "exact" })
+          .order("subscribed_at", { ascending: false })
+          .limit(50);
+
+        return json({
+          orders: {
+            total: ordersArr.length,
+            paid: byStatus.paid || 0,
+            pending: byStatus.pending || 0,
+            shipped: byStatus.shipped || 0,
+            failed: byStatus.failed || 0,
+            cancelled: byStatus.cancelled || 0,
+            revenueCents,
+          },
+          topProducts,
+          lowStock,
+          newsletter: { count: count ?? (subs ?? []).length, recent: subs ?? [] },
+        });
+      }
+
       default:
         return json({ error: `Unknown action: ${action}` }, 400);
     }
