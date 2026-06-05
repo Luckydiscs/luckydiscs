@@ -71,7 +71,7 @@ const Admin = () => {
 
   if (!authed) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center px-4">
+      <div className="min-h-screen bg-[#0a0a0a] text-gray-200 flex items-center justify-center px-4">
         <div className="w-full max-w-sm bg-white/5 border border-white/10 rounded-2xl p-8">
           <h1 className="text-2xl font-bold mb-1">Lucky Discs Admin</h1>
           <p className="text-sm text-gray-400 mb-6">Kirjaudu hallintapaneeliin</p>
@@ -81,7 +81,7 @@ const Admin = () => {
             value={loginPw}
             onChange={(e) => setLoginPw(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && login()}
-            className="bg-gray-900 border-gray-700 text-white mb-3"
+            className="bg-gray-900 border-gray-700 text-gray-200 mb-3"
           />
           {loginErr && <p className="text-red-400 text-sm mb-3">{loginErr}</p>}
           <Button onClick={login} className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold">
@@ -93,11 +93,11 @@ const Admin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0a0a0a] text-gray-200">
       <header className="border-b border-white/10 sticky top-0 bg-[#0a0a0a]/95 backdrop-blur z-20">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <h1 className="text-xl font-bold">Lucky Discs Admin</h1>
-          <button onClick={logout} className="text-sm text-gray-400 hover:text-white flex items-center gap-2">
+          <button onClick={logout} className="text-sm text-gray-400 hover:text-gray-200 flex items-center gap-2">
             <LogOut className="w-4 h-4" /> Kirjaudu ulos
           </button>
         </div>
@@ -112,7 +112,7 @@ const Admin = () => {
               key={key}
               onClick={() => setTab(key)}
               className={`px-4 py-2.5 text-sm font-medium flex items-center gap-2 border-b-2 transition-colors ${
-                tab === key ? "border-emerald-400 text-emerald-400" : "border-transparent text-gray-400 hover:text-white"
+                tab === key ? "border-emerald-400 text-emerald-400" : "border-transparent text-gray-400 hover:text-gray-200"
               }`}
             >
               <Icon className="w-4 h-4" /> {label}
@@ -149,7 +149,7 @@ const DashboardTab = ({ password }: { password: string }) => {
   const stat = (label: string, value: string, sub?: string, accent?: string) => (
     <div className="bg-white/5 border border-white/10 rounded-xl p-4">
       <div className="text-xs text-gray-400 mb-1">{label}</div>
-      <div className={`text-2xl font-bold ${accent ?? "text-white"}`}>{value}</div>
+      <div className={`text-2xl font-bold ${accent ?? "text-gray-200"}`}>{value}</div>
       {sub && <div className="text-xs text-gray-500 mt-1">{sub}</div>}
     </div>
   );
@@ -333,8 +333,8 @@ const OrdersTab = ({ password }: { password: string }) => {
             {isPaid && (
               <div className="flex flex-wrap items-center gap-2 mt-4 pt-3 border-t border-white/10">
                 <Input placeholder="Seurantanumero (Posti)" defaultValue={o.tracking_number ?? ""}
-                  id={`tn-${o.id}`} className="bg-gray-900 border-gray-700 text-white text-sm max-w-xs h-9" />
-                <Button size="sm" className="bg-blue-500 hover:bg-blue-400 text-white"
+                  id={`tn-${o.id}`} className="bg-gray-900 border-gray-700 text-gray-200 text-sm max-w-xs h-9" />
+                <Button size="sm" className="bg-blue-500 hover:bg-blue-400 text-gray-200"
                   onClick={() => setStatus(o.id, "shipped", (document.getElementById(`tn-${o.id}`) as HTMLInputElement)?.value)}>
                   <Truck className="w-4 h-4 mr-1" /> Merkitse lähetetyksi
                 </Button>
@@ -346,7 +346,7 @@ const OrdersTab = ({ password }: { password: string }) => {
 
             {/* Muokkaa / Poista */}
             <div className="flex flex-wrap items-center gap-2 mt-4 pt-3 border-t border-white/10">
-              <Button size="sm" className="bg-white/10 hover:bg-white/20 text-white border border-white/20"
+              <Button size="sm" className="bg-white/10 hover:bg-white/20 text-gray-200 border border-white/20"
                 onClick={() => setEditingId(o.id)}>
                 <Pencil className="w-4 h-4 mr-1" /> Muokkaa
               </Button>
@@ -387,7 +387,7 @@ const OrderEditor = ({ order, password, onDone }: { order: any; password: string
   const field = (k: keyof typeof f, label: string) => (
     <div>
       <label className="text-xs text-gray-400">{label}</label>
-      <Input value={f[k]} onChange={(e) => upd(k, e.target.value)} className="bg-gray-900 border-gray-700 text-white" />
+      <Input value={f[k]} onChange={(e) => upd(k, e.target.value)} className="bg-gray-900 border-gray-700 text-gray-200" />
     </div>
   );
 
@@ -408,7 +408,7 @@ const OrderEditor = ({ order, password, onDone }: { order: any; password: string
         <div>
           <label className="text-xs text-gray-400">Tila</label>
           <select value={f.status} onChange={(e) => upd("status", e.target.value)}
-            className="w-full h-10 bg-gray-900 border border-gray-700 rounded-md text-white px-3 text-sm">
+            className="w-full h-10 bg-gray-900 border border-gray-700 rounded-md text-gray-200 px-3 text-sm">
             {ORDER_STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
           </select>
         </div>
@@ -417,7 +417,7 @@ const OrderEditor = ({ order, password, onDone }: { order: any; password: string
         <Button onClick={save} disabled={saving} className="bg-emerald-500 hover:bg-emerald-400 text-black font-bold">
           {saving ? <Loader2 className="w-4 h-4 mr-1 animate-spin" /> : <Save className="w-4 h-4 mr-1" />} Tallenna
         </Button>
-        <Button onClick={onDone} className="bg-white/10 hover:bg-white/20 text-white border border-white/20">Peruuta</Button>
+        <Button onClick={onDone} className="bg-white/10 hover:bg-white/20 text-gray-200 border border-white/20">Peruuta</Button>
       </div>
     </div>
   );
@@ -475,7 +475,7 @@ const VariantRow = ({ v, password }: { v: any; password: string }) => {
     setTimeout(() => setTick(false), 1200);
   };
   const setS = (n: number) => { const val = Math.max(0, n); setStock(val); save({ stock: val }); };
-  const stepBtn = "w-8 h-8 rounded bg-white/10 hover:bg-white/20 text-white flex items-center justify-center shrink-0";
+  const stepBtn = "w-8 h-8 rounded bg-white/10 hover:bg-white/20 text-gray-200 flex items-center justify-center shrink-0";
 
   return (
     <div className={`rounded-lg p-3 space-y-2 border ${soldOut ? "bg-red-500/5 border-red-500/20" : "bg-black/30 border-white/5"}`}>
@@ -490,7 +490,7 @@ const VariantRow = ({ v, password }: { v: any; password: string }) => {
         <Input type="number" min={0} value={stock}
           onChange={(e) => setStock(parseInt(e.target.value, 10) || 0)}
           onBlur={() => save({ stock })}
-          className="bg-gray-900 border-gray-700 text-white w-16 h-8 text-sm text-center" />
+          className="bg-gray-900 border-gray-700 text-gray-200 w-16 h-8 text-sm text-center" />
         <button type="button" onClick={() => setS(stock + 1)} className={stepBtn} aria-label="Lisää"><Plus className="w-4 h-4" /></button>
       </div>
 
@@ -505,7 +505,7 @@ const VariantRow = ({ v, password }: { v: any; password: string }) => {
         <span className="text-xs text-gray-400 w-14 shrink-0">Tulossa</span>
         <Input value={incoming} onChange={(e) => setIncoming(e.target.value)} onBlur={() => save({ incoming_note: incoming })}
           placeholder="esim. Tulossa vk 24"
-          className="bg-gray-900 border-gray-700 text-white h-8 text-sm flex-1" />
+          className="bg-gray-900 border-gray-700 text-gray-200 h-8 text-sm flex-1" />
       </div>
     </div>
   );
@@ -576,7 +576,7 @@ const BlogTab = ({ password }: { password: string }) => {
           <div key={k}>
             <label className="text-xs text-gray-400">{label}</label>
             <Input value={editing[k] ?? ""} onChange={(e) => setEditing({ ...editing, [k]: e.target.value })}
-              className="bg-gray-900 border-gray-700 text-white" />
+              className="bg-gray-900 border-gray-700 text-gray-200" />
           </div>
         ))}
 
@@ -585,11 +585,11 @@ const BlogTab = ({ password }: { password: string }) => {
           <label className="text-xs text-gray-400">Hero-kuva</label>
           <div className="flex flex-col sm:flex-row gap-2">
             <Input value={editing.hero_image ?? ""} onChange={(e) => setEditing({ ...editing, hero_image: e.target.value })}
-              placeholder="/images/brand/..." className="bg-gray-900 border-gray-700 text-white flex-1" />
+              placeholder="/images/brand/..." className="bg-gray-900 border-gray-700 text-gray-200 flex-1" />
             <input ref={heroFileRef} type="file" accept="image/*" hidden onChange={onHeroFile} />
             <Button type="button" disabled={uploading}
               onClick={() => heroFileRef.current?.click()}
-              className="bg-white/10 hover:bg-white/20 text-white border border-white/20">
+              className="bg-white/10 hover:bg-white/20 text-gray-200 border border-white/20">
               {uploading ? <Loader2 className="w-4 h-4 mr-1 animate-spin" /> : <Upload className="w-4 h-4 mr-1" />} Lataa kuva
             </Button>
           </div>
@@ -602,7 +602,7 @@ const BlogTab = ({ password }: { password: string }) => {
           <label className="text-xs text-gray-400">Lukuaika (min)</label>
           <Input type="number" value={editing.reading_time ?? 5}
             onChange={(e) => setEditing({ ...editing, reading_time: parseInt(e.target.value, 10) || 5 })}
-            className="bg-gray-900 border-gray-700 text-white w-24" />
+            className="bg-gray-900 border-gray-700 text-gray-200 w-24" />
         </div>
 
         <div>
@@ -615,7 +615,7 @@ const BlogTab = ({ password }: { password: string }) => {
             </button>
           </div>
           <textarea value={editing.content ?? ""} onChange={(e) => setEditing({ ...editing, content: e.target.value })}
-            rows={16} className="w-full bg-gray-900 border border-gray-700 rounded-md text-white p-3 text-sm font-mono" />
+            rows={16} className="w-full bg-gray-900 border border-gray-700 rounded-md text-gray-200 p-3 text-sm font-mono" />
         </div>
 
         <label className="flex items-center gap-2 text-sm">
@@ -627,7 +627,7 @@ const BlogTab = ({ password }: { password: string }) => {
           <Button onClick={save} className="bg-emerald-500 hover:bg-emerald-400 text-black font-bold">
             <Save className="w-4 h-4 mr-1" /> Tallenna
           </Button>
-          <Button onClick={() => setEditing(null)} className="bg-white/10 hover:bg-white/20 text-white border border-white/20">Peruuta</Button>
+          <Button onClick={() => setEditing(null)} className="bg-white/10 hover:bg-white/20 text-gray-200 border border-white/20">Peruuta</Button>
         </div>
       </div>
     );
@@ -645,11 +645,11 @@ const BlogTab = ({ password }: { password: string }) => {
             <div className="text-xs text-gray-500">{b.slug} · {b.published ? `julkaistu ${b.published_at ?? ""}` : "luonnos"}</div>
           </div>
           <div className="flex gap-2 flex-shrink-0">
-            <Button size="sm" className="bg-white/10 hover:bg-white/20 text-white border border-white/20"
+            <Button size="sm" className="bg-white/10 hover:bg-white/20 text-gray-200 border border-white/20"
               onClick={() => toggle(b.slug, b.published)}>
               {b.published ? "Piilota" : "Julkaise"}
             </Button>
-            <Button size="sm" className="bg-white/10 hover:bg-white/20 text-white border border-white/20" onClick={() => setEditing(b)}>
+            <Button size="sm" className="bg-white/10 hover:bg-white/20 text-gray-200 border border-white/20" onClick={() => setEditing(b)}>
               <Pencil className="w-4 h-4 mr-1" /> Muokkaa
             </Button>
             <Button size="sm" className="bg-red-500/15 hover:bg-red-500/30 text-red-300 border border-red-500/30" onClick={() => del(b.slug)}>
