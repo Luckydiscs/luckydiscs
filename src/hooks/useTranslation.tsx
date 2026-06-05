@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { getLangFromPath } from "@/lib/i18n-routing";
 
 export type Language = 'en' | 'fi';
 
@@ -1031,12 +1032,8 @@ const translations = {
 };
 
 export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>(() => {
-    const saved = localStorage.getItem('lucky-discs-language');
-    // Suomalainen .fi-sivu → suomi oletuksena. Vain aiempi nimenomainen
-    // valinta (en/fi) ohittaa tämän. Korjaa bugin jossa FI-sivu näytti englantia.
-    return saved === 'en' || saved === 'fi' ? saved : 'fi';
-  });
+  // Kieli määräytyy URL:sta: /en... = englanti, muuten suomi (URL on totuuslähde).
+  const [language, setLanguage] = useState<Language>(() => getLangFromPath());
 
   useEffect(() => {
     localStorage.setItem('lucky-discs-language', language);

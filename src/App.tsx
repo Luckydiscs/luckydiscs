@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CookieBanner from "@/components/CookieBanner";
 import ScrollToTop from "@/components/ScrollToTop";
 import { TranslationProvider } from "@/hooks/useTranslation";
+import { getBasename } from "@/lib/i18n-routing";
 
 import Index from "./pages/Index";
 
@@ -39,7 +40,7 @@ const App = () => (
         <TranslationProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          <BrowserRouter basename={getBasename()}>
             <ScrollToTop />
             <Suspense fallback={<div className="min-h-screen bg-black" />}>
               <Routes>
