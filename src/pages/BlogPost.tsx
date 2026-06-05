@@ -60,9 +60,9 @@ const BlogPost = () => {
       <div className="min-h-screen flex flex-col bg-black text-white">
         <Navbar />
         <main className="flex-1 flex flex-col items-center justify-center py-40 text-center px-4">
-          <h1 className="text-2xl font-bold mb-4">Artikkelia ei löytynyt</h1>
+          <h1 className="text-2xl font-bold mb-4">{t("blog.articleNotFound")}</h1>
           <Button asChild className="bg-lucky-green text-white hover:bg-lucky-green/90">
-            <Link to={basePath}>Takaisin blogiin</Link>
+            <Link to={basePath}>{t("blog.backToBlog")}</Link>
           </Button>
         </main>
         <Footer />

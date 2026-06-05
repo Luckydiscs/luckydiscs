@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export interface BlogPost {
   slug: string;
@@ -44,6 +45,7 @@ const mapRow = (r: BlogRow): BlogPost => ({
 });
 
 export function useBlogPosts() {
+  const { language } = useTranslation();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -54,6 +56,7 @@ export function useBlogPosts() {
         .from("blog_posts")
         .select("*")
         .eq("published", true)
+        .eq("language", language)
         .order("published_at", { ascending: false });
       if (cancelled) return;
       if (!error && data) setPosts((data as BlogRow[]).map(mapRow));
@@ -62,7 +65,7 @@ export function useBlogPosts() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [language]);
 
   return { posts, loading };
 }
