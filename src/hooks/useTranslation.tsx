@@ -1033,7 +1033,9 @@ const translations = {
 export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language>(() => {
     const saved = localStorage.getItem('lucky-discs-language');
-    return (saved as Language) || 'en';
+    // Suomalainen .fi-sivu → suomi oletuksena. Vain aiempi nimenomainen
+    // valinta (en/fi) ohittaa tämän. Korjaa bugin jossa FI-sivu näytti englantia.
+    return saved === 'en' || saved === 'fi' ? saved : 'fi';
   });
 
   useEffect(() => {
