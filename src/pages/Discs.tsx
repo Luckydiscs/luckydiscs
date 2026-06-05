@@ -3,6 +3,7 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
+import FeaturedVideos from "@/components/FeaturedVideos";
 import { Button } from "@/components/ui/button";
 import {
   Tabs,
@@ -275,6 +276,8 @@ const Discs = () => {
           </div>
         </div>
       </section>
+
+      <FeaturedVideos />
 
       <Footer />
     </div>

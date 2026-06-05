@@ -31,13 +31,6 @@ const SocialMediaShowcase = () => {
     }
   ];
 
-  // Esitellyt YouTube-videot (Vesan toimittamat)
-  const featuredVideos = [
-    { id: "7K99391BuGE", start: 3, title: "Lucky Discs – frisbeegolfvideo 1" },
-    { id: "rwQNWo8m1UU", start: 5, title: "Lucky Discs – frisbeegolfvideo 2" },
-    { id: "fOsTRQ61z2s", start: 31, title: "Lucky Discs – frisbeegolfvideo 3" },
-  ];
-
   return (
     <section className="py-16 bg-gradient-to-b from-black to-gray-900">
       <div className="container mx-auto px-4">
@@ -55,8 +48,8 @@ const SocialMediaShowcase = () => {
             const IconComponent = platform.icon;
             return (
               <div key={platform.name} className="group relative">
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105">
-                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${platform.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105 text-center md:text-left">
+                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${platform.color} flex items-center justify-center mb-4 mx-auto md:mx-0 group-hover:scale-110 transition-transform duration-300`}>
                     <IconComponent className="w-6 h-6 text-white" />
                   </div>
                   
@@ -77,45 +70,6 @@ const SocialMediaShowcase = () => {
               </div>
             );
           })}
-        </div>
-
-        <div className="mt-16 max-w-6xl mx-auto">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-heading text-white mb-2">{t('social.videoHighlight')}</h3>
-            <p className="text-gray-300 max-w-2xl mx-auto">{t('social.videoDesc')}</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {featuredVideos.map((video) => (
-              <div
-                key={video.id}
-                className="rounded-xl overflow-hidden border border-white/10 bg-black shadow-lg hover:border-lucky-green/40 transition-colors duration-300"
-              >
-                <div className="aspect-video">
-                  <iframe
-                    className="w-full h-full"
-                    src={`https://www.youtube-nocookie.com/embed/${video.id}?start=${video.start}&rel=0`}
-                    title={video.title}
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <a
-              href="https://www.youtube.com/@LuckyDiscs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-lucky-green text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors duration-300"
-            >
-              <Youtube className="w-5 h-5" />
-              {t('social.watchVideos')}
-            </a>
-          </div>
         </div>
       </div>
     </section>

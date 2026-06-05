@@ -5,6 +5,7 @@ import HeroSection from "@/components/HeroSection";
 import FeaturedDisc from "@/components/FeaturedDisc";
 
 import SocialMediaShowcase from "@/components/SocialMediaShowcase";
+import FeaturedVideos from "@/components/FeaturedVideos";
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Disc, TruckIcon, Award, Users } from "lucide-react";
@@ -145,6 +146,9 @@ const Index = () => {
         </div>
       </section>
       
+      {/* Esitellyt videot — nostettu ylemmäs näkyvyyden vuoksi */}
+      <FeaturedVideos />
+
       {/* "Ready for Jackpot?" banner - FI only */}
       {language === 'fi' && (
         <section className="py-10 md:py-16 bg-gradient-to-b from-black via-gray-950 to-black relative overflow-hidden">
