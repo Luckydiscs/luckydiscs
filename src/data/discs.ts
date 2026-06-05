@@ -22,6 +22,18 @@ export interface Disc {
 
 const discs: Disc[] = [
   {
+    id: 4,
+    name: "Jailbreak",
+    imageSrc: jailbreakDisc,
+    descriptionKey: "disc.jailbreak.description",
+    speed: 5,
+    glide: 4,
+    turn: 0,
+    fade: 2,
+    type: "midrange",
+    isNewRelease: true,
+  },
+  {
     id: 1,
     name: "Bank Robber",
     imageSrc: bankRobberDisc,
@@ -31,7 +43,7 @@ const discs: Disc[] = [
     turn: -1,
     fade: 2,
     type: "fairway",
-    isNewRelease: true,
+    isNewRelease: false,
   },
   {
     id: 2,
@@ -56,18 +68,6 @@ const discs: Disc[] = [
     fade: 3,
     type: "putter",
     isNewRelease: false,
-  },
-  {
-    id: 4,
-    name: "Jailbreak",
-    imageSrc: jailbreakDisc,
-    descriptionKey: "disc.jailbreak.description",
-    speed: 5,
-    glide: 4,
-    turn: 0,
-    fade: 2,
-    type: "midrange",
-    isNewRelease: true,
   },
 ];
 
