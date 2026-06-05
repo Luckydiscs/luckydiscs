@@ -83,7 +83,7 @@ function brandFooter() {
     <div style="background:${DARK};padding:20px 24px;text-align:center;">
       <div style="color:#ffffff;font-weight:700;letter-spacing:1px;margin-bottom:6px;">🍀 LUCKY DISCS</div>
       <div style="color:#9ca3af;font-size:12px;line-height:1.7;">
-        VESITIIVIS Oy (Y-tunnus 3368925-4)<br>
+        Y-tunnus 3368925-4<br>
         <a href="${SITE_URL}" style="color:${GOLD};text-decoration:none;">${SITE_URL.replace("https://", "")}</a>
       </div>
     </div>`;

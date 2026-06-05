@@ -274,6 +274,15 @@ serve(async (req) => {
         });
       }
 
+      case "list_subscribers": {
+        const { data, error } = await supabase
+          .from("newsletter_subscriptions")
+          .select("email,subscribed_at")
+          .order("subscribed_at", { ascending: false });
+        if (error) throw error;
+        return json({ subscribers: data ?? [] });
+      }
+
       default:
         return json({ error: `Unknown action: ${action}` }, 400);
     }

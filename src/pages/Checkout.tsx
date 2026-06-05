@@ -32,6 +32,7 @@ const Checkout = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
+  const [newsletterOptIn, setNewsletterOptIn] = useState(false);
 
   if (items.length === 0) {
     return (
@@ -67,7 +68,15 @@ const Checkout = () => {
 
   const handleSubmit = () => {
     if (step === 1) {
-      if (validate()) setStep(2);
+      if (validate()) {
+        // Uutiskirje-opt-in: lisää tilaaja (fire-and-forget, ei estä tilausta)
+        if (newsletterOptIn && formData.email) {
+          supabase.functions
+            .invoke("newsletter-subscribe", { body: { email: formData.email } })
+            .catch(() => {});
+        }
+        setStep(2);
+      }
     } else if (step === 2) {
       setStep(3);
     }
@@ -200,6 +209,18 @@ const Checkout = () => {
                     {errors.city && <p className="text-red-400 text-xs mt-1">{errors.city}</p>}
                   </div>
                 </div>
+
+                <label className="flex items-start gap-3 cursor-pointer bg-gray-900/60 border border-gray-700 rounded-lg p-3 hover:border-emerald-500/40 transition-colors">
+                  <input
+                    type="checkbox"
+                    checked={newsletterOptIn}
+                    onChange={(e) => setNewsletterOptIn(e.target.checked)}
+                    className="mt-0.5 w-4 h-4 accent-emerald-500 shrink-0"
+                  />
+                  <span className="text-sm text-gray-300">
+                    Liityn Lucky Discs -uutiskirjeelle — kuulen ensimmäisenä uutuuksista, tarjouksista ja vinkeistä. Voin perua tilauksen milloin tahansa.
+                  </span>
+                </label>
               </div>
             )}
 

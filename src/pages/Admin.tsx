@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import {
   Loader2, Package, Boxes, FileText, LogOut, Save, Trash2,
   Minus, Plus, Pencil, Upload, CheckCircle2, Clock, XCircle, Truck,
-  LayoutDashboard, Mail, AlertTriangle, TrendingUp,
+  LayoutDashboard, Mail, AlertTriangle, TrendingUp, Download,
 } from "lucide-react";
 
 const PW_KEY = "luckydiscs-admin-pw";
@@ -156,6 +156,25 @@ const DashboardTab = ({ password }: { password: string }) => {
   const top = data.topProducts ?? [];
   const maxQty = Math.max(1, ...top.map((p: any) => p.qty));
 
+  const downloadCsv = async () => {
+    try {
+      const d = await adminCall(password, "list_subscribers");
+      const rows = d.subscribers ?? [];
+      const csv =
+        "email,subscribed_at\n" +
+        rows.map((r: any) => `${r.email},${(r.subscribed_at || "").slice(0, 10)}`).join("\n");
+      const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "uutiskirje-tilaajat.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (e) {
+      alert("CSV-vienti epäonnistui: " + (e as Error).message);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
@@ -210,7 +229,12 @@ const DashboardTab = ({ password }: { password: string }) => {
       </div>
 
       <div className="bg-white/5 border border-white/10 rounded-xl p-5">
-        <h3 className="font-bold mb-4 flex items-center gap-2"><Mail className="w-4 h-4 text-lucky-green" /> Uutiskirjeen tilaajat ({data.newsletter?.count || 0})</h3>
+        <div className="flex items-center justify-between gap-2 mb-4">
+          <h3 className="font-bold flex items-center gap-2"><Mail className="w-4 h-4 text-lucky-green" /> Uutiskirjeen tilaajat ({data.newsletter?.count || 0})</h3>
+          <button onClick={downloadCsv} className="text-xs bg-emerald-500/15 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 rounded px-3 py-1.5 flex items-center gap-1.5 shrink-0">
+            <Download className="w-3.5 h-3.5" /> Lataa CSV
+          </button>
+        </div>
         {(data.newsletter?.recent ?? []).length === 0 ? (
           <p className="text-sm text-gray-500">Ei tilaajia vielä.</p>
         ) : (
