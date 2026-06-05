@@ -7,7 +7,8 @@ import { useTranslation } from "@/hooks/useTranslation";
 import useSEO from "@/hooks/useSEO";
 
 const Wholesale = () => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const fi = language === "fi";
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -15,9 +16,15 @@ const Wholesale = () => {
   }, []);
 
   useSEO({
-    title: "Lucky Discs Tukkumyynti - Wholesale Disc Golf Program | Jälleenmyynti",
-    description: "Lucky Discs tukkumyynti ja jälleenmyyntiohjelma. Kilpailukykyiset katteet, uniikki design. Wholesale disc golf discs from Finland for retailers worldwide.",
-    keywords: "frisbeegolf tukkumyynti, disc golf wholesale, jälleenmyynti, Lucky Discs wholesale, disc golf distributor, tukkuhinnat, wholesale partnership",
+    title: fi
+      ? "Lucky Discs Tukkumyynti – Jälleenmyyntiohjelma"
+      : "Lucky Discs Wholesale – Disc Golf Retailer Program",
+    description: fi
+      ? "Lucky Discs tukkumyynti ja jälleenmyyntiohjelma. Kilpailukykyiset katteet ja uniikki design suomalaisilta valmistajilta."
+      : "Lucky Discs wholesale and retailer program. Competitive margins and unique designs. Wholesale disc golf discs from Finland for retailers.",
+    keywords: fi
+      ? "frisbeegolf tukkumyynti, jälleenmyynti, Lucky Discs tukku, tukkuhinnat, frisbeegolfkiekot jälleenmyyjille"
+      : "disc golf wholesale, disc golf retailer, Lucky Discs wholesale, disc golf distributor, wholesale partnership Finland",
     canonicalPath: "/wholesale",
     ogImage: "https://www.luckydiscs.fi/lucky-discs-logo.png",
     structuredData: {

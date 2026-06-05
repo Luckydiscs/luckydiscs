@@ -254,12 +254,12 @@ const Discs = () => {
 
             {/* Toimitus + jälleenmyyjä/suurtilaus -info */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-400">
-              <span className="flex items-center gap-1.5"><Truck className="w-4 h-4 text-lucky-green" /> Toimitus 5,90 € · ilmainen yli 50 €</span>
-              <span className="flex items-center gap-1.5"><RotateCcw className="w-4 h-4 text-lucky-green" /> 14 pv palautusoikeus</span>
+              <span className="flex items-center gap-1.5"><Truck className="w-4 h-4 text-lucky-green" /> {t("discs.shipping")}</span>
+              <span className="flex items-center gap-1.5"><RotateCcw className="w-4 h-4 text-lucky-green" /> {t("discs.returns")}</span>
             </div>
             <p className="mt-3 text-center text-sm text-gray-400">
               <Mail className="inline w-4 h-4 text-lucky-green mr-1" />
-              Yhdistys, koulu tai seura? Kysy suurtilauksista: <a href="mailto:asiakaspalvelu@luckydiscs.fi" className="text-lucky-green hover:underline">asiakaspalvelu@luckydiscs.fi</a>
+              {t("discs.bulkInquiry")} <a href="mailto:asiakaspalvelu@luckydiscs.fi" className="text-lucky-green hover:underline">asiakaspalvelu@luckydiscs.fi</a>
             </p>
 
             <div className="mt-8 text-center">

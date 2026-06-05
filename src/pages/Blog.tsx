@@ -79,11 +79,11 @@ const Blog = () => {
             {loading ? (
               <div className="flex flex-col items-center justify-center py-20 text-gray-400">
                 <Loader2 className="w-8 h-8 animate-spin text-lucky-green mb-3" />
-                Ladataan artikkeleita…
+                {t("blog.loading")}
               </div>
             ) : posts.length === 0 ? (
               <div className="text-center py-20 text-gray-500">
-                Ei vielä artikkeleita. Uusia julkaisuja tulossa pian!
+                {t("blog.empty")}
               </div>
             ) : (
               <>

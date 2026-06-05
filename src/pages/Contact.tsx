@@ -9,15 +9,22 @@ import DiscPromotion from "@/components/DiscPromotion";
 import treasureHuntDisc from "@/assets/treasure-hunt-disc.webp";
 
 const Contact = () => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const fi = language === "fi";
 
-  const pageTitle = "Lucky Discs Yhteystiedot - Ota Yhteyttä | Contact Us";
-  const pageDescription = "Ota yhteyttä Lucky Discsiin: asiakaspalvelu, tukkumyynti ja sponsorointi. Contact Lucky Discs for support, wholesale and partnerships. Nokia, Finland.";
+  const pageTitle = fi
+    ? "Lucky Discs Yhteystiedot – Ota yhteyttä"
+    : "Lucky Discs Contact – Get in Touch";
+  const pageDescription = fi
+    ? "Ota yhteyttä Lucky Discsiin: asiakaspalvelu, tukkumyynti ja sponsorointi. Nokia, Suomi."
+    : "Contact Lucky Discs for customer support, wholesale and partnerships. Nokia, Finland.";
 
   useSEO({
     title: pageTitle,
     description: pageDescription,
-    keywords: "Lucky Discs yhteystiedot, asiakaspalvelu, tukkumyynti, ota yhteyttä, contact disc golf, sponsorointi, frisbeegolf Finland",
+    keywords: fi
+      ? "Lucky Discs yhteystiedot, asiakaspalvelu, tukkumyynti, ota yhteyttä, sponsorointi, frisbeegolf"
+      : "Lucky Discs contact, customer support, wholesale, get in touch, sponsorship, disc golf Finland",
     canonicalPath: "/contact",
     ogImage: "https://www.luckydiscs.fi/lucky-discs-logo.png",
     structuredData: {

@@ -43,7 +43,7 @@ const Footer = () => {
       } else {
         setIsSubscribed(true);
         toast({
-          title: "Successfully Subscribed! ð",
+          title: "Successfully Subscribed! 🍀",
           description: "Welcome to Lucky Discs newsletter! Check your email for confirmation.",
         });
       }

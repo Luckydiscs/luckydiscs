@@ -18,16 +18,23 @@ import treasureDiscImage from "/public/lovable-uploads/f2a202e9-26ab-435b-bcf0-d
 import goldDiscImage from "/public/lovable-uploads/6c56f0b3-a367-4e99-b234-5ce2b5e8c32c.webp";
 
 const Brand = () => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const fi = language === "fi";
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const pageDescription = "Lucky Discs bränditarina - perustettu 2022 Nokialla. Suomalainen frisbeegolfkiekkovalmistaja. Finnish premium disc golf brand with casino-inspired designs.";
+  const pageDescription = fi
+    ? "Lucky Discs -bränditarina – perustettu 2022 Nokialla. Suomalainen premium-frisbeegolfkiekkovalmistaja casino-henkisillä designeilla."
+    : "Lucky Discs brand story – founded in 2022 in Nokia, Finland. A Finnish premium disc golf brand with casino-inspired designs.";
   const ogImage = "https://www.luckydiscs.fi/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.webp";
 
   useSEO({
-    title: "Lucky Discs Brändi - Suomalainen Frisbeegolfkiekkovalmistaja | Brand Story",
+    title: fi
+      ? "Lucky Discs Brändi – Suomalainen frisbeegolfkiekkovalmistaja"
+      : "Lucky Discs Brand – Finnish Premium Disc Golf Brand | Story",
     description: pageDescription,
-    keywords: "Lucky Discs brändi, frisbeegolfkiekkovalmistaja, disc golf brand Finland, Nokia, suomalainen frisbeegolf, casino design kiekot, disc golf innovation",
+    keywords: fi
+      ? "Lucky Discs brändi, frisbeegolfkiekkovalmistaja, suomalainen frisbeegolf, Nokia, casino design kiekot"
+      : "Lucky Discs brand, disc golf brand Finland, Nokia, premium disc golf, casino design discs, disc golf innovation",
     canonicalPath: "/brand",
     ogImage: ogImage,
     structuredData: {
