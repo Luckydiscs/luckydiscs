@@ -158,7 +158,7 @@ const Footer = () => {
           {/* Contact Info - Essential Only */}
           <div className="text-center text-gray-300 text-sm space-y-1">
             <p>{t('contact.emailAddress')}</p>
-            <p>Nokia, Finland</p>
+            <p>Pori, Finland</p>
           </div>
         </div>
 
@@ -250,7 +250,7 @@ const Footer = () => {
               </li>
               <li className="text-gray-300">
                 <strong className="text-white">{t('footer.location')}</strong><br />
-                Nokia, Finland
+                Pori, Finland
               </li>
               <li className="text-gray-300">
                 <strong className="text-white">{t('footer.businessType')}</strong><br />

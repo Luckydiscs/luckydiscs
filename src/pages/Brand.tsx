@@ -23,8 +23,8 @@ const Brand = () => {
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const pageDescription = fi
-    ? "Lucky Discs -bränditarina – perustettu 2022 Nokialla. Suomalainen premium-frisbeegolfkiekkovalmistaja casino-henkisillä designeilla."
-    : "Lucky Discs brand story – founded in 2022 in Nokia, Finland. A Finnish premium disc golf brand with casino-inspired designs.";
+    ? "Lucky Discs -bränditarina – suomalainen premium-frisbeegolfbrändi, kotipaikka Pori. Kiekot valmistetaan Nokialla casino-henkisillä designeilla."
+    : "Lucky Discs brand story – a Finnish premium disc golf brand based in Pori, with discs made in Nokia and casino-inspired designs.";
   const ogImage = "https://www.luckydiscs.fi/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.webp";
 
   useSEO({
@@ -33,8 +33,8 @@ const Brand = () => {
       : "Lucky Discs Brand – Finnish Premium Disc Golf Brand | Story",
     description: pageDescription,
     keywords: fi
-      ? "Lucky Discs brändi, frisbeegolfkiekkovalmistaja, suomalainen frisbeegolf, Nokia, casino design kiekot"
-      : "Lucky Discs brand, disc golf brand Finland, Nokia, premium disc golf, casino design discs, disc golf innovation",
+      ? "Lucky Discs brändi, frisbeegolfkiekkovalmistaja, suomalainen frisbeegolf, Pori, Nokia, casino design kiekot"
+      : "Lucky Discs brand, disc golf brand Finland, Pori, Nokia, premium disc golf, casino design discs, disc golf innovation",
     canonicalPath: "/brand",
     ogImage: ogImage,
     structuredData: {
@@ -47,7 +47,7 @@ const Brand = () => {
         "@type": "Place",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Nokia",
+          "addressLocality": "Pori",
           "addressCountry": "FI"
         }
       },
@@ -116,7 +116,7 @@ const Brand = () => {
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-lucky-green">Nokia</div>
-              <div className="text-sm text-gray-300">Valmistuspaikka</div>
+              <div className="text-sm text-gray-300">{t('brand.manufacturingPlace')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-lucky-green">4</div>

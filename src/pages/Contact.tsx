@@ -16,8 +16,8 @@ const Contact = () => {
     ? "Lucky Discs Yhteystiedot – Ota yhteyttä"
     : "Lucky Discs Contact – Get in Touch";
   const pageDescription = fi
-    ? "Ota yhteyttä Lucky Discsiin: asiakaspalvelu, tukkumyynti ja sponsorointi. Nokia, Suomi."
-    : "Contact Lucky Discs for customer support, wholesale and partnerships. Nokia, Finland.";
+    ? "Ota yhteyttä Lucky Discsiin: asiakaspalvelu, tukkumyynti ja sponsorointi. Kotipaikka Pori, Suomi."
+    : "Contact Lucky Discs for customer support, wholesale and partnerships. Based in Pori, Finland.";
 
   useSEO({
     title: pageTitle,
@@ -40,7 +40,7 @@ const Contact = () => {
         "telephone": "+358 44 989 4225",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Nokia",
+          "addressLocality": "Pori",
           "addressCountry": "FI"
         }
       }
@@ -157,9 +157,10 @@ const Contact = () => {
                     </tr>
                   </tbody>
                 </table>
+                <p className="mt-3 text-sm text-gray-400">{t('contact.noStore')}</p>
               </div>
             </div>
-            
+
             {/* Contact Form */}
             <div className="lg:col-span-3 bg-white/5 p-6 md:p-8 rounded-lg border border-white/10">
               <h2 className="text-2xl md:text-3xl font-heading mb-6">{t('contact.sendMessage')}</h2>

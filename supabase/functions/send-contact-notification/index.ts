@@ -41,7 +41,7 @@ const footerHtml = () => `
     <tr>
       <td align="center" style="padding:24px 16px;">
         <div style="font:500 13px/1.6, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial; color:${baseStyles.muted};">
-          Lucky Discs â¢ Nokia, Finland
+          Lucky Discs • Pori, Finland
           <br />This is an automated message â you can reply directly to this email.
         </div>
       </td>
