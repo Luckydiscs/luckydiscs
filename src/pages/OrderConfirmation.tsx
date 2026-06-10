@@ -166,7 +166,7 @@ const OrderConfirmation = () => {
             )}
             <div className="flex justify-between">
               <span className="text-gray-400">Toimitus</span>
-              <span>Posti — 1–3 arkipäivää</span>
+              <span>Posti tai Matkahuolto — 1–3 arkipäivää</span>
             </div>
           </div>
 
