@@ -274,7 +274,12 @@ const OrdersTab = ({ password }: { password: string }) => {
   useEffect(() => load(), [load]);
 
   const setStatus = async (orderId: string, status: string, trackingNumber?: string) => {
-    await adminCall(password, "update_order_status", { orderId, status, trackingNumber });
+    const res = await adminCall(password, "update_order_status", { orderId, status, trackingNumber });
+    if (status === "shipped") {
+      alert(res?.emailed
+        ? "Merkitty lähetetyksi — seurantamaili lähetetty asiakkaalle. 📧"
+        : "Merkitty lähetetyksi. (Sähköpostia ei lähetetty — tarkista asiakkaan sähköpostiosoite.)");
+    }
     load();
   };
   const del = async (orderId: string, num: string) => {
@@ -332,7 +337,7 @@ const OrdersTab = ({ password }: { password: string }) => {
 
             {isPaid && (
               <div className="flex flex-wrap items-center gap-2 mt-4 pt-3 border-t border-white/10">
-                <Input placeholder="Seurantanumero (Posti)" defaultValue={o.tracking_number ?? ""}
+                <Input placeholder="Seurantanumero (Posti/Matkahuolto)" defaultValue={o.tracking_number ?? ""}
                   id={`tn-${o.id}`} className="bg-gray-900 border-gray-700 text-gray-200 text-sm max-w-xs h-9" />
                 <Button size="sm" className="bg-blue-500 hover:bg-blue-400 text-gray-200"
                   onClick={() => setStatus(o.id, "shipped", (document.getElementById(`tn-${o.id}`) as HTMLInputElement)?.value)}>

@@ -19,6 +19,7 @@
 
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.4";
+import { Resend } from "npm:resend@2.0.0";
 
 const supabase = createClient(
   Deno.env.get("SUPABASE_URL") ?? "",
@@ -37,6 +38,99 @@ const json = (body: unknown, status = 200) =>
     status,
     headers: { "Content-Type": "application/json", ...cors },
   });
+
+// ── Lähetysmaili (Resend) ──────────────────────────────────────
+const resend = new Resend(Deno.env.get("RESEND_API_KEY") ?? "");
+const SITE_URL = "https://www.luckydiscs.fi";
+const GREEN = "#1E8549";
+const GOLD = "#E2AD28";
+const DARK = "#0a0a0a";
+
+const brandHeader = () => `
+  <div style="background:${GREEN};padding:28px 24px;text-align:center;">
+    <div style="font-size:26px;font-weight:800;letter-spacing:2px;color:#ffffff;">🍀 LUCKY DISCS</div>
+    <div style="font-size:11px;letter-spacing:3px;color:#d1fae5;text-transform:uppercase;margin-top:4px;">Premium Disc Golf</div>
+  </div>`;
+const brandFooter = () => `
+  <div style="background:${DARK};padding:20px 24px;text-align:center;">
+    <div style="color:#ffffff;font-weight:700;letter-spacing:1px;margin-bottom:6px;">🍀 LUCKY DISCS</div>
+    <div style="color:#9ca3af;font-size:12px;line-height:1.7;">
+      Y-tunnus 3368925-4<br>
+      <a href="${SITE_URL}" style="color:${GOLD};text-decoration:none;">www.luckydiscs.fi</a>
+    </div>
+  </div>`;
+const absImg = (raw: string) => {
+  if (!raw) return "";
+  if (raw.startsWith("http")) return raw;
+  return `${SITE_URL}${raw.startsWith("/") ? "" : "/"}${raw}`;
+};
+// deno-lint-ignore no-explicit-any
+const itemLabel = (i: any) => {
+  const head = `${i.variant ? `${i.variant} ` : ""}${i.product_name}`;
+  const sub = [i.color, i.weight].filter(Boolean).join(" · ");
+  const img = absImg(i.image_url || "");
+  const imgCell = img
+    ? `<td style="padding-right:12px;width:48px;" valign="middle"><img src="${img}" width="48" height="48" alt="" style="display:block;border-radius:8px;background:#f4f4f5;border:1px solid #eee;"></td>`
+    : "";
+  const text = `${head}${sub ? `<div style="font-size:12px;color:#888;margin-top:2px;">${sub}</div>` : ""}`;
+  return `<table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>${imgCell}<td valign="middle" style="color:#1a1a1a;">${text}</td></tr></table>`;
+};
+
+// Lähettää asiakkaalle "Tilauksesi on lähetetty" -mailin seurantanumeron kanssa.
+// Palauttaa true jos maili lähti. Heittää virheen vain Resend-virheessä (kutsuja try/catchaa).
+async function sendShippingEmail(orderId: string, trackingNumber?: string): Promise<boolean> {
+  const { data: order } = await supabase.from("orders").select("*").eq("id", orderId).single();
+  if (!order || !order.customer_email) return false;
+  const { data: items } = await supabase.from("order_items").select("*").eq("order_id", orderId);
+  const tn = String(trackingNumber ?? order.tracking_number ?? "").trim();
+
+  const itemsHtml = (items ?? [])
+    // deno-lint-ignore no-explicit-any
+    .map((i: any) =>
+      `<tr><td style="padding:8px 0;border-bottom:1px solid #eee;">${itemLabel(i)}</td><td style="padding:8px 0;border-bottom:1px solid #eee;text-align:right;color:#666;">${i.quantity} kpl</td></tr>`)
+    .join("");
+
+  const trackingHtml = tn
+    ? `<div style="background:#f4f4f5;border-radius:10px;padding:16px;margin:20px 0;text-align:center;">
+         <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:4px;">Seurantanumero</div>
+         <div style="font-size:20px;font-weight:800;color:${GREEN};letter-spacing:1px;">${tn}</div>
+         <div style="margin-top:12px;">
+           <a href="https://www.posti.fi/fi/seuranta#/lahetys/${encodeURIComponent(tn)}" style="display:inline-block;background:${GREEN};color:#fff;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:700;margin:4px;">Seuraa Postissa</a>
+           <a href="https://www.matkahuolto.fi/seuranta" style="display:inline-block;background:#1a1a1a;color:#fff;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:700;margin:4px;">Seuraa Matkahuollossa</a>
+         </div>
+         <div style="font-size:12px;color:#888;margin-top:10px;">Seuranta voi aktivoitua muutaman tunnin viiveellä.</div>
+       </div>`
+    : `<p style="margin:20px 0;color:#444;line-height:1.6;">Paketti on matkalla. Saat seurantatiedot tarvittaessa erikseen.</p>`;
+
+  await resend.emails.send({
+    from: "Lucky Discs <tilaukset@luckydiscs.fi>",
+    to: order.customer_email,
+    subject: `Tilauksesi on lähetetty! ${order.order_number}`,
+    html: `
+      <div style="margin:0;padding:24px 0;background:#f4f4f5;">
+        <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;font-family:Helvetica,Arial,sans-serif;">
+          ${brandHeader()}
+          <div style="padding:28px 24px;color:#1a1a1a;">
+            <h2 style="margin:0 0 8px;font-size:20px;">Tilauksesi on matkalla, ${order.customer_first_name}! 📦</h2>
+            <p style="margin:0 0 4px;color:#444;line-height:1.6;">Hyvä uutinen — tilauksesi <strong>${order.order_number}</strong> on pakattu ja lähetetty. Toimitus saapuu Postin tai Matkahuollon kautta 1–3 arkipäivässä.</p>
+            ${trackingHtml}
+            <h3 style="margin:8px 0 8px;font-size:15px;">Lähetyksen sisältö</h3>
+            <table style="width:100%;border-collapse:collapse;">${itemsHtml}</table>
+            <h3 style="margin:24px 0 8px;font-size:15px;">Toimitusosoite</h3>
+            <p style="margin:0;color:#444;line-height:1.6;">
+              ${order.customer_first_name} ${order.customer_last_name}<br>
+              ${order.shipping_address}<br>
+              ${order.shipping_postal_code} ${order.shipping_city}<br>
+              ${order.shipping_country}
+            </p>
+            <p style="margin:24px 0 0;color:#444;">Kysyttävää? <a href="mailto:asiakaspalvelu@luckydiscs.fi" style="color:${GREEN};">asiakaspalvelu@luckydiscs.fi</a></p>
+          </div>
+          ${brandFooter()}
+        </div>
+      </div>`,
+  });
+  return true;
+}
 
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: cors });
@@ -80,12 +174,24 @@ serve(async (req) => {
 
       case "update_order_status": {
         const { orderId, status, trackingNumber } = body;
+        // Aiempi status → tunnistetaan vasta nyt tapahtuva siirtymä shippediin
+        // (estää duplikaattimailin jos nappia painetaan uudestaan)
+        const { data: prev } = await supabase
+          .from("orders").select("status").eq("id", orderId).single();
         const patch: Record<string, unknown> = { status };
         if (status === "shipped") patch.shipped_at = new Date().toISOString();
         if (trackingNumber !== undefined) patch.tracking_number = trackingNumber;
         const { error } = await supabase.from("orders").update(patch).eq("id", orderId);
         if (error) throw error;
-        return json({ ok: true });
+        let emailed = false;
+        if (status === "shipped" && prev?.status !== "shipped") {
+          try {
+            emailed = await sendShippingEmail(orderId, trackingNumber);
+          } catch (e) {
+            console.error("Lähetysmaili epäonnistui:", e);
+          }
+        }
+        return json({ ok: true, emailed });
       }
 
       case "update_order": {
