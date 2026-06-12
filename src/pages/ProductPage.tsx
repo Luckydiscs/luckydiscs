@@ -18,6 +18,11 @@ const COLOR_HEX: Record<string, string> = {
 };
 const colorLabel = (c: string) => (c === "vihrea" ? "Vihreä" : c.charAt(0).toUpperCase() + c.slice(1));
 
+// Tuotekohtaiset esittely-/arvosteluvideot (YouTube-id). Lisää uusi: avain = tuotteen id.
+const PRODUCT_VIDEOS: Record<string, string> = {
+  jailbreak: "7St1A0rFDIs",
+};
+
 const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -240,6 +245,24 @@ const ProductPage = () => {
               </div>
             </div>
           </div>
+
+          {PRODUCT_VIDEOS[product.id] && (
+            <section className="mt-12 lg:mt-16 max-w-4xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                Katso {product.name} videolla
+              </h2>
+              <div className="aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-lg">
+                <iframe
+                  className="w-full h-full"
+                  src={`https://www.youtube-nocookie.com/embed/${PRODUCT_VIDEOS[product.id]}?rel=0`}
+                  title={`${product.name} – video`}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+            </section>
+          )}
         </div>
       </main>
       <Footer />
