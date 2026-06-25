@@ -26,6 +26,8 @@ const SECRET_KEY = Deno.env.get("PAYTRAIL_SECRET_KEY") ?? "SAIPPUAKAUPPIAS";
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 const ADMIN_EMAIL = Deno.env.get("ADMIN_NOTIFICATION_EMAIL") ??
   "asiakaspalvelu@luckydiscs.fi";
+// Tilausilmoitukset menevät myös Terolle (hoitaa toimitukset). Dedup jos sama kuin ADMIN_EMAIL.
+const ORDER_NOTIFY_TO = Array.from(new Set(["tero.pesola@zatap.fi", ADMIN_EMAIL]));
 const SITE_URL = Deno.env.get("PUBLIC_SITE_URL") ?? "https://www.luckydiscs.fi";
 
 const corsHeaders = {
@@ -180,7 +182,7 @@ async function sendAdminEmail(order: any, items: any[]) {
 
   await resend.emails.send({
     from: "Lucky Discs <tilaukset@luckydiscs.fi>",
-    to: ADMIN_EMAIL,
+    to: ORDER_NOTIFY_TO,
     subject: `📦 Toimita tilaus ${order.order_number} — ${eur(order.total_cents)} €`,
     html: `
       <div style="margin:0;padding:24px 0;background:#f4f4f5;">
