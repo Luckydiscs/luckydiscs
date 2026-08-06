@@ -10,12 +10,14 @@ import useSEO from "@/hooks/useSEO";
 import DiscPromotion from "@/components/DiscPromotion";
 import bankRobberDisc from "@/assets/bank-robber-disc.webp";
 
-// Import images properly
-import proPlayerImage from "/public/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.webp";
-import blueDiscImage from "/public/lovable-uploads/682fc2dd-badc-4562-8574-aaab40a86d03.webp";
-import pinkDiscImage from "/public/lovable-uploads/4c26d096-cfa9-4173-afe7-93b4f8b28426.webp";
-import treasureDiscImage from "/public/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.webp";
-import goldDiscImage from "/public/lovable-uploads/6c56f0b3-a367-4e99-b234-5ce2b5e8c32c.webp";
+// public/-kansion kuvat viitataan URL:lla, EI importilla.
+// Import kopioi saman tiedoston toiseen kertaan dist/assets/-kansioon (public/ kopioidaan
+// joka tapauksessa sellaisenaan) — sama kuva latautui kahdesta eri URL:sta ilman cache-hyotya.
+const proPlayerImage = "/lovable-uploads/e7e6ee87-35bb-4435-9449-5b810a26bb17.webp";
+const blueDiscImage = "/lovable-uploads/682fc2dd-badc-4562-8574-aaab40a86d03.webp";
+const pinkDiscImage = "/lovable-uploads/4c26d096-cfa9-4173-afe7-93b4f8b28426.webp";
+const treasureDiscImage = "/lovable-uploads/f2a202e9-26ab-435b-bcf0-d30e31980a8b.webp";
+const goldDiscImage = "/lovable-uploads/6c56f0b3-a367-4e99-b234-5ce2b5e8c32c.webp";
 
 const Brand = () => {
   const { t, language } = useTranslation();
