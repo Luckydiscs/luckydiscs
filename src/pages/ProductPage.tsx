@@ -31,6 +31,9 @@ const ProductPage = () => {
 
   const product = products.find((p) => p.id === slug);
   const hasVariants = !!product?.variants?.length;
+  // Yksi totuus saatavuudelle: sivu ja JSON-LD kertovat saman. Varianititon
+  // tuote (esim. Super Starter Pack, markkeri) ei ole koskaan loppuunmyyty.
+  const soldOut = hasVariants && !product!.variants!.some((v) => v.stock > 0);
 
   const colors = useMemo(
     () => (hasVariants ? Array.from(new Set(product!.variants!.map((v) => v.color))) : []),
@@ -61,7 +64,12 @@ const ProductPage = () => {
           brand: { "@type": "Brand", name: "Lucky Discs" },
           offers: {
             "@type": "Offer", price: product.price.toFixed(2), priceCurrency: "EUR",
-            availability: "https://schema.org/InStock",
+            // 🔴 Oli kovakoodattu InStock: loppuunmyyty tuote ilmoitti itsensä
+            // saatavilla olevaksi rakenteisessa datassa vaikka sivulla luki
+            // LOPPUUNMYYTY. Nyt sama lähde kuin sivun oma merkintä.
+            availability: soldOut
+              ? "https://schema.org/OutOfStock"
+              : "https://schema.org/InStock",
             url: `https://www.luckydiscs.fi/shop/${slug}`,
           },
         }
@@ -92,7 +100,6 @@ const ProductPage = () => {
 
   const discount = product.originalPrice
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
-  const soldOut = hasVariants && !product.variants!.some((v) => v.stock > 0);
   const canAdd = hasVariants ? !!(effColor && effWeight) : true;
 
   const handleAdd = () => {

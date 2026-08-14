@@ -2,7 +2,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "trailingSlash": false,
   "redirects": [
+    { "source": "/tuote/ultrium-money-shot", "destination": "/shop/ultrium-money-shot", "statusCode": 301 },
     { "source": "/tuote-osasto/kiekot/:path*", "destination": "/discs", "statusCode": 301 },
     { "source": "/tuote-osasto/:path*", "destination": "/discs", "statusCode": 301 },
     { "source": "/tuote/lucky-disc-money-shot-kiekko/:path*", "destination": "/discs", "statusCode": 301 },
@@ -11,19 +13,13 @@
     { "source": "/tuote/:path*", "destination": "/discs", "statusCode": 301 },
     { "source": "/kauppa", "destination": "/shop", "statusCode": 301 },
     { "source": "/kauppa/:path*", "destination": "/shop", "statusCode": 301 },
+    { "source": "/blog", "destination": "/blogi", "statusCode": 301 },
+    { "source": "/blog/:path*", "destination": "/blogi/:path*", "statusCode": 301 },
     { "source": "/tietosuojaseloste", "destination": "/privacy", "statusCode": 301 },
-    { "source": "/tietosuojaseloste/", "destination": "/privacy", "statusCode": 301 },
     { "source": "/kayttoehdot", "destination": "/terms", "statusCode": 301 },
-    { "source": "/kayttoehdot/", "destination": "/terms", "statusCode": 301 },
     { "source": "/yhteystiedot", "destination": "/contact", "statusCode": 301 },
-    { "source": "/yhteystiedot/", "destination": "/contact", "statusCode": 301 },
     { "source": "/tiimi", "destination": "/team", "statusCode": 301 },
-    { "source": "/tiimi/", "destination": "/team", "statusCode": 301 },
-    { "source": "/tukkumyynti", "destination": "/wholesale", "statusCode": 301 },
-    { "source": "/tukkumyynti/", "destination": "/wholesale", "statusCode": 301 }
-  ],
-  "rewrites": [
-    { "source": "/((?!assets|lovable-uploads|lucky-discs-logo|favicon|manifest|sitemap|robots|og-image).*)", "destination": "/index.html" }
+    { "source": "/tukkumyynti", "destination": "/wholesale", "statusCode": 301 }
   ],
   "headers": [
     {

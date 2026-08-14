@@ -41,6 +41,25 @@ export function buildLangUrl(target: Language, pathname = path(), search = ""): 
   return rel + search;
 }
 
+/**
+ * Onko polku olemassa vain YHDELLÄ kielellä?
+ *
+ * Tuotesivut, kassa, tilausvahvistus, admin ja yksittäiset blogiartikkelit ovat
+ * yksikielisiä: kauppa on vain suomeksi (ks. buildLangUrl) ja artikkeleilla on
+ * eri slug kummallakin kielellä ilman kenttää joka kertoisi parin.
+ *
+ * 🔴 Tämä ei ole kosmeettista. Näille sivuille emitoitu hreflang osoittaisi
+ * URLiin jota ei ole olemassa — esim. /en/shop/ultrium-money-shot tai
+ * /en/blog/lentonumerot-haltuun-... — ja prerender-kattavuuden myötä sellainen
+ * osoite vastaa aidosti 404:llä. Arvattu hreflang on pahempi kuin puuttuva.
+ */
+export function isSingleLanguagePath(pathname = path()): boolean {
+  const rel = stripEnPrefix(pathname).replace(/\/+$/, "") || "/";
+  if (rel === "/admin") return true;
+  if (rel.startsWith("/shop/")) return true; // /shop itse on kaksikielinen
+  return /^\/(blogi|blog)\/.+/.test(rel); // listaussivu on, yksittäinen artikkeli ei
+}
+
 /** SEO-vaihtoehdot (hreflang) + kanoninen URL nykyiselle sijainnille */
 export function i18nAlternates(base: string, lang: Language, pathname = path()) {
   let fiRel = stripEnPrefix(pathname).replace(/\/+$/, "") || "/";
@@ -49,6 +68,12 @@ export function i18nAlternates(base: string, lang: Language, pathname = path()) 
 
   const fiUrl = base + (fiRel === "/" ? "" : fiRel);
   const enUrl = base + EN_PREFIX + (enRel === "/" ? "" : enRel);
-  const canonical = lang === "en" ? enUrl : fiUrl;
-  return { fiUrl, enUrl, canonical };
+  const singleLang = isSingleLanguagePath(pathname);
+  // Yksikielisellä sivulla kanoninen on aina se kieli jolla sivu oikeasti on.
+  const canonical = singleLang
+    ? base + (stripEnPrefix(pathname).replace(/\/+$/, "") || "")
+    : lang === "en"
+      ? enUrl
+      : fiUrl;
+  return { fiUrl, enUrl, canonical, singleLang };
 }

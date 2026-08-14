@@ -15,8 +15,18 @@ const BlogPost = () => {
 
   const basePath = language === "fi" ? "/blogi" : "/blog";
 
+  // Brändipääte vain jos se mahtuu Googlen ~60 merkin näkymään. Pitkä otsikko
+  // katkeaisi muuten juuri päätteen kohdalta, jolloin merkit menisivät hukkaan.
+  // 🔴 Sama sääntö on scripts/generate-seo-pages.mjs:ssä — jos muutat, muuta
+  // molemmat, muuten prerenderöity ja renderöity otsikko eroavat toisistaan.
+  const seoTitle = post
+    ? post.title.length + 14 <= 60
+      ? `${post.title} | Lucky Discs`
+      : post.title
+    : "Lucky Discs Blogi";
+
   useSEO({
-    title: post ? `${post.title} | Lucky Discs` : "Lucky Discs Blogi",
+    title: seoTitle,
     description: post?.description || "",
     keywords: post?.keywords || "",
     canonicalPath: `${basePath}/${slug}`,

@@ -32,7 +32,7 @@ const useSEO = ({
   const { language } = useTranslation();
 
   useEffect(() => {
-    const { fiUrl, enUrl, canonical } = i18nAlternates(BASE_URL, language);
+    const { fiUrl, enUrl, canonical, singleLang } = i18nAlternates(BASE_URL, language);
     const canonicalUrl = canonical;
 
     document.documentElement.lang = language;
@@ -67,20 +67,29 @@ const useSEO = ({
     setMeta('meta[name="twitter:description"]', "content", description);
     setMeta('meta[name="twitter:image"]', "content", ogImage);
 
-    // Hreflang — oikeat kielikohtaiset URL:t
-    const setHreflang = (lang: string, url: string) => {
-      let link = document.querySelector(`link[hreflang="${lang}"]`);
-      if (!link) {
-        link = document.createElement("link");
-        link.setAttribute("rel", "alternate");
-        link.setAttribute("hreflang", lang);
-        document.head.appendChild(link);
-      }
-      link.setAttribute("href", url);
-    };
-    setHreflang("fi", fiUrl);
-    setHreflang("en", enUrl);
-    setHreflang("x-default", fiUrl);
+    // Hreflang — oikeat kielikohtaiset URL:t.
+    // 🔴 Yksikielisillä sivuilla (tuotesivut, kassa, admin, yksittäiset
+    // blogiartikkelit) hreflang POISTETAAN eikä aseteta: käännösvastinetta ei
+    // ole olemassa, ja sellaiseen osoittava hreflang veisi 404:ään.
+    if (singleLang) {
+      document
+        .querySelectorAll('link[rel="alternate"][hreflang]')
+        .forEach((el) => el.remove());
+    } else {
+      const setHreflang = (lang: string, url: string) => {
+        let link = document.querySelector(`link[hreflang="${lang}"]`);
+        if (!link) {
+          link = document.createElement("link");
+          link.setAttribute("rel", "alternate");
+          link.setAttribute("hreflang", lang);
+          document.head.appendChild(link);
+        }
+        link.setAttribute("href", url);
+      };
+      setHreflang("fi", fiUrl);
+      setHreflang("en", enUrl);
+      setHreflang("x-default", fiUrl);
+    }
 
     // Structured Data (JSON-LD)
     if (structuredData) {
