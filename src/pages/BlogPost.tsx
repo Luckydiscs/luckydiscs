@@ -93,7 +93,7 @@ const BlogPost = () => {
             <div className="max-w-3xl mx-auto">
               <Link
                 to={basePath}
-                className="inline-flex items-center gap-1 text-gray-400 hover:text-lucky-green transition-colors mb-6"
+                className="lv-tap inline-flex items-center gap-1 text-gray-400 hover:text-lucky-green transition-colors mb-6"
               >
                 <ArrowLeft className="h-4 w-4" />
                 {t("blog.backToBlog")}
