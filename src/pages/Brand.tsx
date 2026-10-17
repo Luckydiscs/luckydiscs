@@ -169,7 +169,7 @@ const Brand = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Instagram"
-                      className="inline-flex items-center gap-2 text-lucky-green hover:text-white transition-colors font-semibold"
+                      className="lv-tap inline-flex items-center gap-2 text-lucky-green hover:text-white transition-colors font-semibold"
                     >
                       <Instagram className="w-5 h-5" /> {t('brand.followInstagram')}
                     </a>
@@ -178,7 +178,7 @@ const Brand = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Facebook"
-                      className="inline-flex items-center gap-2 text-lucky-green hover:text-white transition-colors font-semibold"
+                      className="lv-tap inline-flex items-center gap-2 text-lucky-green hover:text-white transition-colors font-semibold"
                     >
                       <Facebook className="w-5 h-5" /> {t('brand.likeOnFacebook')}
                     </a>
