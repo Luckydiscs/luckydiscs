@@ -26,11 +26,12 @@ UPDATE_KENTAT = ["title", "description", "content", "category", "keywords",
 
 def live_tukee_merkintoja():
     """Etsii livenä olevasta JS-paketista blogMarkup.tsx:n luettelotyylin."""
-    html = urllib.request.urlopen("https://www.luckydiscs.fi/", timeout=20).read().decode("utf-8", "replace")
-    for src in re.findall(r'src="(/assets/[^"]+\.js)"', html):
-        js = urllib.request.urlopen("https://www.luckydiscs.fi" + src, timeout=20).read().decode("utf-8", "replace")
-        if "marker:text-lucky-green" in js:
-            return True
+    # Blogisivu on oma laiskasti ladattava paketti (BlogPost-*.js), johon pääpaketti viittaa.
+    get = lambda u: urllib.request.urlopen("https://www.luckydiscs.fi" + u, timeout=20).read().decode("utf-8", "replace")
+    for src in re.findall(r'src="(/assets/[^"]+\.js)"', get("/")):
+        for chunk in set(re.findall(r'assets/(BlogPost-[\w-]+\.js)', get(src))):
+            if "marker:text-lucky-green" in get("/assets/" + chunk):
+                return True
     return False
 
 
