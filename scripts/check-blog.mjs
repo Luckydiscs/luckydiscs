@@ -179,9 +179,10 @@ for (const p of posts) {
   for (const re of BANNED) if (re.test(c) || re.test(p.title || "")) err(p, `kielletty ilmaus ${re}`);
 }
 
-// 5–6. Parit ja kuvat: pari = luonnoksen pair-avain, julkaistuilla julkaisupäivä
-// (fi ja en julkaistaan samana päivänä; kaksi paria samana päivänä näkyy kieliversiovirheenä).
-const pairKey = (p) => p.pair || `julkaistu ${p.published_at}`;
+// 5–6. Parit ja kuvat: pari = luonnoksen pair-avain, julkaistuilla julkaisupäivä + kansikuva
+// (fi ja en julkaistaan samana päivänä samalla kuvalla; 4.11.2026 julkaistiin neljä paria
+// samana päivänä). Kaksi paria samalla kuvalla samana päivänä näkyy kieliversiovirheenä.
+const pairKey = (p) => p.pair || `julkaistu ${p.published_at} ${p.hero_image}`;
 const pairs = new Map();
 for (const p of posts) {
   const k = pairKey(p);
