@@ -29,6 +29,7 @@ fs.writeFileSync(path.join(dir, "a-fi.md"), head("fi") + [
   "Money Shot (4 / 3 / -1 / 3) maksaa 9,90 €.",
   "Teksti\n- ja luettelo samassa kappaleessa",
   "Tässä on koko juttu yhdessä lauseessa.",
+  "Lucky Discsin valikoimassa ei ole putteria.",
 ].join("\n\n"));
 fs.writeFileSync(path.join(dir, "b-en.md"), head("en").replace("discs-yyteri-beach", "ei-olemassa") + "Fine text.");
 

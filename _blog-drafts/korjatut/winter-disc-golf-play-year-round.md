@@ -28,7 +28,7 @@ Tie a length of ribbon to the disc so it stays visible even in deep snow. That s
 
 In the cold the plastic stiffens and grip matters more than ever. Discs fly more stable than usual in frost and often finish shorter than in summer. A slightly more understable or lighter disc compensates for this and brings back the turn the disc would have in summer.
 
-Durable plastic, like the Ultrium in the Jailbreak, copes with hard hits against icy trees and rocks. The Money Shot is for approaches, the Bank Robber gives controlled distance, and the Treasure Hunt goes furthest when you need maximum distance off the tee.
+Durable plastic, like the Ultrium in the Jailbreak, copes with hard hits against icy trees and rocks. The Money Shot is for putting and approaches, the Bank Robber gives controlled distance, and the Treasure Hunt goes furthest when you need maximum distance off the tee.
 
 ## Plan your round for daylight
 

@@ -30,7 +30,7 @@ The difference shows after the purchase too. You get service in Finnish, returns
 
 ## Discs for different throws
 
-The range has four discs: the Money Shot (4 / 3 / 1 / 3) is an approach disc for dependable approaches, the Jailbreak (5 / 4 / 0 / 2) a straight-flying midrange for all-round play, the Bank Robber (8 / 5 / -1 / 2) a fairway driver for controlled distance and the Treasure Hunt (12 / 6 / -1 / 3) a distance driver for the longest throws. We don't make a putter.
+The range has four discs: the Money Shot (4 / 3 / 1 / 3) is a putt-and-approach disc for the shots near the basket, the Jailbreak (5 / 4 / 0 / 2) a straight-flying midrange for all-round play, the Bank Robber (8 / 5 / -1 / 2) a fairway driver for controlled distance and the Treasure Hunt (12 / 6 / -1 / 3) a distance driver for the longest throws.
 
 ## Summary
 

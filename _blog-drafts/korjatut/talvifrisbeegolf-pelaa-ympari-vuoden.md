@@ -28,7 +28,7 @@ Sido kiekkoon pätkä nauhaa, joka jää näkyviin syväänkin lumeen. Pieni lie
 
 Kylmässä muovi jäykistyy ja ote on tärkeämpi kuin koskaan. Pakkasessa kiekot lentävät tavallista vakaammin ja jäävät usein lyhyemmiksi kuin kesällä. Siksi hieman alivakaampi tai kevyempi kiekko kompensoi tätä ja palauttaa lentoon sen kaarroksen, jonka kiekko kesällä tekisi.
 
-Kestävä muovi, kuten Jailbreakin Ultrium, sietää kovia osumia jäisiin puihin ja kiviin. Money Shot sopii lähestymisiin, Bank Robber antaa hallittua matkaa ja Treasure Hunt vie pisimmälle, kun haluat avata väylän kunnolla.
+Kestävä muovi, kuten Jailbreakin Ultrium, sietää kovia osumia jäisiin puihin ja kiviin. Money Shot sopii puttaamiseen ja lähestymisiin, Bank Robber antaa hallittua matkaa ja Treasure Hunt vie pisimmälle, kun haluat avata väylän kunnolla.
 
 ## Suunnittele kierros valoisaan aikaan
 

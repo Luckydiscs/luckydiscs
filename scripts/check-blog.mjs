@@ -109,9 +109,10 @@ const BANNED = [
   /none of this is marketing/i, /eivät ole markkinointipuhetta/i, /in this article we/i,
   /tässä artikkelissa (käymme|tutustumme)/i, /\bstunning\b/i, /\bbreathtaking\b/i, /world-class/i,
   /yliampuva/i,
-  // Money Shot on tuotetaulussa midrange (lähestymiskiekko). Valikoimassa ei ole putteria (4.11.2026).
-  /money shot\S*\s*(-|–)?\s*putter/i, /putter\S*\s*(\(|,|:)?\s*(kuten |like |the )?money shot/i,
-  /money shot[^.\n]{0,30}\b(putteri|putter)\b/i,
+  // Money Shot on putti- ja lähestymiskiekko (Vesa 4.11.2026), vaikka tuotetaulun
+  // category on 'midrange'. Väite "Lucky Discsillä ei ole putteria" on väärä.
+  /ei ole putteri/i, /putteria (valikoima|mallisto)\S* ei ole/i, /ei (myy|valmista|tee) putter/i, /(doesn.t|does not|don.t) (make|sell|have) a putter/i,
+  /no putter in (the|our) range/i, /money shot[^.\n]{0,40}(midrange|midari)/i,
 ];
 
 // ── Tarkistukset per artikkeli ─────────────────────────────────────────

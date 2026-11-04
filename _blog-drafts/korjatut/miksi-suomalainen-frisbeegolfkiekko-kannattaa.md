@@ -30,7 +30,7 @@ Kotimaisuus näkyy myös oston jälkeen. Saat palvelun suomeksi, palautukset ja 
 
 ## Kiekkoja eri heittoihin
 
-Mallistossa on neljä kiekkoa: Money Shot (4 / 3 / 1 / 3) on lähestymiskiekko varmoihin lähestymisiin, Jailbreak (5 / 4 / 0 / 2) suoraan lentävä midari monipuoliseen peliin, Bank Robber (8 / 5 / -1 / 2) väylädraiveri hallittuun pituuteen ja Treasure Hunt (12 / 6 / -1 / 3) pituusdraiveri pisimpiin heittoihin. Putteria valikoimassamme ei ole.
+Mallistossa on neljä kiekkoa: Money Shot (4 / 3 / 1 / 3) on putti- ja lähestymiskiekko korin lähelle, Jailbreak (5 / 4 / 0 / 2) suoraan lentävä midari monipuoliseen peliin, Bank Robber (8 / 5 / -1 / 2) väylädraiveri hallittuun pituuteen ja Treasure Hunt (12 / 6 / -1 / 3) pituusdraiveri pisimpiin heittoihin.
 
 ## Yhteenveto
 

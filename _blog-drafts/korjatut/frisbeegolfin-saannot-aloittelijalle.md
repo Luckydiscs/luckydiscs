@@ -48,4 +48,4 @@ Hyvät tavat tekevät lajista mukavan kaikille. Ole hiljaa ja paikallasi, kun to
 
 ## Kiekko lentoon
 
-Nyt tiedät perusteet ja olet valmis radalle. Säännöt oppii parhaiten pelaamalla, joten älä jännitä virheitä liikaa. Lucky Discs valmistaa Nokialla esimerkiksi suoraan lentävää Jailbreak-midaria ja hallittavaa Bank Robber -väylädraiveria. Money Shot on lähestymiskiekko niihin hetkiin, kun heitto alkaa olla hallussa. Lue myös [aloittelijan opas ensimmäisiin kiekkoihin](/blogi/aloittelijan-opas-ensimmaiset-kiekot) tai katso [kaikki kiekot](/discs).
+Nyt tiedät perusteet ja olet valmis radalle. Säännöt oppii parhaiten pelaamalla, joten älä jännitä virheitä liikaa. Lucky Discs valmistaa Nokialla esimerkiksi suoraan lentävää Jailbreak-midaria ja hallittavaa Bank Robber -väylädraiveria. Money Shot on putti- ja lähestymiskiekko korin lähelle. Lue myös [aloittelijan opas ensimmäisiin kiekkoihin](/blogi/aloittelijan-opas-ensimmaiset-kiekot) tai katso [kaikki kiekot](/discs).

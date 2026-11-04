@@ -14,7 +14,7 @@ Jokaisen frisbeegolfkiekon yläpintaan on painettu neljä numeroa, esimerkiksi 8
 
 ## Speed eli nopeus (1–14)
 
-Nopeus kertoo, kuinka lujaa kiekko pitää heittää, jotta se lentää suunnitellusti. Suuret numerot vaativat enemmän heittovoimaa, ja ne ovat tyypillisesti pituusdraivereita. Pienet numerot toimivat pehmeälläkin heitolla. Lucky Discsin Money Shot (speed 4) on hidas lähestymiskiekko eli midrange, kun taas Treasure Hunt (speed 12) on nopea pituusdraiveri. Aloittelijan kannattaa suosia matalia nopeuksia, koska niillä lento onnistuu ilman täyttä voimaa.
+Nopeus kertoo, kuinka lujaa kiekko pitää heittää, jotta se lentää suunnitellusti. Suuret numerot vaativat enemmän heittovoimaa, ja ne ovat tyypillisesti pituusdraivereita. Pienet numerot toimivat pehmeälläkin heitolla. Lucky Discsin Money Shot (speed 4) on hidas putti- ja lähestymiskiekko, kun taas Treasure Hunt (speed 12) on nopea pituusdraiveri. Aloittelijan kannattaa suosia matalia nopeuksia, koska niillä lento onnistuu ilman täyttä voimaa.
 
 ## Glide eli liito (1–7)
 

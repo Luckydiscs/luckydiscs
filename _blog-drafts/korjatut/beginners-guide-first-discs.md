@@ -18,13 +18,11 @@ In our view, three discs are enough for a beginner: a putter, a midrange and one
 
 ## Putter: accuracy near the basket
 
-The putter is your most important disc. You finish holes with it, and it is how you learn clean technique. A slow putter flies predictably and forgives small mistakes. Lucky Discs doesn't make a putter, so buy your first one from any manufacturer. Pick one that feels good in your hand and practise putting in the garden. It is the quickest way to bring your scores down.
+The putter is your most important disc. You finish holes with it, and it is how you learn clean technique. A slow putter flies predictably and forgives small mistakes. The Lucky Discs putt-and-approach disc is the Money Shot (4 / 3 / 1 / 3). Turn +1 and fade 3 mean it will not turn right but reliably finishes to the left, so it holds its line in wind and on firmer throws. Pick a plastic that feels good in your hand and practise putting in the garden. It is the quickest way to bring your scores down.
 
 ## Midrange: the most versatile tool
 
 The midrange is the disc you will play most holes with early on. It flies straight, is easy to control and gives you enough distance without a powerful throw. The Lucky Discs Jailbreak (5 / 4 / 0 / 2) is a straight-flying midrange: turn 0 means it barely turns early in the flight, and fade 2 brings it down in a controlled way at the end. The Jailbreak is made from durable Ultrium plastic, which holds its flight characteristics for a long time.
-
-Another option is the Money Shot (4 / 3 / 1 / 3), an approach disc in the midrange class. It is overstable: turn +1 and fade 3 mean it will reliably finish to the left on a right-hand backhand. That makes it an unforgiving disc for a beginner, but once your throw is coming together it is useful in wind and on short approaches.
 
 ## Fairway driver: distance you can control
 

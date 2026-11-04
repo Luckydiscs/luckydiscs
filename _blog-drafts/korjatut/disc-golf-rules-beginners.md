@@ -48,4 +48,4 @@ Good manners make the sport enjoyable for everyone. Stay quiet and still while a
 
 ## Send a disc flying
 
-Now you know the basics and you are ready for the course. Rules are best learned by playing, so don't worry too much about mistakes. Lucky Discs makes discs in Nokia, Finland, including the straight-flying Jailbreak midrange and the easy-to-control Bank Robber fairway driver. The Money Shot is an approach disc for when your throw is coming together. Read our [beginner's guide to first discs](/blog/beginners-guide-first-discs) or browse [all our discs](/discs).
+Now you know the basics and you are ready for the course. Rules are best learned by playing, so don't worry too much about mistakes. Lucky Discs makes discs in Nokia, Finland, including the straight-flying Jailbreak midrange and the easy-to-control Bank Robber fairway driver. The Money Shot is a putt-and-approach disc for the shots closest to the basket. Read our [beginner's guide to first discs](/blog/beginners-guide-first-discs) or browse [all our discs](/discs).

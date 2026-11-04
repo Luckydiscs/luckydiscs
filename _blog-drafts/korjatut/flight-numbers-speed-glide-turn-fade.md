@@ -14,7 +14,7 @@ Every disc golf disc has four numbers printed on its top, for example 8 / 5 / -1
 
 ## Speed (1–14)
 
-Speed tells you how hard you need to throw a disc for it to fly as designed. Higher numbers need more arm power and are typically distance drivers. Lower numbers work even with a gentle throw. The Lucky Discs Money Shot (speed 4) is a slow approach disc in the midrange class, while the Treasure Hunt (speed 12) is a fast distance driver. Beginners should favour lower speeds, because they fly well without full power.
+Speed tells you how hard you need to throw a disc for it to fly as designed. Higher numbers need more arm power and are typically distance drivers. Lower numbers work even with a gentle throw. The Lucky Discs Money Shot (speed 4) is a slow putt-and-approach disc, while the Treasure Hunt (speed 12) is a fast distance driver. Beginners should favour lower speeds, because they fly well without full power.
 
 ## Glide (1–7)
 
