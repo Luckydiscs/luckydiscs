@@ -14,7 +14,6 @@
     { "source": "/kauppa", "destination": "/shop", "statusCode": 301 },
     { "source": "/kauppa/:path*", "destination": "/shop", "statusCode": 301 },
     { "source": "/blog", "destination": "/blogi", "statusCode": 301 },
-    { "source": "/blog/:path*", "destination": "/blogi/:path*", "statusCode": 301 },
     { "source": "/tietosuojaseloste", "destination": "/privacy", "statusCode": 301 },
     { "source": "/kayttoehdot", "destination": "/terms", "statusCode": 301 },
     { "source": "/yhteystiedot", "destination": "/contact", "statusCode": 301 },

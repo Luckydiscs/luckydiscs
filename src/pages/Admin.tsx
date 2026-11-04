@@ -528,6 +528,12 @@ const BlogTab = ({ password }: { password: string }) => {
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState<any | null>(null);
   const [uploading, setUploading] = useState(false);
+  // Julkaisu/piilotus käynnistää sivuston rakennuksen (admin-api rebuildSite).
+  const [rebuildNote, setRebuildNote] = useState<string | null>(null);
+  const noteRebuild = (r: { rebuilding?: boolean } | undefined) =>
+    setRebuildNote(r?.rebuilding
+      ? "Sivusto päivittyy. Jutun oma osoite toimii noin 2–3 minuutin päästä."
+      : null);
   const heroFileRef = useRef<HTMLInputElement>(null);
   const contentFileRef = useRef<HTMLInputElement>(null);
 
@@ -538,15 +544,15 @@ const BlogTab = ({ password }: { password: string }) => {
   useEffect(() => load(), [load]);
 
   const save = async () => {
-    await adminCall(password, "save_blog", { post: editing });
+    noteRebuild(await adminCall(password, "save_blog", { post: editing }));
     setEditing(null); load();
   };
   const toggle = async (slug: string, published: boolean) => {
-    await adminCall(password, "toggle_blog", { slug, published: !published }); load();
+    noteRebuild(await adminCall(password, "toggle_blog", { slug, published: !published })); load();
   };
   const del = async (slug: string) => {
     if (!confirm("Poistetaanko artikkeli?")) return;
-    await adminCall(password, "delete_blog", { slug }); load();
+    noteRebuild(await adminCall(password, "delete_blog", { slug })); load();
   };
 
   const onHeroFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -643,6 +649,9 @@ const BlogTab = ({ password }: { password: string }) => {
       <Button onClick={() => setEditing({ ...emptyPost, _isNew: true })} className="bg-emerald-500 hover:bg-emerald-400 text-black font-bold">
         <Plus className="w-4 h-4 mr-1" /> Uusi artikkeli
       </Button>
+      {rebuildNote && (
+        <div className="text-sm text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 rounded-lg px-3 py-2">{rebuildNote}</div>
+      )}
       {blogs.map((b) => (
         <div key={b.slug} className="bg-white/5 border border-white/10 rounded-xl p-4 flex items-center justify-between gap-3">
           <div className="min-w-0">

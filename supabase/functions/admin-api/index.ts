@@ -33,6 +33,21 @@ const cors = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
+// Blogin artikkelisivut prerenderöidään buildissa (scripts/generate-seo-pages.mjs),
+// joten julkaistu juttu on suorana osoitteena 404 kunnes sivusto rakennetaan
+// uudelleen. Vercelin deploy hook käynnistää rakennuksen (secret VERCEL_DEPLOY_HOOK,
+// Vercel → Settings → Git → Deploy Hooks). Puuttuva hook tai virhe ei kaada tallennusta.
+const DEPLOY_HOOK = Deno.env.get("VERCEL_DEPLOY_HOOK") ?? "";
+async function rebuildSite(): Promise<boolean> {
+  if (!DEPLOY_HOOK) return false;
+  try {
+    const r = await fetch(DEPLOY_HOOK, { method: "POST" });
+    return r.ok;
+  } catch {
+    return false;
+  }
+}
+
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), {
     status,
@@ -267,7 +282,9 @@ serve(async (req) => {
         const { post } = body;
         const { error } = await supabase.from("blog_posts").upsert(post, { onConflict: "slug" });
         if (error) throw error;
-        return json({ ok: true });
+        // Julkaistun jutun muutos näkyy hakukoneille vasta uudessa buildissa.
+        const rebuilding = post?.published ? await rebuildSite() : false;
+        return json({ ok: true, rebuilding });
       }
 
       case "toggle_blog": {
@@ -276,14 +293,15 @@ serve(async (req) => {
         if (published) patch.published_at = new Date().toISOString().slice(0, 10);
         const { error } = await supabase.from("blog_posts").update(patch).eq("slug", slug);
         if (error) throw error;
-        return json({ ok: true });
+        // Sekä julkaisu että piilotus muuttavat prerenderöityjä sivuja ja sitemapia.
+        return json({ ok: true, rebuilding: await rebuildSite() });
       }
 
       case "delete_blog": {
         const { slug } = body;
         const { error } = await supabase.from("blog_posts").delete().eq("slug", slug);
         if (error) throw error;
-        return json({ ok: true });
+        return json({ ok: true, rebuilding: await rebuildSite() });
       }
 
       // ── KUVANLATAUS (blog-images bucket) ──

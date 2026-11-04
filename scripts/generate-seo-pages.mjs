@@ -688,6 +688,23 @@ for (const p of posts) {
   });
 }
 
+// ── /blog/<slug> → oikean kielen artikkeli ──────────────────────────────
+// vercel.json ohjasi ennen KAIKKI /blog/*-osoitteet /blogi/*:hin, jolloin
+// englanninkielisen jutun lyhyt osoite päätyi 404:ään (/blogi/<en-slug>).
+// Vercelin uudelleenohjaus ei tiedä jutun kieltä, buildi tietää: jokaiselle
+// artikkelille ohjaussivu, joka vie kanoniseen osoitteeseen. Ei indeksoida,
+// ei sitemapiin (ei mene written-listaan); kattavuusportti lukee redirectPages-listan.
+const redirectPages = [];
+for (const p of posts) {
+  const target = `${BASE_URL}${p.lang === "en" ? "/en/blog" : "/blogi"}/${p.slug}`;
+  redirectPages.push(`/blog/${p.slug}`);
+  writeHtml(`/blog/${p.slug}`, `<!doctype html><html lang="${p.lang}"><head><meta charset="utf-8">` +
+    `<meta name="robots" content="noindex"><link rel="canonical" href="${target}">` +
+    `<meta http-equiv="refresh" content="0; url=${target}"><title>${esc(p.title)}</title>` +
+    `<script>location.replace(${JSON.stringify(target)})</script></head>` +
+    `<body><a href="${target}">${esc(p.title)}</a></body></html>`);
+}
+
 // ── Ei-indeksoitavat apureitit ──────────────────────────────────────────
 for (const u of UTILITY_ROUTES) {
   emit(u.fiPath, {
@@ -735,7 +752,7 @@ for (const r of appRoutes) {
   if (dynamic) {
     // Dynaamiset reitit katetaan datalla; tarkistetaan että ainakin yksi on olemassa.
     const prefix = r.slice(0, r.indexOf("/:"));
-    const any = written.some((w) => w.path.startsWith(prefix + "/") && w.path !== prefix);
+    const any = [...written.map((w) => w.path), ...redirectPages].some((w) => w.startsWith(prefix + "/") && w !== prefix);
     if (!any) missing.push(`${r} (ei yhtään generoitua sivua eikä ohjausta vercel.jsonissa)`);
     continue;
   }
