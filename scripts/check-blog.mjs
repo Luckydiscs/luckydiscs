@@ -68,11 +68,13 @@ const drafts = readDir(DRAFTS);
 const fixes = readDir(process.env.BLOG_FIXES || path.join(ROOT, "_blog-drafts", "korjatut"));
 const fixedSlugs = new Set(fixes.map((f) => f.slug));
 
+// Jo julkaistu luonnos tarkistetaan julkaistuna rivinä, ei toista kertaa luonnoksena.
+const publishedSlugs = new Set(published.map((p) => p.slug));
 const posts = [
   ...published.map((p) => (fixedSlugs.has(p.slug)
     ? { ...fixes.find((f) => f.slug === p.slug), published_at: p.published_at, where: `korjattu ${p.slug}` }
     : { ...p, where: `julkaistu ${p.slug}` })),
-  ...drafts.map((d) => ({ ...d, where: `luonnos ${d.file}` })),
+  ...drafts.filter((d) => !publishedSlugs.has(d.slug)).map((d) => ({ ...d, where: `luonnos ${d.file}` })),
 ];
 const errors = [];
 const err = (p, msg) => errors.push(`${p.where}: ${msg}`);
