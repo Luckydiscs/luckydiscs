@@ -363,6 +363,9 @@ const translations = {
     'contactForm.placeholders.email': 'john@example.com',
     'contactForm.placeholders.message': 'How can we help you?',
     
+    'partners.title': 'Partners',
+    'partners.lead': 'Where else you can find Lucky Discs.',
+    'partners.laplandstore.body': 'Lucky Discs are also featured on LaplandStore, a guide to Lapland handicrafts, gifts and local shops. LaplandStore is part of the LaplandVibes network, which covers travel, services and local makers in Lapland.',
     'cta.title': 'Ready to Stock Lucky Discs?',
     'cta.subtitle': 'Join our network of retailers and offer your customers premium disc golf equipment with unique style.',
     'cta.applyForWholesale': 'Apply for Wholesale Access',
@@ -879,6 +882,9 @@ const translations = {
     'contactForm.placeholders.email': 'matti@esimerkki.fi',
     'contactForm.placeholders.message': 'Miten voimme auttaa sinua?',
     
+    'partners.title': 'Yhteistyökumppanit',
+    'partners.lead': 'Missä muualla Lucky Discs on esillä.',
+    'partners.laplandstore.body': 'Lucky Discs -kiekot ovat esillä myös LaplandStoressa, joka esittelee Lapin käsitöitä, lahjoja ja paikallisia kauppoja. LaplandStore kuuluu LaplandVibes-verkostoon, joka kertoo Lapin matkailusta, palveluista ja paikallisista tekijöistä.',
     'cta.title': 'Haluatko Lucky Discs -kiekot myyntiin?',
     'cta.subtitle': 'Liity jälleenmyyjäverkostoomme ja tarjoa asiakkaillesi tyylikkäitä premium-frisbeegolfkiekkoja.',
     'cta.applyForWholesale': 'Ryhdy jälleenmyyjäksi',

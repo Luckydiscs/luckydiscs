@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
 import FeaturedDisc from "@/components/FeaturedDisc";
 
+import PartnersSection from "@/components/PartnersSection";
 import SocialMediaShowcase from "@/components/SocialMediaShowcase";
 import FeaturedVideos from "@/components/FeaturedVideos";
 
@@ -305,6 +306,8 @@ const Index = () => {
         </div>
       </section>
       
+      <PartnersSection />
+
       {/* Social Media Showcase */}
       <SocialMediaShowcase />
       

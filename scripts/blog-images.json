@@ -1,0 +1,9 @@
+{
+  "_ohje": "Sama valokuva eri tiedostonimillä = sama ryhmä. Kahden eri artikkeliparin kansikuva ei saa olla samasta ryhmästä (scripts/check-blog.mjs). Ryhmät tunnistettu silmällä 4.11.2026: tiedostonimet johtavat harhaan (finnish-sunset-course on Treasure Hunt -kiekko, blog-disc-golf-forest on rantakuva).",
+  "ryhmat": {
+    "ranta-kaksi-kiekkoa": ["blog-disc-golf-forest.webp", "discs-yyteri-beach.webp"],
+    "kivi-kiekkokokoelma": ["disc-rainbow.webp", "disc-collection-rock.webp", "disc-collection-vol2.webp"],
+    "treasure-hunt-juliste": ["finnish-sunset-course.webp", "treasure-hunt-promo.webp"],
+    "daniel-voitto": ["daniel-nationals-alt.webp", "daniel-victory.webp"]
+  }
+}

@@ -7,6 +7,7 @@ import useSEO from "@/hooks/useSEO";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ArrowLeft, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { parseBlocks, renderInline } from "@/lib/blogMarkup";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -80,7 +81,7 @@ const BlogPost = () => {
     );
   }
 
-  const paragraphs = post.content.split("\n\n").filter((p) => p.trim());
+  const blocks = parseBlocks(post.content);
 
   return (
     <div className="min-h-screen flex flex-col bg-black text-white">
@@ -93,7 +94,7 @@ const BlogPost = () => {
             <div className="max-w-3xl mx-auto">
               <Link
                 to={basePath}
-                className="inline-flex items-center gap-1 text-gray-400 hover:text-lucky-green transition-colors mb-6"
+                className="lv-tap inline-flex items-center gap-1 text-gray-400 hover:text-lucky-green transition-colors mb-6"
               >
                 <ArrowLeft className="h-4 w-4" />
                 {t("blog.backToBlog")}
@@ -142,39 +143,49 @@ const BlogPost = () => {
         <section className="py-12 px-4 bg-black">
           <div className="container mx-auto">
             <article className="max-w-3xl mx-auto prose-invert">
-              {paragraphs.map((paragraph, index) => {
-                if (paragraph.startsWith("## ")) {
-                  return (
-                    <h2 key={index} className="text-2xl font-medium text-white mt-10 mb-4">
-                      {paragraph.replace("## ", "")}
-                    </h2>
-                  );
+              {blocks.map((block, index) => {
+                switch (block.kind) {
+                  case "h2":
+                    return (
+                      <h2 key={index} className="text-2xl font-medium text-white mt-10 mb-4">
+                        {block.text}
+                      </h2>
+                    );
+                  case "h3":
+                    return (
+                      <h3 key={index} className="text-xl font-medium text-white mt-8 mb-3">
+                        {block.text}
+                      </h3>
+                    );
+                  case "img":
+                    return (
+                      <img
+                        key={index}
+                        src={block.src}
+                        alt={block.alt}
+                        loading="lazy"
+                        className="w-full rounded-xl my-8 border border-white/10"
+                      />
+                    );
+                  case "ul":
+                  case "ol": {
+                    const List = block.kind;
+                    return (
+                      <List
+                        key={index}
+                        className={`${block.kind === "ul" ? "list-disc" : "list-decimal"} pl-6 space-y-2 text-gray-300 leading-relaxed mb-4 marker:text-lucky-green`}
+                      >
+                        {block.items.map((item, i) => <li key={i}>{renderInline(item)}</li>)}
+                      </List>
+                    );
+                  }
+                  default:
+                    return (
+                      <p key={index} className="text-gray-300 leading-relaxed mb-4">
+                        {renderInline(block.text)}
+                      </p>
+                    );
                 }
-                if (paragraph.startsWith("### ")) {
-                  return (
-                    <h3 key={index} className="text-xl font-medium text-white mt-8 mb-3">
-                      {paragraph.replace("### ", "")}
-                    </h3>
-                  );
-                }
-                // Kuva: ![alt](url) omalla rivillään
-                const img = paragraph.trim().match(/^!\[(.*?)\]\((.*?)\)$/);
-                if (img) {
-                  return (
-                    <img
-                      key={index}
-                      src={img[2]}
-                      alt={img[1]}
-                      loading="lazy"
-                      className="w-full rounded-xl my-8 border border-white/10"
-                    />
-                  );
-                }
-                return (
-                  <p key={index} className="text-gray-300 leading-relaxed mb-4">
-                    {paragraph}
-                  </p>
-                );
               })}
 
               <div className="mt-12 p-6 bg-gradient-to-r from-lucky-green/10 to-transparent rounded-lg border-l-4 border-lucky-green">

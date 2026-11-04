@@ -8,7 +8,9 @@
     "build": "vite build && node scripts/generate-seo-pages.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:blog": "node scripts/check-blog.mjs",
+    "check:blog:selftest": "node scripts/check-blog.selftest.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
