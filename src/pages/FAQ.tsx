@@ -241,7 +241,7 @@ const FAQ = () => {
               </Button>
               <a
                 href="mailto:asiakaspalvelu@luckydiscs.fi"
-                className="inline-flex items-center gap-2 text-lucky-green hover:text-lucky-green/80 font-medium transition-colors"
+                className="lv-tap inline-flex items-center gap-2 text-lucky-green hover:text-lucky-green/80 font-medium transition-colors"
               >
                 <Mail className="h-5 w-5" aria-hidden="true" />
                 asiakaspalvelu@luckydiscs.fi
